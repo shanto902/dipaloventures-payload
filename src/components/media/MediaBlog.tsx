@@ -18,7 +18,7 @@ export function MediaBlog() {
               href={p.href}
               target="_blank"
               rel="noreferrer"
-              className="flex-shrink-0 w-[280px] md:w-[350px] group bg-white border border-neutral-200 rounded-xl p-6 shadow-sm hover:border-amber-600 transition-all snap-start"
+              className="shrink-0 w-[280px] md:w-[350px] group bg-white border border-neutral-200 rounded-xl p-6 shadow-sm hover:border-amber-600 transition-all snap-start"
             >
               <div className="flex justify-between items-start mb-4">
                 <div className="font-mono text-xs uppercase tracking-widest text-amber-600 font-bold">

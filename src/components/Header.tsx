@@ -31,7 +31,7 @@ export function Header() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
-        scrolled ? 'bg-white shadow-sm ' : 'bg-transparent'
+        scrolled ? 'bg-white/80 backdrop-blur-sm shadow-sm ' : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between py-4">

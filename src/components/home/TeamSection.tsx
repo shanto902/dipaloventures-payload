@@ -7,7 +7,9 @@ function initial(n: string) {
   return n.trim()[0] ?? "·";
 }
 
-export function TeamSection() {
+export function TeamSection({ members }: { members?: any[] }) {
+  const displayTeam = members || team
+
   return (
     <section className="py-16 md:py-24">
       <div className="container mx-auto px-4">
@@ -23,13 +25,19 @@ export function TeamSection() {
               From Motorola to med-tech — our GPs have built physical products at scale.
             </p>
           </div>
-          <Link href="/team" className="text-sm text-amber-600 hover:opacity-80 underline underline-offset-4">
+          <Link
+            href="/team"
+            className="text-sm text-amber-600 hover:opacity-80 underline underline-offset-4"
+          >
             Meet the full team →
           </Link>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {team.map((m) => (
-            <article key={m.name} className="p-6 bg-white border border-neutral-200 rounded-xl hover:-translate-y-1 transition-transform text-center shadow-sm">
+          {displayTeam.map((m) => (
+            <article
+              key={m.name}
+              className="p-6 bg-white border border-neutral-200 rounded-xl hover:-translate-y-1 transition-transform text-center shadow-sm"
+            >
               <div className="relative h-20 w-20 mx-auto rounded-full overflow-hidden">
                 {m.photo ? (
                   <Image
@@ -54,5 +62,5 @@ export function TeamSection() {
         </div>
       </div>
     </section>
-  );
+  )
 }

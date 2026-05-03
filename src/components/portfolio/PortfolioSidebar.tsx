@@ -18,6 +18,7 @@ interface Props {
   setStages: (stages: Set<Stage>) => void
   reset: () => void
   totalActive: number
+  allItems: any[]
 }
 
 export function PortfolioSidebar({
@@ -29,6 +30,7 @@ export function PortfolioSidebar({
   setStages,
   reset,
   totalActive,
+  allItems,
 }: Props) {
   function toggle<T>(set: Set<T>, value: T, setter: (s: Set<T>) => void) {
     const next = new Set(set)
@@ -61,7 +63,7 @@ export function PortfolioSidebar({
               checked={funds.has(k)}
               onChange={() => toggle(funds, k, setFunds)}
               label={fundMeta[k].label}
-              count={portfolio.filter((p) => p.fundKeys.includes(k)).length}
+              count={allItems.filter((p) => p.fundKeys.includes(k)).length}
             />
           ))}
         </FilterGroup>
@@ -73,7 +75,7 @@ export function PortfolioSidebar({
               checked={sectors.has(s)}
               onChange={() => toggle(sectors, s, setSectors)}
               label={sectorMeta[s].label}
-              count={portfolio.filter((p) => p.sector === s).length}
+              count={allItems.filter((p) => p.sector === s).length}
             />
           ))}
         </FilterGroup>
@@ -85,7 +87,7 @@ export function PortfolioSidebar({
               checked={stages.has(s)}
               onChange={() => toggle(stages, s, setStages)}
               label={stageMeta[s].label}
-              count={portfolio.filter((p) => p.stage === s).length}
+              count={allItems.filter((p) => p.stage === s).length}
             />
           ))}
         </FilterGroup>

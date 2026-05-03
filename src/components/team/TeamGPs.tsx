@@ -2,45 +2,46 @@ import React from 'react'
 import { team, orgs, type TeamMember, type OrgLink } from '@/lib/demo'
 import { InitialsAvatar, focalFor, PHOTO_FILTER } from './TeamHelpers'
 
-function GPCard({ m }: { m: TeamMember }) {
-  const links = orgs[m.name] ?? []
+function GPCard({ m }: { m: TeamMember & { orgLinks?: OrgLink[] } }) {
+  const links = m.orgLinks || orgs[m.name] || []
   const allLinks: OrgLink[] = [{ label: 'LinkedIn', href: m.linkedin }, ...links]
 
   return (
-    <article className="flex gap-6 bg-white border border-neutral-200 rounded-xl p-6 shadow-sm">
-      <div
-        className="relative bg-neutral-100 overflow-hidden shrink-0"
-        style={{ width: 110, height: 140, borderRadius: 8 }}
-      >
+    <article className="flex flex-col sm:flex-row bg-white border border-neutral-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+      <div className="relative bg-neutral-100 shrink-0 w-full sm:w-[160px] lg:w-[220px] h-[240px] sm:h-auto">
         {m.photo ? (
           <img
             src={m.photo}
             alt={m.name}
             loading="lazy"
             className="absolute inset-0 h-full w-full object-cover"
-            style={{ objectPosition: focalFor(m.name), filter: PHOTO_FILTER }}
+            style={{ filter: PHOTO_FILTER }}
           />
         ) : (
-          <InitialsAvatar name={m.name} />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <InitialsAvatar name={m.name} />
+          </div>
         )}
       </div>
-      <div className="flex flex-col min-w-0 flex-1">
-        <div className="font-serif text-xl text-neutral-900 leading-tight font-medium">
+      <div className="flex flex-col p-6 lg:p-8 min-w-0 flex-1">
+        <div className="font-serif text-2xl text-neutral-900 leading-tight font-medium">
           {m.name}
         </div>
-        <div className="mt-1.5 font-mono uppercase text-sm tracking-[0.18em] text-neutral-500 font-bold">
+        <div className="mt-2 font-mono uppercase text-[12px] tracking-[0.2em] text-amber-600 font-bold">
           {m.role} · {m.location}
         </div>
-        <p className="mt-3.5 text-base text-neutral-600 leading-relaxed">{m.bio}</p>
-        <div className="mt-auto pt-3 font-mono text-sm text-amber-600 font-bold">
+        <p className="mt-4 text-[15px] text-neutral-600 leading-relaxed line-clamp-4 lg:line-clamp-none">
+          {m.bio}
+        </p>
+        <div className="mt-6 sm:mt-auto pt-4 font-mono text-[12px] text-neutral-400 font-bold border-t border-neutral-100">
           {allLinks.map((l, i) => (
             <span key={l.label}>
-              {i > 0 && <span className="text-neutral-400 mx-2">·</span>}
+              {i > 0 && <span className="text-neutral-300 mx-2">·</span>}
               <a
                 href={l.href}
                 target="_blank"
                 rel="noreferrer"
-                className="hover:underline hover:text-amber-700 transition-colors"
+                className="text-amber-600 hover:text-amber-700 hover:underline transition-colors"
               >
                 {l.label}
               </a>
@@ -52,7 +53,8 @@ function GPCard({ m }: { m: TeamMember }) {
   )
 }
 
-export function TeamGPs() {
+export function TeamGPs({ members }: { members?: TeamMember[] }) {
+  const displayTeam = members || team
   return (
     <section className="container mx-auto px-4 pt-12 pb-6">
       <div className="bg-[#FFF8EE] border border-[#E8D9B8] rounded-[14px] p-6 md:p-10">
@@ -60,7 +62,7 @@ export function TeamGPs() {
           General Partners
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {team
+          {displayTeam
             .filter((m) => m.name === 'Rafiq Ahmed' || m.name === 'Mitul Patel')
             .map((m) => (
               <GPCard key={m.name} m={m} />

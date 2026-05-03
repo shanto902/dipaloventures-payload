@@ -69,6 +69,8 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    team: Team;
+    portfolio: Portfolio;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -78,6 +80,8 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    team: TeamSelect<false> | TeamSelect<true>;
+    portfolio: PortfolioSelect<false> | PortfolioSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -149,6 +153,15 @@ export interface User {
 export interface Media {
   id: string;
   alt: string;
+  cloudinary?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -160,6 +173,60 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "team".
+ */
+export interface Team {
+  id: string;
+  name: string;
+  /**
+   * Lower numbers appear first
+   */
+  order?: number | null;
+  category: 'gp' | 'vp' | 'advisor';
+  role: string;
+  location?: string | null;
+  /**
+   * Company or institution (e.g. Google, Virginia Tech)
+   */
+  organization?: string | null;
+  bio?: string | null;
+  photo?: (string | null) | Media;
+  linkedin?: string | null;
+  orgLinks?:
+    | {
+        label: string;
+        href: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portfolio".
+ */
+export interface Portfolio {
+  id: string;
+  name: string;
+  /**
+   * Lower numbers appear first
+   */
+  order?: number | null;
+  featured?: boolean | null;
+  url: string;
+  sector: 'energy' | 'climate' | 'physical_ai';
+  stage: 'seed' | 'series_a' | 'series_b';
+  fundKeys: ('fund_1' | 'fund_2' | 'spv')[];
+  desc: string;
+  logo: string | Media;
+  productImage?: (string | null) | Media;
+  exit?: string | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -192,6 +259,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'team';
+        value: string | Team;
+      } | null)
+    | ({
+        relationTo: 'portfolio';
+        value: string | Portfolio;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -263,6 +338,7 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
+  cloudinary?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -274,6 +350,49 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "team_select".
+ */
+export interface TeamSelect<T extends boolean = true> {
+  name?: T;
+  order?: T;
+  category?: T;
+  role?: T;
+  location?: T;
+  organization?: T;
+  bio?: T;
+  photo?: T;
+  linkedin?: T;
+  orgLinks?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portfolio_select".
+ */
+export interface PortfolioSelect<T extends boolean = true> {
+  name?: T;
+  order?: T;
+  featured?: T;
+  url?: T;
+  sector?: T;
+  stage?: T;
+  fundKeys?: T;
+  desc?: T;
+  logo?: T;
+  productImage?: T;
+  exit?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

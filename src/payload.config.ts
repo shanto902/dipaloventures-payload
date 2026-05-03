@@ -9,12 +9,15 @@ import { resendAdapter } from '@payloadcms/email-resend'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
+import { Team } from './collections/Team'
+import { Portfolio } from './collections/Portfolio'
+import { cloudStoragePlugin } from '@payloadcms/plugin-cloud-storage'
+import { cloudinaryAdapter } from './lib/cloudinaryAdapter'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
-
   admin: {
     user: Users.slug,
     importMap: {
@@ -24,7 +27,7 @@ export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
   cors: [process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'].filter(Boolean),
   csrf: [process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'].filter(Boolean),
-  collections: [Users, Media],
+  collections: [Users, Media, Team, Portfolio],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -35,12 +38,24 @@ export default buildConfig({
   }),
   sharp,
   email: (() => {
-    console.log('Initializing Resend adapter with API Key:', process.env.RESEND_API_KEY ? 'Present' : 'Missing')
+    console.log(
+      'Initializing Resend adapter with API Key:',
+      process.env.RESEND_API_KEY ? 'Present' : 'Missing',
+    )
     return resendAdapter({
       defaultFromAddress: process.env.RESEND_DEFAULT_FROM_EMAIL || 'onboarding@resend.dev',
       defaultFromName: 'Dipalo Ventures',
       apiKey: process.env.RESEND_API_KEY || '',
     })
   })(),
-  plugins: [],
+  plugins: [
+    cloudStoragePlugin({
+      collections: {
+        media: {
+          adapter: cloudinaryAdapter(),
+          disableLocalStorage: true,
+        },
+      },
+    }),
+  ],
 })

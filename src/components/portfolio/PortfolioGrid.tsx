@@ -1,9 +1,17 @@
 import React from 'react'
-import { portfolio, fundMeta, sectorMeta, stageMeta } from '@/lib/demo'
+import {
+  portfolio,
+  fundMeta,
+  sectorMeta,
+  stageMeta,
+  type Sector,
+  type Stage,
+  type FundKey,
+} from '@/lib/demo'
 import { Monogram } from '@/components/Monogram'
 
 interface Props {
-  filtered: typeof portfolio
+  filtered: any[]
   totalCount: number
 }
 
@@ -37,21 +45,21 @@ export function PortfolioGrid({ filtered, totalCount }: Props) {
                 className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${p.productImage ? 'bg-neutral-900/70' : 'bg-neutral-900'}`}
               />
               <div className="relative z-10 flex flex-col h-full">
-                <div className="h-14 w-[168px] flex items-center shrink-0 group-hover:bg-white/95 group-hover:rounded-md group-hover:px-2 transition-all">
+                <div className="h-14 w-fit flex items-center shrink-0  group-hover:rounded-md group-hover:px-2 transition-all">
                   {p.logo ? (
                     <img
                       src={p.logo}
                       alt={`${p.name} logo`}
                       width={480}
                       height={160}
-                      className="h-full w-full object-contain object-left"
+                      className="h-full w-full object-contain object-left group-hover:invert"
                     />
                   ) : (
                     <Monogram name={p.name} />
                   )}
                 </div>
                 <div className="mt-4 flex flex-wrap items-center gap-1.5">
-                  {p.fundKeys.map((fk) => (
+                  {p.fundKeys.map((fk: FundKey) => (
                     <span
                       key={fk}
                       className={`inline-block text-xs font-mono tracking-widest uppercase px-2.5 py-1 rounded-full ${fundMeta[fk].tone} group-hover:bg-white/20 group-hover:text-white transition-colors`}
@@ -74,10 +82,10 @@ export function PortfolioGrid({ filtered, totalCount }: Props) {
                 </p>
                 <div className="mt-6 pt-4 border-t border-neutral-200 group-hover:border-white/20 flex items-center justify-between transition-colors">
                   <span className="text-xs font-mono uppercase tracking-wider text-amber-600 group-hover:text-white/90 transition-colors font-medium">
-                    {sectorMeta[p.sector]?.label}
+                    {sectorMeta[p.sector as Sector]?.label}
                   </span>
                   <span className="text-xs font-mono uppercase tracking-wider text-neutral-500 group-hover:text-white/70 transition-colors font-medium">
-                    {stageMeta[p.stage]?.label}
+                    {stageMeta[p.stage as Stage]?.label}
                   </span>
                 </div>
               </div>

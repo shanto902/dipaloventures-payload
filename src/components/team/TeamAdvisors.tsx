@@ -1,9 +1,11 @@
 import React from 'react'
 import { advisors } from '@/lib/demo'
 
-export function TeamAdvisors() {
+export function TeamAdvisors({ advisors: liveAdvisors }: { advisors?: any[] }) {
+  const displayAdvisors = liveAdvisors || advisors
+
   return (
-    <section className="container mx-auto px-4 pb-16">
+    <section className="container mx-auto px-4">
       <div className="max-w-3xl mb-8">
         <div className="text-sm font-semibold uppercase tracking-widest text-neutral-500 mb-3">
           Residency Advisors
@@ -18,12 +20,19 @@ export function TeamAdvisors() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-        {advisors.map((a) => {
+        {displayAdvisors.map((a) => {
           const initials = a.name
             .split(' ')
-            .map((p) => p[0])
+            .map((p: string) => p[0])
             .slice(0, 2)
             .join('')
+
+          // Use colors from demo data if available, otherwise use defaults
+          const bg = a.bg || '#F5F5F5'
+          const fg = a.fg || '#737373'
+          const role = a.role || a.title // Payload uses role, demo uses title
+          const org = a.organization || a.org // Payload uses organization, demo uses org
+
           return (
             <article
               key={a.name}
@@ -33,8 +42,8 @@ export function TeamAdvisors() {
                 <div
                   className="w-12 h-12 rounded-full flex items-center justify-center text-base font-bold border-[1.5px] border-neutral-200 shrink-0"
                   style={{
-                    background: a.bg,
-                    color: a.fg,
+                    background: bg,
+                    color: fg,
                   }}
                 >
                   {initials}
@@ -45,10 +54,8 @@ export function TeamAdvisors() {
                   </div>
                 </div>
               </div>
-              <div className="text-sm text-neutral-500 mt-2.5 font-medium">{a.title}</div>
-              <div className="text-sm text-amber-600 font-bold uppercase tracking-wide">
-                {a.org}
-              </div>
+              <div className="text-sm text-neutral-500 mt-2.5 font-medium">{role}</div>
+              <div className="text-sm text-amber-600 font-bold uppercase tracking-wide">{org}</div>
               <a
                 href={a.linkedin}
                 target="_blank"
@@ -61,7 +68,7 @@ export function TeamAdvisors() {
           )
         })}
       </div>
-      <p className="text-center mt-6 text-xs text-neutral-500 font-medium">
+      <p className="text-center mt-10 text-xs text-neutral-500 font-medium">
         + 10 more advisors across energy, manufacturing, and life sciences.
       </p>
     </section>

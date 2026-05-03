@@ -50,6 +50,14 @@ export const team: TeamMember[] = [
     photo: '',
     linkedin: 'https://linkedin.com/in/laurence-hayward-a33a57/',
   },
+  {
+    name: 'Sarah Connor',
+    role: 'General Manager',
+    location: 'Chicago',
+    bio: 'Experienced operations lead with a focus on manufacturing logistics and team management.',
+    photo: '',
+    linkedin: 'https://linkedin.com/',
+  },
 ]
 
 export const heroStats = [

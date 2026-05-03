@@ -49,6 +49,18 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
 @layer base {
   h1 {
     @apply text-4xl md:text-5xl font-bold;

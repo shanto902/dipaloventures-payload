@@ -8,20 +8,20 @@ import { PortfolioStats } from './PortfolioStats'
 import { PortfolioSidebar } from './PortfolioSidebar'
 import { PortfolioGrid } from './PortfolioGrid'
 
-export function PortfolioPageClient() {
+export function PortfolioPageClient({ items }: { items?: any[] }) {
+  const displayItems = items || []
   const [funds, setFunds] = useState<Set<FundKey>>(new Set())
   const [sectors, setSectors] = useState<Set<Sector>>(new Set())
   const [stages, setStages] = useState<Set<Stage>>(new Set())
-  const [videoPlaying, setVideoPlaying] = useState(false)
 
   const filtered = useMemo(() => {
-    return portfolio.filter((p) => {
-      if (funds.size && !p.fundKeys.some((fk) => funds.has(fk))) return false
+    return displayItems.filter((p) => {
+      if (funds.size && !p.fundKeys.some((fk: FundKey) => funds.has(fk))) return false
       if (sectors.size && !sectors.has(p.sector)) return false
       if (stages.size && !stages.has(p.stage)) return false
       return true
     })
-  }, [funds, sectors, stages])
+  }, [displayItems, funds, sectors, stages])
 
   function reset() {
     setFunds(new Set())
@@ -33,7 +33,7 @@ export function PortfolioPageClient() {
 
   return (
     <>
-      <PortfolioVideoBanner videoPlaying={videoPlaying} setVideoPlaying={setVideoPlaying} />
+      <PortfolioVideoBanner />
 
       <section className="container mx-auto px-4 py-16 md:py-24">
         <div className="max-w-3xl mx-auto text-center">
@@ -62,8 +62,9 @@ export function PortfolioPageClient() {
             setStages={setStages}
             reset={reset}
             totalActive={totalActive}
+            allItems={displayItems}
           />
-          <PortfolioGrid filtered={filtered} totalCount={portfolio.length} />
+          <PortfolioGrid filtered={filtered} totalCount={displayItems.length} />
         </div>
       </section>
     </>

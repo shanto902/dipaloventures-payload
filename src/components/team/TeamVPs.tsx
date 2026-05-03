@@ -2,8 +2,8 @@ import React from 'react'
 import { team, orgs, type TeamMember, type OrgLink } from '@/lib/demo'
 import { InitialsAvatar, focalFor, PHOTO_FILTER } from './TeamHelpers'
 
-function SupportingCard({ m }: { m: TeamMember }) {
-  const links = orgs[m.name] ?? []
+function SupportingCard({ m }: { m: TeamMember & { orgLinks?: OrgLink[] } }) {
+  const links = m.orgLinks || orgs[m.name] || []
   const allLinks: OrgLink[] = [{ label: 'LinkedIn', href: m.linkedin }, ...links]
 
   return (
@@ -18,7 +18,7 @@ function SupportingCard({ m }: { m: TeamMember }) {
             alt={m.name}
             loading="lazy"
             className="absolute inset-0 h-full w-full object-cover"
-            style={{ objectPosition: focalFor(m.name), filter: PHOTO_FILTER }}
+            style={{ filter: PHOTO_FILTER }}
           />
         ) : (
           <InitialsAvatar name={m.name} />
@@ -50,18 +50,21 @@ function SupportingCard({ m }: { m: TeamMember }) {
   )
 }
 
-export function TeamVPs() {
+export function TeamVPs({ members }: { members?: TeamMember[] }) {
+  const displayTeam = members || team
+  const vps = displayTeam.filter(
+    (m) => !m.role.toLowerCase().includes('general') && !m.role.toLowerCase().includes('advisor'),
+  )
+
   return (
     <section className="container mx-auto px-4 pt-6 pb-12">
       <div className="font-mono uppercase mb-5 text-base tracking-[0.22em] text-neutral-500 font-bold">
         Venture Partners & Platform
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 items-stretch">
-        {team
-          .filter((m) => m.name !== 'Rafiq Ahmed' && m.name !== 'Mitul Patel')
-          .map((m) => (
-            <SupportingCard key={m.name} m={m} />
-          ))}
+        {vps.map((m) => (
+          <SupportingCard key={m.name} m={m} />
+        ))}
       </div>
     </section>
   )
