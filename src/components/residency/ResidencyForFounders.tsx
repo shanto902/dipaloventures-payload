@@ -21,9 +21,9 @@ export function ResidencyForFounders() {
           {lookFor.map((w) => (
             <article
               key={w.t}
-              className="bg-white border border-neutral-200 rounded-xl p-6 hover:border-amber-600 transition-colors shadow-sm"
+              className="bg-white border border-neutral-200 rounded-xl p-6 hover:border-amber-400 transition-colors shadow-sm"
             >
-              <div className="text-2xl text-amber-600">{w.ico}</div>
+              <div className="text-2xl text-amber-400">{w.ico}</div>
               <div className="mt-5 font-serif text-xl font-medium text-neutral-900 leading-tight">
                 {w.t}
               </div>

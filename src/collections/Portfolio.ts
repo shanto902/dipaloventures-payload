@@ -1,10 +1,19 @@
+import { revalidatePath } from 'next/cache'
 import type { CollectionConfig } from 'payload'
 
 export const Portfolio: CollectionConfig = {
   slug: 'portfolio',
+  hooks: {
+    afterChange: [
+      () => {
+        revalidatePath('/')
+        revalidatePath('/portfolio')
+      },
+    ],
+  },
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['order', 'name', 'sector', 'stage', 'featured'],
+    defaultColumns: ['name', 'sector', 'stage', 'featured', 'order'],
   },
   access: {
     read: () => true,
@@ -15,46 +24,14 @@ export const Portfolio: CollectionConfig = {
       type: 'text',
       required: true,
     },
+
     {
-      name: 'order',
-      type: 'number',
-      admin: {
-        description: 'Lower numbers appear first',
-      },
-      defaultValue: 100,
-    },
-    {
-      name: 'featured',
-      type: 'checkbox',
-      label: 'Show in Homepage Marquee',
-      defaultValue: true,
-    },
-    {
-      name: 'url',
-      type: 'text',
-      label: 'Website URL',
+      name: 'desc',
+      type: 'textarea',
+      label: 'Short Description',
       required: true,
     },
-    {
-      name: 'sector',
-      type: 'select',
-      required: true,
-      options: [
-        { label: 'Energy Transition', value: 'energy' },
-        { label: 'Climate Tech', value: 'climate' },
-        { label: 'Physical AI', value: 'physical_ai' },
-      ],
-    },
-    {
-      name: 'stage',
-      type: 'select',
-      required: true,
-      options: [
-        { label: 'Seed', value: 'seed' },
-        { label: 'Series A', value: 'series_a' },
-        { label: 'Series B', value: 'series_b' },
-      ],
-    },
+
     {
       name: 'fundKeys',
       type: 'select',
@@ -68,10 +45,26 @@ export const Portfolio: CollectionConfig = {
       ],
     },
     {
-      name: 'desc',
-      type: 'textarea',
-      label: 'Short Description',
+      name: 'sector',
+      type: 'select',
       required: true,
+      options: [
+        { label: 'Energy Transition', value: 'energy' },
+        { label: 'Climate Tech', value: 'climate' },
+        { label: 'Physical AI', value: 'physical_ai' },
+        { label: 'Other', value: 'other' },
+      ],
+    },
+    {
+      name: 'stage',
+      type: 'select',
+      required: true,
+      options: [
+        { label: 'Pre Seed', value: 'pre_seed' },
+        { label: 'Seed', value: 'seed' },
+        { label: 'Series A', value: 'series_a' },
+        { label: 'Series B', value: 'series_b' },
+      ],
     },
     {
       name: 'logo',
@@ -84,6 +77,26 @@ export const Portfolio: CollectionConfig = {
       type: 'upload',
       relationTo: 'media',
       required: false,
+    },
+    {
+      name: 'url',
+      type: 'text',
+      label: 'Website URL',
+      required: true,
+    },
+    {
+      name: 'featured',
+      type: 'checkbox',
+      label: 'Show in Homepage Marquee',
+      defaultValue: true,
+    },
+    {
+      name: 'order',
+      type: 'number',
+      admin: {
+        description: 'Lower numbers appear first',
+      },
+      defaultValue: 100,
     },
     {
       name: 'exit',

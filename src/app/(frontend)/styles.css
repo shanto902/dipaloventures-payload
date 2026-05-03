@@ -83,4 +83,9 @@ html {
   p {
     @apply text-base md:text-lg;
   }
+
+  ::selection {
+    background-color: #fab11b;
+    color: #000000; /* black */
+  }
 }

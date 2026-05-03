@@ -22,12 +22,12 @@ export default async function HomePage() {
   const payloadConfig = await config
   const payload = await getPayload({ config: payloadConfig })
   const { user } = await payload.auth({ headers })
-  
+
   const { docs: teamDocs } = await payload.find({
     collection: 'team',
     depth: 1,
     sort: 'order',
-    limit: 4,
+    limit: 5,
   })
 
   const teamMembers = teamDocs.map((doc: any) => {
@@ -67,20 +67,53 @@ export default async function HomePage() {
     return {
       name: doc.name,
       logo: logoUrl,
+      url: doc.url,
+    }
+  })
+
+  const { docs: testimonialDocs } = await payload.find({
+    collection: 'testimonials',
+    depth: 1,
+    sort: 'order',
+  })
+
+  const testimonials = testimonialDocs.map((doc: any) => {
+    let photoUrl = doc.photo?.url || ''
+    if (photoUrl.includes('/api/media/file/')) {
+      const filename = photoUrl.split('/').pop()
+      photoUrl = `https://res.cloudinary.com/${process.env.CLOUDINARY_NAME}/image/upload/f_auto,q_auto/dipalo-ventures/${filename}`
+    }
+
+    return {
+      name: doc.name,
+      role: doc.role,
+      quote: doc.quote,
+      kind: doc.kind,
+      photo: photoUrl,
+      initials: doc.name
+        .split(' ')
+        .map((n: string) => n[0])
+        .join(''),
     }
   })
 
   return (
-    <SiteLayout>
-      <HomeHero />
-      <HomeMission />
+    <>
+      <SiteLayout>
+        <HomeHero />
+        <HomeMission />
+      </SiteLayout>
       <FounderInvestorToggle />
       <PlatformSection />
-      <ResidencySection />
-      <TeamSection members={teamMembers.length > 0 ? teamMembers : undefined} />
+      <SiteLayout>
+        <ResidencySection />
+        <TeamSection members={teamMembers.length > 0 ? teamMembers : undefined} />
+      </SiteLayout>
       <FocusAreasSection />
-      <PortfolioMarquee items={portfolioItems.length > 0 ? portfolioItems : undefined} />
-      <TestimonialsCarousel />
-    </SiteLayout>
+      <SiteLayout>
+        <PortfolioMarquee items={portfolioItems.length > 0 ? portfolioItems : undefined} />
+      </SiteLayout>
+      <TestimonialsCarousel testimonials={testimonials.length > 0 ? testimonials : undefined} />
+    </>
   )
 }

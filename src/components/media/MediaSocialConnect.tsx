@@ -68,7 +68,7 @@ export function MediaSocialConnect() {
               href={s.href}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-4 bg-white border border-neutral-200 rounded-xl p-5 hover:border-amber-600 transition-all shadow-sm group"
+              className="flex items-center gap-4 bg-white border border-neutral-200 rounded-xl p-5 hover:border-amber-400 transition-all shadow-sm group"
             >
               <div className="w-12 h-12 bg-[#f0e8d8] rounded-xl flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
                 <s.Icon />
@@ -77,13 +77,13 @@ export function MediaSocialConnect() {
                 <div className="text-base font-semibold text-neutral-900">{s.name}</div>
                 <div className="text-sm text-neutral-500 truncate">{s.desc}</div>
               </div>
-              <span className="ml-auto text-neutral-400 group-hover:text-amber-600">↗</span>
+              <span className="ml-auto text-neutral-400 group-hover:text-amber-400">↗</span>
             </a>
           ))}
         </div>
 
         <div className="max-w-xl mx-auto text-center">
-          <div className="font-mono uppercase text-sm tracking-[0.2em] text-amber-600 font-bold mb-4">
+          <div className="font-mono uppercase text-sm tracking-[0.2em] text-amber-400 font-bold mb-4">
             Letters from the Hard Side
           </div>
           <h2 className="text-2xl md:text-3xl font-serif text-neutral-900 font-medium mb-4">

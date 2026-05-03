@@ -31,7 +31,7 @@ function SupportingCard({ m }: { m: TeamMember & { orgLinks?: OrgLink[] } }) {
         {m.role}
       </div>
       <p className="mt-3.5 text-base text-neutral-600 leading-relaxed text-center">{m.bio}</p>
-      <div className="mt-auto pt-5 text-center font-mono text-sm text-amber-600 font-bold">
+      <div className="mt-auto pt-5 text-center font-mono text-sm text-amber-400 font-bold">
         {allLinks.map((l, i) => (
           <span key={l.label}>
             {i > 0 && <span className="text-neutral-400 mx-1.5">·</span>}
@@ -51,18 +51,17 @@ function SupportingCard({ m }: { m: TeamMember & { orgLinks?: OrgLink[] } }) {
 }
 
 export function TeamVPs({ members }: { members?: TeamMember[] }) {
-  const displayTeam = members || team
-  const vps = displayTeam.filter(
-    (m) => !m.role.toLowerCase().includes('general') && !m.role.toLowerCase().includes('advisor'),
-  )
+  // If members are provided (from Payload), use them as is.
+  // Otherwise, filter the demo team for anyone categorized as 'vp'.
+  const displayTeam = members || team.filter((m) => m.category === 'vp')
 
   return (
     <section className="container mx-auto px-4 pt-6 pb-12">
       <div className="font-mono uppercase mb-5 text-base tracking-[0.22em] text-neutral-500 font-bold">
         Venture Partners & Platform
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 items-stretch">
-        {vps.map((m) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 items-stretch">
+        {displayTeam.map((m) => (
           <SupportingCard key={m.name} m={m} />
         ))}
       </div>

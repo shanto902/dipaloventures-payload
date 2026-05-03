@@ -15,6 +15,7 @@ export type TeamMember = {
   bio: string
   photo?: string
   linkedin: string
+  category?: 'gp' | 'vp' | 'advisor'
 }
 
 export const team: TeamMember[] = [
@@ -25,6 +26,7 @@ export const team: TeamMember[] = [
     bio: 'Former engineering leader at Motorola. Over 20 years of hardware product development experience.',
     photo: '',
     linkedin: 'https://linkedin.com/in/ahmedrafiq/',
+    category: 'gp',
   },
   {
     name: 'Mitul Patel',
@@ -33,6 +35,7 @@ export const team: TeamMember[] = [
     bio: 'Electrical engineer and hardware designer. Designed core components for multiple consumer electronics.',
     photo: '',
     linkedin: 'https://linkedin.com/in/mrpatel624/',
+    category: 'gp',
   },
   {
     name: 'Rezwan Shafique',
@@ -41,6 +44,7 @@ export const team: TeamMember[] = [
     bio: 'Anchors our Gulf presence — connecting portfolio companies to GCC capital.',
     photo: '',
     linkedin: 'https://linkedin.com/in/rezwanshafique/',
+    category: 'vp',
   },
   {
     name: 'Larry Hayward',
@@ -49,6 +53,7 @@ export const team: TeamMember[] = [
     bio: 'Early stage investor and operator.',
     photo: '',
     linkedin: 'https://linkedin.com/in/laurence-hayward-a33a57/',
+    category: 'vp',
   },
   {
     name: 'Sarah Connor',
@@ -57,6 +62,7 @@ export const team: TeamMember[] = [
     bio: 'Experienced operations lead with a focus on manufacturing logistics and team management.',
     photo: '',
     linkedin: 'https://linkedin.com/',
+    category: 'vp',
   },
 ]
 
@@ -153,8 +159,8 @@ export const focusAreas = [
 ]
 
 export type FundKey = 'fund_1' | 'fund_2' | 'spv'
-export type Sector = 'energy' | 'climate' | 'physical_ai'
-export type Stage = 'seed' | 'series_a' | 'series_b'
+export type Sector = 'energy' | 'climate' | 'physical_ai' | 'other'
+export type Stage = 'pre_seed' | 'seed' | 'series_a' | 'series_b'
 
 export const fundMeta: Record<FundKey, { label: string; tone: string }> = {
   fund_1: { label: 'Fund I', tone: 'bg-neutral-100 text-neutral-800' },
@@ -166,9 +172,11 @@ export const sectorMeta: Record<Sector, { label: string }> = {
   energy: { label: 'Energy Transition' },
   climate: { label: 'Climate Tech' },
   physical_ai: { label: 'Physical AI' },
+  other: { label: 'Other' },
 }
 
 export const stageMeta: Record<Stage, { label: string }> = {
+  pre_seed: { label: 'Pre Seed' },
   seed: { label: 'Seed' },
   series_a: { label: 'Series A' },
   series_b: { label: 'Series B' },
@@ -272,7 +280,7 @@ export const testimonialCards = [
 
 export const tabContent = {
   founders: {
-    headline: 'Why Partner with Dipalo.',
+    headline: 'Why Partner with Dipalo',
     body: "Hard tech breaks in ways spreadsheets don't catch — in tolerances, supply chains, and on factory floors. We've been there. Our GPs have shipped physical products at scale, so we know exactly what to look for before we invest and how to help afterward.",
     bullets: [
       {

@@ -68,7 +68,7 @@ export function PortfolioGrid({ filtered, totalCount }: Props) {
                     </span>
                   ))}
                   {p.exit && (
-                    <span className="inline-block text-xs font-mono tracking-widest uppercase px-2.5 py-1 rounded-full bg-amber-500 text-white font-medium">
+                    <span className="inline-block text-xs font-mono tracking-widest uppercase px-2.5 py-1 rounded-full bg-amber-400 text-white font-medium">
                       ★ {p.exit}
                     </span>
                   )}
@@ -81,7 +81,7 @@ export function PortfolioGrid({ filtered, totalCount }: Props) {
                   {p.desc}
                 </p>
                 <div className="mt-6 pt-4 border-t border-neutral-200 group-hover:border-white/20 flex items-center justify-between transition-colors">
-                  <span className="text-xs font-mono uppercase tracking-wider text-amber-600 group-hover:text-white/90 transition-colors font-medium">
+                  <span className="text-xs font-mono uppercase tracking-wider text-amber-400 group-hover:text-white/90 transition-colors font-medium">
                     {sectorMeta[p.sector as Sector]?.label}
                   </span>
                   <span className="text-xs font-mono uppercase tracking-wider text-neutral-500 group-hover:text-white/70 transition-colors font-medium">

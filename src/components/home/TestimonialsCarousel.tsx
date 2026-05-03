@@ -1,69 +1,147 @@
-import React from 'react'
+'use client'
+
+import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { testimonialCards } from '@/lib/demo'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
-export function TestimonialsCarousel() {
+type Testimonial = {
+  name: string
+  role: string
+  quote: string
+  kind: string
+  photo?: string
+  initials?: string
+}
+
+export function TestimonialsCarousel({ testimonials }: { testimonials?: Testimonial[] }) {
+  const displayCards = testimonials || testimonialCards
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [itemsPerView, setItemsPerView] = useState(2)
+
+  useEffect(() => {
+    const updateItems = () => setItemsPerView(window.innerWidth < 768 ? 1 : 2)
+    updateItems()
+    window.addEventListener('resize', updateItems)
+    return () => window.removeEventListener('resize', updateItems)
+  }, [])
+
+  const maxIndex = Math.max(0, displayCards.length - itemsPerView)
+
+  const next = () => {
+    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1))
+  }
+
+  const prev = () => {
+    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1))
+  }
+
   return (
-    <section className="bg-neutral-50 py-16 md:py-24">
+    <section className="bg-[#fcfbf9] px-6 md:px-12 py-20 md:py-32 border-y border-neutral-100 overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="text-sm font-semibold uppercase tracking-widest text-neutral-500 mb-2">
-          From our founders
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-8">
+          <div className="max-w-2xl">
+            <div className="text-sm font-mono uppercase tracking-[0.2em] text-amber-400 mb-6 font-bold">
+              The Network
+            </div>
+            <h2 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.1] tracking-tight">
+              Backed by those <br />
+              <span className="italic text-amber-400">who know the hard way.</span>
+            </h2>
+          </div>
+
+          {/* Navigation Controls */}
+          <div className="flex items-center justify-between md:justify-start gap-6">
+            <div className="font-mono text-[10px] md:text-xs tracking-widest text-neutral-400 font-bold">
+              {String(currentIndex + 1).padStart(2, '0')} /{' '}
+              {String(displayCards.length).padStart(2, '0')}
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={prev}
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-400 hover:border-amber-400 hover:text-amber-400 transition-all active:scale-95"
+                aria-label="Previous testimonial"
+              >
+                <ChevronLeft size={18} />
+              </button>
+              <button
+                onClick={next}
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-400 hover:border-amber-400 hover:text-amber-400 transition-all active:scale-95"
+                aria-label="Next testimonial"
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div className="mb-8">
-          <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900">
-            What people <span className="italic">say.</span>
-          </h2>
-        </div>
-
-        <div className="grid sm:grid-cols-2 gap-5">
-          {testimonialCards.map((c) => (
-            <TestimonialCard key={c.name} card={c} />
-          ))}
+        <div className="relative">
+          <div
+            className="flex transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] gap-6"
+            style={{
+              transform: `translateX(calc(-${currentIndex * (100 / itemsPerView)}% - ${currentIndex * (24 / itemsPerView)}px))`,
+            }}
+          >
+            {displayCards.map((c, i) => (
+              <div
+                key={`${c.name}-${i}`}
+                className="w-full md:w-[calc(50%-12px)] shrink-0 transition-opacity duration-500"
+                style={{
+                  opacity: i >= currentIndex && i < currentIndex + itemsPerView ? 1 : 0.4,
+                }}
+              >
+                <TestimonialCard card={c} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   )
 }
 
-function TestimonialCard({ card }: { card: (typeof testimonialCards)[0] }) {
-  const isFounder = card.kind === 'Founder'
-
+function TestimonialCard({ card }: { card: Testimonial }) {
   return (
-    <article className="flex flex-col bg-white border border-neutral-200 rounded-xl p-6 min-h-[260px] shadow-sm">
-      <div>
-        <span
-          className={`inline-block text-xs px-2 py-0.5 rounded-full border tracking-widest uppercase font-medium ${isFounder ? 'border-amber-600 text-amber-700' : 'border-emerald-600 text-emerald-700'}`}
-        >
-          {card.kind}
-        </span>
+    <article className="group bg-white border border-neutral-200/60 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12 shadow-sm transition-all duration-500 hover:shadow-2xl hover:border-amber-400/20 flex flex-col h-full">
+      <div className="relative flex-1">
+        {/* Decorative Quote Mark */}
+        <div className="absolute -top-6 -left-6 text-8xl font-serif text-neutral-50 group-hover:text-amber-400/10 transition-colors duration-500 pointer-events-none">
+          &ldquo;
+        </div>
+
+        <p className="relative z-10 text-lg md:text-xl text-neutral-600 leading-relaxed font-light italic tracking-tight">
+          {card.quote}
+        </p>
       </div>
-      <p className="italic text-sm text-neutral-600 leading-relaxed my-4 flex-1">"{card.quote}"</p>
-      <div className="border-t border-neutral-100 pt-4">
-        <div className="flex items-center gap-3">
+
+      <div className=" pt-10 border-t border-neutral-50 flex items-center gap-6">
+        <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-50 transform rotate-3 group-hover:rotate-0 transition-transform duration-500">
           {card.photo ? (
             <Image
               src={card.photo}
-              alt={`${card.name} headshot`}
-              width={52}
-              height={52}
-              className="h-[52px] w-[52px] min-w-[52px] rounded-full object-cover object-top border border-neutral-200 bg-neutral-50"
+              alt={card.name}
+              fill
+              className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100"
             />
           ) : (
-            <div
-              role="img"
-              aria-label={`${card.name} headshot placeholder`}
-              className="h-[52px] w-[52px] min-w-[52px] rounded-full bg-neutral-100 border border-neutral-200 flex items-end justify-center overflow-hidden text-neutral-400"
-            >
-              <svg viewBox="0 0 64 64" width="52" height="52" aria-hidden="true" focusable="false">
-                <circle cx="32" cy="24" r="12" fill="currentColor" opacity="0.45" />
-                <path d="M8 60c0-13 10.7-22 24-22s24 9 24 22" fill="currentColor" opacity="0.45" />
-              </svg>
+            <div className="absolute inset-0 flex items-center justify-center font-serif text-2xl text-neutral-300">
+              {card.initials || card.name.charAt(0)}
             </div>
           )}
-          <div>
-            <div className="text-sm font-medium text-neutral-900">{card.name}</div>
-            <div className="text-xs text-neutral-500">{card.role}</div>
+        </div>
+
+        <div>
+          <div className="text-xl font-serif font-medium text-neutral-900 tracking-tight">
+            {card.name}
+          </div>
+          <div className="mt-1.5 flex items-center gap-3 flex-wrap">
+            <span className="text-xs font-mono uppercase tracking-[0.2em] text-neutral-400 font-bold whitespace-nowrap">
+              {card.role}
+            </span>
+            <span className="h-px w-6 bg-neutral-200 hidden sm:block" />
+            <span className="text-xs font-mono uppercase tracking-[0.2em] text-amber-400 font-bold whitespace-nowrap">
+              {card.kind}
+            </span>
           </div>
         </div>
       </div>

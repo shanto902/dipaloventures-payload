@@ -82,7 +82,7 @@ export function OrgPill({
       href={href}
       target="_blank"
       rel="noreferrer"
-      className={`inline-flex items-center gap-1 border border-neutral-200 text-neutral-600 hover:text-amber-600 hover:border-amber-600 transition-colors ${
+      className={`inline-flex items-center gap-1 border border-neutral-200 text-neutral-600 hover:text-amber-400 hover:border-amber-400 transition-colors ${
         size === 'sm' ? 'text-xs px-1.5 py-0.5' : 'text-xs px-2 py-1'
       } rounded-md`}
     >
@@ -130,7 +130,7 @@ export function TeamCard({ m }: { m: TeamMember }) {
             type="button"
             onClick={() => setOpen((o) => !o)}
             aria-expanded={open}
-            className="mt-2.5 self-start inline-flex items-center gap-1 font-mono text-sm uppercase tracking-widest text-amber-600 hover:text-amber-700 transition-colors font-bold"
+            className="mt-2.5 self-start inline-flex items-center gap-1 font-mono text-sm uppercase tracking-widest text-amber-400 hover:text-amber-700 transition-colors font-bold"
           >
             {open ? 'Read less' : 'Read more'}
             <ChevronDown

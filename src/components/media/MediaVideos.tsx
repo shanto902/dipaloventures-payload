@@ -6,7 +6,7 @@ export function MediaVideos() {
     <section id="video" className="py-16 bg-white border-b border-neutral-100">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between mb-8">
-          <div className="font-mono uppercase text-sm tracking-[0.2em] text-amber-600 font-bold">
+          <div className="font-mono uppercase text-sm tracking-[0.2em] text-amber-400 font-bold">
             01 · Video · Tales From The Hard Side
           </div>
         </div>
@@ -41,7 +41,7 @@ export function MediaVideos() {
             href={socialLinks.youtube}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-amber-600 hover:text-amber-700 hover:underline transition-all font-bold"
+            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-amber-400 hover:text-amber-700 hover:underline transition-all font-bold"
           >
             Watch full playlist ↗
           </a>

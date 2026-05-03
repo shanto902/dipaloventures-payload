@@ -5,7 +5,7 @@ export function TeamAdvisors({ advisors: liveAdvisors }: { advisors?: any[] }) {
   const displayAdvisors = liveAdvisors || advisors
 
   return (
-    <section className="container mx-auto px-4">
+    <section className="container mx-auto px-4 mb-10">
       <div className="max-w-3xl mb-8">
         <div className="text-sm font-semibold uppercase tracking-widest text-neutral-500 mb-3">
           Residency Advisors
@@ -36,7 +36,7 @@ export function TeamAdvisors({ advisors: liveAdvisors }: { advisors?: any[] }) {
           return (
             <article
               key={a.name}
-              className="bg-white border border-neutral-200 rounded-lg p-4 shadow-sm hover:border-amber-600 transition-colors"
+              className="bg-white border border-neutral-200 rounded-lg p-4 shadow-sm hover:border-amber-400 transition-colors"
             >
               <div className="flex items-center gap-3">
                 <div
@@ -55,7 +55,7 @@ export function TeamAdvisors({ advisors: liveAdvisors }: { advisors?: any[] }) {
                 </div>
               </div>
               <div className="text-sm text-neutral-500 mt-2.5 font-medium">{role}</div>
-              <div className="text-sm text-amber-600 font-bold uppercase tracking-wide">{org}</div>
+              <div className="text-sm text-amber-400 font-bold uppercase tracking-wide">{org}</div>
               <a
                 href={a.linkedin}
                 target="_blank"

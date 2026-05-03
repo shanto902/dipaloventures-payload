@@ -35,7 +35,7 @@ export function ResidencyMethodology() {
             key={s.n}
             className="relative bg-white border border-neutral-200 rounded-xl p-6 shadow-sm flex flex-col"
           >
-            <div className="font-mono text-xs text-amber-600 font-bold tracking-widest mb-3">
+            <div className="font-mono text-xs text-amber-400 font-bold tracking-widest mb-3">
               PHASE {s.n}
             </div>
             <div className="font-serif text-xl font-medium leading-tight text-neutral-900 mb-2">
@@ -44,7 +44,7 @@ export function ResidencyMethodology() {
             <p className="text-sm text-neutral-600 leading-relaxed">{s.b}</p>
             {i < arr.length - 1 && (
               <span
-                className="hidden xl:block absolute -right-3 top-1/2 -translate-y-1/2 text-amber-600 text-lg z-10"
+                className="hidden xl:block absolute -right-3 top-1/2 -translate-y-1/2 text-amber-400 text-lg z-10"
                 aria-hidden
               >
                 →

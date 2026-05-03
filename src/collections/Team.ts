@@ -1,10 +1,19 @@
+import { revalidatePath } from 'next/cache'
 import type { CollectionConfig } from 'payload'
 
 export const Team: CollectionConfig = {
   slug: 'team',
+  hooks: {
+    afterChange: [
+      () => {
+        revalidatePath('/')
+        revalidatePath('/team')
+      },
+    ],
+  },
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['order', 'name', 'category', 'role'],
+    defaultColumns: ['name', 'category', 'role', 'order'],
   },
   access: {
     read: () => true,

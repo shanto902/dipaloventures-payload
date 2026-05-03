@@ -7,5 +7,5 @@ export function SiteLayout({
   children: React.ReactNode
   className?: string
 }) {
-  return <main className={`flex min-h-screen flex-col ${className}`}>{children}</main>
+  return <main className={`flex mx-5 md:mx-12 flex-col ${className}`}>{children}</main>
 }

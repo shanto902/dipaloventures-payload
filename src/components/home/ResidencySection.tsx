@@ -1,52 +1,58 @@
-import React from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
 import { residencyTags } from '@/lib/demo'
+import { AnimatedLink } from '@/components/ui/AnimatedLink'
 
 export function ResidencySection() {
   return (
-    <section className="bg-neutral-100 py-16 md:py-24 border-y border-neutral-200">
+    <section className="bg-white py-20 md:py-32 border-y border-neutral-100">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-[5fr_7fr] gap-10 lg:gap-14 items-center">
-          <div className="relative rounded-2xl overflow-hidden border border-neutral-200 bg-white w-full mx-auto max-h-[400px] max-w-[520px] aspect-[4/3]">
-            {/* Replace with actual residency image later */}
-            <div className="absolute inset-0 bg-neutral-200 flex items-center justify-center text-neutral-400">
-              [Residency Image]
+        <div className="grid lg:grid-cols-[5fr_7fr] gap-12 lg:gap-20 items-center">
+          <div className="relative aspect-4/3 rounded-3xl overflow-hidden bg-neutral-100 border border-neutral-200 shadow-sm group">
+            {/* Architectural Placeholder Visual */}
+            <div className="absolute inset-0 bg-linear-to-br from-neutral-100 to-white flex flex-col items-center justify-center p-12 text-center">
+              <div className="w-16 h-16 rounded-full border border-amber-400/20 flex items-center justify-center mb-6 relative">
+                <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
+                <div className="absolute inset-0 rounded-full border border-amber-400/10 scale-150 animate-ping" />
+              </div>
+              <div className="font-serif italic text-2xl text-neutral-400">Technical Residency</div>
+              <div className="mt-4 text-xs font-mono uppercase tracking-[0.25em] text-neutral-300 font-bold">
+                Program Node 01
+              </div>
             </div>
           </div>
+
           <div>
-            <div className="text-sm font-semibold uppercase tracking-widest text-neutral-500 mb-3">
-              The Dipalo Residency
+            <div className="text-sm font-mono uppercase tracking-[0.2em] text-amber-400 mb-6 font-bold">
+              The Residency
             </div>
-            <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900">
-              Better selection, <span className="italic">lower failure rates.</span>
+            <h2 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.1] tracking-tight">
+              Better selection, <br />
+              <span className="italic text-amber-400">lower failure rates.</span>
             </h2>
-            <p className="mt-5 text-lg text-neutral-600 leading-relaxed">
+            <p className="mt-6 md:mt-8 text-lg md:text-xl text-neutral-600 leading-relaxed font-light">
               The Dipalo Residency is a technical diligence and audit program that identifies and
               mitigates gaps in product design and engineering. It provides technical evaluations,
               workshops, mentorship, and specific design and engineering support — before we invest
               and long after.
             </p>
-            <div className="mt-6 text-xs uppercase tracking-[0.1em] text-neutral-500 font-medium">
-              What we embed with you:
+
+            <div className="mt-10">
+              <div className="text-xs font-mono uppercase tracking-[0.25em] text-neutral-400 font-bold mb-6">
+                What we embed with you
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {residencyTags.map((t) => (
+                  <span
+                    key={t}
+                    className="text-xs font-medium px-4 py-1.5 rounded-full border border-neutral-200 text-neutral-500 hover:border-amber-400 hover:text-amber-400 transition-all duration-300"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {residencyTags.map((t) => (
-                <span
-                  key={t}
-                  className="text-xs font-medium px-3 py-1 rounded-full border border-amber-500 text-amber-600"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-            <div className="mt-6">
-              <Link
-                href="/residency"
-                className="text-sm text-amber-600 hover:opacity-80 underline underline-offset-4"
-              >
-                Explore the Residency →
-              </Link>
+
+            <div className="mt-12">
+              <AnimatedLink href="/residency">Explore the Residency</AnimatedLink>
             </div>
           </div>
         </div>

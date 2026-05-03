@@ -14,7 +14,7 @@ export function ContactLeftColumn() {
         <h1 className="text-4xl md:text-5xl font-medium text-neutral-900 leading-tight">
           Let's talk.
           <br />
-          <span className="text-amber-600">Hard tech is worth it.</span>
+          <span className="text-amber-400">Hard tech is worth it.</span>
         </h1>
         <p className="mt-3 text-neutral-500 text-base">
           We reply within 3 business days. We read every message.
@@ -29,7 +29,7 @@ export function ContactLeftColumn() {
             className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white border border-neutral-200 rounded-xl p-4 shadow-sm"
           >
             <div className="min-w-0">
-              <div className="font-mono uppercase text-xs tracking-[0.2em] text-amber-600 font-bold">
+              <div className="font-mono uppercase text-xs tracking-[0.2em] text-amber-400 font-bold">
                 {c.eyebrow}
               </div>
               <div className="text-neutral-900 mt-1 text-base font-medium">{c.title}</div>
@@ -37,7 +37,7 @@ export function ContactLeftColumn() {
             </div>
             <a
               href={`mailto:${c.email}`}
-              className="shrink-0 text-amber-600 hover:text-amber-700 hover:underline text-sm font-medium transition-colors"
+              className="shrink-0 text-amber-400 hover:text-amber-700 hover:underline text-sm font-medium transition-colors"
             >
               {c.email} →
             </a>
@@ -80,7 +80,7 @@ export function ContactLeftColumn() {
             href={MAP_DIRECTIONS}
             target="_blank"
             rel="noreferrer"
-            className="shrink-0 text-amber-600 hover:text-amber-700 hover:underline text-sm font-medium transition-colors"
+            className="shrink-0 text-amber-400 hover:text-amber-700 hover:underline text-sm font-medium transition-colors"
           >
             Directions ↗
           </a>

@@ -6,7 +6,7 @@ export function MediaBlog() {
     <section id="blog" className="py-16 bg-white border-b border-neutral-100">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between mb-8">
-          <div className="font-mono uppercase text-sm tracking-[0.2em] text-amber-600 font-bold">
+          <div className="font-mono uppercase text-sm tracking-[0.2em] text-amber-400 font-bold">
             03 · Blog · Medium
           </div>
         </div>
@@ -18,13 +18,13 @@ export function MediaBlog() {
               href={p.href}
               target="_blank"
               rel="noreferrer"
-              className="shrink-0 w-[280px] md:w-[350px] group bg-white border border-neutral-200 rounded-xl p-6 shadow-sm hover:border-amber-600 transition-all snap-start"
+              className="shrink-0 w-[280px] md:w-[350px] group bg-white border border-neutral-200 rounded-xl p-6 shadow-sm hover:border-amber-400 transition-all snap-start"
             >
               <div className="flex justify-between items-start mb-4">
-                <div className="font-mono text-xs uppercase tracking-widest text-amber-600 font-bold">
+                <div className="font-mono text-xs uppercase tracking-widest text-amber-400 font-bold">
                   Medium · {p.date}
                 </div>
-                <span className="text-neutral-400 group-hover:text-amber-600 transition-colors">
+                <span className="text-neutral-400 group-hover:text-amber-400 transition-colors">
                   ↗
                 </span>
               </div>
@@ -41,7 +41,7 @@ export function MediaBlog() {
             href={socialLinks.medium}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-amber-600 hover:text-amber-700 hover:underline transition-all font-bold"
+            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-amber-400 hover:text-amber-700 hover:underline transition-all font-bold"
           >
             Read more on Medium ↗
           </a>

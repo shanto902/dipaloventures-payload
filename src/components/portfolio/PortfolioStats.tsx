@@ -17,7 +17,7 @@ export function PortfolioStats() {
           key={s.label}
           className="bg-white border border-neutral-200 rounded-xl p-6 text-center shadow-sm"
         >
-          <div className="text-2xl md:text-3xl font-bold text-amber-600">{s.value}</div>
+          <div className="text-2xl md:text-3xl font-bold text-amber-400">{s.value}</div>
           <div className="mt-3 font-mono text-xs uppercase tracking-widest text-neutral-500 font-medium">
             {s.label}
           </div>

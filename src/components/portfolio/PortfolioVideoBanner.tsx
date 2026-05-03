@@ -10,17 +10,11 @@ export function PortfolioVideoBanner() {
   const playerRef = useRef<HTMLDivElement>(null)
   const ytPlayer = useRef<any>(null)
 
-  useEffect(() => {
-    // 1. Load the YouTube IFrame Player API code asynchronously.
-    const tag = document.createElement('script')
-    tag.src = 'https://www.youtube.com/iframe_api'
-    const firstScriptTag = document.getElementsByTagName('script')[0]
-    if (firstScriptTag && firstScriptTag.parentNode) {
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
-    }
+  const [videoReady, setVideoReady] = useState(false)
 
-    // 2. Define the onYouTubeIframeAPIReady function.
-    ;(window as any).onYouTubeIframeAPIReady = () => {
+  useEffect(() => {
+    const initPlayer = () => {
+      if (ytPlayer.current) return
       ytPlayer.current = new (window as any).YT.Player('yt-player', {
         videoId: '1F7HNG15VO4',
         playerVars: {
@@ -30,30 +24,46 @@ export function PortfolioVideoBanner() {
           rel: 0,
           modestbranding: 1,
           loop: 1,
-          playlist: '1F7HNG15VO4', // Required for loop
+          playlist: '1F7HNG15VO4',
           playsinline: 1,
           iv_load_policy: 3,
+          start: 11,
+          showinfo: 0,
+          autohide: 1,
         },
         events: {
           onReady: (event: any) => {
+            event.target.seekTo(11)
             event.target.playVideo()
-            setIsPlaying(true)
           },
           onStateChange: (event: any) => {
-            // If video ends or pauses unexpectedly, update state
             if (event.data === (window as any).YT.PlayerState.PAUSED) {
               setIsPlaying(false)
             } else if (event.data === (window as any).YT.PlayerState.PLAYING) {
               setIsPlaying(true)
+              setVideoReady(true)
             }
           },
         },
       })
     }
 
+    if (!(window as any).YT) {
+      const tag = document.createElement('script')
+      tag.src = 'https://www.youtube.com/iframe_api'
+      const firstScriptTag = document.getElementsByTagName('script')[0]
+      if (firstScriptTag && firstScriptTag.parentNode) {
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
+      }
+      ;(window as any).onYouTubeIframeAPIReady = initPlayer
+    } else {
+      initPlayer()
+    }
+
     return () => {
       if (ytPlayer.current) {
         ytPlayer.current.destroy()
+        ytPlayer.current = null
       }
     }
   }, [])
@@ -117,7 +127,7 @@ export function PortfolioVideoBanner() {
           </div>
 
           {/* Subtle Gradient Overlays */}
-          <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+          <div className="absolute inset-0 pointer-events-none bg-linear-to-t from-black/20 via-transparent to-transparent" />
         </div>
 
         {/* Clean Controls Underneath */}
@@ -129,18 +139,18 @@ export function PortfolioVideoBanner() {
             <div
               className={`p-2 rounded-full border transition-all ${
                 isMuted
-                  ? 'border-amber-600/20 bg-amber-50 text-amber-600'
+                  ? 'border-amber-400/20 bg-amber-50 text-amber-400'
                   : 'border-neutral-200 text-neutral-500'
               }`}
             >
               {isMuted ? <VolumeX size={15} /> : <Volume2 size={15} />}
             </div>
-            <span className="font-mono text-[11px] uppercase tracking-[0.15em] font-bold">
+            <span className="font-mono text-xs uppercase tracking-[0.15em] font-bold">
               {isMuted ? 'Unmute Audio' : 'Mute Audio'}
             </span>
           </button>
 
-          <div className="hidden md:block font-mono text-[11px] uppercase tracking-[0.15em] text-neutral-400 font-bold">
+          <div className="hidden md:block font-mono text-xs uppercase tracking-[0.15em] text-neutral-400 font-bold">
             Dipalo Portfolio Reel · 2026
           </div>
         </div>

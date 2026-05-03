@@ -5,7 +5,7 @@ const HERO_CITY_IMG = 'https://images.unsplash.com/photo-1477959858617-67f85cf4f
 
 export function TeamHero() {
   return (
-    <section className="flex flex-col mt-20 md:flex-row w-full min-h-[500px] border-b border-amber-600/30">
+    <section className="flex flex-col mt-20 md:flex-row w-full min-h-[500px] border-b border-amber-400/30">
       {/* LEFT — city image */}
       <div
         className="w-full md:w-1/2 relative bg-cover bg-center bg-no-repeat min-h-[250px] md:min-h-[500px]"
@@ -13,7 +13,7 @@ export function TeamHero() {
         aria-label="Chicago skyline at dusk"
       >
         <div className="absolute bottom-0 left-0 p-6 md:p-8">
-          <div className="font-mono text-xs uppercase tracking-[0.2em] text-amber-600 font-bold">
+          <div className="font-mono text-xs uppercase tracking-[0.2em] text-amber-400 font-bold">
             The Team
           </div>
           <div className="font-mono text-xs uppercase tracking-[0.2em] text-white/70 mt-1.5 font-bold">
@@ -27,7 +27,7 @@ export function TeamHero() {
         <h1 className="sr-only">The Team — Dipalo Ventures</h1>
 
         {/* Eyebrow */}
-        <div className="font-mono text-xs uppercase tracking-[0.22em] text-amber-600 mb-6 font-bold">
+        <div className="font-mono text-xs uppercase tracking-[0.22em] text-amber-400 mb-6 font-bold">
           Operators Who Invest
         </div>
 
@@ -46,7 +46,7 @@ export function TeamHero() {
 
         {/* Etymology card */}
         <div className="mt-6 bg-[#FFF8EE] border border-[#E8D9B8] rounded-xl px-5 py-4">
-          <div className="font-mono text-xs uppercase tracking-[0.22em] text-amber-600 mb-3 font-bold">
+          <div className="font-mono text-xs uppercase tracking-[0.22em] text-amber-400 mb-3 font-bold">
             [ DI · PA · LO ]
           </div>
           <ol className="list-none m-0 p-0 flex flex-col gap-2">
@@ -67,7 +67,7 @@ export function TeamHero() {
                 key={i}
                 className="flex gap-3 italic text-sm md:text-base leading-relaxed text-[#5a5040]"
               >
-                <span className="font-mono text-amber-600 font-medium shrink-0">{i + 1}.</span>
+                <span className="font-mono text-amber-400 font-medium shrink-0">{i + 1}.</span>
                 <span>{content}</span>
               </li>
             ))}

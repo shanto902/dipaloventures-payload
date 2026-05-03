@@ -40,16 +40,16 @@ export function PortfolioSidebar({
   }
 
   return (
-    <aside className="lg:sticky lg:top-28 self-start">
+    <aside className="lg:sticky lg:top-20 self-start">
       <div className="bg-white border border-neutral-200 rounded-xl p-6 shadow-sm">
         <div className="flex items-center justify-between mb-5">
-          <div className="font-mono text-xs uppercase tracking-widest text-amber-600 font-semibold">
+          <div className="font-mono text-xs uppercase tracking-widest text-amber-400 font-semibold">
             Filters
           </div>
           {totalActive > 0 && (
             <button
               onClick={reset}
-              className="text-xs text-neutral-500 hover:text-amber-600 underline underline-offset-2 cursor-pointer"
+              className="text-xs text-neutral-500 hover:text-amber-400 underline underline-offset-2 cursor-pointer"
             >
               Reset
             </button>
@@ -132,8 +132,8 @@ function FilterCheckbox({
         <span
           className={`h-4 w-4 rounded-[3px] border transition shrink-0 flex items-center justify-center ${
             checked
-              ? 'bg-amber-600 border-amber-600'
-              : 'border-neutral-300 group-hover:border-amber-600 bg-white'
+              ? 'bg-amber-400 border-amber-400'
+              : 'border-neutral-300 group-hover:border-amber-400 bg-white'
           }`}
         >
           {checked && <span className="text-white text-xs leading-none">✓</span>}

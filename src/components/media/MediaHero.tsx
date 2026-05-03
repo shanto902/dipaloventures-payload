@@ -6,7 +6,7 @@ export function MediaHero() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="max-w-2xl">
-            <div className="font-mono uppercase text-sm tracking-[0.2em] text-amber-600 font-bold mb-4">
+            <div className="font-mono uppercase text-sm tracking-[0.2em] text-amber-400 font-bold mb-4">
               Dipalo Ventures · Media
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-neutral-900 leading-[1.1] font-medium">
@@ -23,7 +23,7 @@ export function MediaHero() {
               <a
                 key={p.id}
                 href={`#${p.id}`}
-                className="px-4 py-2 bg-white border border-[#d4c9b0] rounded-full font-mono text-xs uppercase tracking-wider text-neutral-500 hover:border-amber-600 hover:text-amber-600 transition-all font-bold"
+                className="px-4 py-2 bg-white border border-[#d4c9b0] rounded-full font-mono text-xs uppercase tracking-wider text-neutral-500 hover:border-amber-400 hover:text-amber-400 transition-all font-bold"
               >
                 {p.label}
               </a>

@@ -23,7 +23,7 @@ function PhaseTag({ p }: { p: Phase }) {
     <span
       className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-mono uppercase tracking-wider border font-medium ${
         isGold
-          ? 'border-amber-600/40 text-amber-700 bg-amber-50'
+          ? 'border-amber-400/40 text-amber-700 bg-amber-50'
           : 'border-neutral-200 text-neutral-600 bg-neutral-50'
       }`}
     >
@@ -42,7 +42,7 @@ function MutedTag({ children }: { children: React.ReactNode }) {
 
 function GoldBadge({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-mono uppercase tracking-wider font-medium bg-amber-600 text-white">
+    <span className="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-mono uppercase tracking-wider font-medium bg-amber-400 text-white">
       {children}
     </span>
   )
@@ -62,7 +62,7 @@ function GoldLink({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-1.5 text-sm font-medium text-amber-600 hover:text-amber-700 transition-colors"
+      className="inline-flex items-center gap-1.5 text-sm font-medium text-amber-400 hover:text-amber-700 transition-colors"
     >
       {icon}
       <span className="underline underline-offset-4">{children}</span>
@@ -119,7 +119,7 @@ function CaseCard(props: CaseCardProps) {
         </div>
 
         <div>
-          <div className="font-mono text-xs uppercase tracking-widest text-amber-600 mb-1.5 font-bold">
+          <div className="font-mono text-xs uppercase tracking-widest text-amber-400 mb-1.5 font-bold">
             Overview
           </div>
           <p className="text-sm md:text-base text-neutral-600 leading-relaxed">{props.overview}</p>
@@ -128,7 +128,7 @@ function CaseCard(props: CaseCardProps) {
         <div className="border-t border-neutral-100" />
 
         <div>
-          <div className="font-mono text-xs uppercase tracking-widest text-amber-600 mb-1.5 font-bold">
+          <div className="font-mono text-xs uppercase tracking-widest text-amber-400 mb-1.5 font-bold">
             Solution
           </div>
           <p className="text-sm md:text-base text-neutral-600 leading-relaxed">{props.solution}</p>
@@ -174,7 +174,7 @@ export function ResidencyCaseStudies() {
                 href="https://www.youtube.com/watch?v=MO7a5wdFCPM"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-mono uppercase tracking-wider font-medium bg-amber-600 text-white hover:bg-amber-700 transition-colors"
+                className="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-mono uppercase tracking-wider font-medium bg-amber-400 text-white hover:bg-amber-700 transition-colors"
               >
                 Shark Tank S14·E16 ↗
               </a>

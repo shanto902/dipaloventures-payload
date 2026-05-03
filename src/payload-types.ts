@@ -71,6 +71,7 @@ export interface Config {
     media: Media;
     team: Team;
     portfolio: Portfolio;
+    testimonials: Testimonial;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -82,6 +83,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     team: TeamSelect<false> | TeamSelect<true>;
     portfolio: PortfolioSelect<false> | PortfolioSelect<true>;
+    testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -212,19 +214,40 @@ export interface Team {
 export interface Portfolio {
   id: string;
   name: string;
+  desc: string;
+  fundKeys: ('fund_1' | 'fund_2' | 'spv')[];
+  sector: 'energy' | 'climate' | 'physical_ai' | 'other';
+  stage: 'pre_seed' | 'seed' | 'series_a' | 'series_b';
+  logo: string | Media;
+  productImage?: (string | null) | Media;
+  url: string;
+  featured?: boolean | null;
   /**
    * Lower numbers appear first
    */
   order?: number | null;
-  featured?: boolean | null;
-  url: string;
-  sector: 'energy' | 'climate' | 'physical_ai';
-  stage: 'seed' | 'series_a' | 'series_b';
-  fundKeys: ('fund_1' | 'fund_2' | 'spv')[];
-  desc: string;
-  logo: string | Media;
-  productImage?: (string | null) | Media;
   exit?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials".
+ */
+export interface Testimonial {
+  id: string;
+  name: string;
+  /**
+   * e.g. CEO, Pluie
+   */
+  role: string;
+  kind: 'Founder' | 'Investor' | 'Partner';
+  quote: string;
+  photo?: (string | null) | Media;
+  /**
+   * Lower numbers appear first
+   */
+  order?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -267,6 +290,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'portfolio';
         value: string | Portfolio;
+      } | null)
+    | ({
+        relationTo: 'testimonials';
+        value: string | Testimonial;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -381,16 +408,30 @@ export interface TeamSelect<T extends boolean = true> {
  */
 export interface PortfolioSelect<T extends boolean = true> {
   name?: T;
-  order?: T;
-  featured?: T;
-  url?: T;
+  desc?: T;
+  fundKeys?: T;
   sector?: T;
   stage?: T;
-  fundKeys?: T;
-  desc?: T;
   logo?: T;
   productImage?: T;
+  url?: T;
+  featured?: T;
+  order?: T;
   exit?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials_select".
+ */
+export interface TestimonialsSelect<T extends boolean = true> {
+  name?: T;
+  role?: T;
+  kind?: T;
+  quote?: T;
+  photo?: T;
+  order?: T;
   updatedAt?: T;
   createdAt?: T;
 }

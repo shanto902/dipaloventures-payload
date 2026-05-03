@@ -14,7 +14,7 @@ const schema = z.object({
 })
 
 const inputCls =
-  'w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-3 text-sm text-neutral-900 outline-none focus:border-amber-600 focus:ring-2 focus:ring-amber-600/20 transition-all placeholder:text-neutral-400'
+  'w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-3 text-sm text-neutral-900 outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20 transition-all placeholder:text-neutral-400'
 
 export function ContactForm() {
   const [form, setForm] = useState({

@@ -13,87 +13,67 @@ const sectorImages: Record<string, any> = {
   'physical-ai': sectorPhysicalAi,
 }
 
-function ImageReplaceOverlay({ lines }: { lines: string[] }) {
-  // Keeping as a no-op per original request, but ready if needed.
-  return null
-}
-
 export function FocusAreasSection() {
   return (
-    <section className="bg-neutral-100 py-16 md:py-24">
+    <section className="bg-[#fcfbf9] px-6 md:px-12 py-20 md:py-32">
       <div className="container mx-auto px-4">
-        <div className="flex items-end justify-between flex-wrap gap-6 mb-10">
-          <div>
-            <div className="text-sm font-semibold uppercase tracking-widest text-neutral-500 mb-3">
+        {/* Consistent Brand Header */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start mb-6 ">
+          <div className=" ">
+            <div className="text-sm font-mono uppercase tracking-[0.2em] text-amber-400 mb-6 font-bold">
               Where we invest
             </div>
-            <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900">
-              Three focus areas.
-              <br />
-              <span className="italic">One thesis.</span>
+            <h2 className="text-4xl md:text-5xl font-semibold text-neutral-900 leading-[1.1] tracking-tight">
+              Three focus areas. <br />
+              <span className="italic text-amber-400">One thesis.</span>
             </h2>
+            <div className="mt-10 h-px w-20 bg-amber-400/30" />
           </div>
-          <p className="max-w-md text-lg text-neutral-600">
-            Manufactured innovations where barriers to entry are highest — and our expertise creates
-            the most leverage.
-          </p>
+          <div className="lg:self-end mb-10">
+            <p className="text-xl text-neutral-600 leading-relaxed font-light max-w-xl lg:pb-1">
+              Manufactured innovations where barriers to entry are highest — and our expertise
+              creates the most leverage.
+            </p>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {focusAreas.map((f) => {
-            const overlayLines =
-              f.image === 'energy'
-                ? ['REPLACE BEFORE LAUNCH', 'Grid, solar, or energy storage', 'product photo']
-                : f.image === 'climate'
-                  ? [
-                      'REPLACE BEFORE LAUNCH',
-                      'Kadeya kiosk or Scalable Systems',
-                      'WasteWizer in context',
-                    ]
-                  : [
-                      'REPLACE BEFORE LAUNCH',
-                      'NuCurrent device or Vumo scanner',
-                      'on a work surface',
-                    ]
+        {/* Premium Area Cards */}
+        <div className="grid md:grid-cols-3 gap-10 lg:gap-14">
+          {focusAreas.map((f, i) => (
+            <article key={f.title} className="group">
+              <div className="relative aspect-square rounded-3xl overflow-hidden bg-neutral-100 border border-neutral-200 mb-8">
+                <Image
+                  src={sectorImages[f.image]}
+                  alt={`${f.title} sector`}
+                  fill
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-neutral-900/10 group-hover:bg-transparent transition-colors duration-500" />
+                <div className="absolute top-6 left-6 font-mono text-xs font-bold text-white tracking-widest z-30 drop-shadow-sm">
+                  0{i + 1}
+                </div>
+              </div>
 
-            return (
-              <article
-                key={f.title}
-                className="bg-white border border-neutral-200 rounded-xl overflow-hidden hover:-translate-y-1 transition-transform flex flex-col shadow-sm"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={sectorImages[f.image]}
-                    alt={`${f.title} sector`}
-                    width={1024}
-                    height={768}
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/70 via-neutral-900/20 to-transparent" />
-                  <div className="absolute top-4 left-5 font-mono text-xs text-white/80 tracking-widest z-30">
-                    {f.n}
-                  </div>
-                  <h3 className="absolute bottom-4 left-5 right-5 font-serif text-2xl font-medium text-white z-30">
-                    {f.title}
-                  </h3>
-                  <ImageReplaceOverlay lines={overlayLines} />
+              <div className="relative">
+                <h3 className="font-serif text-2xl text-neutral-900 font-medium tracking-tight">
+                  {f.title}
+                </h3>
+                <p className="mt-4 text-lg text-neutral-600 leading-relaxed font-light line-clamp-3">
+                  {f.body}
+                </p>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {f.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="text-xs font-mono uppercase tracking-[0.1em] px-3 py-1 rounded-full border border-neutral-200 text-neutral-400 font-bold group-hover:border-amber-400/30 group-hover:text-amber-400 transition-colors"
+                    >
+                      {t}
+                    </span>
+                  ))}
                 </div>
-                <div className="p-6 flex flex-col flex-1">
-                  <p className="text-neutral-600 text-sm leading-relaxed">{f.body}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {f.tags.map((t) => (
-                      <span
-                        key={t}
-                        className="text-xs uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-100 text-amber-700 font-medium"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </article>
-            )
-          })}
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>

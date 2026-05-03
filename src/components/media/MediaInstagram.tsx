@@ -8,7 +8,7 @@ export function MediaInstagram() {
     <section id="instagram" className="py-16 bg-[#F5F0E8] border-b border-[#d4c9b0]">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between mb-8">
-          <div className="font-mono uppercase text-sm tracking-[0.2em] text-amber-600 font-bold">
+          <div className="font-mono uppercase text-sm tracking-[0.2em] text-amber-400 font-bold">
             02 · Instagram · From the Field
           </div>
         </div>
@@ -40,7 +40,7 @@ export function MediaInstagram() {
             href={socialLinks.instagram}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-amber-600 hover:text-amber-700 hover:underline transition-all font-bold"
+            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-amber-400 hover:text-amber-700 hover:underline transition-all font-bold"
           >
             @dipaloventures ↗
           </a>
