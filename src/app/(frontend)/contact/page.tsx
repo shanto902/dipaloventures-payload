@@ -71,7 +71,7 @@ export default function ContactPage() {
 
                 <div className="space-y-6">
                   <div className="flex flex-col gap-1">
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-neutral-400 font-bold">
+                    <span className="font-mono text-xs uppercase tracking-widest text-neutral-400 font-bold">
                       Address
                     </span>
                     <span className="text-neutral-900 text-sm font-medium leading-relaxed">
@@ -84,7 +84,7 @@ export default function ContactPage() {
                     href="https://www.google.com/maps/dir/?api=1&destination=mHUB+Chicago"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-3 px-8 py-4 bg-neutral-900 text-white rounded-full font-mono text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all shadow-sm hover:shadow-xl hover:shadow-neutral-900/10"
+                    className="inline-flex items-center gap-3 px-8 py-4 bg-neutral-900 text-white rounded-full font-mono text-xs uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all shadow-sm hover:shadow-xl hover:shadow-neutral-900/10"
                   >
                     <span>Get Directions</span>
                     <span className="text-neutral-500 group-hover:text-amber-400 transition-colors">

@@ -4,57 +4,83 @@ import { residencyCovers } from '@/lib/demo'
 
 export function ResidencyCovers() {
   return (
-    <section id="residency-program" className="container mx-auto px-4 py-24 md:py-32">
-      <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-16 lg:gap-24 items-start">
-        <div className="sticky top-32">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
-            <div className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-400 font-bold">
-              Program Scope
-            </div>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-semibold text-neutral-900 leading-[1.1] tracking-tight">
-            Engineering, <br />
-            supply chain, <br />
-            <span className="italic   text-amber-400">execution.</span>
-          </h2>
-          <p className="mt-8 text-lg text-neutral-500 leading-relaxed font-light italic">
-            Residency isn&apos;t an accelerator and it isn&apos;t advisory hours. It&apos;s
-            operators embedded with your team, doing the technical work alongside you — from early
-            design reviews to your first production runs.
-          </p>
-          <div className="mt-10">
-            <Link
-              href="/team"
-              className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-neutral-200 text-xs font-mono uppercase tracking-widest text-neutral-900 hover:bg-amber-400 hover:border-amber-400 transition-all duration-500 group font-bold"
-            >
-              See who runs Residency
-              <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
-            </Link>
-          </div>
-        </div>
-
-        <div className="grid sm:grid-cols-2 gap-px bg-neutral-100 border border-neutral-200 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-neutral-900/5">
-          {residencyCovers.map((x) => (
-            <div
-              key={x.t}
-              className="bg-white p-10 flex flex-col group transition-all duration-500 hover:bg-amber-50/30"
-            >
-              <div className="mb-8 flex items-center justify-between">
-                <div className="w-8 h-8 rounded-full bg-neutral-50 flex items-center justify-center border border-neutral-100 group-hover:bg-amber-400 group-hover:border-amber-400 transition-all duration-500">
-                  <span className="text-amber-500 group-hover:text-neutral-900 transition-colors text-xs font-mono font-bold">
-                    ✓
-                  </span>
-                </div>
+    <section
+      id="residency-program"
+      className="relative py-20 md:py-32 overflow-hidden bg-white border-b border-neutral-100 px-5 md:px-12"
+    >
+      <div className="container mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+          {/* Module 01: Editorial Scope */}
+          <div className="lg:col-span-5 lg:sticky lg:top-32">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
+              <div className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-400 font-bold">
+                Archive.04 · Program Scope
               </div>
-              <h3 className="  text-xl md:text-2xl font-medium text-neutral-900 mb-4 transition-colors group-hover:text-amber-500">
-                {x.t}
-              </h3>
-              <p className="text-sm text-neutral-500 leading-relaxed font-light group-hover:text-neutral-600 transition-colors">
-                {x.b}
-              </p>
             </div>
-          ))}
+
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold text-neutral-900 leading-[1.1] tracking-tight mb-8">
+              Engineering, <br />
+              supply chain, <br />
+              <span className="italic text-amber-400 ">execution.</span>
+            </h2>
+
+            <p className="text-lg text-neutral-500 leading-relaxed font-light italic border-l-2 border-amber-400/10 pl-6 mb-12">
+              Residency isn&apos;t an accelerator and it isn&apos;t advisory hours. It&apos;s
+              operators embedded with your team, doing the technical work alongside you — from early
+              design reviews to your first production runs.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link
+                href="/team"
+                className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-neutral-900 text-white rounded-full font-mono text-xs uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all duration-500 shadow-sm hover:shadow-xl hover:shadow-neutral-900/10"
+              >
+                <span>Operational Team</span>
+                <span className="text-neutral-500 group-hover:text-amber-400 transition-colors">
+                  ↗
+                </span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Module 02: Technical Coverage Grid */}
+          <div className="lg:col-span-7">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+              {residencyCovers.map((x, i) => (
+                <div
+                  key={x.t}
+                  className="group relative bg-white border border-neutral-100 rounded-[2.5rem] p-8 lg:p-10 transition-all duration-700 hover:border-amber-400 hover:shadow-2xl hover:shadow-neutral-900/5"
+                >
+                  {/* Technical Metadata */}
+                  <div className="absolute top-8 right-8 font-mono text-xs text-neutral-100 group-hover:text-amber-400/20 transition-colors font-bold uppercase tracking-widest">
+                    Scope_0{i + 1}
+                  </div>
+
+                  <div className="w-12 h-12 rounded-xl bg-neutral-50 border border-neutral-100 flex items-center justify-center mb-10 group-hover:bg-amber-400/5 group-hover:border-amber-400 transition-all duration-500">
+                    <span className="text-amber-500 group-hover:text-amber-600 transition-colors font-mono text-sm font-bold">
+                      ✓
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl md:text-2xl font-semibold text-neutral-900 mb-4 group-hover:text-amber-500 transition-colors duration-500">
+                    {x.t}
+                  </h3>
+
+                  <p className="text-sm md:text-base text-neutral-500 leading-relaxed font-light group-hover:text-neutral-600 transition-colors duration-500 italic">
+                    {x.b}
+                  </p>
+
+                  {/* Subtle Blueprint Accent */}
+                  <div className="absolute bottom-6 right-8 flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                    <div className="w-1 h-1 rounded-full bg-amber-400/40" />
+                    <div className="w-1 h-1 rounded-full bg-amber-400/20" />
+                    <div className="w-1 h-1 rounded-full bg-amber-400/10" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

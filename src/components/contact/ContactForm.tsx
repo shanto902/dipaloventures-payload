@@ -145,7 +145,7 @@ export function ContactForm() {
         </form>
 
         <div className="mt-8 pt-8 border-t border-neutral-50 flex flex-col items-center gap-4">
-          <div className="font-mono text-[8px] uppercase tracking-[0.3em] text-neutral-300 font-bold">
+          <div className="font-mono text-xs uppercase tracking-[0.3em] text-neutral-300 font-bold">
             Encryption Status: Active · Node: CHI_HUB_01
           </div>
           <div className="flex gap-2">

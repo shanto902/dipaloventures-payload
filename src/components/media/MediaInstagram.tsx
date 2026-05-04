@@ -63,7 +63,7 @@ export function MediaInstagram({ initialPosts }: { initialPosts?: InstagramPost[
                   {/* Technical ID Overlay */}
                   <div className="absolute top-4 left-4 flex items-center gap-2">
                     <div className="w-1 h-1 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
-                    <span className="font-mono text-[8px] uppercase tracking-[0.3em] text-white/70 font-bold">
+                    <span className="font-mono text-xs uppercase tracking-[0.3em] text-white/70 font-bold">
                       Field_Report
                     </span>
                   </div>
@@ -96,7 +96,7 @@ export function MediaInstagram({ initialPosts }: { initialPosts?: InstagramPost[
                       <span className=" text-xs">✦</span>
                     </div>
                     <div className="flex flex-col items-center gap-1">
-                      <span className="font-mono text-[8px] uppercase tracking-[0.3em] font-bold">
+                      <span className="font-mono text-xs uppercase tracking-[0.3em] font-bold">
                         Awaiting_Signal
                       </span>
                     </div>

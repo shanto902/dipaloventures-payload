@@ -56,7 +56,7 @@ export function TeamAdvisors({ advisors: liveAdvisors }: { advisors?: any[] }) {
                     <h4 className="text-sm font-semibold text-neutral-900 tracking-tight leading-tight group-hover:text-amber-500 transition-colors truncate">
                       {a.name}
                     </h4>
-                    <div className="mt-1 font-mono uppercase text-[8px] tracking-[0.2em] text-neutral-400 font-bold truncate">
+                    <div className="mt-1 font-mono uppercase text-xs tracking-[0.2em] text-neutral-400 font-bold truncate">
                       {org}
                     </div>
                   </div>
@@ -70,7 +70,7 @@ export function TeamAdvisors({ advisors: liveAdvisors }: { advisors?: any[] }) {
                     href={a.linkedin}
                     target="_blank"
                     rel="noreferrer"
-                    className="font-mono text-[8px] uppercase tracking-[0.2em] text-neutral-300 hover:text-amber-400 transition-colors flex items-center gap-2 group/link font-bold"
+                    className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-300 hover:text-amber-400 transition-colors flex items-center gap-2 group/link font-bold"
                   >
                     <span>LinkedIn Profile</span>
                     <span className="opacity-0 group-hover/link:opacity-100 transition-opacity">

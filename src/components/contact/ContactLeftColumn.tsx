@@ -32,7 +32,7 @@ export function ContactLeftColumn() {
             className="group relative flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white border border-neutral-100 rounded-2xl p-6 hover:border-amber-400 hover:shadow-xl hover:shadow-neutral-900/5 transition-all duration-700"
           >
             {/* Technical ID */}
-            <div className="absolute top-0 right-0 p-3 font-mono text-[8px] text-neutral-100 group-hover:text-amber-400/10 transition-colors font-bold">
+            <div className="absolute top-0 right-0 p-3 font-mono text-xs text-neutral-100 group-hover:text-amber-400/10 transition-colors font-bold">
               COM.0{i + 1}
             </div>
 
