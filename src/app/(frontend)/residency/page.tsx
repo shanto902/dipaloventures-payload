@@ -16,13 +16,15 @@ export const metadata = {
 
 export default function ResidencyPage() {
   return (
-    <SiteLayout>
+    <>
       <ResidencyHero />
-      <ResidencyMethodology />
-      <ResidencyCovers />
-      <ResidencyCaseStudies />
-      <ResidencyRAAS />
+      <SiteLayout>
+        <ResidencyMethodology />
+        <ResidencyCovers />
+        <ResidencyCaseStudies />
+        <ResidencyRAAS />
+      </SiteLayout>
       <ResidencyForFounders />
-    </SiteLayout>
+    </>
   )
 }

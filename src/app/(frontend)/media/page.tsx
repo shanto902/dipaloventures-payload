@@ -12,14 +12,24 @@ export const metadata = {
     'Tales From The Hard Side — honest conversations with the founders manufacturing the physical future.',
 }
 
-export default function MediaPage() {
+import { getLatestVideos } from '@/lib/youtube'
+import { getInstagramPosts } from '@/lib/instagram'
+import { getMediumPosts } from '@/lib/medium'
+
+export default async function MediaPage() {
+  const latestVideos = await getLatestVideos(3)
+  const instagramPosts = await getInstagramPosts(8)
+  const mediumPosts = await getMediumPosts(3)
+
   return (
-    <SiteLayout>
+    <>
       <MediaHero />
-      <MediaVideos />
-      <MediaInstagram />
-      <MediaBlog />
+      <SiteLayout>
+        <MediaVideos initialVideos={latestVideos} />
+      </SiteLayout>
+      <MediaInstagram initialPosts={instagramPosts} />
+      <MediaBlog initialPosts={mediumPosts} />
       <MediaSocialConnect />
-    </SiteLayout>
+    </>
   )
 }

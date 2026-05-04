@@ -34,7 +34,7 @@ export function FounderInvestorToggle() {
 
   return (
     <section
-      className="bg-[#fcfbf9] py-20 md:py-32 px-6 md:px-12"
+      className="bg-[#fcfbf9] py-16 md:py-24 px-6 md:px-12"
       aria-labelledby={`${baseId}-heading`}
     >
       <div className="container mx-auto px-4">

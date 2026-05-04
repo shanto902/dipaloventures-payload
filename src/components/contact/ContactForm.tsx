@@ -1,141 +1,160 @@
 'use client'
 
 import React, { useState } from 'react'
-import { z } from 'zod'
-import { toast } from 'sonner'
-import { submitContactForm } from './actions'
-
-const schema = z.object({
-  name: z.string().trim().min(1, 'Name is required').max(120),
-  email: z.string().trim().email('Valid email required').max(255),
-  company: z.string().trim().max(160).optional().or(z.literal('')),
-  type: z.enum(['founder', 'investor', 'general']),
-  message: z.string().trim().min(10, 'Tell us a bit more (10+ chars)').max(5000),
-})
-
-const inputCls =
-  'w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-3 text-sm text-neutral-900 outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20 transition-all placeholder:text-neutral-400'
+import { sendContactEmail } from './actions'
 
 export function ContactForm() {
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    company: '',
-    type: 'founder' as 'founder' | 'investor' | 'general',
-    message: '',
-  })
-  const [loading, setLoading] = useState(false)
-  const [done, setDone] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
 
-  async function onSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    const parsed = schema.safeParse(form)
-    if (!parsed.success) {
-      toast.error(parsed.error.issues[0]?.message ?? 'Please check the form')
-      return
-    }
-    setLoading(true)
-
-    const result = await submitContactForm(parsed.data)
-    setLoading(false)
-
-    if (result.success) {
-      setDone(true)
-      toast.success("Thanks — we'll be in touch shortly.")
-    } else {
-      toast.error(result.error || 'Failed to send message. Please try again.')
+    setStatus('sending')
+    const formData = new FormData(e.currentTarget)
+    try {
+      const result = await sendContactEmail(formData)
+      if (result.success) {
+        setStatus('success')
+        ;(e.target as HTMLFormElement).reset()
+      } else {
+        setStatus('error')
+      }
+    } catch (err) {
+      setStatus('error')
     }
   }
 
   return (
-    <div className="flex-1 flex flex-col bg-white border border-neutral-200 rounded-xl p-5 shadow-sm">
-      <div className="font-mono uppercase text-neutral-500 mb-4 text-xs tracking-[0.2em] font-bold">
-        Quick form
-      </div>
+    <div className="relative group p-8 md:p-12 bg-white border border-neutral-100 rounded-[2.5rem] shadow-sm hover:shadow-2xl hover:shadow-neutral-900/5 transition-all duration-700 overflow-hidden">
+      {/* Blueprint Overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, #000 1px, transparent 0)`,
+          backgroundSize: '24px 24px',
+        }}
+      />
 
-      {done ? (
-        <div className="flex-1 flex items-center justify-center text-center min-h-[300px]">
-          <div>
-            <div className="font-serif text-3xl text-neutral-900 font-medium">Thank you.</div>
-            <p className="mt-3 text-neutral-600 text-base leading-relaxed">
-              Your message is in. Expect a thoughtful reply within a few business days.
-            </p>
+      <div className="relative">
+        <div className="flex flex-col gap-6 mb-10">
+          <div className="flex items-center justify-between">
+            <div className="font-mono   text-xs uppercase tracking-[0.4em] text-amber-400 font-bold">
+              Inquiry Terminal · Active
+            </div>
+            <div className="flex gap-1">
+              <div className="w-1 h-1 rounded-full bg-amber-400 animate-pulse" />
+              <div className="w-1 h-1 rounded-full bg-amber-400/30" />
+            </div>
           </div>
+          <h2 className="text-2xl md:text-3xl font-semibold text-neutral-900 tracking-tight">
+            Submit Technical Inquiry
+          </h2>
         </div>
-      ) : (
-        <form onSubmit={onSubmit} className="flex-1 flex flex-col gap-3.5">
-          <input
-            required
-            placeholder="Your name"
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className={inputCls}
-          />
-          <input
-            required
-            type="email"
-            placeholder="Email address"
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className={inputCls}
-          />
-          <input
-            placeholder="Company (optional)"
-            value={form.company}
-            onChange={(e) => setForm({ ...form, company: e.target.value })}
-            className={inputCls}
-          />
-          <div className="flex gap-2">
-            {(
-              [
-                ['founder', 'Founder'],
-                ['investor', 'Investor'],
-                ['general', 'Hello'],
-              ] as const
-            ).map(([val, label]) => {
-              const active = form.type === val
-              return (
-                <button
-                  key={val}
-                  type="button"
-                  onClick={() => setForm({ ...form, type: val })}
-                  className="flex-1 transition-all"
-                  style={{
-                    fontSize: '13px',
-                    padding: '10px 12px',
-                    borderRadius: '999px',
-                    border: active ? '1px solid #1a1a1a' : '1px solid #e5e5e5',
-                    background: active ? '#1a1a1a' : 'transparent',
-                    color: active ? '#ffffff' : '#737373',
-                    fontWeight: active ? 500 : 400,
-                  }}
-                >
-                  {label}
-                </button>
-              )
-            })}
+
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-2">
+              <label
+                htmlFor="name"
+                className="font-mono   text-xs uppercase tracking-widest text-neutral-400 font-bold ml-1"
+              >
+                Operator Name
+              </label>
+              <input
+                required
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Name"
+                className="w-full bg-neutral-50 border border-neutral-100 rounded-xl px-6 py-4 text-neutral-900 placeholder:text-neutral-300 focus:outline-none focus:ring-1 focus:ring-amber-400 focus:bg-white transition-all duration-300 font-light"
+              />
+            </div>
+            <div className="space-y-2">
+              <label
+                htmlFor="email"
+                className="font-mono   text-xs uppercase tracking-widest text-neutral-400 font-bold ml-1"
+              >
+                Transmission Endpoint
+              </label>
+              <input
+                required
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email Address"
+                className="w-full bg-neutral-50 border border-neutral-100 rounded-xl px-6 py-4 text-neutral-900 placeholder:text-neutral-300 focus:outline-none focus:ring-1 focus:ring-amber-400 focus:bg-white transition-all duration-300 font-light"
+              />
+            </div>
           </div>
-          <textarea
-            required
-            rows={5}
-            placeholder="Your message..."
-            value={form.message}
-            onChange={(e) => setForm({ ...form, message: e.target.value })}
-            className={inputCls}
-            style={{ resize: 'none', flex: 1, minHeight: '140px' }}
-          />
+
+          <div className="space-y-2">
+            <label
+              htmlFor="subject"
+              className="font-mono   text-xs uppercase tracking-widest text-neutral-400 font-bold ml-1"
+            >
+              Subject Header
+            </label>
+            <input
+              required
+              type="text"
+              name="subject"
+              id="subject"
+              placeholder="Primary Inquiry Topic"
+              className="w-full bg-neutral-50 border border-neutral-100 rounded-xl px-6 py-4 text-neutral-900 placeholder:text-neutral-300 focus:outline-none focus:ring-1 focus:ring-amber-400 focus:bg-white transition-all duration-300 font-light"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label
+              htmlFor="message"
+              className="font-mono   text-xs uppercase tracking-widest text-neutral-400 font-bold ml-1"
+            >
+              Transmission Content
+            </label>
+            <textarea
+              required
+              name="message"
+              id="message"
+              rows={5}
+              placeholder="Technical Brief..."
+              className="w-full bg-neutral-50 border border-neutral-100 rounded-2xl px-6 py-4 text-neutral-900 placeholder:text-neutral-300 focus:outline-none focus:ring-1 focus:ring-amber-400 focus:bg-white transition-all duration-300 font-light resize-none"
+            />
+          </div>
+
           <button
             type="submit"
-            disabled={loading}
-            className="w-full transition-all disabled:opacity-60 bg-neutral-900 hover:bg-neutral-800 text-white rounded-full py-3.5 text-base font-medium mt-1"
+            disabled={status === 'sending'}
+            className="group relative w-full inline-flex items-center justify-center gap-3 bg-neutral-900 text-white py-5 rounded-2xl font-mono text-xs uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all duration-500 overflow-hidden disabled:opacity-50"
           >
-            {loading ? 'Sending…' : 'Send message →'}
+            <div className="absolute inset-0 bg-linear-to-r from-amber-400/20 via-transparent to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+
+            {status === 'sending' ? (
+              <span className="animate-pulse">Transmitting...</span>
+            ) : status === 'success' ? (
+              <span className="text-amber-400">Transmission Complete ✓</span>
+            ) : status === 'error' ? (
+              <span className="text-red-400">Transmission Failed</span>
+            ) : (
+              <>
+                <span>Submit Inquiry</span>
+                <span className="text-neutral-500 group-hover:text-amber-400 group-hover:translate-x-1 transition-all">
+                  ↗
+                </span>
+              </>
+            )}
           </button>
-          <p className="text-center text-neutral-400 text-sm mt-2 font-medium">
-            We never share your information
-          </p>
         </form>
-      )}
+
+        <div className="mt-8 pt-8 border-t border-neutral-50 flex flex-col items-center gap-4">
+          <div className="font-mono text-[8px] uppercase tracking-[0.3em] text-neutral-300 font-bold">
+            Encryption Status: Active · Node: CHI_HUB_01
+          </div>
+          <div className="flex gap-2">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <div key={i} className="w-1 h-px bg-neutral-100" />
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

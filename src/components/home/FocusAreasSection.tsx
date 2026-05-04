@@ -15,7 +15,7 @@ const sectorImages: Record<string, any> = {
 
 export function FocusAreasSection() {
   return (
-    <section className="bg-[#fcfbf9] px-6 md:px-12 py-20 md:py-32">
+    <section className="bg-[#fcfbf9] px-6 md:px-12 py-16 md:py-24">
       <div className="container mx-auto px-4">
         {/* Consistent Brand Header */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start mb-6 ">
@@ -55,7 +55,7 @@ export function FocusAreasSection() {
               </div>
 
               <div className="relative">
-                <h3 className="font-serif text-2xl text-neutral-900 font-medium tracking-tight">
+                <h3 className="  text-2xl text-neutral-900 font-medium tracking-tight">
                   {f.title}
                 </h3>
                 <p className="mt-4 text-lg text-neutral-600 leading-relaxed font-light line-clamp-3">

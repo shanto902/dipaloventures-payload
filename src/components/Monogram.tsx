@@ -1,10 +1,16 @@
-import React from "react";
+import React from 'react'
+import { cn } from '@/lib/utils'
 
-export function Monogram({ name }: { name: string }) {
-  const initial = name.trim()[0] ?? "·";
+export function Monogram({ name, className }: { name: string; className?: string }) {
+  const initial = name.trim()[0] ?? '·'
   return (
-    <div className="h-full w-full bg-neutral-100 flex items-center justify-center rounded-md font-serif text-3xl font-medium text-neutral-400">
+    <div
+      className={cn(
+        'h-full w-full bg-neutral-100 flex items-center justify-center rounded-md   text-3xl font-medium text-neutral-400',
+        className,
+      )}
+    >
       {initial}
     </div>
-  );
+  )
 }

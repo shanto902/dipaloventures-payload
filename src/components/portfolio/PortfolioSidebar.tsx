@@ -41,9 +41,9 @@ export function PortfolioSidebar({
 
   return (
     <aside className="lg:sticky lg:top-20 self-start">
-      <div className="bg-white border border-neutral-200 rounded-xl p-6 shadow-sm">
+      <div className="bg-white border-r border-neutral-200  p-6 ">
         <div className="flex items-center justify-between mb-5">
-          <div className="font-mono text-xs uppercase tracking-widest text-amber-400 font-semibold">
+          <div className="font-mono text-base uppercase tracking-widest text-amber-400 font-semibold">
             Filters
           </div>
           {totalActive > 0 && (
@@ -127,7 +127,7 @@ function FilterCheckbox({
   count: number
 }) {
   return (
-    <label className="flex items-center justify-between gap-3 cursor-pointer py-1 group text-sm uppercase tracking-wider font-medium">
+    <label className="flex items-center justify-between gap-3 cursor-pointer py-1 group text-xs uppercase tracking-wider font-medium">
       <span className="flex items-center gap-3 min-w-0">
         <span
           className={`h-4 w-4 rounded-[3px] border transition shrink-0 flex items-center justify-center ${

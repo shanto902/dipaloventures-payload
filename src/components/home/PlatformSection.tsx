@@ -17,7 +17,7 @@ export function PlatformSection() {
   ]
 
   return (
-    <section className="bg-[#fcfbf9] px-6 md:px-12 pb-20 md:pb-32 border-y border-neutral-100">
+    <section className="bg-[#fcfbf9] px-6 md:px-12 pb-16 md:pb-24 border-y border-neutral-100">
       <div className="container mx-auto px-4">
         <div className="text-sm font-mono uppercase tracking-[0.2em] text-amber-400 mb-6 font-bold">
           Our Platform
@@ -28,7 +28,7 @@ export function PlatformSection() {
               key={c.label}
               className={`md:px-10 ${i !== 0 ? 'md:border-l md:border-neutral-200' : 'md:pl-0'}`}
             >
-              <div className="text-2xl font-serif italic text-neutral-900 mb-4">
+              <div className="text-2xl   italic text-neutral-900 mb-4">
                 {c.label.split(' · ')[0]}
                 <span className="inline-block mx-2 text-neutral-200 font-sans not-italic">·</span>
                 <span className="font-mono text-xs uppercase tracking-widest text-neutral-400 not-italic align-middle">

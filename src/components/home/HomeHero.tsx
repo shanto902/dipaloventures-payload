@@ -44,10 +44,10 @@ export function HomeHero() {
               { value: '16', label: 'Portfolio' },
             ].map((stat) => (
               <div key={stat.label} className="group">
-                <div className="text-2xl md:text-3xl font-serif italic text-neutral-900 group-hover:text-amber-400 transition-colors">
+                <div className="text-2xl md:text-3xl   italic text-neutral-900 group-hover:text-amber-400 transition-colors">
                   {stat.value}
                 </div>
-                <div className="text-[10px] md:text-xs font-mono uppercase tracking-[0.2em] text-neutral-400 mt-2 font-bold">
+                <div className="text-xs md:text-xs font-mono uppercase tracking-[0.2em] text-neutral-400 mt-2 font-bold">
                   {stat.label}
                 </div>
               </div>

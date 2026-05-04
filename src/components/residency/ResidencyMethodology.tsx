@@ -5,54 +5,49 @@ import { methodologySteps } from '@/lib/demo'
 
 export function ResidencyMethodology() {
   return (
-    <section className="container mx-auto px-4 py-20 relative overflow-hidden">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 mix-blend-multiply opacity-[0.06]"
-        style={{
-          backgroundImage: `url(${sectorEnergy.src}), url(${sectorClimate.src})`,
-          backgroundPosition: 'left center, right center',
-          backgroundSize: '40% auto, 40% auto',
-          backgroundRepeat: 'no-repeat, no-repeat',
-        }}
-      />
-      <div className="relative max-w-3xl mb-12">
-        <div className="text-sm font-semibold uppercase tracking-widest text-neutral-500 mb-3">
-          Methodology
+    <section className="container mx-auto px-4 py-16 md:py-24">
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12 md:mb-20">
+        <div className="max-w-2xl">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+            <div className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-400 font-bold">
+              Methodology
+            </div>
+          </div>
+          <h2 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-tight tracking-tight">
+            Our <span className="italic  ">process</span>, end to end.
+          </h2>
         </div>
-        <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900 leading-tight">
-          Our <span className="italic">process</span>, end to end.
-        </h2>
-        <p className="mt-5 text-lg text-neutral-600 leading-relaxed">
+        <p className="max-w-sm text-sm text-neutral-500 leading-relaxed font-light border-l-2 border-amber-400/20 pl-6">
           From founder application to portfolio support — a transparent flow that pairs disciplined
           screening with deep technical diligence.
         </p>
       </div>
 
-      <ol className="relative grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
-        {methodologySteps.map((s, i, arr) => (
-          <li
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 border border-neutral-200 rounded-[2rem] overflow-hidden bg-[#fcfbf9]">
+        {methodologySteps.map((s, i) => (
+          <div
             key={s.n}
-            className="relative bg-white border border-neutral-200 rounded-xl p-6 shadow-sm flex flex-col"
+            className="group relative p-8 md:p-10 border-b border-r border-neutral-200 last:border-b-0 lg:border-b-0 transition-colors hover:bg-white"
           >
-            <div className="font-mono text-xs text-amber-400 font-bold tracking-widest mb-3">
-              PHASE {s.n}
-            </div>
-            <div className="font-serif text-xl font-medium leading-tight text-neutral-900 mb-2">
-              {s.t}
-            </div>
-            <p className="text-sm text-neutral-600 leading-relaxed">{s.b}</p>
-            {i < arr.length - 1 && (
-              <span
-                className="hidden xl:block absolute -right-3 top-1/2 -translate-y-1/2 text-amber-400 text-lg z-10"
-                aria-hidden
-              >
-                →
+            {/* Phase Node */}
+            <div className="flex items-center justify-between mb-6">
+              <span className="font-mono text-xs text-amber-500 font-bold tracking-widest">
+                0{s.n}
               </span>
-            )}
-          </li>
+              <div className="w-1.5 h-1.5 rounded-full bg-neutral-200 group-hover:bg-amber-400 transition-colors duration-500" />
+            </div>
+
+            <h3 className="  text-lg font-medium text-neutral-900 mb-3 group-hover:text-amber-500 transition-colors">
+              {s.t}
+            </h3>
+            <p className="text-sm text-neutral-500 leading-relaxed font-light">{s.b}</p>
+
+            {/* Subtle path indicator */}
+            <div className="absolute bottom-0 left-0 w-full h-1 bg-amber-400 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+          </div>
         ))}
-      </ol>
+      </div>
     </section>
   )
 }

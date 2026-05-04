@@ -3,7 +3,7 @@ import { AnimatedLink } from '@/components/ui/AnimatedLink'
 
 export function ResidencySection() {
   return (
-    <section className="bg-white py-20 md:py-32 border-y border-neutral-100">
+    <section className="bg-white py-16 md:py-24 border-y border-neutral-100">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-[5fr_7fr] gap-12 lg:gap-20 items-center">
           <div className="relative aspect-4/3 rounded-3xl overflow-hidden bg-neutral-100 border border-neutral-200 shadow-sm group">
@@ -13,7 +13,7 @@ export function ResidencySection() {
                 <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
                 <div className="absolute inset-0 rounded-full border border-amber-400/10 scale-150 animate-ping" />
               </div>
-              <div className="font-serif italic text-2xl text-neutral-400">Technical Residency</div>
+              <div className="  italic text-2xl text-neutral-400">Technical Residency</div>
               <div className="mt-4 text-xs font-mono uppercase tracking-[0.25em] text-neutral-300 font-bold">
                 Program Node 01
               </div>

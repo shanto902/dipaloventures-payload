@@ -84,62 +84,91 @@ type CaseCardProps = {
 
 function CaseCard(props: CaseCardProps) {
   return (
-    <article className="bg-white border border-neutral-200 rounded-2xl overflow-hidden grid md:grid-cols-[260px_1fr] shadow-sm">
-      <div className="flex flex-col md:border-r border-neutral-200">
-        <div
-          className="flex items-center justify-center px-4 bg-white border-b border-neutral-200"
-          style={{ minHeight: 80 }}
-        >
-          <Image
-            src={props.logo}
-            alt={`${props.name} logo`}
-            className="object-contain max-h-[44px] w-auto"
-          />
-        </div>
-        <div
-          className="relative bg-neutral-100 flex-1 min-h-[200px]"
-          style={{ aspectRatio: '4/3' }}
-        >
+    <article className="group relative bg-white border border-neutral-100 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-neutral-900/5 transition-all duration-700 hover:-translate-y-1">
+      <div className="grid lg:grid-cols-[400px_1fr]">
+        {/* Cinematic Visual Side */}
+        <div className="relative overflow-hidden bg-neutral-900 aspect-video lg:aspect-auto">
           <Image
             src={props.productImage}
             alt={props.productAlt}
             fill
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 scale-105 group-hover:scale-100"
           />
+          <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+
+          {/* Logo Floating Over Visual */}
+          <div className="absolute top-8 left-8 p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">
+            <Image
+              src={props.logo}
+              alt={`${props.name} logo`}
+              className="h-8 w-auto object-contain brightness-0 invert"
+            />
+          </div>
+
+          {/* Technical Artifact Tag */}
+          <div className="absolute bottom-8 left-8 flex flex-col">
+            <span className="font-mono text-xs uppercase tracking-[0.3em] text-amber-400 font-bold mb-1">
+              Field Archive
+            </span>
+            <span className="  text-white text-lg italic opacity-80">
+              {props.name} Technical Audit
+            </span>
+          </div>
+
           {props.productOverlay}
         </div>
-      </div>
 
-      <div className="flex flex-col p-6 md:p-8 gap-4">
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-          <h3 className="font-serif text-2xl md:text-3xl text-neutral-900 leading-tight font-medium">
-            {props.name}
-          </h3>
-          {props.badges}
-        </div>
-
-        <div>
-          <div className="font-mono text-xs uppercase tracking-widest text-amber-400 mb-1.5 font-bold">
-            Overview
+        {/* Technical Report Side */}
+        <div className="p-8 md:p-12 flex flex-col">
+          <div className="flex flex-wrap items-center justify-between gap-6 mb-8">
+            <div className="flex flex-wrap items-center gap-3">
+              <h3 className="  text-3xl md:text-5xl font-medium text-neutral-900 tracking-tight">
+                {props.name}
+              </h3>
+              <div className="flex gap-2">{props.badges}</div>
+            </div>
+            {props.link && <div className="shrink-0">{props.link}</div>}
           </div>
-          <p className="text-sm md:text-base text-neutral-600 leading-relaxed">{props.overview}</p>
-        </div>
 
-        <div className="border-t border-neutral-100" />
+          <div className="grid md:grid-cols-2 gap-10 lg:gap-16">
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-4 h-[1px] bg-amber-400" />
+                <span className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 font-bold">
+                  Problem Definition
+                </span>
+              </div>
+              <p className="text-base text-neutral-600 leading-relaxed font-light italic">
+                {props.overview}
+              </p>
+            </div>
 
-        <div>
-          <div className="font-mono text-xs uppercase tracking-widest text-amber-400 mb-1.5 font-bold">
-            Solution
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-4 h-[1px] bg-amber-400" />
+                <span className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 font-bold">
+                  Technical Solution
+                </span>
+              </div>
+              <p className="text-base text-neutral-600 leading-relaxed font-light">
+                {props.solution}
+              </p>
+            </div>
           </div>
-          <p className="text-sm md:text-base text-neutral-600 leading-relaxed">{props.solution}</p>
-        </div>
 
-        {props.link && <div className="pt-2">{props.link}</div>}
-
-        <div className="mt-auto pt-6 border-t border-neutral-100 flex flex-wrap gap-2">
-          {PHASES.map((p) => (
-            <PhaseTag key={p.label} p={p} />
-          ))}
+          <div className="mt-12 pt-8 border-t border-neutral-100 flex flex-wrap items-center justify-between gap-6">
+            <div className="flex flex-wrap gap-2">
+              <span className="font-mono text-xs uppercase tracking-widest text-neutral-400 font-bold mr-4">
+                Program Phases:
+              </span>
+              {PHASES.map((p) => (
+                <PhaseTag key={p.label} p={p} />
+              ))}
+            </div>
+            <div className="text-xs font-mono uppercase tracking-widest text-neutral-300 font-bold">
+              Ref: DV-RES-0{props.name.length + 10}
+            </div>
+          </div>
         </div>
       </div>
     </article>
@@ -148,20 +177,28 @@ function CaseCard(props: CaseCardProps) {
 
 export function ResidencyCaseStudies() {
   return (
-    <section className="container mx-auto px-4 py-20">
-      <div className="max-w-3xl mb-12">
-        <div className="text-sm font-semibold uppercase tracking-widest text-neutral-500 mb-3">
-          Case studies
+    <section className="container mx-auto px-4 py-24 md:py-32">
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-16 md:mb-24">
+        <div className="max-w-3xl">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
+            <div className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-400 font-bold">
+              Field Reports
+            </div>
+          </div>
+          <h2 className="text-4xl md:text-7xl font-semibold text-neutral-900 leading-[1.1] tracking-tight">
+            From the field: what <br />
+            Residency <span className="italic   text-amber-400">actually does.</span>
+          </h2>
         </div>
-        <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900 leading-tight">
-          From the field: what Residency <span className="italic">actually does.</span>
-        </h2>
-        <p className="mt-4 text-lg text-neutral-600 leading-relaxed">
-          Three companies. Three different technical challenges. One program.
+        <p className="max-w-xs text-lg text-neutral-500 leading-relaxed font-light italic border-l-2 border-amber-400/20 pl-6">
+          Three companies. <br />
+          Three different technical challenges. <br />
+          One program.
         </p>
       </div>
 
-      <div className="flex flex-col gap-6 md:gap-8">
+      <div className="flex flex-col gap-12 md:gap-20">
         <CaseCard
           logo={pluieLogo}
           productImage={pluieProduct}
@@ -174,7 +211,7 @@ export function ResidencyCaseStudies() {
                 href="https://www.youtube.com/watch?v=MO7a5wdFCPM"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-mono uppercase tracking-wider font-medium bg-amber-400 text-white hover:bg-amber-700 transition-colors"
+                className="inline-flex items-center rounded-full px-3 py-1 text-xs font-mono uppercase tracking-wider font-bold bg-neutral-900 text-white hover:bg-amber-400 hover:text-neutral-900 transition-all duration-500"
               >
                 Shark Tank S14·E16 ↗
               </a>
@@ -206,7 +243,7 @@ export function ResidencyCaseStudies() {
                 href="https://youtu.be/eyLFm9hyXLE?si=8gerKu7GvFI5_Zby"
                 icon={<Globe size={14} />}
               >
-                Watch Residency video
+                Watch video
               </GoldLink>
             </div>
           }

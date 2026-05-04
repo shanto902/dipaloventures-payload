@@ -5,72 +5,90 @@ export function TeamAdvisors({ advisors: liveAdvisors }: { advisors?: any[] }) {
   const displayAdvisors = liveAdvisors || advisors
 
   return (
-    <section className="container mx-auto px-4 mb-10">
-      <div className="max-w-3xl mb-8">
-        <div className="text-sm font-semibold uppercase tracking-widest text-neutral-500 mb-3">
-          Residency Advisors
+    <section className="relative py-16 md:py-20 overflow-hidden bg-white border-t border-neutral-100">
+      <div className="container mx-auto px-4">
+        {/* Architectural Header — Horizontal Split */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 border-b border-neutral-100 pb-12 mb-12">
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
+              <div className=" text-xs font-mono uppercase tracking-[0.3em] text-neutral-400 font-bold">
+                Expertise Network
+              </div>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.1] tracking-tight">
+              The operators behind <br />
+              the <span className="italic text-amber-400  ">Residency.</span>
+            </h2>
+          </div>
+          <div className="max-w-sm">
+            <p className="text-sm md:text-base text-neutral-500 leading-relaxed font-light italic border-l-2 border-amber-400/10 pl-6">
+              Our Residency draws on a network of operators, engineers, and domain experts across
+              hard tech, energy, and advanced manufacturing.
+            </p>
+          </div>
         </div>
-        <h2 className="text-3xl md:text-4xl font-semibold text-neutral-900 leading-tight">
-          The expertise behind the Residency.
-        </h2>
-        <p className="mt-4 text-lg text-neutral-600 leading-relaxed">
-          Our Residency draws on a network of operators, engineers, and domain experts across hard
-          tech, energy, and advanced manufacturing.
-        </p>
-      </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-        {displayAdvisors.map((a) => {
-          const initials = a.name
-            .split(' ')
-            .map((p: string) => p[0])
-            .slice(0, 2)
-            .join('')
+        {/* High-Density Network Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {displayAdvisors.map((a) => {
+            const initials = a.name
+              .split(' ')
+              .map((p: string) => p[0])
+              .slice(0, 2)
+              .join('')
 
-          // Use colors from demo data if available, otherwise use defaults
-          const bg = a.bg || '#F5F5F5'
-          const fg = a.fg || '#737373'
-          const role = a.role || a.title // Payload uses role, demo uses title
-          const org = a.organization || a.org // Payload uses organization, demo uses org
+            const role = a.role || a.title
+            const org = a.organization || a.org
 
-          return (
-            <article
-              key={a.name}
-              className="bg-white border border-neutral-200 rounded-lg p-4 shadow-sm hover:border-amber-400 transition-colors"
-            >
-              <div className="flex items-center gap-3">
-                <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center text-base font-bold border-[1.5px] border-neutral-200 shrink-0"
-                  style={{
-                    background: bg,
-                    color: fg,
-                  }}
-                >
-                  {initials}
-                </div>
-                <div className="min-w-0">
-                  <div className="text-base font-semibold text-neutral-900 leading-tight">
-                    {a.name}
+            return (
+              <article
+                key={a.name}
+                className="group relative bg-[#fcfbf9] border border-neutral-100 rounded-2xl p-5 transition-all duration-500 hover:shadow-xl hover:shadow-neutral-900/5 hover:-translate-y-0.5"
+              >
+                <div className="flex items-center gap-4">
+                  {/* Initials Artifact */}
+                  <div className="relative shrink-0 w-10 h-10 rounded-xl flex items-center justify-center  text-xs font-mono font-bold border border-neutral-200 bg-white shadow-sm transition-colors duration-500 group-hover:border-amber-400 group-hover:text-amber-500">
+                    {initials}
+                  </div>
+
+                  <div className="min-w-0">
+                    <h4 className="text-sm font-semibold text-neutral-900 tracking-tight leading-tight group-hover:text-amber-500 transition-colors truncate">
+                      {a.name}
+                    </h4>
+                    <div className="mt-1 font-mono uppercase text-[8px] tracking-[0.2em] text-neutral-400 font-bold truncate">
+                      {org}
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="text-sm text-neutral-500 mt-2.5 font-medium">{role}</div>
-              <div className="text-sm text-amber-400 font-bold uppercase tracking-wide">{org}</div>
-              <a
-                href={a.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="text-sm text-neutral-500 mt-2 inline-block hover:underline hover:text-amber-700 transition-colors font-medium"
-              >
-                LinkedIn ↗
-              </a>
-            </article>
-          )
-        })}
+
+                <div className="mt-4 pt-4 border-t border-neutral-100/50 flex flex-col gap-2">
+                  <div className="text-xs text-neutral-500 leading-relaxed font-light italic truncate">
+                    {role}
+                  </div>
+                  <a
+                    href={a.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-mono text-[8px] uppercase tracking-[0.2em] text-neutral-300 hover:text-amber-400 transition-colors flex items-center gap-2 group/link font-bold"
+                  >
+                    <span>LinkedIn Profile</span>
+                    <span className="opacity-0 group-hover/link:opacity-100 transition-opacity">
+                      →
+                    </span>
+                  </a>
+                </div>
+              </article>
+            )
+          })}
+        </div>
+
+        <div className="mt-12 flex flex-col items-center">
+          <p className=" text-xs font-mono uppercase tracking-[0.3em] text-neutral-300 font-bold">
+            + 10 more advisors across energy, manufacturing, and life sciences.
+          </p>
+        </div>
       </div>
-      <p className="text-center mt-10 text-xs text-neutral-500 font-medium">
-        + 10 more advisors across energy, manufacturing, and life sciences.
-      </p>
     </section>
   )
 }

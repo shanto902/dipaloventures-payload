@@ -12,7 +12,7 @@ export function TeamSection({ members }: { members?: any[] }) {
   const displayTeam = (members || team).slice(0, 5)
 
   return (
-    <section className="bg-white py-20 md:py-32">
+    <section className="bg-white py-16 md:py-24">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
           <div className="max-w-2xl">
@@ -41,7 +41,7 @@ export function TeamSection({ members }: { members?: any[] }) {
                     className="object-cover object-top transition-all duration-700 ease-in-out group-hover:scale-105"
                   />
                 ) : (
-                  <div className="absolute inset-0 flex items-center justify-center font-serif text-6xl text-neutral-200">
+                  <div className="absolute inset-0 flex items-center justify-center   text-6xl text-neutral-200">
                     {initial(m.name)}
                   </div>
                 )}
@@ -50,7 +50,7 @@ export function TeamSection({ members }: { members?: any[] }) {
               </div>
 
               <div className="relative">
-                <h3 className="font-serif text-xl md:text-2xl text-neutral-900 font-medium tracking-tight">
+                <h3 className="  text-xl md:text-2xl text-neutral-900 font-medium tracking-tight">
                   {m.name}
                 </h3>
                 <p className="mt-1.5 text-xs font-mono uppercase tracking-[0.2em] text-neutral-400 font-bold">

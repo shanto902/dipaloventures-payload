@@ -37,7 +37,7 @@ export function TestimonialsCarousel({ testimonials }: { testimonials?: Testimon
   }
 
   return (
-    <section className="bg-[#fcfbf9] px-6 md:px-12 py-20 md:py-32 border-y border-neutral-100 overflow-hidden">
+    <section className="bg-[#fcfbf9] px-6 md:px-12 py-16 md:py-24 border-y border-neutral-100 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-8">
           <div className="max-w-2xl">
@@ -52,7 +52,7 @@ export function TestimonialsCarousel({ testimonials }: { testimonials?: Testimon
 
           {/* Navigation Controls */}
           <div className="flex items-center justify-between md:justify-start gap-6">
-            <div className="font-mono text-[10px] md:text-xs tracking-widest text-neutral-400 font-bold">
+            <div className="font-mono text-xs md:text-xs tracking-widest text-neutral-400 font-bold">
               {String(currentIndex + 1).padStart(2, '0')} /{' '}
               {String(displayCards.length).padStart(2, '0')}
             </div>
@@ -105,7 +105,7 @@ function TestimonialCard({ card }: { card: Testimonial }) {
     <article className="group bg-white border border-neutral-200/60 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-12 shadow-sm transition-all duration-500 hover:shadow-2xl hover:border-amber-400/20 flex flex-col h-full">
       <div className="relative flex-1">
         {/* Decorative Quote Mark */}
-        <div className="absolute -top-6 -left-6 text-8xl font-serif text-neutral-50 group-hover:text-amber-400/10 transition-colors duration-500 pointer-events-none">
+        <div className="absolute -top-6 -left-6 text-8xl   text-neutral-50 group-hover:text-amber-400/10 transition-colors duration-500 pointer-events-none">
           &ldquo;
         </div>
 
@@ -124,16 +124,14 @@ function TestimonialCard({ card }: { card: Testimonial }) {
               className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100"
             />
           ) : (
-            <div className="absolute inset-0 flex items-center justify-center font-serif text-2xl text-neutral-300">
+            <div className="absolute inset-0 flex items-center justify-center   text-2xl text-neutral-300">
               {card.initials || card.name.charAt(0)}
             </div>
           )}
         </div>
 
         <div>
-          <div className="text-xl font-serif font-medium text-neutral-900 tracking-tight">
-            {card.name}
-          </div>
+          <div className="text-xl   font-medium text-neutral-900 tracking-tight">{card.name}</div>
           <div className="mt-1.5 flex items-center gap-3 flex-wrap">
             <span className="text-xs font-mono uppercase tracking-[0.2em] text-neutral-400 font-bold whitespace-nowrap">
               {card.role}

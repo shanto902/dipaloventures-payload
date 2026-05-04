@@ -54,7 +54,7 @@ export function InitialsAvatar({ name, className = '' }: { name: string; classNa
       aria-label={name}
     >
       <span
-        className="font-serif text-white select-none"
+        className="  text-white select-none"
         style={{
           fontSize: 'clamp(2rem, 7cqw + 1rem, 4.5rem)',
           letterSpacing: '0.02em',

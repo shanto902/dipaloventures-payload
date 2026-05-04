@@ -52,11 +52,13 @@ export default async function TeamPage() {
   const advisors = members.filter((m) => m.category === 'advisor')
 
   return (
-    <SiteLayout>
+    <>
       <TeamHero />
       <TeamGPs members={gps.length > 0 ? gps : undefined} />
-      <TeamVPs members={vps.length > 0 ? vps : undefined} />
-      <TeamAdvisors advisors={advisors.length > 0 ? advisors : undefined} />
-    </SiteLayout>
+      <SiteLayout>
+        <TeamVPs members={vps.length > 0 ? vps : undefined} />
+        <TeamAdvisors advisors={advisors.length > 0 ? advisors : undefined} />
+      </SiteLayout>
+    </>
   )
 }

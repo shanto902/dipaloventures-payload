@@ -1,90 +1,60 @@
 import React from 'react'
 import { emailCards, MAP_DIRECTIONS } from '@/lib/demo'
 
-const GOLD = '#A07800'
-
 export function ContactLeftColumn() {
   return (
-    <div className="flex flex-col gap-5 min-w-0 md:w-full">
-      {/* Hero */}
-      <div className="pb-6 border-b border-neutral-200">
-        <div className="font-mono uppercase text-neutral-500 mb-3 text-xs tracking-[0.2em] font-bold">
-          Contact
+    <div className="flex flex-col gap-10 md:sticky md:top-32">
+      {/* Editorial Headline */}
+      <div className="max-w-xl">
+        <div className="flex items-center gap-3 mb-8">
+          <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
+          <div className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-400 font-bold">
+            Contact · Inquiry Protocol
+          </div>
         </div>
-        <h1 className="text-4xl md:text-5xl font-medium text-neutral-900 leading-tight">
-          Let's talk.
-          <br />
-          <span className="text-amber-400">Hard tech is worth it.</span>
+
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-semibold text-neutral-900 leading-[1.1] tracking-tight mb-8">
+          Let's talk. <br />
+          Hard tech is <span className="italic text-amber-400   ">worth it.</span>
         </h1>
-        <p className="mt-3 text-neutral-500 text-base">
-          We reply within 3 business days. We read every message.
+
+        <p className="text-lg text-neutral-500 leading-relaxed font-light italic border-l-2 border-amber-400/10 pl-6 mb-12">
+          We process all inquiries within 72 hours. Our network is built on direct
+          founder-to-operator communication.
         </p>
       </div>
 
-      {/* Email cards */}
-      <div className="flex flex-col gap-3">
-        {emailCards.map((c) => (
+      {/* High-Density Email Archive */}
+      <div className="space-y-4">
+        {emailCards.map((c, i) => (
           <div
             key={c.email}
-            className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white border border-neutral-200 rounded-xl p-4 shadow-sm"
+            className="group relative flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white border border-neutral-100 rounded-2xl p-6 hover:border-amber-400 hover:shadow-xl hover:shadow-neutral-900/5 transition-all duration-700"
           >
+            {/* Technical ID */}
+            <div className="absolute top-0 right-0 p-3 font-mono text-[8px] text-neutral-100 group-hover:text-amber-400/10 transition-colors font-bold">
+              COM.0{i + 1}
+            </div>
+
             <div className="min-w-0">
-              <div className="font-mono uppercase text-xs tracking-[0.2em] text-amber-400 font-bold">
+              <div className="font-mono   text-xs uppercase tracking-[0.2em] text-amber-400 font-bold mb-1">
                 {c.eyebrow}
               </div>
-              <div className="text-neutral-900 mt-1 text-base font-medium">{c.title}</div>
-              <div className="text-neutral-500 text-sm mt-0.5">{c.subtitle}</div>
+              <div className="text-neutral-900 text-lg font-semibold leading-tight">{c.title}</div>
+              <div className="text-neutral-400 text-xs font-light mt-1">{c.subtitle}</div>
             </div>
+
             <a
               href={`mailto:${c.email}`}
-              className="shrink-0 text-amber-400 hover:text-amber-700 hover:underline text-sm font-medium transition-colors"
+              className="shrink-0 inline-flex items-center gap-2 font-mono text-xs text-neutral-400 group-hover:text-amber-500 transition-colors font-bold"
             >
-              {c.email} →
+              <span>{c.email}</span>
+              <span className="text-neutral-200 group-hover:text-amber-400 transition-colors">
+                ↗
+              </span>
             </a>
           </div>
         ))}
-      </div>
-
-      {/* Map block */}
-      <div className="flex-1 flex flex-col overflow-hidden bg-white border border-neutral-200 rounded-xl shadow-sm min-h-[260px]">
-        <iframe
-          title="Dipalo Ventures — Chicago studio"
-          src="https://www.openstreetmap.org/export/embed.html?bbox=-87.6726%2C41.8847%2C-87.6626%2C41.8887&layer=mapnik&marker=41.8867%2C-87.6676"
-          loading="lazy"
-          className="w-full h-[200px] border-none flex-1"
-        />
-        <div className="flex items-center justify-between gap-4 p-4 border-t border-neutral-200 bg-neutral-50">
-          <div className="flex items-center gap-3 min-w-0">
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke={GOLD}
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden
-            >
-              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
-            <div className="min-w-0">
-              <div className="text-neutral-900 truncate text-sm font-medium">mHUB Chicago</div>
-              <div className="text-neutral-500 text-xs mt-0.5">
-                1623 W Fulton St, Suite 237 · Chicago, IL 60612
-              </div>
-            </div>
-          </div>
-          <a
-            href={MAP_DIRECTIONS}
-            target="_blank"
-            rel="noreferrer"
-            className="shrink-0 text-amber-400 hover:text-amber-700 hover:underline text-sm font-medium transition-colors"
-          >
-            Directions ↗
-          </a>
-        </div>
       </div>
     </div>
   )

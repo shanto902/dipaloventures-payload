@@ -22,7 +22,7 @@ export function Footer() {
                     className="group flex items-center gap-2 px-3 py-1.5 bg-neutral-100/50 border border-neutral-200/50 rounded-lg transition-all hover:border-amber-400/40"
                   >
                     <div className="w-1 h-1 bg-amber-400 rounded-full animate-pulse" />
-                    <span className="font-mono text-[9px] text-neutral-500 uppercase tracking-widest font-bold">
+                    <span className="font-mono text-xs text-neutral-500 uppercase tracking-widest font-bold">
                       {loc}
                     </span>
                   </div>

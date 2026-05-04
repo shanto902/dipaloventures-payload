@@ -35,24 +35,10 @@ export function PortfolioPageClient({ items }: { items?: any[] }) {
     <>
       <PortfolioVideoBanner />
 
-      <section className="container mx-auto px-4 py-16 md:py-24">
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="text-sm font-semibold uppercase tracking-widest text-neutral-500 mb-4">
-            Portfolio
-          </div>
-          <h1 className="text-4xl md:text-5xl font-semibold text-neutral-900 whitespace-nowrap">
-            Our portfolio <span className="italic">companies.</span>
-          </h1>
-          <p className="mt-6 text-lg text-neutral-600 leading-relaxed">
-            Breakthrough Technologies for People And The Planet.{' '}
-            <span className="font-bold text-neutral-900">16</span> companies across Fund I, Fund II,
-            and SPVs.
-          </p>
-        </div>
-
+      <section className="container mx-auto px-4 pb-16 md:pb-24">
         <PortfolioStats />
 
-        <div className="mt-16 grid lg:grid-cols-[260px_1fr] gap-10">
+        <div className="mt-8 grid lg:grid-cols-[260px_1fr] gap-10">
           <PortfolioSidebar
             funds={funds}
             setFunds={setFunds}

@@ -56,8 +56,8 @@ export function Header() {
             <Image
               src={logoImg}
               alt="Dipalo Ventures"
-              height={32}
-              className="shrink-0 transition-transform group-hover:scale-105 w-auto h-8"
+              height={120}
+              className="shrink-0 transition-transform group-hover:scale-105 w-auto h-12"
               priority
             />
           </Link>
@@ -82,7 +82,7 @@ export function Header() {
             })}
             <Link
               href="/contact"
-              className="ml-4 inline-flex items-center gap-2 px-6 py-2.5 bg-amber-400 hover:text-white text-black font-mono text-[10px] uppercase tracking-[0.2em] font-bold rounded-full hover:bg-neutral-900 transition-all duration-500 shadow-lg shadow-amber-400/20"
+              className="ml-4 inline-flex items-center gap-2 px-6 py-2.5 bg-amber-400 hover:text-white text-black font-mono text-xs uppercase tracking-[0.2em] font-bold rounded-full hover:bg-neutral-900 transition-all duration-500 shadow-lg shadow-amber-400/20"
             >
               Submit pitch
               <ArrowRight size={14} />
@@ -125,7 +125,7 @@ export function Header() {
                   style={{ transitionDelay: `${i * 100}ms` }}
                 >
                   <span
-                    className={`text-4xl font-serif tracking-tight ${isActive ? 'text-amber-400' : 'text-neutral-900'}`}
+                    className={`text-4xl   tracking-tight ${isActive ? 'text-amber-400' : 'text-neutral-900'}`}
                   >
                     {l.label}
                   </span>
@@ -146,7 +146,7 @@ export function Header() {
               Submit Pitch <ArrowRight size={16} />
             </Link>
 
-            <div className="mt-10 flex justify-between items-center text-[10px] font-mono uppercase tracking-widest text-neutral-400 font-bold">
+            <div className="mt-10 flex justify-between items-center text-xs font-mono uppercase tracking-widest text-neutral-400 font-bold">
               <span>© 2024 Dipalo Ventures</span>
               <div className="flex gap-4">
                 <a href="#" className="hover:text-amber-400 transition-colors">

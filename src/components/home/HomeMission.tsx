@@ -2,7 +2,7 @@ import React from 'react'
 
 export function HomeMission() {
   return (
-    <section className=" py-20 md:py-32 border-y border-neutral-200/50">
+    <section className="py-16 md:py-24 border-y border-neutral-200/50">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
           <div className="lg:sticky lg:top-32">
@@ -32,9 +32,7 @@ export function HomeMission() {
               this divide. Join us.
             </p>
             <div className="pt-4">
-              <div className="font-serif text-2xl italic text-neutral-900">
-                The Dipalo Partnership
-              </div>
+              <div className="  text-2xl italic text-neutral-900">The Dipalo Partnership</div>
               <div className="text-xs font-mono uppercase tracking-widest text-neutral-400 mt-2">
                 Chicago & Global
               </div>
