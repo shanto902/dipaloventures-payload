@@ -226,6 +226,7 @@ export interface Portfolio {
    * Lower numbers appear first
    */
   order?: number | null;
+  isExited?: boolean | null;
   exit?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -417,6 +418,7 @@ export interface PortfolioSelect<T extends boolean = true> {
   url?: T;
   featured?: T;
   order?: T;
+  isExited?: T;
   exit?: T;
   updatedAt?: T;
   createdAt?: T;

@@ -45,12 +45,9 @@ export default async function PortfolioPage() {
       logo: logoUrl,
       productImage: productImageUrl,
       exit: doc.exit,
+      isExited: doc.isExited,
     }
   })
 
-  return (
-    <SiteLayout>
-      <PortfolioPageClient items={portfolioItems.length > 0 ? portfolioItems : undefined} />
-    </SiteLayout>
-  )
+  return <PortfolioPageClient items={portfolioItems.length > 0 ? portfolioItems : undefined} />
 }

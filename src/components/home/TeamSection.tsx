@@ -1,6 +1,5 @@
 import React from 'react'
 import Image from 'next/image'
-import { team } from '@/lib/demo'
 import { AnimatedLink } from '@/components/ui/AnimatedLink'
 
 function initial(n: string) {
@@ -8,54 +7,65 @@ function initial(n: string) {
 }
 
 export function TeamSection({ members }: { members?: any[] }) {
-  // We limit to the first 4 for the homepage layout
-  const displayTeam = (members || team).slice(0, 5)
+  const displayTeam = members || []
+
+  if (displayTeam.length === 0) return null
 
   return (
-    <section className="bg-white py-16 md:py-24">
+    <section className="bg-white px-5 md:px-12 py-8 border-t border-neutral-100">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-          <div className="max-w-2xl">
+          <div className="max-w-xl">
             <div className="text-sm font-mono uppercase tracking-[0.2em] text-amber-400 mb-6 font-bold">
-              The team
+              The Partnership
             </div>
-            <h2 className="text-4xl md:text-5xl font-semibold text-neutral-900 leading-[1.1] tracking-tight">
-              Operators with <span className="italic text-amber-400">scars.</span>
+            <h2 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.1] tracking-tight">
+              Builders. Investors. <br />
+              <span className=" italic text-amber-400">Battle-Tested</span>
             </h2>
-            <p className="mt-6 text-lg text-neutral-600 leading-relaxed max-w-xl">
-              From Motorola to med-tech — our GPs have built physical products at scale.
-            </p>
           </div>
-          <AnimatedLink href="/team">Meet the full team</AnimatedLink>
+          <AnimatedLink href="/team">All Partners & Advisors</AnimatedLink>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-8 md:gap-10">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-16 max-w-5xl mx-auto">
           {displayTeam.map((m) => (
-            <article key={m.name} className="group relative">
-              <div className="relative aspect-square overflow-hidden bg-neutral-50 rounded-2xl mb-6">
+            <article
+              key={m.name}
+              className="flex flex-col sm:flex-row gap-6 md:gap-8 items-center sm:items-start group"
+            >
+              <div className="relative h-40 w-40 md:h-48 md:w-48 shrink-0 overflow-hidden bg-neutral-50 rounded-2xl transition-all duration-500 shadow-sm border border-neutral-100">
                 {m.photo ? (
                   <Image
                     src={m.photo}
                     alt={m.name}
                     fill
-                    className="object-cover object-top transition-all duration-700 ease-in-out group-hover:scale-105"
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   />
                 ) : (
-                  <div className="absolute inset-0 flex items-center justify-center   text-6xl text-neutral-200">
+                  <div className="w-full h-full flex items-center justify-center text-neutral-400 text-5xl font-mono">
                     {initial(m.name)}
                   </div>
                 )}
-                {/* Subtle overlay for depth */}
-                <div className="absolute inset-0 bg-neutral-900/5 group-hover:bg-transparent transition-colors duration-500" />
               </div>
 
-              <div className="relative">
-                <h3 className="  text-xl md:text-2xl text-neutral-900 font-medium tracking-tight">
+              <div className="flex-1 text-center sm:text-left py-1">
+                <div className="text-xs font-mono uppercase tracking-widest text-amber-500 mb-2 font-bold">
+                  {m.role}
+                </div>
+                <h3 className="text-2xl font-semibold text-neutral-900 mb-3 tracking-tight">
                   {m.name}
                 </h3>
-                <p className="mt-1.5 text-xs font-mono uppercase tracking-[0.2em] text-neutral-400 font-bold">
-                  {m.role}
+                <p className="text-sm text-neutral-800 leading-relaxed font-light mb-4 line-clamp-3">
+                  {m.bio}
                 </p>
+                <a
+                  href={m.linkedin || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest font-bold text-neutral-600 hover:text-neutral-900 transition-colors"
+                >
+                  Connect <span aria-hidden>↗</span>
+                </a>
               </div>
             </article>
           ))}

@@ -7,71 +7,39 @@ import { Button } from '@/components/ui/Button'
 
 export function ResidencyRAAS() {
   return (
-    <section id="services" className="relative py-24 md:py-32 overflow-hidden">
-      {/* Background Studio Tint */}
-      <div className="absolute inset-0  border-y border-neutral-100 -z-10" />
-
-      <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-16 lg:gap-24 items-start">
-          <div>
+    <section
+      id="services"
+      className="relative px-5 md:px-12 py-12 md:py-16 overflow-hidden bg-[#fcfbf9]"
+    >
+      <div className="container mx-auto px-5 ">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-8">
+          <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
-              <div className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-400 font-bold">
+              <div className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-600 font-bold">
                 Standalone Partnership
               </div>
             </div>
-            <h2 className="text-4xl md:text-6xl font-semibold text-neutral-900 leading-[1.1] tracking-tight">
-              Residency <br />
-              <span className="italic   text-amber-400">as a Service.</span>
+            <h2 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.2] tracking-tight italic">
+              Not every great company needs our capital. <br className="hidden md:block" />
+              Some just need our <span className="text-amber-500">operators.</span>
             </h2>
-            <p className="mt-8 text-lg text-neutral-500 leading-relaxed font-normal italic border-l-2 border-amber-400/20 pl-6">
-              Not every great founder fits our investment thesis — but most can benefit from
-              operator-grade engineering and supply chain support. RAAS extends Residency as a
-              standalone engagement.
-            </p>
-
-            <div className="mt-16 group relative aspect-video overflow-hidden rounded-[2rem] border border-neutral-100 shadow-2xl shadow-neutral-900/5">
-              <Image
-                src={scalableProduct}
-                alt="Residency as a Service in action"
-                fill
-                className="absolute inset-0 h-full w-full object-cover   transition-all duration-1000 scale-105 group-hover:scale-100"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
-              <div className="absolute bottom-6 left-6">
-                <span className="font-mono text-xs uppercase tracking-[0.3em] text-amber-400 font-bold">
-                  Field Deployment
-                </span>
-                <p className="text-white text-sm italic opacity-80 mt-1">
-                  Operational Audit: Scalable Systems
-                </p>
-              </div>
-            </div>
           </div>
-
-          <div className="grid sm:grid-cols-2 gap-px bg-neutral-100 border border-neutral-200 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-neutral-900/5">
-            {raasCards.map((x) => (
-              <article
-                key={x.t}
-                className="bg-white p-10 flex flex-col group transition-all duration-500 hover:bg-amber-50/30"
-              >
-                <div className="mb-8 flex items-center justify-between">
-                  <div className="w-8 h-8 rounded-full bg-neutral-50 flex items-center justify-center border border-neutral-100 group-hover:bg-amber-400 group-hover:border-amber-400 transition-all duration-500">
-                    <span className="text-amber-500 group-hover:text-neutral-900 transition-colors text-xs font-mono font-bold">
-                      ✦
-                    </span>
-                  </div>
-                </div>
-                <h3 className="  text-xl md:text-2xl font-medium text-neutral-900 mb-4 transition-colors group-hover:text-amber-500">
-                  {x.t}
-                </h3>
-                <p className="text-sm text-neutral-500 leading-relaxed font-light group-hover:text-neutral-600 transition-colors">
-                  {x.b}
-                </p>
-              </article>
-            ))}
+          <div className="max-w-md">
+            <p className="text-base md:text-lg text-neutral-800 leading-relaxed font-light italic border-l-2 border-amber-400/20 pl-6">
+              We&apos;re beginning to offer Residency as a standalone engagement — selective,
+              limited, and starting now.
+            </p>
           </div>
         </div>
+
+        <Link
+          href="/contact"
+          className="inline-flex items-center px-8 py-4 bg-amber-400 text-black font-mono text-xs uppercase tracking-widest font-bold rounded-full hover:bg-neutral-900 hover:text-white transition-all duration-300 shadow-lg shadow-amber-400/10 group w-full sm:w-auto text-center"
+        >
+          If this is you, reach out
+          <span className="ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
+        </Link>
       </div>
     </section>
   )

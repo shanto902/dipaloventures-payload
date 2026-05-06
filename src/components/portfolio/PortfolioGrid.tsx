@@ -9,6 +9,7 @@ import {
   type FundKey,
 } from '@/lib/demo'
 import { Monogram } from '@/components/Monogram'
+import { ArrowUpRight } from 'lucide-react'
 
 interface Props {
   filtered: any[]
@@ -19,7 +20,7 @@ export function PortfolioGrid({ filtered, totalCount }: Props) {
   return (
     <div>
       <div className="flex items-baseline justify-between mb-6 px-1">
-        <div className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 font-bold">
+        <div className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-600 font-bold">
           <span className="text-neutral-900">{filtered.length}</span> / {totalCount} Entities
         </div>
       </div>
@@ -28,6 +29,18 @@ export function PortfolioGrid({ filtered, totalCount }: Props) {
         {filtered.map((p) => {
           const CardContent = (
             <>
+              {/* Exit Corner Fill */}
+              {p.isExited && (
+                <div 
+                  className="absolute top-0 right-0 w-24 h-24 bg-green-600 z-20 pointer-events-none"
+                  style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }}
+                >
+                  <span className="absolute top-7 right-2 text-white text-base font-mono font-bold uppercase tracking-widest rotate-[45deg]">
+                    Exit
+                  </span>
+                </div>
+              )}
+
               {/* Cinematic Product Image Hover */}
               {p.productImage && (
                 <div
@@ -82,8 +95,8 @@ export function PortfolioGrid({ filtered, totalCount }: Props) {
                 <h2 className="  text-2xl font-medium transition-colors duration-300 group-hover:text-white text-neutral-900 leading-tight">
                   {p.name}
                   {p.url && (
-                    <span className="inline-block ml-1.5 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1 text-base opacity-50 group-hover:opacity-100">
-                      ↗
+                    <span className="inline-flex items-center gap-1 ml-2.5 px-2 py-0.5 rounded-full bg-neutral-100 text-[9px] font-mono font-bold tracking-[0.15em] text-neutral-500 opacity-50 group-hover:opacity-100 group-hover:bg-amber-400 group-hover:text-neutral-900 transition-all duration-500 align-middle">
+                      <ArrowUpRight className="w-2.5 h-2.5" />
                     </span>
                   )}
                 </h2>
@@ -96,7 +109,7 @@ export function PortfolioGrid({ filtered, totalCount }: Props) {
                   <span className="text-xs font-mono uppercase tracking-[0.15em] text-amber-400 font-bold">
                     {sectorMeta[p.sector as Sector]?.label}
                   </span>
-                  <span className="text-xs font-mono uppercase tracking-[0.15em] text-neutral-400 group-hover:text-white/40 transition-colors font-bold">
+                  <span className="text-xs font-mono uppercase tracking-[0.15em] text-neutral-600 group-hover:text-white/40 transition-colors font-bold">
                     {stageMeta[p.stage as Stage]?.label}
                   </span>
                 </div>
@@ -136,8 +149,8 @@ export function PortfolioGrid({ filtered, totalCount }: Props) {
           })()}
 
         {filtered.length === 0 && (
-          <div className="bg-white sm:col-span-2 xl:col-span-3 min-h-[400px] flex flex-col items-center justify-center p-12 text-center text-neutral-400">
-            <span className="text-4xl mb-4   italic text-neutral-200">No results</span>
+          <div className="bg-white sm:col-span-2 xl:col-span-3 min-h-[400px] flex flex-col items-center justify-center p-12 text-center text-neutral-600">
+            <span className="text-4xl mb-4   italic text-neutral-400">No results</span>
             <p className="font-mono text-xs uppercase tracking-widest font-bold">
               Adjust filters to see more entities
             </p>

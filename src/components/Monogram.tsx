@@ -6,7 +6,7 @@ export function Monogram({ name, className }: { name: string; className?: string
   return (
     <div
       className={cn(
-        'h-full w-full bg-neutral-100 flex items-center justify-center rounded-md   text-3xl font-medium text-neutral-400',
+        'h-full w-full bg-neutral-100 flex items-center justify-center rounded-md   text-3xl font-medium text-neutral-600',
         className,
       )}
     >

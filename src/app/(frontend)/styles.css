@@ -50,6 +50,12 @@ html {
   scroll-behavior: smooth;
 }
 
+a,
+button,
+[role='button'] {
+  cursor: pointer;
+}
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
@@ -89,4 +95,28 @@ html {
     background-color: #fab11b;
     color: #000000; /* black */
   }
+}
+
+/* Vertical Marquee Animations */
+@keyframes vertical-scroll-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+@keyframes vertical-scroll-down {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.animate-vertical-scroll-up {
+  animation: vertical-scroll-up 60s linear infinite;
+}
+.animate-vertical-scroll-down {
+  animation: vertical-scroll-down 50s linear infinite;
 }

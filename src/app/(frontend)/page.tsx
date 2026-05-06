@@ -26,8 +26,11 @@ export default async function HomePage() {
   const { docs: teamDocs } = await payload.find({
     collection: 'team',
     depth: 1,
+    where: {
+      category: { equals: 'gp' },
+    },
     sort: 'order',
-    limit: 5,
+    limit: 2,
   })
 
   const teamMembers = teamDocs.map((doc: any) => {
@@ -43,6 +46,9 @@ export default async function HomePage() {
       name: doc.name,
       role: doc.role,
       photo: photoUrl,
+      category: doc.category,
+      bio: doc.bio,
+      linkedin: doc.linkedin,
     }
   })
 
@@ -57,17 +63,26 @@ export default async function HomePage() {
 
   const portfolioItems = portfolioDocs.map((doc: any) => {
     let logoUrl = doc.logo?.url || ''
+    let productUrl = doc.productImage?.url || ''
 
-    // Robust Cloudinary reconstruction
+    // Robust Cloudinary reconstruction for logo
     if (logoUrl.includes('/api/media/file/')) {
       const filename = logoUrl.split('/').pop()
       logoUrl = `https://res.cloudinary.com/${process.env.CLOUDINARY_NAME}/image/upload/f_auto,q_auto/dipalo-ventures/${filename}`
     }
 
+    // Robust Cloudinary reconstruction for productImage
+    if (productUrl.includes('/api/media/file/')) {
+      const filename = productUrl.split('/').pop()
+      productUrl = `https://res.cloudinary.com/${process.env.CLOUDINARY_NAME}/image/upload/f_auto,q_auto/dipalo-ventures/${filename}`
+    }
+
     return {
       name: doc.name,
       logo: logoUrl,
+      productImage: productUrl,
       url: doc.url,
+      isExited: doc.isExited,
     }
   })
 
@@ -99,20 +114,15 @@ export default async function HomePage() {
 
   return (
     <>
-      <SiteLayout>
-        <HomeHero />
-        <HomeMission />
-      </SiteLayout>
-      <FounderInvestorToggle />
-      <PlatformSection />
-      <SiteLayout>
-        <ResidencySection />
-        <TeamSection members={teamMembers.length > 0 ? teamMembers : undefined} />
-      </SiteLayout>
+      <HomeHero portfolio={portfolioItems} />
+      {/* <HomeMission /> */}
+
       <FocusAreasSection />
-      <SiteLayout>
-        <PortfolioMarquee items={portfolioItems.length > 0 ? portfolioItems : undefined} />
-      </SiteLayout>
+      <FounderInvestorToggle />
+      {/* <PlatformSection /> */}
+      <ResidencySection />
+      <TeamSection members={teamMembers.length > 0 ? teamMembers : undefined} />
+      <PortfolioMarquee items={portfolioItems.length > 0 ? portfolioItems : undefined} />
       <TestimonialsCarousel testimonials={testimonials.length > 0 ? testimonials : undefined} />
     </>
   )

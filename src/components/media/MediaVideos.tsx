@@ -11,18 +11,18 @@ export function MediaVideos({ initialVideos }: { initialVideos?: any[] }) {
   return (
     <section
       id="video"
-      className="relative py-12 md:py-24 overflow-hidden bg-white border-b border-neutral-100"
+      className="relative py-8 overflow-hidden bg-white border-b border-neutral-100"
     >
       <div className="container mx-auto px-4">
         {/* Section Identity */}
-        <div className="flex items-center gap-3 mb-16">
+        <div className="flex items-center gap-3 mb-8">
           <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
-          <div className=" text-xs font-mono uppercase tracking-[0.3em] text-neutral-400 font-bold">
+          <div className=" text-xs font-mono uppercase tracking-[0.3em] text-neutral-600 font-bold">
             Archive.01 · Visual Intelligence
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Main Cinema Artifact */}
           <div className="lg:col-span-8 group">
             <div className="relative aspect-video rounded-[2.5rem] overflow-hidden border border-neutral-100 bg-neutral-900 shadow-2xl transition-all duration-700 hover:shadow-amber-900/10">
@@ -43,8 +43,8 @@ export function MediaVideos({ initialVideos }: { initialVideos?: any[] }) {
               </div>
             </div>
 
-            <div className="mt-10">
-              <h2 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-tight tracking-tight group-hover:text-amber-500 transition-colors duration-500">
+            <div className="mt-8">
+              <h2 className="text-xl md:text-2xl font-semibold text-neutral-900 leading-tight tracking-tight group-hover:text-amber-500 transition-colors duration-500">
                 {featuredVideo.title}
               </h2>
               <div className="mt-6 border-l-2 border-amber-400/10 pl-8 max-w-2xl">
@@ -70,8 +70,8 @@ export function MediaVideos({ initialVideos }: { initialVideos?: any[] }) {
 
           {/* Archive Sidebar */}
           <div className="lg:col-span-4 flex flex-col">
-            <div className="flex items-center justify-between mb-8 pb-4 border-b border-neutral-100">
-              <span className="font-mono  text-xs uppercase tracking-[0.2em] text-neutral-400 font-bold">
+            <div className="flex items-center justify-between mb-4 pb-4 border-b border-neutral-100">
+              <span className="font-mono  text-xs uppercase tracking-[0.2em] text-neutral-600 font-bold">
                 Transmission History
               </span>
               <a
@@ -84,12 +84,12 @@ export function MediaVideos({ initialVideos }: { initialVideos?: any[] }) {
               </a>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-4">
               {otherVideos.map((v) => (
                 <article key={v.id} className="group cursor-pointer">
                   <div className="relative aspect-video rounded-2xl overflow-hidden border border-neutral-100 bg-neutral-50 mb-4 group-hover:shadow-xl group-hover:shadow-neutral-900/5 transition-all duration-500">
                     <iframe
-                      className="absolute inset-0 w-full h-full border-none grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000"
+                      className="absolute inset-0 w-full h-full border-none transition-all duration-1000"
                       src={`https://www.youtube.com/embed/${v.id}`}
                       title={v.title}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -99,7 +99,7 @@ export function MediaVideos({ initialVideos }: { initialVideos?: any[] }) {
                   <h4 className="text-lg font-semibold text-neutral-900 leading-tight tracking-tight group-hover:text-amber-500 transition-colors">
                     {v.title}
                   </h4>
-                  <div className="mt-2 font-mono  text-xs uppercase tracking-[0.2em] text-neutral-400 font-bold">
+                  <div className="mt-2 font-mono  text-xs uppercase tracking-[0.2em] text-neutral-600 font-bold">
                     Transmission_V.0{v.id.slice(0, 1)}
                   </div>
                 </article>

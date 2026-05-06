@@ -146,7 +146,7 @@ export function Header() {
               Submit Pitch <ArrowRight size={16} />
             </Link>
 
-            <div className="mt-10 flex justify-between items-center text-xs font-mono uppercase tracking-widest text-neutral-400 font-bold">
+            <div className="mt-10 flex justify-between items-center text-xs font-mono uppercase tracking-widest text-neutral-600 font-bold">
               <span>© 2024 Dipalo Ventures</span>
               <div className="flex gap-4">
                 <a href="#" className="hover:text-amber-400 transition-colors">

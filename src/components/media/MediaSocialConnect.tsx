@@ -56,7 +56,7 @@ export function MediaSocialConnect() {
           <div className="space-y-8">
             <div className="flex items-center gap-3">
               <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
-              <div className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-400 font-bold">
+              <div className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-600 font-bold">
                 Connect · Archive
               </div>
             </div>

@@ -10,17 +10,17 @@ export function MediaInstagram({ initialPosts }: { initialPosts?: InstagramPost[
   return (
     <section
       id="instagram"
-      className="relative py-24 px-5 md:px-12 md:py-32 overflow-hidden bg-[#fcfbf9] border-b border-neutral-100"
+      className="relative py-8 px-5 md:px-12  overflow-hidden bg-[#fcfbf9] border-b border-neutral-100"
     >
       {/* Background Studio Tint */}
       <div className="absolute inset-0 bg-[#f7f0e6]/30 -z-10" />
 
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-8">
           <div className="max-w-2xl">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
-              <div className=" text-xs font-mono uppercase tracking-[0.3em] text-neutral-400 font-bold">
+              <div className=" text-xs font-mono uppercase tracking-[0.3em] text-neutral-600 font-bold">
                 Archive.02 · Visual Field Notes
               </div>
             </div>
@@ -31,7 +31,7 @@ export function MediaInstagram({ initialPosts }: { initialPosts?: InstagramPost[
           </div>
 
           <div className="max-w-xs">
-            <p className="text-base text-neutral-500 leading-relaxed font-light italic border-l-2 border-amber-400/10 pl-6">
+            <p className="text-base md:text-lg text-neutral-800 leading-relaxed font-light italic border-l-2 border-amber-400/10 pl-6 mb-2">
               A chronological archive of physical prototypes, site visits, and operator insights
               from the Dipalo network.
             </p>
@@ -56,7 +56,7 @@ export function MediaInstagram({ initialPosts }: { initialPosts?: InstagramPost[
                         : post.media_url
                     }
                     alt={post.caption || 'Instagram Post'}
-                    className="absolute inset-0 w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000 scale-105 group-hover:scale-100"
+                    className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-1000 scale-105 group-hover:scale-100"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-neutral-900/60 via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity duration-700" />
 
@@ -66,13 +66,6 @@ export function MediaInstagram({ initialPosts }: { initialPosts?: InstagramPost[
                     <span className="font-mono text-xs uppercase tracking-[0.3em] text-white/70 font-bold">
                       Field_Report
                     </span>
-                  </div>
-
-                  {/* View Button Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="px-5 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full font-mono  text-xs uppercase tracking-[0.2em] text-white font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                      View on Instagram →
-                    </div>
                   </div>
                 </a>
               ))
@@ -91,7 +84,7 @@ export function MediaInstagram({ initialPosts }: { initialPosts?: InstagramPost[
                     }}
                   />
 
-                  <div className="relative flex flex-col items-center gap-4 text-neutral-300 group-hover:text-amber-400 transition-colors duration-700">
+                  <div className="relative flex flex-col items-center gap-4 text-neutral-500 group-hover:text-amber-400 transition-colors duration-700">
                     <div className="w-10 h-10 rounded-full border border-current border-dashed animate-[spin_10s_linear_infinite] flex items-center justify-center">
                       <span className=" text-xs">✦</span>
                     </div>

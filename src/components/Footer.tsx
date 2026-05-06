@@ -10,11 +10,11 @@ export function Footer() {
         <div className="grid lg:grid-cols-[1.5fr_1fr_1fr_2fr] gap-12 lg:gap-24 pb-12">
           <div>
             <Logo size={60} />
-            <p className="mt-6 max-w-xs text-base text-neutral-600 leading-relaxed font-light">
+            <p className="mt-6 max-w-xs text-base text-neutral-800 leading-relaxed font-light">
               Early-stage hard tech venture capital. Chicago-based operators who have shipped
               physical products at scale.
             </p>
-            <div className="mt-8 flex flex-col gap-3">
+            {/* <div className="mt-8 flex flex-col gap-3">
               <div className="flex flex-wrap gap-2">
                 {['Chicago', 'Lisbon', 'Global'].map((loc) => (
                   <div
@@ -28,11 +28,11 @@ export function Footer() {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div>
-            <div className="text-sm font-mono uppercase tracking-[0.2em] text-neutral-600 mb-6 font-bold">
+            <div className="text-sm font-mono uppercase tracking-[0.2em] text-neutral-800 mb-6 font-bold">
               Explore
             </div>
             <ul className="space-y-4">
@@ -56,7 +56,7 @@ export function Footer() {
           </div>
 
           <div>
-            <div className="text-sm font-mono uppercase tracking-[0.2em] text-neutral-600 mb-6 font-bold">
+            <div className="text-sm font-mono uppercase tracking-[0.2em] text-neutral-800 mb-6 font-bold">
               Elsewhere
             </div>
             <ul className="space-y-4">
@@ -95,19 +95,19 @@ export function Footer() {
         </div>
 
         <div className="pt-6 border-t border-neutral-200/60 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="text-xs font-mono text-neutral-400 tracking-[0.2em] font-bold uppercase">
+          <div className="text-xs font-mono text-neutral-600 tracking-[0.2em] font-bold uppercase">
             © {new Date().getFullYear()} Dipalo Ventures. All rights reserved.
           </div>
           <div className="flex gap-8">
             <Link
               href="/privacy"
-              className="text-xs font-mono uppercase tracking-[0.2em] text-neutral-400 hover:text-neutral-900 transition-colors font-bold"
+              className="text-xs font-mono uppercase tracking-[0.2em] text-neutral-600 hover:text-neutral-900 transition-colors font-bold"
             >
               Privacy
             </Link>
             <Link
               href="/terms"
-              className="text-xs font-mono uppercase tracking-[0.2em] text-neutral-400 hover:text-neutral-900 transition-colors font-bold"
+              className="text-xs font-mono uppercase tracking-[0.2em] text-neutral-600 hover:text-neutral-900 transition-colors font-bold"
             >
               Terms
             </Link>

@@ -15,6 +15,8 @@ export function FounderInvestorToggle() {
     investors: null,
   })
 
+  const otherTab = tab === 'founders' ? 'investors' : 'founders'
+
   const onTabKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
     const i = tabs.indexOf(tab)
     let nextIndex: number | null = null
@@ -33,25 +35,20 @@ export function FounderInvestorToggle() {
   }
 
   return (
-    <section
-      className="bg-[#fcfbf9] py-16 md:py-24 px-6 md:px-12"
-      aria-labelledby={`${baseId}-heading`}
-    >
+    <section className="bg-white py-8 px-6 md:px-12 relative">
       <div className="container mx-auto px-4">
-        <h2 id={`${baseId}-heading`} className="sr-only">
-          For founders and investors
-        </h2>
-
-        {/* Premium Pill Toggle */}
-        <div className="flex justify-center mb-20">
+        {/* Refined Tab Toggle */}
+        <div className="flex justify-center mb-8 ">
           <div
             role="tablist"
             aria-label="Audience"
-            className="relative p-1 bg-neutral-200/50 rounded-full flex w-full max-w-[330px]"
+            className="relative p-1 bg-neutral-50 rounded-full flex w-full max-w-[400px] border border-neutral-200 shadow-inner"
           >
-            {/* Sliding Background */}
+            {/* Sliding Indicator */}
             <div
-              className={`absolute top-1 bottom-1 w-[calc(50%-4px)] bg-white rounded-full shadow-sm transition-all duration-300 ease-out z-0 ${tab === 'investors' ? 'translate-x-[calc(100%+0px)]' : 'translate-x-0'}`}
+              className={`absolute top-1 bottom-1 w-[calc(50%-4px)] bg-amber-400 rounded-full shadow-sm transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) z-0 ${
+                tab === 'investors' ? 'translate-x-[calc(100%+0px)]' : 'translate-x-0'
+              }`}
             />
             {tabs.map((k) => {
               const active = tab === k
@@ -71,9 +68,9 @@ export function FounderInvestorToggle() {
                   onClick={() => setTab(k)}
                   onKeyDown={onTabKeyDown}
                   className={`
-                    relative z-10 flex-1 text-xs tracking-[0.25em] uppercase font-mono font-bold py-3 px-4 rounded-full transition-colors duration-300
+                    relative z-10 flex-1 text-sm tracking-[0.2em] uppercase font-mono font-bold py-3 px-6 rounded-full transition-all duration-300
                     focus-visible:outline-none 
-                    ${active ? 'text-neutral-900' : 'text-neutral-500 hover:text-neutral-700'}
+                    ${active ? 'text-black' : 'text-neutral-600 hover:text-neutral-600'}
                   `}
                 >
                   {label}
@@ -89,40 +86,79 @@ export function FounderInvestorToggle() {
           aria-labelledby={`${baseId}-tab-${tab}`}
           tabIndex={0}
           key={tab}
-          className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start focus-visible:outline-none animate-in fade-in slide-in-from-bottom-4 duration-500"
+          className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start focus-visible:outline-none animate-in fade-in slide-in-from-bottom-4 duration-700"
         >
           <div className="lg:sticky lg:top-32">
             <div className="text-sm font-mono uppercase tracking-[0.2em] text-amber-400 mb-6 font-bold">
-              {tab === 'founders' ? 'The Founder Value' : 'The Investor Access'}
+              {tab === 'founders' ? 'Why Partner With Us' : 'Why Partner With Us'}
             </div>
             <h3 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.1] tracking-tight">
-              {data.headline.replace('.', '')} <span className="italic"></span>
+              {data.headline} <span className="italic"></span>
             </h3>
-            <p className="mt-6 md:mt-8 text-lg md:text-xl text-neutral-600 leading-relaxed font-light max-w-xl">
+            <p className="mt-6 md:mt-8 text-base md:text-lg text-neutral-800 leading-relaxed font-light max-w-xl">
               {data.body}
             </p>
+
+            {/* Desktop Path Switcher CTA */}
+            {/* <div className="hidden lg:block mt-12 p-8 rounded-3xl bg-amber-400/5 border border-amber-400/10 max-w-md">
+              <div className="text-xs font-mono uppercase tracking-widest text-amber-500 mb-2 font-bold">
+                Alternatively
+              </div>
+              <div className="text-sm text-neutral-600 mb-4 font-light">
+                Are you an{' '}
+                {otherTab === 'investors'
+                  ? 'investor looking for access'
+                  : 'founder looking for partnership'}
+                ?
+              </div>
+              <button
+                onClick={() => setTab(otherTab)}
+                className="group flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-neutral-900 hover:text-amber-500 transition-colors"
+              >
+                Switch to {otherTab}{' '}
+                <span className="transition-transform group-hover:translate-x-1">→</span>
+              </button>
+            </div> */}
           </div>
 
-          <div className="bg-white border border-neutral-200/60 rounded-3xl p-6 md:p-12 shadow-sm">
-            <ul className="space-y-10 md:space-y-12">
-              {data.bullets.map((bl, i) => (
-                <li key={bl.t} className="group">
-                  <div className="flex gap-4 md:gap-6">
-                    <div className="text-amber-400 font-mono text-xs font-bold mt-1.5 shrink-0">
-                      0{i + 1}
-                    </div>
-                    <div>
-                      <div className="text-lg md:text-xl font-semibold text-neutral-900 group-hover:text-amber-400 transition-colors">
-                        {bl.t}
+          <div className="space-y-12">
+            <div className="bg-[#fcfbf9] border border-neutral-200/60 rounded-3xl p-6 md:p-12 shadow-sm">
+              <ul className="space-y-10 md:space-y-12">
+                {data.bullets.map((bl, i) => (
+                  <li key={bl.t} className="group">
+                    <div className="flex gap-4 md:gap-6">
+                      <div className="text-amber-400 font-mono text-xs font-bold mt-1.5 shrink-0">
+                        0{i + 1}
                       </div>
-                      <div className="text-base text-neutral-600 mt-2 md:mt-3 leading-relaxed font-light">
-                        {bl.b}
+                      <div>
+                        <div className="text-lg md:text-xl font-semibold text-neutral-900 group-hover:text-amber-400 transition-colors">
+                          {bl.t}
+                        </div>
+                        <div className="text-base md:text-lg text-neutral-800 mt-2 md:mt-3 leading-relaxed font-light">
+                          {bl.b}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Mobile Path Switcher CTA */}
+            {/* <div className="lg:hidden p-8 rounded-3xl bg-amber-400/5 border border-amber-400/10">
+              <div className="text-xs font-mono uppercase tracking-widest text-amber-500 mb-2 font-bold">
+                Switch Path
+              </div>
+              <div className="text-sm text-neutral-600 mb-4 font-light">
+                Are you an {otherTab === 'investors' ? 'investor' : 'founder'}?
+              </div>
+              <button
+                onClick={() => setTab(otherTab)}
+                className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-neutral-900"
+              >
+                See Investor View →
+              </button>
+            </div> */}
           </div>
         </div>
       </div>

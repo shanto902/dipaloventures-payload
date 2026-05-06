@@ -6,7 +6,7 @@ export function ResidencyCovers() {
   return (
     <section
       id="residency-program"
-      className="relative py-20 md:py-32 overflow-hidden bg-white border-b border-neutral-100 px-5 md:px-12"
+      className="relative py-8 overflow-hidden bg-white border-b border-neutral-100 px-5 md:px-12"
     >
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
@@ -14,7 +14,7 @@ export function ResidencyCovers() {
           <div className="lg:col-span-5 lg:sticky lg:top-32">
             <div className="flex items-center gap-3 mb-8">
               <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
-              <div className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-400 font-bold">
+              <div className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-600 font-bold">
                 Archive.04 · Program Scope
               </div>
             </div>
@@ -25,7 +25,7 @@ export function ResidencyCovers() {
               <span className="italic text-amber-400 ">execution.</span>
             </h2>
 
-            <p className="text-lg text-neutral-500 leading-relaxed font-light italic border-l-2 border-amber-400/10 pl-6 mb-12">
+            <p className="text-lg text-neutral-500 leading-relaxed font-light italic border-l-2 border-amber-400/10 pl-6 mb-8">
               Residency isn&apos;t an accelerator and it isn&apos;t advisory hours. It&apos;s
               operators embedded with your team, doing the technical work alongside you — from early
               design reviews to your first production runs.
@@ -67,7 +67,7 @@ export function ResidencyCovers() {
                     {x.t}
                   </h3>
 
-                  <p className="text-sm md:text-base text-neutral-500 leading-relaxed font-light group-hover:text-neutral-600 transition-colors duration-500 italic">
+                  <p className="text-sm md:text-base text-neutral-500 leading-relaxed font-light group-hover:text-neutral-800 transition-colors duration-500 italic">
                     {x.b}
                   </p>
 

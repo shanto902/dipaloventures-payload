@@ -82,7 +82,7 @@ export function OrgPill({
       href={href}
       target="_blank"
       rel="noreferrer"
-      className={`inline-flex items-center gap-1 border border-neutral-200 text-neutral-600 hover:text-amber-400 hover:border-amber-400 transition-colors ${
+      className={`inline-flex items-center gap-1 border border-neutral-200 text-neutral-800 hover:text-amber-400 hover:border-amber-400 transition-colors ${
         size === 'sm' ? 'text-xs px-1.5 py-0.5' : 'text-xs px-2 py-1'
       } rounded-md`}
     >
@@ -121,7 +121,7 @@ export function TeamCard({ m }: { m: TeamMember }) {
         <div className="mt-1.5 font-mono text-sm uppercase tracking-widest text-neutral-500 font-bold">
           {m.role} · {m.location}
         </div>
-        <p className="mt-4 text-base text-neutral-600 leading-relaxed">
+        <p className="mt-4 text-base text-neutral-800 leading-relaxed">
           {short}
           {hasMore && open && <span> {rest}</span>}
         </p>

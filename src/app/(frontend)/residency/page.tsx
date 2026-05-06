@@ -2,6 +2,7 @@ import React from 'react'
 import { SiteLayout } from '@/components/SiteLayout'
 
 import { ResidencyHero } from '@/components/residency/ResidencyHero'
+import { ResidencyQuote } from '@/components/residency/ResidencyQuote'
 import { ResidencyMethodology } from '@/components/residency/ResidencyMethodology'
 import { ResidencyCovers } from '@/components/residency/ResidencyCovers'
 import { ResidencyCaseStudies } from '@/components/residency/ResidencyCaseStudies'
@@ -18,12 +19,11 @@ export default function ResidencyPage() {
   return (
     <>
       <ResidencyHero />
-      <SiteLayout>
-        <ResidencyMethodology />
-        <ResidencyCovers />
-        <ResidencyCaseStudies />
-        <ResidencyRAAS />
-      </SiteLayout>
+      <ResidencyQuote />
+      <ResidencyMethodology />
+      {/* <ResidencyCovers /> */}
+      <ResidencyCaseStudies />
+      <ResidencyRAAS />
       <ResidencyForFounders />
     </>
   )

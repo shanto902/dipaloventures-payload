@@ -30,12 +30,12 @@ export function PlatformSection() {
             >
               <div className="text-2xl   italic text-neutral-900 mb-4">
                 {c.label.split(' · ')[0]}
-                <span className="inline-block mx-2 text-neutral-200 font-sans not-italic">·</span>
-                <span className="font-mono text-xs uppercase tracking-widest text-neutral-400 not-italic align-middle">
+                <span className="inline-block mx-2 text-neutral-400 font-sans not-italic">·</span>
+                <span className="font-mono text-xs uppercase tracking-widest text-neutral-600 not-italic align-middle">
                   {c.label.split(' · ')[1]}
                 </span>
               </div>
-              <p className="text-base text-neutral-600 leading-relaxed font-light">{c.body}</p>
+              <p className="text-base text-neutral-800 leading-relaxed font-light">{c.body}</p>
             </div>
           ))}
         </div>

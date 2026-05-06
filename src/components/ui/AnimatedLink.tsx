@@ -11,7 +11,7 @@ export function AnimatedLink({ href, children, className = '' }: AnimatedLinkPro
   return (
     <Link
       href={href}
-      className={`group flex items-center gap-3 text-xs font-mono uppercase tracking-[0.2em] text-neutral-400 hover:text-amber-400 transition-all duration-300 ${className}`}
+      className={`group flex items-center gap-3 text-xs font-mono uppercase tracking-[0.2em] text-neutral-600 hover:text-amber-400 transition-all duration-300 ${className}`}
     >
       <span>{children}</span>
       <span className="h-px w-8 bg-neutral-200 group-hover:bg-amber-400 group-hover:w-12 transition-all duration-500" />

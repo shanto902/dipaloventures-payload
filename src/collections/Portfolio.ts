@@ -99,6 +99,12 @@ export const Portfolio: CollectionConfig = {
       defaultValue: 100,
     },
     {
+      name: 'isExited',
+      type: 'checkbox',
+      label: 'Exited?',
+      defaultValue: false,
+    },
+    {
       name: 'exit',
       type: 'text',
       label: 'Exit Status (optional)',

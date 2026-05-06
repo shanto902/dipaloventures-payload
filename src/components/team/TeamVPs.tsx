@@ -47,7 +47,7 @@ function SupportingCard({ m }: { m: TeamMember & { orgLinks?: OrgLink[] } }) {
             href={l.href}
             target="_blank"
             rel="noreferrer"
-            className="text-neutral-400 hover:text-amber-400 transition-colors flex items-center gap-1 group/link"
+            className="text-neutral-600 hover:text-amber-400 transition-colors flex items-center gap-1 group/link"
           >
             <span>{l.label}</span>
             <span className="opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
@@ -62,21 +62,23 @@ export function TeamVPs({ members }: { members?: TeamMember[] }) {
   const displayTeam = members || team.filter((m) => m.category === 'vp')
 
   return (
-    <section className="relative py-16 md:py-24 overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center gap-3 mb-12">
-          <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
-          <div className=" text-base font-mono uppercase tracking-[0.3em] text-neutral-400 font-bold">
-            Venture Partners & Platform
+    <section className="px-5 md:px-12">
+      <section className="relative py-8 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
+            <div className=" text-base font-mono uppercase tracking-[0.3em] text-neutral-600 font-bold">
+              Venture Partners & Platform
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch">
+            {displayTeam.map((m) => (
+              <SupportingCard key={m.name} m={m} />
+            ))}
           </div>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch">
-          {displayTeam.map((m) => (
-            <SupportingCard key={m.name} m={m} />
-          ))}
-        </div>
-      </div>
+      </section>
     </section>
   )
 }

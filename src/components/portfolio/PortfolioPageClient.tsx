@@ -35,7 +35,7 @@ export function PortfolioPageClient({ items }: { items?: any[] }) {
     <>
       <PortfolioVideoBanner />
 
-      <section className="container mx-auto px-4 pb-16 md:pb-24">
+      <main className="container mx-auto px-4 pb-8">
         <PortfolioStats />
 
         <div className="mt-8 grid lg:grid-cols-[260px_1fr] gap-10">
@@ -52,7 +52,7 @@ export function PortfolioPageClient({ items }: { items?: any[] }) {
           />
           <PortfolioGrid filtered={filtered} totalCount={displayItems.length} />
         </div>
-      </section>
+      </main>
     </>
   )
 }

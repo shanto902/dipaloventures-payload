@@ -140,7 +140,7 @@ function FilterCheckbox({
         </span>
         <input type="checkbox" className="sr-only" checked={checked} onChange={onChange} />
         <span
-          className={`truncate transition-colors ${checked ? 'text-neutral-900' : 'text-neutral-600 group-hover:text-neutral-900'}`}
+          className={`truncate transition-colors ${checked ? 'text-neutral-900' : 'text-neutral-800 group-hover:text-neutral-900'}`}
         >
           {label}
         </span>

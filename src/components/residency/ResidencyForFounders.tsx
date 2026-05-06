@@ -1,63 +1,73 @@
+'use client'
+
 import React from 'react'
 import Link from 'next/link'
 import { lookFor } from '@/lib/demo'
-import { Button } from '@/components/ui/Button'
 
 export function ResidencyForFounders() {
   return (
-    <section className="relative py-24 px-5 md:px-12 md:py-32 overflow-hidden">
+    <section className="relative py-8 px-5 md:px-12 overflow-hidden bg-white">
       {/* Background Studio Tint */}
-      <div className="absolute inset-0 bg-[#fcfbf9] border-t border-neutral-100 -z-10" />
+      <div className="absolute inset-0 bg-[#fcfbf9]/50 border-t border-neutral-100 -z-10" />
 
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-16 md:mb-24">
+      <div className="container mx-auto px-5">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-8">
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
-              <div className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-400 font-bold">
+              <div className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-600 font-bold">
                 Founder Partnership
               </div>
             </div>
-            <h2 className="text-4xl md:text-7xl font-semibold text-neutral-900 leading-[1.1] tracking-tight">
+            <h2 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.1] tracking-tight">
               We&apos;re looking for <br />
               <span className="italic   text-amber-400">you.</span>
             </h2>
           </div>
           <div className="max-w-xs">
-            <p className="text-lg text-neutral-500 leading-relaxed font-light italic border-l-2 border-amber-400/20 pl-6">
+            <p className="text-base md:text-lg text-neutral-800 leading-relaxed font-light italic border-l-2 border-amber-400/20 pl-6">
               If this sounds like your company, we want to hear from you. Professional operators for
               the physical world.
             </p>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Compact Grid of Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {lookFor.map((w, i) => (
             <article
               key={w.t}
-              className={`group bg-white border border-neutral-100 p-8 rounded-[2rem] shadow-sm hover:shadow-2xl hover:shadow-amber-900/5 transition-all duration-500 flex flex-col ${
-                i % 2 === 1 ? 'md:translate-y-8' : ''
-              }`}
+              className="group bg-white border border-neutral-100 p-5 rounded-4xl transition-all duration-500 hover:shadow-xl hover:-translate-y-1 flex flex-col"
             >
-              <div className="w-12 h-12 rounded-2xl bg-neutral-50 flex items-center justify-center text-2xl group-hover:bg-amber-400 transition-all duration-500 group-hover:scale-110">
+              <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-xl text-amber-600 transition-all duration-500 group-hover:bg-amber-400 group-hover:text-white">
                 {w.ico}
               </div>
-              <h3 className="mt-8   text-xl md:text-2xl font-medium text-neutral-900 leading-tight transition-colors group-hover:text-amber-500">
+              <h3 className="mt-4 text-lg font-semibold text-neutral-900 leading-tight transition-colors group-hover:text-amber-500">
                 {w.t}
               </h3>
-              <div className="mt-4 h-px w-8 bg-neutral-100 group-hover:w-full group-hover:bg-amber-400/20 transition-all duration-700" />
-              <p className="mt-6 text-sm text-neutral-500 leading-relaxed font-light group-hover:text-neutral-600">
-                {w.b}
-              </p>
+              <div className=" h-px w-6 bg-neutral-100 group-hover:w-12 group-hover:bg-amber-400/50 transition-all duration-500" />
+              <p className="mt-4 text-base  text-neutral-500 leading-relaxed font-light">{w.b}</p>
             </article>
           ))}
         </div>
 
-        <div className="mt-24 md:mt-32 flex flex-col items-center justify-center text-center">
-          <div className="mb-8 font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 font-bold">
-            Ready to build?
+        {/* Integrated CTA Footer */}
+        <div className="mt-8 py-8 border-t border-neutral-100 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="flex flex-col gap-1">
+            <span className="font-mono text-xs uppercase tracking-[0.2em] text-amber-500 font-bold">
+              Ready to build?
+            </span>
+            {/* <p className="text-xs text-neutral-600 font-mono uppercase tracking-widest font-bold">
+              Current Cycle: OPEN / Q2-2024
+            </p> */}
           </div>
-          <Button href="/contact" label="Submit your pitch" variant="primary" />
+
+          <Link
+            href="/contact"
+            className="px-8 py-4 bg-amber-400 text-black font-mono text-xs uppercase tracking-widest font-bold rounded-full hover:bg-neutral-900 hover:text-white transition-all duration-300 shadow-lg shadow-amber-400/10 w-full md:w-auto text-center"
+          >
+            Submit your pitch <span aria-hidden>→</span>
+          </Link>
         </div>
       </div>
     </section>

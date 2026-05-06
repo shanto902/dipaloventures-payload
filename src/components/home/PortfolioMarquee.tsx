@@ -9,32 +9,26 @@ export function PortfolioMarquee({ items }: { items?: any[] }) {
 
   // Split items into two rows for a more dynamic look
   const midPoint = Math.ceil(displayItems.length / 2)
-  const row1 = displayItems.slice(0, midPoint)
-  const row2 = displayItems.slice(midPoint)
+  const row1 = [...displayItems.slice(0, midPoint), ...displayItems.slice(0, midPoint)]
+  const row2 = [...displayItems.slice(midPoint), ...displayItems.slice(midPoint)]
 
   return (
-    <section className="bg-white py-16 md:py-24 overflow-hidden border-y border-neutral-100">
-      <div className="container mx-auto px-4 ">
-        <div className="flex items-end justify-between flex-wrap gap-6 mb-12">
+    <section className="bg-[#fcfbf9] py-8  px-5 md:px-12 overflow-hidden border-y border-neutral-100">
+      <div className="container mx-auto px-4  ">
+        <div className="flex items-end justify-between flex-wrap gap-6 mb-8">
           <div className="max-w-2xl">
             <div className="text-sm font-mono uppercase tracking-[0.2em] text-amber-400 mb-6 font-bold">
               Selected portfolio
             </div>
             <h2 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.1]">
-              Companies reshaping
-              <br />
-              their <span className="italic text-amber-400">categories.</span>
+              Designed to Scale. <br /> <span className="text-amber-400 italic">Built to Last</span>
             </h2>
           </div>
           <AnimatedLink href="/portfolio">Full Portfolio</AnimatedLink>
         </div>
       </div>
 
-      <div className="relative mt-12 flex flex-col gap-16">
-        {/* Gradient overlays for smooth fading at edges */}
-        <div className="absolute inset-y-0 left-0 w-32 bg-linear-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute inset-y-0 right-0 w-32 bg-linear-to-l from-white to-transparent z-10 pointer-events-none" />
-
+      <div className="relative px-5 mt-10 md:mt-20 flex flex-col gap-16">
         {/* Row 1: Left to Right */}
         <Marquee gradient={false} speed={35} pauseOnHover={true} direction="left">
           {row1.map((item, i) => (

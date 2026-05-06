@@ -3,7 +3,7 @@ import { AnimatedLink } from '@/components/ui/AnimatedLink'
 
 export function ResidencySection() {
   return (
-    <section className="bg-white py-16 md:py-24 border-y border-neutral-100">
+    <section className="bg-[#fcfbf9] px-5 md:px-12 py-8 border-y border-neutral-100">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-[5fr_7fr] gap-12 lg:gap-20 items-center">
           <div className="relative aspect-4/3 rounded-3xl overflow-hidden bg-neutral-100 border border-neutral-200 shadow-sm group">
@@ -13,8 +13,8 @@ export function ResidencySection() {
                 <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
                 <div className="absolute inset-0 rounded-full border border-amber-400/10 scale-150 animate-ping" />
               </div>
-              <div className="  italic text-2xl text-neutral-400">Technical Residency</div>
-              <div className="mt-4 text-xs font-mono uppercase tracking-[0.25em] text-neutral-300 font-bold">
+              <div className="  italic text-2xl text-neutral-600">Technical Residency</div>
+              <div className="mt-4 text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 font-bold">
                 Program Node 01
               </div>
             </div>
@@ -28,15 +28,15 @@ export function ResidencySection() {
               Better selection, <br />
               <span className="italic text-amber-400">lower failure rates.</span>
             </h2>
-            <p className="mt-6 md:mt-8 text-lg md:text-xl text-neutral-600 leading-relaxed font-light">
-              The Dipalo Residency is a technical diligence and audit program that identifies and
-              mitigates gaps in product design and engineering. It provides technical evaluations,
-              workshops, mentorship, and specific design and engineering support — before we invest
-              and long after.
+            <p className="mt-6 md:mt-8 text-base md:text-lg text-neutral-800 leading-relaxed font-light">
+              The Dipalo Ventures Residency is a technical diligence and audit program that
+              identifies and mitigates gaps in product design and engineering. It provides technical
+              evaluations, workshops, mentorship, and specific design and engineering support —
+              before we invest and long after.
             </p>
 
             <div className="mt-10">
-              <div className="text-xs font-mono uppercase tracking-[0.25em] text-neutral-400 font-bold mb-6">
+              <div className="text-xs font-mono uppercase tracking-[0.25em] text-neutral-600 font-bold mb-6">
                 What we embed with you
               </div>
               <div className="flex flex-wrap gap-2">

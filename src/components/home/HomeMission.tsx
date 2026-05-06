@@ -33,7 +33,7 @@ export function HomeMission() {
             </p>
             <div className="pt-4">
               <div className="  text-2xl italic text-neutral-900">The Dipalo Partnership</div>
-              <div className="text-xs font-mono uppercase tracking-widest text-neutral-400 mt-2">
+              <div className="text-xs font-mono uppercase tracking-widest text-neutral-600 mt-2">
                 Chicago & Global
               </div>
             </div>

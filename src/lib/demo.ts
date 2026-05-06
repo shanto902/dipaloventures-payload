@@ -136,25 +136,25 @@ export const advisors = [
 
 export const focusAreas = [
   {
-    title: 'Energy Transition',
+    title: 'Energy',
     n: '01',
     image: 'energy',
-    body: 'Transforming the energy grid, solar power, and energy storage systems for a sustainable future.',
-    tags: ['Grid', 'Solar', 'Storage'],
+    body: 'Backing startups transforming how the world generates, stores, and uses energy — from renewables to grid tech to electrification',
+    tags: ['Distributed Generation Storage', 'Renewables', 'Data Center Infrastructure'],
   },
   {
-    title: 'Climate Tech',
+    title: 'Climate',
     n: '02',
     image: 'climate',
-    body: 'Innovative solutions addressing climate change through waste management and scalable systems.',
-    tags: ['Waste Management', 'Scalable Systems'],
+    body: 'Investing in technologies that reduce cost while mitigating climate change across food & agriculture, industry, transportation, and the built environment',
+    tags: ['Waste to Value', 'Water Tech', 'Industrial Decarbonization'],
   },
   {
     title: 'Physical AI',
     n: '03',
     image: 'physical-ai',
-    body: 'Applying artificial intelligence to the physical world, from robotics to advanced sensing devices.',
-    tags: ['Robotics', 'Sensing', 'Automation'],
+    body: 'Intelligent hardware — robotics, industrial automation, embedded AI, and the physical systems where machine intelligence meets the real world',
+    tags: ['Robotics', 'Smart Devices', 'Industrial Intelligence'],
   },
 ]
 
@@ -193,6 +193,7 @@ export const portfolio = [
     desc: 'Self-sanitizing diaper changing tables.',
     productImage: '',
     exit: '',
+    isExited: false,
   },
   {
     name: 'Vumo',
@@ -204,6 +205,7 @@ export const portfolio = [
     desc: 'AI-powered vehicle inspection.',
     productImage: '',
     exit: '',
+    isExited: false,
   },
   {
     name: 'NuCurrent',
@@ -215,6 +217,7 @@ export const portfolio = [
     desc: 'Wireless power technologies.',
     productImage: '',
     exit: '',
+    isExited: false,
   },
   {
     name: 'WasteWizer',
@@ -226,6 +229,7 @@ export const portfolio = [
     desc: 'Smart waste management.',
     productImage: '',
     exit: '',
+    isExited: false,
   },
   {
     name: 'Kadeya',
@@ -237,6 +241,7 @@ export const portfolio = [
     desc: 'Closed-loop beverage systems.',
     productImage: '',
     exit: '',
+    isExited: false,
   },
   {
     name: 'Scalable Systems',
@@ -248,6 +253,7 @@ export const portfolio = [
     desc: 'Advanced robotics scaling.',
     productImage: '',
     exit: '',
+    isExited: false,
   },
 ]
 
@@ -280,38 +286,38 @@ export const testimonialCards = [
 
 export const tabContent = {
   founders: {
-    headline: 'Why Partner with Dipalo',
-    body: "Hard tech breaks in ways spreadsheets don't catch — in tolerances, supply chains, and on factory floors. We've been there. Our GPs have shipped physical products at scale, so we know exactly what to look for before we invest and how to help afterward.",
+    headline: 'An Unfair Advantage in Hard Tech for founders',
+    body: "Hard tech fails where spreadsheets can't go — on factory floors, across supply chains, and in engineering detail. We've built through it. Our GPs have shipped physical products at scale, so we know what matters before we invest — and how to help after",
     bullets: [
       {
-        t: 'Technical Audit',
-        b: 'Before we invest, we look deep under the hood — reviewing engineering, supply chain gaps, and stress-testing your path from prototype to production.',
+        t: 'Diligence, Under the Hood',
+        b: 'We go deep before we invest — reviewing engineering, identifying supply chain risks, and pressure-testing your path from prototype to production',
       },
       {
-        t: 'Hands-on, not advisory.',
-        b: "We don't send decks. We review CAD files, BOMs, and manufacturing plans alongside you, then stay involved long after the wire.",
+        t: 'Hands-On from Day One',
+        b: 'We work alongside you on the details — CAD, BOMs, and manufacturing plans — and stay engaged as you scale',
       },
       {
-        t: 'Market expansion is built in.',
-        b: "When you're ready to scale beyond the US, we actively open doors into international markets through our networks.",
+        t: 'Built Locally. Scaled Globally',
+        b: "When you're ready to expand, we leverage our networks to unlock international markets and support execution on the ground",
       },
     ],
   },
   investors: {
-    headline: 'Invest in Deep Tech',
-    body: 'Deep tech represents the next frontier of venture capital — companies solving real physical problems with durable competitive advantages. Our Funds and SPVs provide exposure to breakthrough technologies, vetted in ways your investment team cant on its own.',
+    headline: 'An Unfair Advantage in Hard Tech for Investors',
+    body: "Hard tech is redefining venture — companies solving real-world problems with defensible, IP-driven advantage. Our funds and SPVs provide access to these opportunities — underwritten with technical depth most investment teams don't have",
     bullets: [
       {
-        t: 'Curated Deal Flow',
-        b: 'Access to the best deep tech founders and companies across our focus areas.',
+        t: 'Proprietary Deal Flow',
+        b: 'We source and vet hard-tech opportunities in the US heartland and across the globe through networks built over decades — giving us early access to high-conviction companies',
       },
       {
-        t: 'Experienced Team',
-        b: 'Partners who have built and exited deep tech companies — not just investors.',
+        t: 'Beyond Software',
+        b: 'Deep tech, including Physical AI, is driving the next generation of venture returns, built on real-world innovation and durable, IP-driven advantage',
       },
       {
-        t: 'Track Record',
-        b: 'Our GPs and Venture Partners have invested in early-stage companies for decades. Our founding GP has a 19% net IRR over the last 10 years.',
+        t: 'Operator-Led. Proven',
+        b: 'Our partners have built and exited deep-tech companies. We bring operator experience, not just capital. Our Founding GP has delivered a 19% net IRR over the past decade in early-stage investments',
       },
     ],
   },
@@ -321,32 +327,42 @@ export const lookFor = [
   {
     ico: '✦',
     t: 'Disruptive Idea',
-    b: 'A bold vision for transforming how the world generates energy, addresses climate, or experiences physical products.',
+    b: 'Energy, climate, or physical products.',
   },
   {
     ico: '◉',
     t: 'Physical Product at Core',
-    b: 'Manufactured products — not pure software. Prototype available or actively in development.',
+    b: 'Manufactured hardware in development.',
   },
   {
     ico: '◐',
     t: 'Technical Team',
-    b: 'Deep engineering DNA. You understand the science, the manufacturing, and the path to scale.',
+    b: 'Engineering DNA and path to scale.',
   },
   {
     ico: '❀',
     t: 'Sustainable by Design',
-    b: 'Sustainable engineering and design principles built into your product and business model from day one.',
+    b: 'Built in from day one — not an afterthought.',
   },
 ]
 
 export const methodologySteps = [
-  { n: '01', t: 'Application', b: 'Founders apply; weekly AI-assisted scan.' },
-  { n: '02', t: 'Scan & Screen', b: 'Shortlist, deck review, deal-flow meeting.' },
-  { n: '03', t: 'Business Review', b: 'Founder meeting, financial diligence, draft memo.' },
-  { n: '04', t: 'Tech Review', b: 'Detailed technical & product requirements review.' },
-  { n: '05', t: 'IC Decision', b: 'Diligence memo to investment committee.' },
-  { n: '06', t: 'Portfolio Support', b: 'Advice + commercial services post-investment.' },
+  {
+    n: '01',
+    t: 'Engineering audits',
+    b: 'Architecture, design, and IP reviews pre- and post-investment.',
+  },
+  {
+    n: '02',
+    t: 'Supply chain mapping',
+    b: 'Vendor selection, lead time analysis, risk mitigation.',
+  },
+  {
+    n: '03',
+    t: 'Design + manufacturing',
+    b: 'DFM, tolerancing, prototyping, pilot production support.',
+  },
+  { n: '04', t: 'Gap identification', b: "What you don't know you don't know — surfaced early." },
 ]
 
 export const residencyCovers = [

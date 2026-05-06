@@ -55,10 +55,9 @@ export default async function TeamPage() {
     <>
       <TeamHero />
       <TeamGPs members={gps.length > 0 ? gps : undefined} />
-      <SiteLayout>
-        <TeamVPs members={vps.length > 0 ? vps : undefined} />
-        <TeamAdvisors advisors={advisors.length > 0 ? advisors : undefined} />
-      </SiteLayout>
+
+      <TeamVPs members={vps.length > 0 ? vps : undefined} />
+      <TeamAdvisors advisors={advisors.length > 0 ? advisors : undefined} />
     </>
   )
 }

@@ -1,108 +1,151 @@
-import React from 'react'
-import Image from 'next/image'
-import vumoProduct from '@/assets/products/vumo-product.jpg'
+'use client'
+
+import React, { useEffect, useRef, useState } from 'react'
+import { Volume2, VolumeX } from 'lucide-react'
 
 export function ResidencyHero() {
-  return (
-    <section className="relative  px-5 md:px-12 pt-24 pb-20 overflow-hidden">
-      {/* Technical Background Pattern */}
-      <div className="absolute inset-0 bg-[#fcfbf9] -z-10" />
-      <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none -z-10"
-        style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, #000 1px, transparent 0)`,
-          backgroundSize: '40px 40px',
-        }}
-      />
+  const [isMuted, setIsMuted] = useState(true)
+  const [videoReady, setVideoReady] = useState(false)
+  const ytPlayer = useRef<any>(null)
 
-      <div className="container mx-auto px-4">
-        {/* Architectural Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 border-b border-neutral-200 pb-12 md:pb-16">
-          <div className="max-w-3xl">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-              <div className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-400 font-bold">
+  useEffect(() => {
+    const initPlayer = () => {
+      if (ytPlayer.current) return
+      ytPlayer.current = new (window as any).YT.Player('residency-yt-player', {
+        videoId: 'ruRze-ZMNr4',
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          controls: 0,
+          rel: 0,
+          modestbranding: 1,
+          loop: 1,
+          playlist: 'ruRze-ZMNr4',
+          playsinline: 1,
+          iv_load_policy: 3,
+        },
+        events: {
+          onReady: (event: any) => {
+            event.target.playVideo()
+            setVideoReady(true)
+          },
+          onStateChange: (event: any) => {
+            if (event.data === (window as any).YT.PlayerState.PLAYING) {
+              setVideoReady(true)
+            }
+          },
+        },
+      })
+    }
+
+    if (!(window as any).YT) {
+      const tag = document.createElement('script')
+      tag.src = 'https://www.youtube.com/iframe_api'
+      const firstScriptTag = document.getElementsByTagName('script')[0]
+      if (firstScriptTag && firstScriptTag.parentNode) {
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
+      }
+      ;(window as any).onYouTubeIframeAPIReady = initPlayer
+    } else {
+      initPlayer()
+    }
+
+    return () => {
+      if (ytPlayer.current) {
+        ytPlayer.current.destroy()
+        ytPlayer.current = null
+      }
+    }
+  }, [])
+
+  const toggleMute = () => {
+    if (!ytPlayer.current) return
+    if (isMuted) {
+      ytPlayer.current.unMute()
+      ytPlayer.current.setVolume(50)
+      setIsMuted(false)
+    } else {
+      ytPlayer.current.mute()
+      setIsMuted(true)
+    }
+  }
+
+  return (
+    <section className="relative px-5 md:px-12 pt-24 pb-8  overflow-hidden min-h-[60vh] flex items-center bg-white">
+      <div className="container px-4 mx-auto">
+        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-24 items-center">
+          {/* Left Column: Content Stack */}
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-3 mb-8 md:mb-8">
+              <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
+              <div className="px-2.5 py-1 rounded-md text-xs md:text-xs font-mono uppercase tracking-[0.2em] text-neutral-600 font-bold">
                 Technical Studio
               </div>
             </div>
-            <h1 className="text-4xl md:text-7xl font-semibold text-neutral-900 leading-[1.05] tracking-tight">
-              A technical diligence <br />
-              + product development <br />
-              <span className="italic text-amber-400  ">program.</span>
+
+            <h1 className="text-4xl md:text-5xl font-semibold text-neutral-900 leading-[1.2] tracking-tight mb-8">
+              A technical diligence + <br className="hidden md:block" />
+              product development <br />
+              <span className="text-amber-500 italic">program.</span>
             </h1>
-          </div>
-          <div className="max-w-sm">
-            <p className="text-lg text-neutral-500 leading-relaxed font-normal">
-              The Dipalo Residency is how we de-risk hard tech. Engineering audits, supply chain
-              mapping, and manufacturing support — applied before we invest.
+
+            <p className="text-base md:text-lg text-neutral-500 leading-relaxed max-w-xl mb-8 md:mb-16">
+              Engineering audits, supply chain mapping, and manufacturing support — applied before
+              we invest and continued long after.
             </p>
-          </div>
-        </div>
 
-        {/* Feature Artifact Slot */}
-        <div className="mt-16 md:mt-24 grid lg:grid-cols-[1.5fr_1fr] gap-12 items-start">
+            {/* Technical Metadata Bar */}
+            <div className="flex flex-wrap gap-10 md:gap-16 pt-1">
+              <div className="flex flex-col gap-2">
+                <span className="font-mono text-xs uppercase tracking-widest text-neutral-500 font-bold">
+                  Artifact ID
+                </span>
+                <span className="font-mono text-xs text-neutral-600 font-bold uppercase">
+                  RES-VUMO-026
+                </span>
+              </div>
+              <div className="flex flex-col gap-2">
+                <span className="font-mono text-xs uppercase tracking-widest text-neutral-500 font-bold">
+                  Location
+                </span>
+                <span className="font-mono text-xs text-neutral-600 font-bold uppercase">
+                  Studio B / Shenzhen
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Video Reel */}
           <div className="relative group">
-            {/* Architectural Frame */}
-            <div className="absolute -inset-4 border border-amber-400/20 rounded-[2.5rem] -rotate-1 transition-transform duration-700 group-hover:rotate-0" />
-            <div className="relative aspect-16/10 overflow-hidden rounded-[2rem] bg-neutral-900 shadow-2xl">
-              <Image
-                src={vumoProduct}
-                alt="Residency at work"
-                fill
-                className="absolute inset-0 h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-60" />
-
-              {/* Technical Metadata Overlay */}
-              <div className="absolute bottom-8 left-8 flex items-center gap-6">
-                <div className="flex flex-col">
-                  <span className="font-mono text-xs uppercase tracking-widest text-white/50 mb-1">
-                    Artifact ID
-                  </span>
-                  <span className="font-mono text-xs text-white font-bold">RES-VUMO-026</span>
+            {/* Architectural Accent Background */}
+            <div
+              className="absolute -inset-4 bg-amber-400/5 rounded-[2.5rem] rotate-1 transition-transform duration-700 group-hover:rotate-0"
+              aria-hidden
+            />
+            {/* Video Container */}
+            <div className="relative aspect-video overflow-hidden rounded-3xl bg-neutral-900 shadow-sm border border-neutral-100">
+              {!videoReady && (
+                <div className="absolute inset-0 z-20 flex items-center justify-center bg-neutral-900">
+                  <div className="w-8 h-8 rounded-full border-2 border-amber-400/20 border-t-amber-400 animate-spin" />
                 </div>
-                <div className="w-px h-6 bg-white/20" />
-                <div className="flex flex-col">
-                  <span className="font-mono text-xs uppercase tracking-widest text-white/50 mb-1">
-                    Location
-                  </span>
-                  <span className="font-mono text-xs text-white font-bold">
-                    Studio B / Shenzhen
-                  </span>
-                </div>
+              )}
+              <div
+                className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
+              >
+                <div
+                  id="residency-yt-player"
+                  className="absolute inset-0 w-full h-full scale-[1.05]"
+                />
               </div>
-            </div>
-          </div>
 
-          {/* Staggered Insights */}
-          <div className="space-y-10 lg:pt-12">
-            <div className="relative pl-10 border-l border-neutral-200">
-              <div className="absolute left-0 top-0 w-1.5 h-1.5 rounded-full bg-amber-400 -translate-x-1/2" />
-              <figure>
-                <blockquote className="  text-2xl md:text-3xl leading-snug text-neutral-900 italic">
-                  "There's a tremendous amount of{' '}
-                  <span className="text-amber-500">craftsmanship</span> in between a great idea and
-                  a great product."
-                </blockquote>
-                <figcaption className="mt-6 flex items-center gap-4">
-                  <div className="h-px w-8 bg-neutral-300" />
-                  <span className="font-mono text-xs uppercase tracking-widest text-neutral-400 font-bold">
-                    Dipalo Philosophy
-                  </span>
-                </figcaption>
-              </figure>
-            </div>
-
-            <div className="bg-white border border-neutral-100 p-8 rounded-[2rem] shadow-sm hover:shadow-xl transition-shadow duration-500">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="px-2 py-0.5 bg-amber-50 rounded text-xs font-mono text-amber-500 font-bold uppercase tracking-widest">
-                  The Result
-                </div>
-              </div>
-              <p className="text-neutral-600 leading-relaxed font-light italic">
-                Residency surfaces gaps in engineering, supply chain, and time-to-market before they
-                become existential — so founders can solve them while there's still runway.
-              </p>
+              {/* Mute Toggle */}
+              <button
+                onClick={toggleMute}
+                className="absolute bottom-6 right-6 z-30 p-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 transition-all"
+                aria-label={isMuted ? 'Unmute' : 'Mute'}
+              >
+                {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+              </button>
             </div>
           </div>
         </div>
