@@ -29,13 +29,13 @@ function GPCard({ m }: { m: TeamMember & { orgLinks?: OrgLink[] } }) {
       {/* Profile Intelligence */}
       <div className="flex-1 flex flex-col min-w-0">
         <div className="flex items-center gap-2 mb-2">
-          <div className="w-1 h-1 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
-          <div className="font-mono uppercase  text-xs tracking-[0.3em] text-amber-500 font-bold">
+          <div className="w-1 h-1 rounded-full bg-[#ffb012] shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
+          <div className="font-mono uppercase  text-xs tracking-[0.3em] text-[#ffb012] font-bold">
             General Partner
           </div>
         </div>
 
-        <h3 className="text-xl font-semibold text-neutral-900 tracking-tight leading-tight mb-1 group-hover:text-amber-500 transition-colors">
+        <h3 className="text-xl font-semibold text-neutral-900 tracking-tight leading-tight mb-1 group-hover:text-[#ffb012] transition-colors">
           {m.name}
         </h3>
         <div className="font-mono uppercase  text-xs tracking-[0.2em] text-neutral-600 font-bold">
@@ -53,7 +53,7 @@ function GPCard({ m }: { m: TeamMember & { orgLinks?: OrgLink[] } }) {
               href={l.href}
               target="_blank"
               rel="noreferrer"
-              className="text-neutral-600 hover:text-amber-400 transition-colors flex items-center gap-1 group/link"
+              className="text-neutral-600 hover:text-[#ffb012] transition-colors flex items-center gap-1 group/link"
             >
               <span>{l.label}</span>
               <span className="opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
@@ -72,7 +72,7 @@ export function TeamGPs({ members }: { members?: TeamMember[] }) {
     <section className="relative px-5 md:px-12 pb-8 overflow-hidden bg-[#fcfbf9]">
       <div className="container mx-auto px-4">
         <div className="flex items-center gap-3 mb-8">
-          <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
+          <div className="w-1.5 h-1.5 rounded-full bg-[#ffb012] shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
           <div className=" text-base font-mono uppercase tracking-[0.3em] text-neutral-600 font-bold">
             Partnership Board
           </div>

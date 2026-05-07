@@ -12,6 +12,7 @@ import { Media } from './collections/Media'
 import { Team } from './collections/Team'
 import { Portfolio } from './collections/Portfolio'
 import { Testimonials } from './collections/Testimonials'
+import { Gallery } from './collections/Gallery'
 import { cloudStoragePlugin } from '@payloadcms/plugin-cloud-storage'
 import { cloudinaryAdapter } from './lib/cloudinaryAdapter'
 
@@ -28,7 +29,7 @@ export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
   cors: [process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'].filter(Boolean),
   csrf: [process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'].filter(Boolean),
-  collections: [Users, Media, Team, Portfolio, Testimonials],
+  collections: [Users, Media, Team, Portfolio, Testimonials, Gallery],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -53,6 +54,10 @@ export default buildConfig({
     cloudStoragePlugin({
       collections: {
         media: {
+          adapter: cloudinaryAdapter(),
+          disableLocalStorage: true,
+        },
+        gallery: {
           adapter: cloudinaryAdapter(),
           disableLocalStorage: true,
         },

@@ -10,10 +10,10 @@ export const TeamStatsRow = () => (
           className="flex-1 min-w-[120px] p-4 md:p-6 group transition-all duration-500 hover:bg-white"
         >
           <div className="flex flex-col gap-1">
-            <div className="text-2xl md:text-3xl font-semibold text-neutral-900 group-hover:text-amber-500 transition-colors tracking-tight">
+            <div className="text-2xl md:text-3xl font-semibold text-neutral-900 group-hover:text-[#ffb012] transition-colors tracking-tight">
               {s.n}
             </div>
-            <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-neutral-400 font-bold leading-tight">
+            <div className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 font-bold leading-tight">
               {s.l}
             </div>
           </div>

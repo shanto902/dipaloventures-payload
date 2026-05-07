@@ -22,6 +22,13 @@ export default async function TeamPage() {
     collection: 'team',
     depth: 1,
     sort: 'order', // Sort by order field ascending
+    limit: 100,
+  })
+
+  const { docs: galleryDocs } = await payload.find({
+    collection: 'gallery',
+    depth: 1,
+    sort: 'order',
   })
 
   // Map Payload docs to the format expected by components
@@ -29,8 +36,8 @@ export default async function TeamPage() {
     let photoUrl = doc.photo?.url || ''
 
     // If the URL is a legacy local path (absolute or relative), reconstruct the Cloudinary URL
-    if (photoUrl.includes('/api/media/file/')) {
-      const filename = photoUrl.split('/').pop()
+    if (photoUrl.includes('/api/media/file/') || photoUrl.includes('/api/gallery/file/')) {
+      const filename = decodeURIComponent(photoUrl.split('/').pop() || '')
       photoUrl = `https://res.cloudinary.com/${process.env.CLOUDINARY_NAME}/image/upload/f_auto,q_auto/dipalo-ventures/${filename}`
     }
 
@@ -51,9 +58,18 @@ export default async function TeamPage() {
   const vps = members.filter((m) => m.category === 'vp')
   const advisors = members.filter((m) => m.category === 'advisor')
 
+  const galleryImages = galleryDocs.map((doc: any) => {
+    let url = doc.url || ''
+    if (url.includes('/api/media/file/') || url.includes('/api/gallery/file/')) {
+      const filename = decodeURIComponent(url.split('/').pop() || '')
+      url = `https://res.cloudinary.com/${process.env.CLOUDINARY_NAME}/image/upload/f_auto,q_auto/dipalo-ventures/${filename}`
+    }
+    return url
+  })
+
   return (
     <>
-      <TeamHero />
+      <TeamHero galleryImages={galleryImages} />
       <TeamGPs members={gps.length > 0 ? gps : undefined} />
 
       <TeamVPs members={vps.length > 0 ? vps : undefined} />

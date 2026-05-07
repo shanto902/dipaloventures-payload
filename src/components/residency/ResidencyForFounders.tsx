@@ -14,18 +14,18 @@ export function ResidencyForFounders() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-8">
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#ffb012] shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
               <div className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-600 font-bold">
                 Founder Partnership
               </div>
             </div>
             <h2 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.1] tracking-tight">
               We&apos;re looking for <br />
-              <span className="italic   text-amber-400">you.</span>
+              <span className="italic   text-[#ffb012]">you.</span>
             </h2>
           </div>
           <div className="max-w-xs">
-            <p className="text-base md:text-lg text-neutral-800 leading-relaxed font-light italic border-l-2 border-amber-400/20 pl-6">
+            <p className="text-base md:text-lg text-neutral-800 leading-relaxed font-light italic border-l-2 border-[#ffb012]/20 pl-6">
               If this sounds like your company, we want to hear from you. Professional operators for
               the physical world.
             </p>
@@ -39,13 +39,13 @@ export function ResidencyForFounders() {
               key={w.t}
               className="group bg-white border border-neutral-100 p-5 rounded-4xl transition-all duration-500 hover:shadow-xl hover:-translate-y-1 flex flex-col"
             >
-              <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-xl text-amber-600 transition-all duration-500 group-hover:bg-amber-400 group-hover:text-white">
+              <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-xl text-amber-600 transition-all duration-500 group-hover:bg-[#ffb012] group-hover:text-white">
                 {w.ico}
               </div>
-              <h3 className="mt-4 text-lg font-semibold text-neutral-900 leading-tight transition-colors group-hover:text-amber-500">
+              <h3 className="mt-4 text-lg font-semibold text-neutral-900 leading-tight transition-colors group-hover:text-[#ffb012]">
                 {w.t}
               </h3>
-              <div className=" h-px w-6 bg-neutral-100 group-hover:w-12 group-hover:bg-amber-400/50 transition-all duration-500" />
+              <div className=" h-px w-6 bg-neutral-100 group-hover:w-12 group-hover:bg-[#ffb012]/50 transition-all duration-500" />
               <p className="mt-4 text-base  text-neutral-500 leading-relaxed font-light">{w.b}</p>
             </article>
           ))}
@@ -54,7 +54,7 @@ export function ResidencyForFounders() {
         {/* Integrated CTA Footer */}
         <div className="mt-8 py-8 border-t border-neutral-100 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="flex flex-col gap-1">
-            <span className="font-mono text-xs uppercase tracking-[0.2em] text-amber-500 font-bold">
+            <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#ffb012] font-bold">
               Ready to build?
             </span>
             {/* <p className="text-xs text-neutral-600 font-mono uppercase tracking-widest font-bold">
@@ -62,12 +62,14 @@ export function ResidencyForFounders() {
             </p> */}
           </div>
 
-          <Link
-            href="/contact"
-            className="px-8 py-4 bg-amber-400 text-black font-mono text-xs uppercase tracking-widest font-bold rounded-full hover:bg-neutral-900 hover:text-white transition-all duration-300 shadow-lg shadow-amber-400/10 w-full md:w-auto text-center"
+          <a
+            href="/pitch"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-8 py-4 bg-[#ffb012] text-black font-mono text-xs uppercase tracking-widest font-bold rounded-full hover:bg-neutral-900 hover:text-white transition-all duration-300 shadow-lg shadow-[#ffb012]/10 w-full md:w-auto text-center"
           >
             Submit your pitch <span aria-hidden>→</span>
-          </Link>
+          </a>
         </div>
       </div>
     </section>

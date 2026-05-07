@@ -9,30 +9,27 @@ export function ResidencySection() {
           <div className="relative aspect-4/3 rounded-3xl overflow-hidden bg-neutral-100 border border-neutral-200 shadow-sm group">
             {/* Architectural Placeholder Visual */}
             <div className="absolute inset-0 bg-linear-to-br from-neutral-100 to-white flex flex-col items-center justify-center p-12 text-center">
-              <div className="w-16 h-16 rounded-full border border-amber-400/20 flex items-center justify-center mb-6 relative">
-                <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
-                <div className="absolute inset-0 rounded-full border border-amber-400/10 scale-150 animate-ping" />
+              <div className="w-16 h-16 rounded-full border border-[#ffb012]/20 flex items-center justify-center mb-6 relative">
+                <div className="w-2 h-2 bg-[#ffb012] rounded-full animate-pulse" />
+                <div className="absolute inset-0 rounded-full border border-[#ffb012]/10 scale-150 animate-ping" />
               </div>
               <div className="  italic text-2xl text-neutral-600">Technical Residency</div>
-              <div className="mt-4 text-xs font-mono uppercase tracking-[0.25em] text-neutral-500 font-bold">
-                Program Node 01
-              </div>
             </div>
           </div>
 
           <div>
-            <div className="text-sm font-mono uppercase tracking-[0.2em] text-amber-400 mb-6 font-bold">
+            <div className="text-sm font-mono uppercase tracking-[0.2em] text-[#ffb012] mb-6 font-bold">
               The Residency
             </div>
             <h2 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.1] tracking-tight">
               Better selection, <br />
-              <span className="italic text-amber-400">lower failure rates.</span>
+              <span className="italic text-[#ffb012]">lower failure rates.</span>
             </h2>
             <p className="mt-6 md:mt-8 text-base md:text-lg text-neutral-800 leading-relaxed font-light">
               The Dipalo Ventures Residency is a technical diligence and audit program that
               identifies and mitigates gaps in product design and engineering. It provides technical
-              evaluations, workshops, mentorship, and specific design and engineering support —
-              before we invest and long after.
+              evaluations, workshops, mentorship, and specific design and engineering support before
+              we invest and long after.
             </p>
 
             <div className="mt-10">
@@ -43,7 +40,7 @@ export function ResidencySection() {
                 {residencyTags.map((t) => (
                   <span
                     key={t}
-                    className="text-xs font-medium px-4 py-1.5 rounded-full border border-neutral-200 text-neutral-500 hover:border-amber-400 hover:text-amber-400 transition-all duration-300"
+                    className="text-xs font-medium px-4 py-1.5 rounded-full border border-neutral-200 text-neutral-500 hover:border-[#ffb012] hover:text-[#ffb012] transition-all duration-300"
                   >
                     {t}
                   </span>

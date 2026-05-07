@@ -16,7 +16,8 @@ export default async function PortfolioPage() {
   const { docs: portfolioDocs } = await payload.find({
     collection: 'portfolio',
     depth: 1,
-    sort: 'order',
+    sort: 'name',
+    limit: 100,
   })
 
   const portfolioItems = portfolioDocs.map((doc: any) => {

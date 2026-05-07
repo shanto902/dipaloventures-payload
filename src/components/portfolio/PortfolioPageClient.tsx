@@ -35,22 +35,24 @@ export function PortfolioPageClient({ items }: { items?: any[] }) {
     <>
       <PortfolioVideoBanner />
 
-      <main className="container mx-auto px-4 pb-8">
-        <PortfolioStats />
+      <main className="px-6 md:px-12 pb-8">
+        <div className="container mx-auto px-4">
+          <PortfolioStats />
 
-        <div className="mt-8 grid lg:grid-cols-[260px_1fr] gap-10">
-          <PortfolioSidebar
-            funds={funds}
-            setFunds={setFunds}
-            sectors={sectors}
-            setSectors={setSectors}
-            stages={stages}
-            setStages={setStages}
-            reset={reset}
-            totalActive={totalActive}
-            allItems={displayItems}
-          />
-          <PortfolioGrid filtered={filtered} totalCount={displayItems.length} />
+          <div className="mt-8 grid lg:grid-cols-[260px_1fr] gap-10">
+            <PortfolioSidebar
+              funds={funds}
+              setFunds={setFunds}
+              sectors={sectors}
+              setSectors={setSectors}
+              stages={stages}
+              setStages={setStages}
+              reset={reset}
+              totalActive={totalActive}
+              allItems={displayItems}
+            />
+            <PortfolioGrid filtered={filtered} totalCount={displayItems.length} />
+          </div>
         </div>
       </main>
     </>

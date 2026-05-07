@@ -71,7 +71,7 @@ export function HeroCarousel({ items }: HeroCarouselProps) {
             <div className="absolute top-full left-0 right-0 pt-6 md:pt-8">
               <div className="flex items-end justify-end gap-4">
                 {/* <div className="flex flex-col gap-1.5">
-                  <span className="text-xs font-mono uppercase tracking-[0.3em] text-amber-500 font-bold">
+                  <span className="text-xs font-mono uppercase tracking-[0.3em] text-[#ffb012] font-bold">
                     Portfolio Highlight
                   </span>
                   <h4 className="text-xl md:text-2xl font-semibold text-neutral-900 tracking-tight">
@@ -87,7 +87,7 @@ export function HeroCarousel({ items }: HeroCarouselProps) {
                       onClick={() => setCurrentIndex(i)}
                       className={`h-1 rounded-full transition-all duration-500 ${
                         i === currentIndex
-                          ? 'w-8 bg-amber-400'
+                          ? 'w-8 bg-[#ffb012]'
                           : 'w-2 bg-neutral-200 hover:bg-neutral-300'
                       }`}
                       aria-label={`Go to slide ${i + 1}`}

@@ -5,7 +5,7 @@ import { TeamStoryVisual } from './TeamStoryVisual'
 import { TeamEtymologyDossier } from './TeamEtymologyDossier'
 import { TeamStatsRow } from './TeamStatsRow'
 
-export function TeamHero() {
+export function TeamHero({ galleryImages }: { galleryImages: string[] }) {
   return (
     <section className="relative  px-5 md:px-12 pb-8 pt-24 overflow-hidden">
       <TeamHeroBackground />
@@ -15,7 +15,7 @@ export function TeamHero() {
 
         {/* Story Content Section */}
         <div className="mt-8 grid lg:grid-cols-[1.5fr_1fr] gap-8 items-start">
-          <TeamStoryVisual />
+          <TeamStoryVisual images={galleryImages} />
 
           <div className="space-y-8 ">
             <div className="space-y-6">

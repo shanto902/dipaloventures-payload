@@ -83,18 +83,15 @@ export function PortfolioVideoBanner() {
   }
 
   return (
-    <div className="px-5 md:px-12">
+    <div className="px-6 md:px-12">
       <section className="container  mx-auto px-4 pt-24  pb-8">
         <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-center">
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
-              <div className=" text-xs font-mono uppercase tracking-[0.3em] text-neutral-600 font-bold">
-                The Portfolio
-              </div>
+            <div className="text-xs font-mono uppercase tracking-[0.3em] text-[#ffb012] mb-6 font-bold">
+              The Portfolio
             </div>
             <h1 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.05] tracking-tight">
-              Companies <span className="italic text-amber-400">of the</span>
+              Companies <span className="italic text-[#ffb012]">of the</span>
               <br /> physical world.
             </h1>
             <p className="mt-6 md:mt-8 text-base md:text-lg text-neutral-800 leading-relaxed font-light max-w-xl">
@@ -111,7 +108,7 @@ export function PortfolioVideoBanner() {
                 <div
                   className={`p-2 rounded-full border transition-all ${
                     isMuted
-                      ? 'border-amber-400/20 bg-amber-50 text-amber-400'
+                      ? 'border-[#ffb012]/20 bg-amber-50 text-[#ffb012]'
                       : 'border-neutral-200 text-neutral-500'
                   }`}
                 >
@@ -131,7 +128,7 @@ export function PortfolioVideoBanner() {
           {/* Video Reel with Homepage Pattern Framing */}
           <div className="relative group">
             <div
-              className="absolute -inset-4 bg-amber-400/5 rounded-4xl rotate-1 transition-transform duration-700 group-hover:rotate-0"
+              className="absolute -inset-4 bg-[#ffb012]/5 rounded-4xl rotate-1 transition-transform duration-700 group-hover:rotate-0"
               aria-hidden
             />
             <div className="relative overflow-hidden rounded-3xl aspect-video shadow-2xl border border-neutral-200/50 bg-neutral-900">
@@ -140,7 +137,7 @@ export function PortfolioVideoBanner() {
                 <div className="absolute inset-0 z-20 flex items-center justify-center bg-neutral-900 overflow-hidden">
                   <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
                   <div className="flex flex-col items-center gap-4">
-                    <div className="w-12 h-12 rounded-full border-2 border-amber-400/20 border-t-amber-400 animate-spin" />
+                    <div className="w-12 h-12 rounded-full border-2 border-[#ffb012]/20 border-t-[#ffb012] animate-spin" />
                     <span className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-500 font-bold">
                       Initializing Reel
                     </span>

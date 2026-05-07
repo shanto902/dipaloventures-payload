@@ -46,7 +46,7 @@ export function FounderInvestorToggle() {
           >
             {/* Sliding Indicator */}
             <div
-              className={`absolute top-1 bottom-1 w-[calc(50%-4px)] bg-amber-400 rounded-full shadow-sm transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) z-0 ${
+              className={`absolute top-1 bottom-1 w-[calc(50%-4px)] bg-[#ffb012] rounded-full shadow-sm transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1) z-0 ${
                 tab === 'investors' ? 'translate-x-[calc(100%+0px)]' : 'translate-x-0'
               }`}
             />
@@ -89,7 +89,7 @@ export function FounderInvestorToggle() {
           className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start focus-visible:outline-none animate-in fade-in slide-in-from-bottom-4 duration-700"
         >
           <div className="lg:sticky lg:top-32">
-            <div className="text-sm font-mono uppercase tracking-[0.2em] text-amber-400 mb-6 font-bold">
+            <div className="text-sm font-mono uppercase tracking-[0.2em] text-[#ffb012] mb-6 font-bold">
               {tab === 'founders' ? 'Why Partner With Us' : 'Why Partner With Us'}
             </div>
             <h3 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.1] tracking-tight">
@@ -98,27 +98,6 @@ export function FounderInvestorToggle() {
             <p className="mt-6 md:mt-8 text-base md:text-lg text-neutral-800 leading-relaxed font-light max-w-xl">
               {data.body}
             </p>
-
-            {/* Desktop Path Switcher CTA */}
-            {/* <div className="hidden lg:block mt-12 p-8 rounded-3xl bg-amber-400/5 border border-amber-400/10 max-w-md">
-              <div className="text-xs font-mono uppercase tracking-widest text-amber-500 mb-2 font-bold">
-                Alternatively
-              </div>
-              <div className="text-sm text-neutral-600 mb-4 font-light">
-                Are you an{' '}
-                {otherTab === 'investors'
-                  ? 'investor looking for access'
-                  : 'founder looking for partnership'}
-                ?
-              </div>
-              <button
-                onClick={() => setTab(otherTab)}
-                className="group flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-neutral-900 hover:text-amber-500 transition-colors"
-              >
-                Switch to {otherTab}{' '}
-                <span className="transition-transform group-hover:translate-x-1">→</span>
-              </button>
-            </div> */}
           </div>
 
           <div className="space-y-12">
@@ -127,11 +106,8 @@ export function FounderInvestorToggle() {
                 {data.bullets.map((bl, i) => (
                   <li key={bl.t} className="group">
                     <div className="flex gap-4 md:gap-6">
-                      <div className="text-amber-400 font-mono text-xs font-bold mt-1.5 shrink-0">
-                        0{i + 1}
-                      </div>
                       <div>
-                        <div className="text-lg md:text-xl font-semibold text-neutral-900 group-hover:text-amber-400 transition-colors">
+                        <div className="text-lg md:text-xl font-semibold text-neutral-900 group-hover:text-[#ffb012] transition-colors">
                           {bl.t}
                         </div>
                         <div className="text-base md:text-lg text-neutral-800 mt-2 md:mt-3 leading-relaxed font-light">
@@ -145,7 +121,7 @@ export function FounderInvestorToggle() {
             </div>
 
             {/* Mobile Path Switcher CTA */}
-            {/* <div className="lg:hidden p-8 rounded-3xl bg-amber-400/5 border border-amber-400/10">
+            {/* <div className="lg:hidden p-8 rounded-3xl bg-[#ffb012]/5 border border-[#ffb012]/10">
               <div className="text-xs font-mono uppercase tracking-widest text-amber-500 mb-2 font-bold">
                 Switch Path
               </div>

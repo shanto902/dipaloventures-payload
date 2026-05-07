@@ -13,8 +13,8 @@ export function HomeHero({ portfolio = [] }: HomeHeroProps) {
         {/* Left Section: Text Content */}
         <div className="order-1 lg:order-1">
           <h1 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.2] tracking-tight">
-            Venture Capital <span className="italic text-amber-400">for the</span>
-            <br /> Physical World.
+            Venture Capital <span className="italic text-[#ffb012]">for the</span>
+            <br /> Physical World
           </h1>
           <div className="mt-6 md:mt-8 max-w-xl text-base md:text-lg text-neutral-800 leading-relaxed font-light">
             We back founders building breakthrough deep tech across Energy, Climate, and Physical
@@ -22,12 +22,14 @@ export function HomeHero({ portfolio = [] }: HomeHeroProps) {
             help you go from prototype to production.
           </div>
           <div className="mt-8 md:mt-10 flex flex-wrap gap-4">
-            <Link
-              href="/contact"
-              className="px-8 py-4 bg-amber-400 hover:text-white text-black font-mono text-xs uppercase tracking-widest font-bold rounded-full hover:bg-neutral-900 transition-all duration-300 shadow-lg shadow-amber-400/10 w-full sm:w-auto text-center"
+            <a
+              href="/pitch"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 bg-[#ffb012] hover:text-white text-black font-mono text-xs uppercase tracking-widest font-bold rounded-full hover:bg-neutral-900 transition-all duration-300 shadow-lg shadow-[#ffb012]/10 w-full sm:w-auto text-center"
             >
               Submit Pitch <span aria-hidden>→</span>
-            </Link>
+            </a>
           </div>
         </div>
 

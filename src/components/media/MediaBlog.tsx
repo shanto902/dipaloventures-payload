@@ -28,19 +28,19 @@ export function MediaBlog({ initialPosts }: { initialPosts?: MediumPost[] }) {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-8 border-b border-neutral-100 pb-8">
           <div className="max-w-2xl">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#ffb012] shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
               <div className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-600 font-bold">
                 Archive.03 · Thought Leadership
               </div>
             </div>
             <h2 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.2] tracking-tight">
               Honest takes on <br />
-              the <span className="italic text-amber-400  ">hard stuff.</span>
+              the <span className="italic text-[#ffb012]  ">hard stuff.</span>
             </h2>
           </div>
 
           <div className="max-w-xs">
-            <p className="text-base md:text-lg text-neutral-800 leading-relaxed font-light italic border-l-2 border-amber-400/10 pl-6">
+            <p className="text-base md:text-lg text-neutral-800 leading-relaxed font-light italic border-l-2 border-[#ffb012]/10 pl-6">
               Long-form essays on manufacturing, physical AI, and the engineering challenges of
               scaling hard tech.
             </p>
@@ -55,10 +55,10 @@ export function MediaBlog({ initialPosts }: { initialPosts?: MediumPost[] }) {
               href={p.href}
               target="_blank"
               rel="noreferrer"
-              className="group flex flex-col h-full bg-white border border-neutral-100 rounded-3xl p-8 hover:border-amber-400 hover:shadow-2xl hover:shadow-neutral-900/5 transition-all duration-700"
+              className="group flex flex-col h-full bg-white border border-neutral-100 rounded-3xl p-8 hover:border-[#ffb012] hover:shadow-2xl hover:shadow-neutral-900/5 transition-all duration-700"
             >
               <div className="flex items-center justify-between mb-6">
-                <div className="font-mono  text-xs uppercase tracking-[0.2em] text-amber-400 font-bold">
+                <div className="font-mono  text-xs uppercase tracking-[0.2em] text-[#ffb012] font-bold">
                   Manuscript.0{i + 1}
                 </div>
                 <div className="font-mono  text-xs uppercase tracking-[0.15em] text-neutral-600 font-bold">
@@ -66,7 +66,7 @@ export function MediaBlog({ initialPosts }: { initialPosts?: MediumPost[] }) {
                 </div>
               </div>
 
-              <h3 className="text-xl md:text-2xl font-semibold text-neutral-900 leading-tight tracking-tight mb-4 group-hover:text-amber-500 transition-colors duration-500 line-clamp-3">
+              <h3 className="text-xl md:text-2xl font-semibold text-neutral-900 leading-tight tracking-tight mb-4 group-hover:text-[#ffb012] transition-colors duration-500 line-clamp-3">
                 {p.title}
               </h3>
 
@@ -75,10 +75,10 @@ export function MediaBlog({ initialPosts }: { initialPosts?: MediumPost[] }) {
               </p>
 
               <div className="mt-auto pt-6 border-t border-neutral-50 flex items-center justify-between">
-                <span className="font-mono  text-xs uppercase tracking-[0.2em] text-neutral-600 font-bold group-hover:text-amber-500 transition-colors">
+                <span className="font-mono  text-xs uppercase tracking-[0.2em] text-neutral-600 font-bold group-hover:text-[#ffb012] transition-colors">
                   Read Full Take
                 </span>
-                <span className="text-neutral-500 group-hover:text-amber-400 group-hover:translate-x-1 transition-all duration-500">
+                <span className="text-neutral-500 group-hover:text-[#ffb012] group-hover:translate-x-1 transition-all duration-500">
                   →
                 </span>
               </div>
@@ -92,7 +92,7 @@ export function MediaBlog({ initialPosts }: { initialPosts?: MediumPost[] }) {
             href={socialLinks.medium}
             target="_blank"
             rel="noreferrer"
-            className="group inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-neutral-600 hover:text-amber-500 transition-colors font-bold"
+            className="group inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-neutral-600 hover:text-[#ffb012] transition-colors font-bold"
           >
             <span>Explore Full Archive on Medium</span>
             <span className="opacity-0 group-hover:opacity-100 transition-opacity">↗</span>

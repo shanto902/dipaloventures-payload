@@ -55,7 +55,7 @@ export function MediaSocialConnect() {
           {/* Module 01: Transmission Network */}
           <div className="space-y-8">
             <div className="flex items-center gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
+              <div className="w-1.5 h-1.5 rounded-full bg-[#ffb012] shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
               <div className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-600 font-bold">
                 Connect · Archive
               </div>
@@ -68,9 +68,9 @@ export function MediaSocialConnect() {
                   href={s.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex items-center gap-4 bg-white border border-neutral-100 rounded-2xl p-4 hover:border-amber-400 hover:shadow-xl hover:shadow-neutral-900/5 transition-all duration-500"
+                  className="group flex items-center gap-4 bg-white border border-neutral-100 rounded-2xl p-4 hover:border-[#ffb012] hover:shadow-xl hover:shadow-neutral-900/5 transition-all duration-500"
                 >
-                  <div className="w-10 h-10 bg-neutral-50 rounded-lg flex items-center justify-center shrink-0 border border-neutral-50 group-hover:border-amber-400/20 group-hover:bg-amber-400/5 transition-all duration-500">
+                  <div className="w-10 h-10 bg-neutral-50 rounded-lg flex items-center justify-center shrink-0 border border-neutral-50 group-hover:border-[#ffb012]/20 group-hover:bg-[#ffb012]/5 transition-all duration-500">
                     <s.Icon />
                   </div>
                   <div className="font-mono  text-xs uppercase tracking-[0.2em] text-neutral-900 font-bold">
@@ -93,11 +93,11 @@ export function MediaSocialConnect() {
             />
 
             <div className="relative space-y-6 text-center lg:text-left">
-              <div className="font-mono uppercase  text-xs tracking-[0.3em] text-amber-400 font-bold">
+              <div className="font-mono uppercase  text-xs tracking-[0.3em] text-[#ffb012] font-bold">
                 Letters from the Hard Side
               </div>
               <h2 className="text-2xl md:text-3xl font-semibold text-neutral-900 leading-tight tracking-tight">
-                Quarterly notes on <span className="italic text-amber-400  ">deep tech.</span>
+                Quarterly notes on <span className="italic text-[#ffb012]  ">deep tech.</span>
               </h2>
               <p className="text-sm text-neutral-500 leading-relaxed font-light italic">
                 Our honest takes on manufacturing and physical AI. Direct from Substack to your

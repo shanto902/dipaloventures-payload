@@ -13,7 +13,7 @@ export const Portfolio: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'sector', 'stage', 'featured', 'order'],
+    defaultColumns: ['name', 'sector', 'stage', 'featured'],
   },
   access: {
     read: () => true,
@@ -90,14 +90,7 @@ export const Portfolio: CollectionConfig = {
       label: 'Show in Homepage Marquee',
       defaultValue: true,
     },
-    {
-      name: 'order',
-      type: 'number',
-      admin: {
-        description: 'Lower numbers appear first',
-      },
-      defaultValue: 100,
-    },
+
     {
       name: 'isExited',
       type: 'checkbox',

@@ -41,8 +41,8 @@ export function TestimonialsCarousel({ testimonials }: { testimonials?: Testimon
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-8">
           <div className="max-w-2xl">
-            <div className="text-sm font-mono uppercase tracking-[0.2em] text-amber-400 mb-6 font-bold">
-              The Network
+            <div className="text-sm font-mono uppercase tracking-[0.2em] text-[#ffb012] mb-6 font-bold">
+              Testimonials
             </div>
             <h2 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.1] tracking-tight">
               Voices from Our Network
@@ -58,14 +58,14 @@ export function TestimonialsCarousel({ testimonials }: { testimonials?: Testimon
             <div className="flex gap-2">
               <button
                 onClick={prev}
-                className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-600 hover:border-amber-400 hover:text-amber-400 transition-all active:scale-95"
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-600 hover:border-[#ffb012] hover:text-[#ffb012] transition-all active:scale-95"
                 aria-label="Previous testimonial"
               >
                 <ChevronLeft size={18} />
               </button>
               <button
                 onClick={next}
-                className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-600 hover:border-amber-400 hover:text-amber-400 transition-all active:scale-95"
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-600 hover:border-[#ffb012] hover:text-[#ffb012] transition-all active:scale-95"
                 aria-label="Next testimonial"
               >
                 <ChevronRight size={18} />
@@ -101,10 +101,10 @@ export function TestimonialsCarousel({ testimonials }: { testimonials?: Testimon
 
 function TestimonialCard({ card }: { card: Testimonial }) {
   return (
-    <article className="group bg-white border border-neutral-200/60 rounded-[2rem] md:rounded-[2.5rem] p-8 shadow-sm transition-all duration-500 hover:shadow-2xl hover:border-amber-400/20 flex flex-col h-full">
+    <article className="group bg-white border border-neutral-200/60 rounded-[2rem] md:rounded-[2.5rem] p-8 shadow-sm transition-all duration-500 hover:shadow-2xl hover:border-[#ffb012]/20 flex flex-col h-full">
       <div className="relative flex-1">
         {/* Decorative Quote Mark */}
-        <div className="absolute -top-6 -left-6 text-8xl   text-neutral-50 group-hover:text-amber-400/10 transition-colors duration-500 pointer-events-none">
+        <div className="absolute -top-6 -left-6 text-8xl   text-neutral-50 group-hover:text-[#ffb012]/10 transition-colors duration-500 pointer-events-none">
           &ldquo;
         </div>
 
@@ -136,7 +136,7 @@ function TestimonialCard({ card }: { card: Testimonial }) {
               {card.role}
             </span>
             <span className="h-px w-6 bg-neutral-200 hidden sm:block" />
-            <span className="text-xs font-mono uppercase tracking-[0.2em] text-amber-400 font-bold whitespace-nowrap">
+            <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#ffb012] font-bold whitespace-nowrap">
               {card.kind}
             </span>
           </div>

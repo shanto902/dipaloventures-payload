@@ -30,7 +30,7 @@ export const Team: CollectionConfig = {
       admin: {
         description: 'Lower numbers appear first',
       },
-      defaultValue: 1,
+      defaultValue: 100,
     },
     {
       name: 'category',

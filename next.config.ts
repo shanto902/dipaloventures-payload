@@ -13,6 +13,13 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
       },
+      {
+        hostname: 'images.unsplash.com',
+        protocol: 'https',
+      },
+      {
+        hostname: 'localhost',
+      },
     ],
   },
   webpack: (webpackConfig) => {
@@ -26,6 +33,15 @@ const nextConfig: NextConfig = {
   },
   turbopack: {
     root: path.resolve(dirname),
+  },
+  async redirects() {
+    return [
+      {
+        source: '/pitch',
+        destination: 'https://forms.gle/S3ojwHDpchecWFzY6',
+        permanent: false,
+      },
+    ]
   },
 }
 

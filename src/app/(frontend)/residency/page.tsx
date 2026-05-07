@@ -6,8 +6,12 @@ import { ResidencyQuote } from '@/components/residency/ResidencyQuote'
 import { ResidencyMethodology } from '@/components/residency/ResidencyMethodology'
 import { ResidencyCovers } from '@/components/residency/ResidencyCovers'
 import { ResidencyCaseStudies } from '@/components/residency/ResidencyCaseStudies'
+import { ResidencyFAQ } from '@/components/residency/ResidencyFAQ'
 import { ResidencyRAAS } from '@/components/residency/ResidencyRAAS'
 import { ResidencyForFounders } from '@/components/residency/ResidencyForFounders'
+import ResidencyCapabilities from '@/components/residency/ResidencyCapabilities'
+import { ResidencyProcess } from '@/components/residency/ResidencyProcess'
+import { ResidencyExecution } from '@/components/residency/ResidencyExecution'
 
 export const metadata = {
   title: 'The Residency — Dipalo Ventures',
@@ -19,12 +23,16 @@ export default function ResidencyPage() {
   return (
     <>
       <ResidencyHero />
-      <ResidencyQuote />
       <ResidencyMethodology />
+      <ResidencyCapabilities />
+      <ResidencyQuote />
+      <ResidencyProcess />
+      <ResidencyExecution />
       {/* <ResidencyCovers /> */}
-      <ResidencyCaseStudies />
       <ResidencyRAAS />
-      <ResidencyForFounders />
+      <ResidencyCaseStudies />
+      {/* <ResidencyFAQ /> */}
+      {/* <ResidencyForFounders /> */}
     </>
   )
 }

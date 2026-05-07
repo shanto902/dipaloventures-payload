@@ -80,13 +80,15 @@ export function Header() {
                 </Link>
               )
             })}
-            <Link
-              href="/contact"
-              className="ml-4 inline-flex items-center gap-2 px-6 py-2.5 bg-amber-400 hover:text-white text-black font-mono text-xs uppercase tracking-[0.2em] font-bold rounded-full hover:bg-neutral-900 transition-all duration-500 shadow-lg shadow-amber-400/20"
+            <a
+              href="/pitch"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-4 inline-flex items-center gap-2 px-6 py-2.5 bg-[#ffb012] hover:text-white text-black font-mono text-xs uppercase tracking-[0.2em] font-bold rounded-full hover:bg-neutral-900 transition-all duration-500 shadow-lg shadow-[#ffb012]/20"
             >
               Submit pitch
               <ArrowRight size={14} />
-            </Link>
+            </a>
           </nav>
 
           {/* Mobile Toggle */}
@@ -107,7 +109,7 @@ export function Header() {
         }`}
       >
         <div className="flex flex-col h-full pt-32 pb-12 px-6 container mx-auto">
-          <div className="text-xs font-mono uppercase tracking-[0.3em] text-amber-400 mb-12 font-bold">
+          <div className="text-xs font-mono uppercase tracking-[0.3em] text-[#ffb012] mb-12 font-bold">
             Navigation
           </div>
 
@@ -125,12 +127,12 @@ export function Header() {
                   style={{ transitionDelay: `${i * 100}ms` }}
                 >
                   <span
-                    className={`text-4xl   tracking-tight ${isActive ? 'text-amber-400' : 'text-neutral-900'}`}
+                    className={`text-4xl   tracking-tight ${isActive ? 'text-[#ffb012]' : 'text-neutral-900'}`}
                   >
                     {l.label}
                   </span>
                   <ArrowRight
-                    className={`text-amber-400 transition-transform duration-300 ${isActive ? 'translate-x-0' : '-translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100'}`}
+                    className={`text-[#ffb012] transition-transform duration-300 ${isActive ? 'translate-x-0' : '-translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100'}`}
                   />
                 </Link>
               )
@@ -138,21 +140,23 @@ export function Header() {
           </nav>
 
           <div className="mt-auto pt-12">
-            <Link
-              href="#"
+            <a
+              href="/pitch"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setOpen(false)}
-              className="flex items-center justify-center gap-3 w-full py-5 bg-neutral-900 text-white rounded-2xl font-mono text-xs uppercase tracking-[0.2em] font-bold hover:bg-amber-400 transition-all duration-500 shadow-xl"
+              className="flex items-center justify-center gap-3 w-full py-5 bg-neutral-900 text-white rounded-2xl font-mono text-xs uppercase tracking-[0.2em] font-bold hover:bg-[#ffb012] transition-all duration-500 shadow-xl"
             >
               Submit Pitch <ArrowRight size={16} />
-            </Link>
+            </a>
 
             <div className="mt-10 flex justify-between items-center text-xs font-mono uppercase tracking-widest text-neutral-600 font-bold">
               <span>© 2024 Dipalo Ventures</span>
               <div className="flex gap-4">
-                <a href="#" className="hover:text-amber-400 transition-colors">
+                <a href="#" className="hover:text-[#ffb012] transition-colors">
                   LinkedIn
                 </a>
-                <a href="#" className="hover:text-amber-400 transition-colors">
+                <a href="#" className="hover:text-[#ffb012] transition-colors">
                   Twitter
                 </a>
               </div>

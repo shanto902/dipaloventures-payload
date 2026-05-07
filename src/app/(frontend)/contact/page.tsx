@@ -54,7 +54,7 @@ export default function ContactPage() {
             {/* Location Metadata */}
             <div className="lg:col-span-4 p-8 lg:p-12 flex flex-col justify-center border-t lg:border-t-0 lg:border-l border-neutral-100 bg-[#fcfbf9]/50 backdrop-blur-md">
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
+                <div className="w-1.5 h-1.5 rounded-full bg-[#ffb012] shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
                 <div className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-600 font-bold">
                   HQ · Chicago Node
                 </div>
@@ -65,7 +65,7 @@ export default function ContactPage() {
                 Technical Studio
               </h3>
 
-              <p className="text-sm text-neutral-500 leading-relaxed font-light italic mb-10 border-l-2 border-amber-400/10 pl-6">
+              <p className="text-sm text-neutral-500 leading-relaxed font-light italic mb-10 border-l-2 border-[#ffb012]/10 pl-6">
                 Our headquarters is located within the mHUB ecosystem, North America's leading
                 innovation center for physical product development and manufacturing.
               </p>
@@ -88,7 +88,7 @@ export default function ContactPage() {
                   className="inline-flex items-center gap-3 px-8 py-4 bg-neutral-900 text-white rounded-full font-mono text-xs uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all shadow-sm hover:shadow-xl hover:shadow-neutral-900/10"
                 >
                   <span>Get Directions</span>
-                  <span className="text-neutral-500 group-hover:text-amber-400 transition-colors">
+                  <span className="text-neutral-500 group-hover:text-[#ffb012] transition-colors">
                     ↗
                   </span>
                 </a>
@@ -99,8 +99,8 @@ export default function ContactPage() {
       </div>
 
       {/* Aesthetic Lead-Lines */}
-      <div className="absolute top-0 left-1/2 w-px h-64 bg-linear-to-b from-amber-400/20 to-transparent -z-10" />
-      <div className="absolute bottom-0 right-1/4 w-px h-96 bg-linear-to-t from-amber-400/10 to-transparent -z-10" />
+      <div className="absolute top-0 left-1/2 w-px h-64 bg-linear-to-b from-[#ffb012]/20 to-transparent -z-10" />
+      <div className="absolute bottom-0 right-1/4 w-px h-96 bg-linear-to-t from-[#ffb012]/10 to-transparent -z-10" />
     </div>
   )
 }

@@ -9,9 +9,9 @@ import './styles.css'
 
 import { SiteLayout } from '@/components/SiteLayout'
 import { HomeHero } from '@/components/home/HomeHero'
-import { HomeMission } from '@/components/home/HomeMission'
+
 import { FounderInvestorToggle } from '@/components/home/FounderInvestorToggle'
-import { PlatformSection } from '@/components/home/PlatformSection'
+
 import { ResidencySection } from '@/components/home/ResidencySection'
 import { TeamSection } from '@/components/home/TeamSection'
 import { FocusAreasSection } from '@/components/home/FocusAreasSection'
@@ -58,7 +58,8 @@ export default async function HomePage() {
     where: {
       featured: { equals: true },
     },
-    sort: 'order',
+    sort: 'name',
+    limit: 100,
   })
 
   const portfolioItems = portfolioDocs.map((doc: any) => {
@@ -90,6 +91,7 @@ export default async function HomePage() {
     collection: 'testimonials',
     depth: 1,
     sort: 'order',
+    limit: 100,
   })
 
   const testimonials = testimonialDocs.map((doc: any) => {
@@ -115,11 +117,8 @@ export default async function HomePage() {
   return (
     <>
       <HomeHero portfolio={portfolioItems} />
-      {/* <HomeMission /> */}
-
       <FocusAreasSection />
       <FounderInvestorToggle />
-      {/* <PlatformSection /> */}
       <ResidencySection />
       <TeamSection members={teamMembers.length > 0 ? teamMembers : undefined} />
       <PortfolioMarquee items={portfolioItems.length > 0 ? portfolioItems : undefined} />

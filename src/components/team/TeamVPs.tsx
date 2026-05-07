@@ -27,10 +27,10 @@ function SupportingCard({ m }: { m: TeamMember & { orgLinks?: OrgLink[] } }) {
         </div>
 
         <div className="min-w-0">
-          <h4 className="text-lg font-semibold text-neutral-900 tracking-tight leading-tight group-hover:text-amber-500 transition-colors">
+          <h4 className="text-lg font-semibold text-neutral-900 tracking-tight leading-tight group-hover:text-[#ffb012] transition-colors">
             {m.name}
           </h4>
-          <div className="mt-1 font-mono uppercase  text-xs tracking-[0.2em] text-amber-400 font-bold">
+          <div className="mt-1 font-mono uppercase  text-xs tracking-[0.2em] text-[#ffb012] font-bold">
             {m.role}
           </div>
         </div>
@@ -47,7 +47,7 @@ function SupportingCard({ m }: { m: TeamMember & { orgLinks?: OrgLink[] } }) {
             href={l.href}
             target="_blank"
             rel="noreferrer"
-            className="text-neutral-600 hover:text-amber-400 transition-colors flex items-center gap-1 group/link"
+            className="text-neutral-600 hover:text-[#ffb012] transition-colors flex items-center gap-1 group/link"
           >
             <span>{l.label}</span>
             <span className="opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
@@ -66,7 +66,7 @@ export function TeamVPs({ members }: { members?: TeamMember[] }) {
       <section className="relative py-8 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-3 mb-8">
-            <div className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
+            <div className="w-1.5 h-1.5 rounded-full bg-[#ffb012] shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
             <div className=" text-base font-mono uppercase tracking-[0.3em] text-neutral-600 font-bold">
               Venture Partners & Platform
             </div>

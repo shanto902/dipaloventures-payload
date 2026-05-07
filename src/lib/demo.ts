@@ -139,21 +139,21 @@ export const focusAreas = [
     title: 'Energy',
     n: '01',
     image: 'energy',
-    body: 'Backing startups transforming how the world generates, stores, and uses energy — from renewables to grid tech to electrification',
+    body: 'Backing startups transforming how the world generates, stores, and uses energy from renewables to grid tech to electrification.',
     tags: ['Distributed Generation Storage', 'Renewables', 'Data Center Infrastructure'],
   },
   {
     title: 'Climate',
     n: '02',
     image: 'climate',
-    body: 'Investing in technologies that reduce cost while mitigating climate change across food & agriculture, industry, transportation, and the built environment',
+    body: 'Investing in technologies that reduce cost while mitigating climate change across food & agriculture, industry, transportation, and the built environment.',
     tags: ['Waste to Value', 'Water Tech', 'Industrial Decarbonization'],
   },
   {
     title: 'Physical AI',
     n: '03',
     image: 'physical-ai',
-    body: 'Intelligent hardware — robotics, industrial automation, embedded AI, and the physical systems where machine intelligence meets the real world',
+    body: 'Intelligent hardware robotics, industrial automation, embedded AI, and the physical systems where machine intelligence meets the real world.',
     tags: ['Robotics', 'Smart Devices', 'Industrial Intelligence'],
   },
 ]
@@ -286,38 +286,38 @@ export const testimonialCards = [
 
 export const tabContent = {
   founders: {
-    headline: 'An Unfair Advantage in Hard Tech for founders',
-    body: "Hard tech fails where spreadsheets can't go — on factory floors, across supply chains, and in engineering detail. We've built through it. Our GPs have shipped physical products at scale, so we know what matters before we invest — and how to help after",
+    headline: 'An Unfair Advantage in Hard Tech',
+    body: "Hard tech fails where spreadsheets can't go on factory floors, across supply chains, and in engineering detail. We've built through it. Our GPs have shipped physical products at scale, so we know what matters before we invest and how to help after.",
     bullets: [
       {
         t: 'Diligence, Under the Hood',
-        b: 'We go deep before we invest — reviewing engineering, identifying supply chain risks, and pressure-testing your path from prototype to production',
+        b: 'We go deep before we invest reviewing engineering, identifying supply chain risks, and pressure-testing your path from prototype to production.',
       },
       {
         t: 'Hands-On from Day One',
-        b: 'We work alongside you on the details — CAD, BOMs, and manufacturing plans — and stay engaged as you scale',
+        b: 'We work alongside you on the details CAD, BOMs, and manufacturing plans and stay engaged as you scale.',
       },
       {
         t: 'Built Locally. Scaled Globally',
-        b: "When you're ready to expand, we leverage our networks to unlock international markets and support execution on the ground",
+        b: "When you're ready to expand, we leverage our networks to unlock international markets and support execution on the ground.",
       },
     ],
   },
   investors: {
-    headline: 'An Unfair Advantage in Hard Tech for Investors',
-    body: "Hard tech is redefining venture — companies solving real-world problems with defensible, IP-driven advantage. Our funds and SPVs provide access to these opportunities — underwritten with technical depth most investment teams don't have",
+    headline: 'An Unfair Advantage in Hard Tech',
+    body: "Hard tech is redefining venture companies solving real-world problems with defensible, IP-driven advantage. Our funds and SPVs provide access to these opportunities underwritten with technical depth most investment teams don't have.",
     bullets: [
       {
         t: 'Proprietary Deal Flow',
-        b: 'We source and vet hard-tech opportunities in the US heartland and across the globe through networks built over decades — giving us early access to high-conviction companies',
+        b: 'We source and vet hard-tech opportunities in the US heartland and across the globe through networks built over decades giving us early access to high-conviction companies.',
       },
       {
         t: 'Beyond Software',
-        b: 'Deep tech, including Physical AI, is driving the next generation of venture returns, built on real-world innovation and durable, IP-driven advantage',
+        b: 'Deep tech, including Physical AI, is driving the next generation of venture returns, built on real-world innovation and durable, IP-driven advantage.',
       },
       {
         t: 'Operator-Led. Proven',
-        b: 'Our partners have built and exited deep-tech companies. We bring operator experience, not just capital. Our Founding GP has delivered a 19% net IRR over the past decade in early-stage investments',
+        b: 'Our partners have built and exited deep-tech companies. We bring operator experience, not just capital. Our Founding GP has delivered a 19% net IRR over the past decade in early-stage investments.',
       },
     ],
   },
@@ -401,8 +401,9 @@ export const emailCards = [
   {
     eyebrow: 'Founders',
     title: 'Submit a pitch',
-    subtitle: 'Seed to Series A · prototype stage',
+    subtitle: 'Submit via application portal',
     email: 'deals@dipaloventures.com',
+    href: '/pitch',
   },
   {
     eyebrow: 'Investors',

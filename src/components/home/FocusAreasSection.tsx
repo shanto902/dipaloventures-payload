@@ -20,25 +20,25 @@ export function FocusAreasSection() {
         {/* Consistent Brand Header */}
         <div className="grid lg:grid-cols-2 gap-8 items-start mb-6 ">
           <div className=" ">
-            <div className="text-sm font-mono uppercase tracking-[0.2em] text-amber-400 mb-6 font-bold">
+            <div className="text-sm font-mono uppercase tracking-[0.2em] text-[#ffb012] mb-6 font-bold">
               Our Thesis
             </div>
             <h2 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.2] tracking-tight">
               Software alone won't <br /> solve critical challenges <br />{' '}
-              <span className="italic text-amber-400"> for people and the planet</span>
+              <span className="italic text-[#ffb012]"> for people and the planet</span>
             </h2>
-            <div className="mt-10 h-px w-20 bg-amber-400/30" />
+            <div className="mt-10 h-px w-20 bg-[#ffb012]/30" />
           </div>
           <div className="lg:self-end mb-10">
             <p className="text-base md:text-lg text-neutral-800 leading-relaxed font-light max-w-3xl  lg:pb-1">
               We're at a historic inflection point. Breakthroughs in materials, manufacturing, and
-              supply chains enabled by Artificial Intelligence are unlocking new possibilities — but
+              supply chains enabled by Artificial Intelligence are unlocking new possibilities but
               bringing them to market remains hard. Dipalo Ventures provides product expertise and
               deep engineering knowledge to help our founders bring breakthrough scientific and
               engineering innovations to market.
               <br />
               <br />
-              We don't just invest capital — we help you build. Our partners are founders and
+              We don't just invest capital we help you build. Our partners are founders and
               operators with firsthand experience taking hard tech products from idea to market. We
               understand the technical risk, the operational complexity, and the path to scale.
             </p>
@@ -57,9 +57,6 @@ export function FocusAreasSection() {
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-neutral-900/10 group-hover:bg-transparent transition-colors duration-500" />
-                <div className="absolute top-6 left-6 font-mono text-xs font-bold text-white tracking-widest z-30 drop-shadow-sm">
-                  0{i + 1}
-                </div>
               </div>
 
               <div className="relative">
@@ -73,7 +70,7 @@ export function FocusAreasSection() {
                   {f.tags.map((t) => (
                     <span
                       key={t}
-                      className="text-xs font-mono uppercase tracking-[0.1em] px-3 py-1 rounded-full border border-neutral-200 text-neutral-600 font-bold group-hover:border-amber-400/30 group-hover:text-amber-400 transition-colors"
+                      className="text-xs font-mono uppercase tracking-[0.1em] px-3 py-1 rounded-full border border-neutral-200 text-neutral-600 font-bold group-hover:border-[#ffb012]/30 group-hover:text-[#ffb012] transition-colors"
                     >
                       {t}
                     </span>

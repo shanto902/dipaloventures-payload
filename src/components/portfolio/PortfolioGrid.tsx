@@ -18,8 +18,8 @@ interface Props {
 
 export function PortfolioGrid({ filtered, totalCount }: Props) {
   return (
-    <div>
-      <div className="flex items-baseline justify-between mb-6 px-1">
+    <div className="">
+      <div className="flex items-baseline justify-between mb-6">
         <div className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-600 font-bold">
           <span className="text-neutral-900">{filtered.length}</span> / {totalCount} Entities
         </div>
@@ -31,7 +31,7 @@ export function PortfolioGrid({ filtered, totalCount }: Props) {
             <>
               {/* Exit Corner Fill */}
               {p.isExited && (
-                <div 
+                <div
                   className="absolute top-0 right-0 w-24 h-24 bg-green-600 z-20 pointer-events-none"
                   style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }}
                 >
@@ -79,13 +79,13 @@ export function PortfolioGrid({ filtered, totalCount }: Props) {
                   {p.fundKeys.map((fk: FundKey) => (
                     <span
                       key={fk}
-                      className="text-xs font-mono tracking-[0.15em] uppercase px-2 py-0.5 rounded-full bg-neutral-100 text-neutral-500 group-hover:bg-white/10 group-hover:text-amber-400 transition-all duration-300 font-bold"
+                      className="text-xs font-mono tracking-[0.15em] uppercase px-2 py-0.5 rounded-full bg-neutral-100 text-neutral-500 group-hover:bg-white/10 group-hover:text-[#ffb012] transition-all duration-300 font-bold"
                     >
                       {fundMeta[fk].label}
                     </span>
                   ))}
                   {p.exit && (
-                    <span className="text-xs font-mono tracking-[0.15em] uppercase px-2 py-0.5 rounded-full bg-amber-400 text-neutral-900 font-bold">
+                    <span className="text-xs font-mono tracking-[0.15em] uppercase px-2 py-0.5 rounded-full bg-[#ffb012] text-neutral-900 font-bold">
                       ★ {p.exit}
                     </span>
                   )}
@@ -95,7 +95,7 @@ export function PortfolioGrid({ filtered, totalCount }: Props) {
                 <h2 className="  text-2xl font-medium transition-colors duration-300 group-hover:text-white text-neutral-900 leading-tight">
                   {p.name}
                   {p.url && (
-                    <span className="inline-flex items-center gap-1 ml-2.5 px-2 py-0.5 rounded-full bg-neutral-100 text-[9px] font-mono font-bold tracking-[0.15em] text-neutral-500 opacity-50 group-hover:opacity-100 group-hover:bg-amber-400 group-hover:text-neutral-900 transition-all duration-500 align-middle">
+                    <span className="inline-flex items-center gap-1 ml-2.5 px-2 py-0.5 rounded-full bg-neutral-100 text-xs font-mono font-bold tracking-[0.15em] text-neutral-500 opacity-50 group-hover:opacity-100 group-hover:bg-[#ffb012] group-hover:text-neutral-900 transition-all duration-500 align-middle">
                       <ArrowUpRight className="w-2.5 h-2.5" />
                     </span>
                   )}
@@ -106,7 +106,7 @@ export function PortfolioGrid({ filtered, totalCount }: Props) {
 
                 {/* Technical Footnote */}
                 <div className="mt-6 pt-4 border-t border-neutral-100 group-hover:border-white/10 flex items-center justify-between transition-colors">
-                  <span className="text-xs font-mono uppercase tracking-[0.15em] text-amber-400 font-bold">
+                  <span className="text-xs font-mono uppercase tracking-[0.15em] text-[#ffb012] font-bold">
                     {sectorMeta[p.sector as Sector]?.label}
                   </span>
                   <span className="text-xs font-mono uppercase tracking-[0.15em] text-neutral-600 group-hover:text-white/40 transition-colors font-bold">
