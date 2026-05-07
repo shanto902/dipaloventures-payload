@@ -40,7 +40,7 @@ export function ResidencySection() {
                 {residencyTags.map((t) => (
                   <span
                     key={t}
-                    className="text-xs font-medium px-4 py-1.5 rounded-full border border-neutral-200 text-neutral-500 hover:border-[#ffb012] hover:text-[#ffb012] transition-all duration-300"
+                    className="text-xs font-medium px-4 py-1.5 rounded-full border border-neutral-200 text-neutral-600 hover:border-[#ffb012] hover:text-[#ffb012] transition-all duration-300"
                   >
                     {t}
                   </span>

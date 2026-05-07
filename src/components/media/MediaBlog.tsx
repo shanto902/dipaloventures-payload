@@ -70,7 +70,7 @@ export function MediaBlog({ initialPosts }: { initialPosts?: MediumPost[] }) {
                 {p.title}
               </h3>
 
-              <p className="text-base md:text-lg  text-neutral-500 leading-relaxed font-light line-clamp-3 mb-8">
+              <p className="text-base md:text-lg  text-neutral-600 leading-relaxed font-light line-clamp-3 mb-8">
                 {p.body}
               </p>
 
@@ -78,7 +78,7 @@ export function MediaBlog({ initialPosts }: { initialPosts?: MediumPost[] }) {
                 <span className="font-mono  text-xs uppercase tracking-[0.2em] text-neutral-600 font-bold group-hover:text-[#ffb012] transition-colors">
                   Read Full Take
                 </span>
-                <span className="text-neutral-500 group-hover:text-[#ffb012] group-hover:translate-x-1 transition-all duration-500">
+                <span className="text-neutral-600 group-hover:text-[#ffb012] group-hover:translate-x-1 transition-all duration-500">
                   →
                 </span>
               </div>

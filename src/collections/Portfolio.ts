@@ -49,8 +49,8 @@ export const Portfolio: CollectionConfig = {
       type: 'select',
       required: true,
       options: [
-        { label: 'Energy Transition', value: 'energy' },
-        { label: 'Climate Tech', value: 'climate' },
+        { label: 'Energy', value: 'energy' },
+        { label: 'Climate', value: 'climate' },
         { label: 'Physical AI', value: 'physical_ai' },
         { label: 'Other', value: 'other' },
       ],
@@ -64,6 +64,7 @@ export const Portfolio: CollectionConfig = {
         { label: 'Seed', value: 'seed' },
         { label: 'Series A', value: 'series_a' },
         { label: 'Series B', value: 'series_b' },
+        { label: 'Series C', value: 'series_c' },
       ],
     },
     {

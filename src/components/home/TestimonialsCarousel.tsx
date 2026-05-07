@@ -123,7 +123,7 @@ function TestimonialCard({ card }: { card: Testimonial }) {
               className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100"
             />
           ) : (
-            <div className="absolute inset-0 flex items-center justify-center   text-2xl text-neutral-500">
+            <div className="absolute inset-0 flex items-center justify-center   text-2xl text-neutral-600">
               {card.initials || card.name.charAt(0)}
             </div>
           )}

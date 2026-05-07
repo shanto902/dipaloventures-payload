@@ -65,7 +65,7 @@ export default function ContactPage() {
                 Technical Studio
               </h3>
 
-              <p className="text-sm text-neutral-500 leading-relaxed font-light italic mb-10 border-l-2 border-[#ffb012]/10 pl-6">
+              <p className="text-sm text-neutral-600 leading-relaxed font-light italic mb-10 border-l-2 border-[#ffb012]/10 pl-6">
                 Our headquarters is located within the mHUB ecosystem, North America's leading
                 innovation center for physical product development and manufacturing.
               </p>
@@ -88,7 +88,7 @@ export default function ContactPage() {
                   className="inline-flex items-center gap-3 px-8 py-4 bg-neutral-900 text-white rounded-full font-mono text-xs uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all shadow-sm hover:shadow-xl hover:shadow-neutral-900/10"
                 >
                   <span>Get Directions</span>
-                  <span className="text-neutral-500 group-hover:text-[#ffb012] transition-colors">
+                  <span className="text-neutral-600 group-hover:text-[#ffb012] transition-colors">
                     ↗
                   </span>
                 </a>

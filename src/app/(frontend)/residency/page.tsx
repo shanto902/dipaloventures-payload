@@ -27,7 +27,7 @@ export default function ResidencyPage() {
       <ResidencyCapabilities />
       <ResidencyQuote />
       <ResidencyProcess />
-      <ResidencyExecution />
+      {/* <ResidencyExecution /> */}
       {/* <ResidencyCovers /> */}
       <ResidencyRAAS />
       <ResidencyCaseStudies />

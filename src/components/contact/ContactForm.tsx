@@ -44,7 +44,7 @@ export function ContactForm() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-1.5 h-1.5 rounded-full bg-[#ffb012] shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
-            <span className="font-mono text-xs uppercase tracking-[0.4em] text-neutral-500 font-bold">
+            <span className="font-mono text-xs uppercase tracking-[0.4em] text-neutral-600 font-bold">
               Inquiry Terminal
             </span>
           </div>
@@ -121,7 +121,7 @@ export function ContactForm() {
               ) : (
                 <span className="flex items-center justify-center gap-3">
                   Send Message
-                  <span className="text-neutral-500 group-hover:text-[#ffb012] transition-colors">
+                  <span className="text-neutral-600 group-hover:text-[#ffb012] transition-colors">
                     →
                   </span>
                 </span>

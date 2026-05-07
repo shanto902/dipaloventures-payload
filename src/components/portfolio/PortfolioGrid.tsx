@@ -21,7 +21,7 @@ export function PortfolioGrid({ filtered, totalCount }: Props) {
     <div className="">
       <div className="flex items-baseline justify-between mb-6">
         <div className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-600 font-bold">
-          <span className="text-neutral-900">{filtered.length}</span> / {totalCount} Entities
+          <span className="text-neutral-900">{filtered.length}</span> / {totalCount} Companies
         </div>
       </div>
 
@@ -79,7 +79,7 @@ export function PortfolioGrid({ filtered, totalCount }: Props) {
                   {p.fundKeys.map((fk: FundKey) => (
                     <span
                       key={fk}
-                      className="text-xs font-mono tracking-[0.15em] uppercase px-2 py-0.5 rounded-full bg-neutral-100 text-neutral-500 group-hover:bg-white/10 group-hover:text-[#ffb012] transition-all duration-300 font-bold"
+                      className="text-xs font-mono tracking-[0.15em] uppercase px-2 py-0.5 rounded-full bg-neutral-100 text-neutral-600 group-hover:bg-white/10 group-hover:text-[#ffb012] transition-all duration-300 font-bold"
                     >
                       {fundMeta[fk].label}
                     </span>
@@ -94,13 +94,13 @@ export function PortfolioGrid({ filtered, totalCount }: Props) {
                 {/* Typography Block */}
                 <h2 className="  text-2xl font-medium transition-colors duration-300 group-hover:text-white text-neutral-900 leading-tight">
                   {p.name}
-                  {p.url && (
-                    <span className="inline-flex items-center gap-1 ml-2.5 px-2 py-0.5 rounded-full bg-neutral-100 text-xs font-mono font-bold tracking-[0.15em] text-neutral-500 opacity-50 group-hover:opacity-100 group-hover:bg-[#ffb012] group-hover:text-neutral-900 transition-all duration-500 align-middle">
+                  {p.url && p.url !== '#' && (
+                    <span className="inline-flex items-center gap-1 ml-2.5 px-2 py-0.5 rounded-full bg-neutral-100 text-xs font-mono font-bold tracking-[0.15em] text-neutral-600 opacity-50 group-hover:opacity-100 group-hover:bg-[#ffb012] group-hover:text-neutral-900 transition-all duration-500 align-middle">
                       <ArrowUpRight className="w-2.5 h-2.5" />
                     </span>
                   )}
                 </h2>
-                <p className="mt-3 text-base leading-relaxed flex-1 text-neutral-700 group-hover:text-white/70 transition-colors duration-300 font-normal">
+                <p className="mt-3 text-base leading-relaxed flex-1 text-neutral-600 group-hover:text-white/70 transition-colors duration-300 font-normal">
                   {p.desc}
                 </p>
 
@@ -120,7 +120,9 @@ export function PortfolioGrid({ filtered, totalCount }: Props) {
           const cardBaseClass =
             'group relative overflow-hidden bg-white p-7 md:p-8 transition-all duration-500 flex flex-col min-h-[340px] hover:z-10'
 
-          return p.url ? (
+          const isLink = p.url && p.url !== '#'
+
+          return isLink ? (
             <a
               key={p.name}
               href={p.url}
@@ -152,7 +154,7 @@ export function PortfolioGrid({ filtered, totalCount }: Props) {
           <div className="bg-white sm:col-span-2 xl:col-span-3 min-h-[400px] flex flex-col items-center justify-center p-12 text-center text-neutral-600">
             <span className="text-4xl mb-4   italic text-neutral-400">No results</span>
             <p className="font-mono text-xs uppercase tracking-widest font-bold">
-              Adjust filters to see more entities
+              Adjust filters to see more Companies
             </p>
           </div>
         )}

@@ -87,42 +87,14 @@ export function PortfolioVideoBanner() {
       <section className="container  mx-auto px-4 pt-24  pb-8">
         <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-center">
           <div>
-            <div className="text-xs font-mono uppercase tracking-[0.3em] text-[#ffb012] mb-6 font-bold">
-              The Portfolio
-            </div>
             <h1 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.05] tracking-tight">
               Companies <span className="italic text-[#ffb012]">of the</span>
-              <br /> physical world.
+              <br /> physical world
             </h1>
             <p className="mt-6 md:mt-8 text-base md:text-lg text-neutral-800 leading-relaxed font-light max-w-xl">
-              Breakthrough technologies for people and the planet. Supporting 16 companies across
-              Fund I, Fund II, and SPVs.
+              Breakthrough technologies for people and the planet. Supporting companies across Fund
+              I, Fund II, and SPVs.
             </p>
-
-            {/* Reel Metadata */}
-            <div className="mt-8 md:mt-12 flex items-center gap-4">
-              <button
-                onClick={toggleMute}
-                className="group flex items-center gap-3 text-neutral-600 hover:text-neutral-900 transition-colors"
-              >
-                <div
-                  className={`p-2 rounded-full border transition-all ${
-                    isMuted
-                      ? 'border-[#ffb012]/20 bg-amber-50 text-[#ffb012]'
-                      : 'border-neutral-200 text-neutral-500'
-                  }`}
-                >
-                  {isMuted ? <VolumeX size={15} /> : <Volume2 size={15} />}
-                </div>
-                <span className="font-mono text-xs uppercase tracking-[0.15em] font-bold">
-                  {isMuted ? 'Unmute Audio' : 'Mute Reel'}
-                </span>
-              </button>
-              <div className="h-px w-8 bg-neutral-200" />
-              <div className="font-mono text-xs uppercase tracking-[0.15em] text-neutral-600 font-bold">
-                Portfolio Reel 2026
-              </div>
-            </div>
           </div>
 
           {/* Video Reel with Homepage Pattern Framing */}
@@ -138,8 +110,8 @@ export function PortfolioVideoBanner() {
                   <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
                   <div className="flex flex-col items-center gap-4">
                     <div className="w-12 h-12 rounded-full border-2 border-[#ffb012]/20 border-t-[#ffb012] animate-spin" />
-                    <span className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-500 font-bold">
-                      Initializing Reel
+                    <span className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-600 font-bold">
+                      Initializing Video
                     </span>
                   </div>
                 </div>

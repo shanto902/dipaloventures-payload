@@ -1,8 +1,7 @@
 'use client'
 
 import React from 'react'
-import Image from 'next/image'
-import diagram from '@/assets/diagram.jpeg'
+import { TRLDiagram } from './TRLSection'
 
 const processSteps = [
   {
@@ -28,84 +27,123 @@ const processSteps = [
   {
     n: '05',
     t: 'Decision',
-    d: "Disciplined, deliberate. Real diligence takes time — we won't rush it.",
+    d: "Disciplined, deliberate. Real diligence takes time, we won't rush it.",
   },
 ]
 
 export function ResidencyProcess() {
+  const [activeStep, setActiveStep] = React.useState<string | null>('01')
+
   return (
-    <section className="bg-white px-6 md:px-12 py-8 border-t border-neutral-100">
-      <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-[1.2fr_1fr] gap-12 items-start">
-          {/* Left Column: Result + Qualification Header */}
+    <section className="bg-white mx-6 md:mx-12 py-8 border-t border-neutral-100">
+      <div className="container mx-auto">
+        <div className="grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-24 items-start">
+          {/* Left Column: Scope + Timeline */}
           <div className="flex flex-col gap-16">
-            {/* The Result */}
+            {/* Scope Header */}
             <div className="max-w-xl">
               <div className="text-xs font-mono uppercase tracking-[0.3em] text-[#ffb012] mb-6 font-bold">
-                The Result
+                Scope
               </div>
-              <p className="text-base md:text-lg font-light italic text-neutral-800 leading-relaxed border-l-2 border-[#ffb012] pl-6">
+              <p className="text-base md:text-lg text-neutral-600 leading-relaxed">
                 Residency surfaces gaps in engineering, supply chain, and time-to-market before they
-                become existential — so founders can solve them while there&apos;s still runway.
+                become existential threats, enabling founders to address them while there&apos;s
+                still runway. Our operators are embedded with your team from early design reviews
+                through first production runs.
               </p>
             </div>
 
-            {/* How To Qualify */}
-            <div className="max-w-xl mb-8">
-              <div className="text-xs font-mono uppercase tracking-[0.3em] text-[#ffb012] mb-6 font-bold">
-                How To Qualify
+            {/* Vertical Timeline Accordion */}
+            <div className="relative">
+              {/* Vertical Line - Only spans steps */}
+              <div className="absolute left-[31px] top-6 bottom-6 w-px bg-neutral-100" />
+
+              <div className="relative space-y-4">
+                {processSteps.map((s) => {
+                  const isActive = activeStep === s.n
+                  return (
+                    <div
+                      key={s.n}
+                      className={`relative group -mx-4 px-12 py-6 transition-all duration-500 rounded-3xl ${
+                        isActive ? 'bg-[#fcfbf9] shadow-sm' : 'hover:bg-neutral-50'
+                      }`}
+                    >
+                      {/* Timeline Node */}
+                      <div
+                        onClick={() => setActiveStep(isActive ? null : s.n)}
+                        className={`absolute left-4 top-[22px] w-9 h-9 rounded-full border-2 flex items-center justify-center cursor-pointer transition-all duration-500 z-10 ${
+                          isActive
+                            ? 'bg-[#ffb012] border-[#ffb012] text-black scale-110 shadow-lg shadow-amber-200'
+                            : 'bg-white border-neutral-100 text-neutral-400 group-hover:border-neutral-200'
+                        }`}
+                      >
+                        <span className="font-mono text-xs font-bold">{s.n}</span>
+                      </div>
+
+                      {/* Content */}
+                      <button
+                        onClick={() => setActiveStep(isActive ? null : s.n)}
+                        className="w-full text-left outline-none pl-6"
+                      >
+                        <div className="flex items-center justify-between gap-4">
+                          <h3
+                            className={`text-lg md:text-xl font-semibold transition-colors duration-300 ${
+                              isActive
+                                ? 'text-neutral-900'
+                                : 'text-neutral-500 group-hover:text-neutral-800'
+                            }`}
+                          >
+                            {s.t}
+                          </h3>
+                          <span
+                            className={`text-[#ffb012] transition-all duration-500 ${
+                              isActive
+                                ? 'rotate-180 opacity-100'
+                                : 'rotate-0 opacity-40 group-hover:opacity-100'
+                            }`}
+                          >
+                            <svg
+                              width="12"
+                              height="8"
+                              viewBox="0 0 12 8"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M1 1L6 6L11 1"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                              />
+                            </svg>
+                          </span>
+                        </div>
+                      </button>
+
+                      <div
+                        className={`grid transition-all duration-500 ease-in-out pl-6 ${
+                          isActive
+                            ? 'grid-rows-[1fr] opacity-100 mt-4'
+                            : 'grid-rows-[0fr] opacity-0 mt-0 overflow-hidden'
+                        }`}
+                      >
+                        <div className="overflow-hidden">
+                          <p className="text-base text-neutral-600 leading-relaxed font-light pr-6">
+                            {s.d}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
               </div>
-              <h2 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.1] tracking-tighter mb-8">
-                End-to-end. <br />
-                <span className="italic text-[#ffb012]">
-                  Disciplined screening, deep diligence.
-                </span>
-              </h2>
-              <p className="text-base md:text-lg text-neutral-700 leading-relaxed font-light pl-6 border-l-2 border-[#ffb012]/20">
-                From founder application to portfolio support — a transparent flow. <br />
-                Startups in TRL 4–6 are ideally suited to the Residency.
-              </p>
             </div>
           </div>
 
-          {/* Right Column: Process Diagram */}
-          <div className="">
-            <div className="relative aspect-4/3 overflow-hidden rounded-3xl group">
-              <Image
-                src={diagram}
-                alt="Process Diagram"
-                fill
-                className="object-contain transition-all duration-700"
-              />
-            </div>
+          {/* Right Column: TRL Diagram (Sticky) */}
+          <div className="lg:sticky lg:top-32 self-start">
+            <TRLDiagram />
           </div>
-        </div>
-
-        {/* Process Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
-          {processSteps.map((s) => (
-            <div
-              key={s.n}
-              className="group relative flex flex-col transition-all duration-300 hover:-translate-y-1"
-            >
-              {/* Step Header */}
-              <div className="flex items-center gap-4 mb-6">
-                <span className="font-mono text-xs text-[#ffb012] font-bold tracking-[0.2em]">
-                  {s.n}
-                </span>
-                <div className="h-px flex-1 bg-neutral-100 group-hover:bg-[#ffb012]/30 transition-colors" />
-              </div>
-
-              <h3 className="text-lg font-semibold text-neutral-900 mb-3 group-hover:text-[#ffb012] transition-colors">
-                {s.t}
-              </h3>
-
-              <p className="text-base text-neutral-800 leading-snug font-light">{s.d}</p>
-
-              {/* Technical Accent */}
-              <div className="mt-6 w-8 h-1 bg-neutral-100 group-hover:w-full group-hover:bg-[#ffb012]/50 transition-all duration-500" />
-            </div>
-          ))}
         </div>
       </div>
     </section>

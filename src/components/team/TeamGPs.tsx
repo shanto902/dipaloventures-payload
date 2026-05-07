@@ -42,7 +42,7 @@ function GPCard({ m }: { m: TeamMember & { orgLinks?: OrgLink[] } }) {
           {m.role} · {m.location}
         </div>
 
-        <p className="mt-3 text-sm text-neutral-500 leading-relaxed font-light line-clamp-3">
+        <p className="mt-3 text-sm text-neutral-600 leading-relaxed font-light line-clamp-3">
           {m.bio}
         </p>
 

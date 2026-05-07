@@ -46,7 +46,7 @@ export function ResidencyForFounders() {
                 {w.t}
               </h3>
               <div className=" h-px w-6 bg-neutral-100 group-hover:w-12 group-hover:bg-[#ffb012]/50 transition-all duration-500" />
-              <p className="mt-4 text-base  text-neutral-500 leading-relaxed font-light">{w.b}</p>
+              <p className="mt-4 text-base  text-neutral-600 leading-relaxed font-light">{w.b}</p>
             </article>
           ))}
         </div>

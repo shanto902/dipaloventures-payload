@@ -25,7 +25,7 @@ export function ResidencyCovers() {
               <span className="italic text-[#ffb012] ">execution.</span>
             </h2>
 
-            <p className="text-lg text-neutral-500 leading-relaxed font-light italic border-l-2 border-[#ffb012]/10 pl-6 mb-8">
+            <p className="text-lg text-neutral-600 leading-relaxed font-light italic border-l-2 border-[#ffb012]/10 pl-6 mb-8">
               Residency isn&apos;t an accelerator and it isn&apos;t advisory hours. It&apos;s
               operators embedded with your team, doing the technical work alongside you — from early
               design reviews to your first production runs.
@@ -37,7 +37,7 @@ export function ResidencyCovers() {
                 className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-neutral-900 text-white rounded-full font-mono text-xs uppercase tracking-[0.3em] font-bold hover:bg-neutral-800 transition-all duration-500 shadow-sm hover:shadow-xl hover:shadow-neutral-900/10"
               >
                 <span>Operational Team</span>
-                <span className="text-neutral-500 group-hover:text-[#ffb012] transition-colors">
+                <span className="text-neutral-600 group-hover:text-[#ffb012] transition-colors">
                   ↗
                 </span>
               </Link>
@@ -67,7 +67,7 @@ export function ResidencyCovers() {
                     {x.t}
                   </h3>
 
-                  <p className="text-sm md:text-base text-neutral-500 leading-relaxed font-light group-hover:text-neutral-800 transition-colors duration-500 italic">
+                  <p className="text-sm md:text-base text-neutral-600 leading-relaxed font-light group-hover:text-neutral-800 transition-colors duration-500 italic">
                     {x.b}
                   </p>
 

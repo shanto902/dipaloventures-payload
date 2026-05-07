@@ -22,7 +22,7 @@ export function Footer() {
                     className="group flex items-center gap-2 px-3 py-1.5 bg-neutral-100/50 border border-neutral-200/50 rounded-lg transition-all hover:border-[#ffb012]/40"
                   >
                     <div className="w-1 h-1 bg-[#ffb012] rounded-full animate-pulse" />
-                    <span className="font-mono text-xs text-neutral-500 uppercase tracking-widest font-bold">
+                    <span className="font-mono text-xs text-neutral-600 uppercase tracking-widest font-bold">
                       {loc}
                     </span>
                   </div>
@@ -46,7 +46,7 @@ export function Footer() {
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    className="text-base text-neutral-500 hover:text-neutral-900 transition-colors duration-300"
+                    className="text-base text-neutral-600 hover:text-neutral-900 transition-colors duration-300"
                   >
                     {l.label}
                   </Link>
@@ -71,7 +71,7 @@ export function Footer() {
                     href={l.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-base text-neutral-500 hover:text-neutral-900 transition-colors duration-300"
+                    className="text-base text-neutral-600 hover:text-neutral-900 transition-colors duration-300"
                   >
                     {l.label}
                   </a>
@@ -87,7 +87,7 @@ export function Footer() {
             <div className="text-base text-neutral-900 font-medium mb-2">
               Letters from the Hard Side
             </div>
-            <p className="text-base text-neutral-500 leading-relaxed mb-8 font-light">
+            <p className="text-base text-neutral-600 leading-relaxed mb-8 font-light">
               Quarterly notes on deep tech, manufacturing, and the founders we back.
             </p>
             <NewsletterForm />

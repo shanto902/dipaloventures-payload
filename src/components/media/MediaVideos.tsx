@@ -48,7 +48,7 @@ export function MediaVideos({ initialVideos }: { initialVideos?: any[] }) {
                 {featuredVideo.title}
               </h2>
               <div className="mt-6 border-l-2 border-[#ffb012]/10 pl-8 max-w-2xl">
-                <p className="text-lg text-neutral-500 leading-relaxed italic">
+                <p className="text-lg text-neutral-600 leading-relaxed italic">
                   {isExpanded || featuredVideo.desc.length <= 200
                     ? featuredVideo.desc
                     : `${featuredVideo.desc.substring(0, 200)}...`}

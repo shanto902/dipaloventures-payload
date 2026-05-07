@@ -12,21 +12,21 @@ export function ResidencyQuote() {
             </div>
 
             <blockquote className="relative z-10">
-              <p className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.1] tracking-tight italic">
-                &quot;There&apos;s a tremendous amount of{' '}
-                <span className="text-[#ffb012]">craftsmanship </span> in between a great idea and a
-                great product.&quot;
+              <p className="text-3xl md:text-4xl font-semibold text-neutral-900 text-center leading-[1.3] italic">
+                &quot;There's a tremendous amount of{' '}
+                <span className="italic text-[#ffb012]">craftsmanship </span> in between a great
+                idea and a great product.&quot;
               </p>
 
               <footer className=" flex items-center gap-6 justify-end">
                 <div className="h-px w-12 bg-[#ffb012]" />
-                <div className="flex flex-col gap-1">
+                <div className="">
                   <cite className="not-italic text-sm md:text-base font-semibold text-neutral-900">
-                    Steve Jobs
+                    Steve Jobs,{' '}
+                    <span className="font-mono text-xs uppercase tracking-widest text-neutral-600 font-bold">
+                      The Lost Interview, 1995
+                    </span>
                   </cite>
-                  <span className="font-mono text-xs uppercase tracking-widest text-neutral-600 font-bold">
-                    WWDC, 1997
-                  </span>
                 </div>
               </footer>
             </blockquote>

@@ -36,7 +36,7 @@ function SupportingCard({ m }: { m: TeamMember & { orgLinks?: OrgLink[] } }) {
         </div>
       </div>
 
-      <p className="text-sm text-neutral-500 leading-relaxed font-light line-clamp-3 mb-6">
+      <p className="text-sm text-neutral-600 leading-relaxed font-light line-clamp-3 mb-6">
         {m.bio}
       </p>
 

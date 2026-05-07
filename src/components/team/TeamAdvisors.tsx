@@ -44,7 +44,7 @@ export function TeamAdvisors({ advisors: liveAdvisors }: { advisors?: Advisor[] 
             <h4 className="text-base font-semibold text-neutral-900 tracking-tight leading-tight group-hover:text-[#ffb012] transition-colors truncate">
               {a.name}
             </h4>
-            <div className="mt-1 font-mono uppercase text-[10px] tracking-[0.15em] text-neutral-500 font-bold truncate">
+            <div className="mt-1 font-mono uppercase text-xs tracking-[0.15em] text-neutral-600 font-bold truncate">
               {org}
             </div>
           </div>
@@ -58,7 +58,7 @@ export function TeamAdvisors({ advisors: liveAdvisors }: { advisors?: Advisor[] 
               href={a.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="shrink-0 flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-neutral-400 hover:text-[#ffb012] transition-colors font-bold"
+              className="shrink-0 flex items-center gap-1 font-mono text-xs uppercase tracking-widest text-neutral-400 hover:text-[#ffb012] transition-colors font-bold"
             >
               <span>LinkedIn</span>
               <ArrowUpRight size={12} />
@@ -95,7 +95,7 @@ export function TeamAdvisors({ advisors: liveAdvisors }: { advisors?: Advisor[] 
           </div>
 
           <div className="mt-12 flex flex-col items-center">
-            <p className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-500 font-bold">
+            <p className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-600 font-bold">
               + 10 more advisors across energy, manufacturing, and life sciences.
             </p>
           </div>

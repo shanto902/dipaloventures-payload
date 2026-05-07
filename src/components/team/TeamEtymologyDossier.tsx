@@ -21,7 +21,7 @@ export const TeamEtymologyDossier = () => (
           &quot;light&quot;
         </React.Fragment>,
       ].map((content, i) => (
-        <li key={i} className="flex gap-6 text-sm text-neutral-500 italic font-light">
+        <li key={i} className="flex gap-6 text-sm text-neutral-600 italic font-light">
           <span className="font-mono text-[#ffb012] font-bold mt-1 text-xs">0{i + 1}</span>
           <span>{content}</span>
         </li>

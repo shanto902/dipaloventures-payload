@@ -54,7 +54,7 @@ export default function ResidencyCapabilities() {
     <section className="bg-white py-8 px-6 md:px-12 relative border-t border-neutral-100">
       <div className="container mx-auto">
         {/* Split Header Design - Tightened */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-10">
+        {/* <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-10">
           <div className="max-w-xl">
             <div className="text-xs font-mono uppercase tracking-[0.3em] text-[#ffb012] mb-6 font-bold">
               CAPABILITIES
@@ -66,11 +66,11 @@ export default function ResidencyCapabilities() {
           </div>
 
           <div className="max-w-md">
-            <p className="text-base text-neutral-700 leading-relaxed font-light border-l-2 border-[#ffb012]/20 pl-6">
+            <p className="text-base text-neutral-600 leading-relaxed font-light border-l-2 border-[#ffb012]/20 pl-6">
               Across three disciplines — embedded with your team from prototype to production.
             </p>
           </div>
-        </div>
+        </div> */}
 
         {/* Tab Toggle - Tightened */}
         <div className="flex md:justify-center mb-10">
@@ -92,7 +92,7 @@ export default function ResidencyCapabilities() {
                 aria-selected={activeTab === i}
                 onClick={() => setActiveTab(i)}
                 className={`relative z-10 flex-1 text-xs  tracking-widest uppercase font-mono font-bold py-3 px-2 transition-colors duration-300 ${
-                  activeTab === i ? 'text-neutral-900' : 'text-neutral-500 hover:text-neutral-700'
+                  activeTab === i ? 'text-neutral-900' : 'text-neutral-600 hover:text-neutral-600'
                 }`}
               >
                 {c.group.split(' & ')[0]}
@@ -108,9 +108,6 @@ export default function ResidencyCapabilities() {
         >
           {/* Left: Phase Title */}
           <div className="pt-2">
-            <div className="text-xs font-mono uppercase tracking-[0.3em] text-[#ffb012] mb-2 font-bold">
-              Phase {data.n}
-            </div>
             <h3 className="text-2xl md:text-3xl font-semibold text-neutral-900 tracking-tight">
               {data.headline}
             </h3>
@@ -121,10 +118,10 @@ export default function ResidencyCapabilities() {
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
               {data.items.map((item, idx) => (
                 <li key={idx} className="group flex gap-4 items-start">
-                  <div className="text-[#ffb012] font-mono text-xs font-bold mt-1 shrink-0 opacity-40 group-hover:opacity-100 transition-opacity">
+                  <div className="text-neutral-800 font-mono  mt-0.5 md:text-base  font-bold shrink-0 opacity-40 pr-2 border-r  border-[#ffb012] group-hover:opacity-100 transition-opacity">
                     {(idx + 1).toString().padStart(2, '0')}
                   </div>
-                  <div className="text-sm md:text-base text-neutral-800 leading-tight font-light">
+                  <div className="text-base md:text-lg text-neutral-800 leading-tight font-light">
                     {item}
                   </div>
                 </li>

@@ -10,10 +10,11 @@ import scalableLogo from '@/assets/logos/scalable.webp'
 import pluieProduct from '@/assets/products/pluie-product.jpg'
 import vumoProduct from '@/assets/products/vumo-product.jpg'
 import scalableProduct from '@/assets/products/scalable-product.jpg'
+import { scopeCards } from '@/lib/demo'
 
 function MutedTag({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-md px-2 py-0.5 text-xs font-mono uppercase tracking-wider border border-neutral-200 text-neutral-700 bg-neutral-100/80 font-bold shadow-xs">
+    <span className="inline-flex items-center rounded-md px-2 py-0.5 text-xs font-mono uppercase tracking-wider border border-neutral-200 text-neutral-600 bg-neutral-100/80 font-bold shadow-xs">
       {children}
     </span>
   )
@@ -111,7 +112,7 @@ function CaseCard(props: CaseCardProps) {
           }`}
         >
           <div className="border-t border-neutral-100 pt-4">
-            <div className="text-xs font-mono uppercase tracking-widest text-neutral-500 font-bold mb-2 flex items-center gap-2">
+            <div className="text-xs font-mono uppercase tracking-widest text-neutral-600 font-bold mb-2 flex items-center gap-2">
               <div className="w-2 h-px bg-[#ffb012]" />
               Challenge
             </div>
@@ -121,7 +122,7 @@ function CaseCard(props: CaseCardProps) {
           </div>
 
           <div>
-            <div className="text-xs font-mono uppercase tracking-widest text-neutral-500 font-bold mb-2 flex items-center gap-2">
+            <div className="text-xs font-mono uppercase tracking-widest text-neutral-600 font-bold mb-2 flex items-center gap-2">
               <div className="w-2 h-px bg-[#ffb012]" />
               Outcome
             </div>
@@ -165,14 +166,43 @@ export function ResidencyCaseStudies() {
             </div>
 
             <h2 className="text-4xl md:text-5xl font-semibold text-neutral-900 leading-[1.1] tracking-tight">
-              What Residency <br /> <span className="italic   text-[#ffb012]">actually does.</span>
+              What <span className="italic   text-[#ffb012]">Residency</span> actually does
             </h2>
           </div>
-          <p className="max-w-xs text-base md:text-lg  text-neutral-800 leading-relaxed font-light italic border-l-2 border-[#ffb012]/20 pl-6">
+          {/* <p className="max-w-xs text-base md:text-lg  text-neutral-800 leading-relaxed font-light italic border-l-2 border-[#ffb012]/20 pl-6">
             Three companies. <br />
             Three different technical challenges. <br />
             One program.
-          </p>
+          </p> */}
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-8">
+          {scopeCards.map((s) => (
+            <div
+              key={s.n}
+              className="group relative flex flex-col p-6 bg-[#fcfbf9] border border-neutral-200/60 rounded-2xl transition-all duration-500 hover:border-[#ffb012]/50 hover:shadow-lg hover:shadow-amber-900/5"
+            >
+              {/* Card Header */}
+              <div className="flex items-center justify-between mb-4">
+                <span className="font-mono text-xs text-[#ffb012] font-bold tracking-[0.2em]">
+                  {s.n}
+                </span>
+                <div className="w-1 h-1 rounded-full bg-neutral-300 group-hover:bg-[#ffb012] animate-pulse" />
+              </div>
+
+              <h3 className="text-lg font-semibold text-neutral-900 mb-2 group-hover:text-[#ffb012] transition-colors">
+                {s.t}
+              </h3>
+
+              <p className="text-base md:text-lg text-neutral-800 leading-snug font-light">{s.d}</p>
+
+              {/* Technical Bottom Accent */}
+              <div className="mt-4 flex items-center gap-2">
+                <div className="h-px w-6 bg-[#ffb012]/20 group-hover:w-10 transition-all duration-500" />
+                <div className="h-px w-1 bg-[#ffb012]/10 group-hover:bg-[#ffb012]/40" />
+              </div>
+            </div>
+          ))}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">

@@ -84,7 +84,7 @@ export function MediaInstagram({ initialPosts }: { initialPosts?: InstagramPost[
                     }}
                   />
 
-                  <div className="relative flex flex-col items-center gap-4 text-neutral-500 group-hover:text-[#ffb012] transition-colors duration-700">
+                  <div className="relative flex flex-col items-center gap-4 text-neutral-600 group-hover:text-[#ffb012] transition-colors duration-700">
                     <div className="w-10 h-10 rounded-full border border-current border-dashed animate-[spin_10s_linear_infinite] flex items-center justify-center">
                       <span className=" text-xs">✦</span>
                     </div>

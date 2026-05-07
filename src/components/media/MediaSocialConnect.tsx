@@ -99,7 +99,7 @@ export function MediaSocialConnect() {
               <h2 className="text-2xl md:text-3xl font-semibold text-neutral-900 leading-tight tracking-tight">
                 Quarterly notes on <span className="italic text-[#ffb012]  ">deep tech.</span>
               </h2>
-              <p className="text-sm text-neutral-500 leading-relaxed font-light italic">
+              <p className="text-sm text-neutral-600 leading-relaxed font-light italic">
                 Our honest takes on manufacturing and physical AI. Direct from Substack to your
                 inbox.
               </p>

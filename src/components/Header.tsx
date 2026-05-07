@@ -1,9 +1,9 @@
 'use client'
 
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { useEffect, useState } from 'react'
 import { Menu, X, ArrowRight } from 'lucide-react'
 import logoImg from '@/assets/dipalo-logo.png'
 
@@ -18,15 +18,28 @@ const links = [
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+      
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false)
+      } else {
+        setIsVisible(true)
+      }
+      
+      setScrolled(currentScrollY > 20)
+      setLastScrollY(currentScrollY)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [lastScrollY])
 
   // Lock scroll when menu is open
   useEffect(() => {
@@ -43,9 +56,9 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-[50] transition-all px-6 md:px-12 duration-500 ${
-          scrolled ? 'bg-white/90 backdrop-blur-md py-3 shadow-sm' : 'bg-transparent py-5'
-        }`}
+        className={`fixed inset-x-0 top-0 z-[50] transition-all px-6 md:px-12 duration-500 transform ${
+          isVisible ? 'translate-y-0' : '-translate-y-full shadow-none'
+        } ${scrolled ? 'bg-white/90 backdrop-blur-md py-3 shadow-sm' : 'bg-transparent py-5'}`}
       >
         <div className="container mx-auto px-4 flex items-center justify-between">
           <Link
@@ -73,7 +86,7 @@ export function Header() {
                   className={`px-4 py-2 text-sm tracking-tight transition-colors rounded-full ${
                     isActive
                       ? 'text-neutral-900 bg-neutral-100 font-medium'
-                      : 'text-neutral-500 hover:text-neutral-900 hover:bg-neutral-50'
+                      : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'
                   }`}
                 >
                   {l.label}

@@ -25,7 +25,7 @@ export function TeamSection({ members }: { members?: any[] }) {
             </h2>
           </div>
           <div className="max-w-xl">
-            <p className="text-base md:text-lg text-neutral-700 leading-relaxed font-light mb-8 lg:text-left pl-6 border-l-2 border-[#ffb012]/20">
+            <p className="text-base md:text-lg text-neutral-600 leading-relaxed font-light mb-8 lg:text-left pl-6 border-l-2 border-[#ffb012]/20">
               From Motorola and Google to founding startups, product design agencies, angel groups,
               and venture funds our GPs are serial entrepreneurs who have both built and backed
               innovation for decades.

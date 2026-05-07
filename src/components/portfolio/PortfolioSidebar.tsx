@@ -40,7 +40,7 @@ export function PortfolioSidebar({
   }
 
   return (
-    <aside className="lg:sticky lg:top-20 self-start">
+    <aside className="lg:sticky lg:top-8 self-start">
       <div className="bg-white border rounded-2xl border-neutral-200  p-6 ">
         <div className="flex items-center justify-between mb-5">
           <div className="font-mono text-base uppercase tracking-widest text-[#ffb012] font-semibold">
@@ -49,7 +49,7 @@ export function PortfolioSidebar({
           {totalActive > 0 && (
             <button
               onClick={reset}
-              className="text-xs text-neutral-500 hover:text-[#ffb012] underline underline-offset-2 cursor-pointer"
+              className="text-xs text-neutral-600 hover:text-[#ffb012] underline underline-offset-2 cursor-pointer"
             >
               Reset
             </button>
@@ -107,7 +107,7 @@ function FilterGroup({
 }) {
   return (
     <div className={last ? '' : 'mb-5 pb-5 border-b border-neutral-200'}>
-      <div className="font-mono text-xs uppercase tracking-widest text-neutral-500 mb-3 font-semibold">
+      <div className="font-mono text-xs uppercase tracking-widest text-neutral-600 mb-3 font-semibold">
         {label}
       </div>
       <div className="space-y-2">{children}</div>
@@ -145,7 +145,7 @@ function FilterCheckbox({
           {label}
         </span>
       </span>
-      <span className="font-mono text-neutral-500 shrink-0 font-bold text-xs">{count}</span>
+      <span className="font-mono text-neutral-600 shrink-0 font-bold text-xs">{count}</span>
     </label>
   )
 }

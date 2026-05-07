@@ -16,20 +16,22 @@ export function ResidencyRAAS() {
             </div>
 
             <h2 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.2] tracking-tight italic">
-              Not every great company needs our capital. <br className="hidden md:block" />
-              Some just need our <span className="text-[#ffb012]">operators.</span>
+              Not every great company needs
+              <br className="hidden md:block" />
+              our capital some need our
+              <span className="text-[#ffb012]"> operators</span>
             </h2>
           </div>
           <div className="max-w-md">
             <p className="text-base md:text-lg text-neutral-800 leading-relaxed font-light italic border-l-2 border-[#ffb012]/20 pl-6">
               Reach out even if you're not in our portfolio. Tell us about your product and the
-              technical bets you're making — we'll respond within a week.
+              technical bets you're making, we'll respond within a week.
             </p>
           </div>
         </div>
 
         <Link
-          href="mailto:deals@dipaloventures.com"
+          href="mailto:info@dipaloventures.com"
           className="inline-flex items-center px-8 py-4 bg-[#ffb012] text-black font-mono text-xs uppercase tracking-widest font-bold rounded-full hover:bg-neutral-900 hover:text-white transition-all duration-300 shadow-lg shadow-[#ffb012]/10 group w-full sm:w-auto text-center"
         >
           If this is you, reach out

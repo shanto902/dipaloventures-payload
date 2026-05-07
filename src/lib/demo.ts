@@ -160,7 +160,7 @@ export const focusAreas = [
 
 export type FundKey = 'fund_1' | 'fund_2' | 'spv'
 export type Sector = 'energy' | 'climate' | 'physical_ai' | 'other'
-export type Stage = 'pre_seed' | 'seed' | 'series_a' | 'series_b'
+export type Stage = 'pre_seed' | 'seed' | 'series_a' | 'series_b' | 'series_c'
 
 export const fundMeta: Record<FundKey, { label: string; tone: string }> = {
   fund_1: { label: 'Fund I', tone: 'bg-neutral-100 text-neutral-800' },
@@ -168,9 +168,32 @@ export const fundMeta: Record<FundKey, { label: string; tone: string }> = {
   spv: { label: 'SPV', tone: 'bg-neutral-100 text-neutral-800' },
 }
 
+export const scopeCards = [
+  {
+    n: '01',
+    t: 'Engineering Audits',
+    d: 'Architecture, design, and IP reviews — pre- and post-investment.',
+  },
+  {
+    n: '02',
+    t: 'Supply Chain Mapping',
+    d: 'Vendor selection, lead time analysis, and risk mitigation.',
+  },
+  {
+    n: '03',
+    t: 'Design + Manufacturing',
+    d: 'DFM, tolerancing, prototyping, and pilot production support.',
+  },
+  {
+    n: '04',
+    t: 'Gap Identification',
+    d: "What you don't know you don't know — surfaced early.",
+  },
+]
+
 export const sectorMeta: Record<Sector, { label: string }> = {
-  energy: { label: 'Energy Transition' },
-  climate: { label: 'Climate Tech' },
+  energy: { label: 'Energy' },
+  climate: { label: 'Climate' },
   physical_ai: { label: 'Physical AI' },
   other: { label: 'Other' },
 }
@@ -180,6 +203,7 @@ export const stageMeta: Record<Stage, { label: string }> = {
   seed: { label: 'Seed' },
   series_a: { label: 'Series A' },
   series_b: { label: 'Series B' },
+  series_c: { label: 'Series C' },
 }
 
 export const portfolio = [

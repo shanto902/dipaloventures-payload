@@ -219,7 +219,7 @@ export interface Portfolio {
   desc: string;
   fundKeys: ('fund_1' | 'fund_2' | 'spv')[];
   sector: 'energy' | 'climate' | 'physical_ai' | 'other';
-  stage: 'pre_seed' | 'seed' | 'series_a' | 'series_b';
+  stage: 'pre_seed' | 'seed' | 'series_a' | 'series_b' | 'series_c';
   logo: string | Media;
   productImage?: (string | null) | Media;
   url: string;

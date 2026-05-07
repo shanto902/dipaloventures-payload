@@ -118,7 +118,7 @@ export function TeamCard({ m }: { m: TeamMember }) {
 
       <div className="flex flex-col flex-1 min-w-0 border-t border-neutral-200 p-5">
         <div className="text-base font-semibold text-neutral-900 leading-tight">{m.name}</div>
-        <div className="mt-1.5 font-mono text-sm uppercase tracking-widest text-neutral-500 font-bold">
+        <div className="mt-1.5 font-mono text-sm uppercase tracking-widest text-neutral-600 font-bold">
           {m.role} · {m.location}
         </div>
         <p className="mt-4 text-base text-neutral-800 leading-relaxed">
@@ -155,7 +155,7 @@ export function TeamCard({ m }: { m: TeamMember }) {
               href={m.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 font-mono text-sm uppercase tracking-widest text-neutral-500 hover:text-amber-700 transition-colors font-bold"
+              className="inline-flex items-center gap-1.5 font-mono text-sm uppercase tracking-widest text-neutral-600 hover:text-amber-700 transition-colors font-bold"
             >
               <ArrowUpRight size={13} /> LinkedIn
             </a>

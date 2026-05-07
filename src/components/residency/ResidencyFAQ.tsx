@@ -67,7 +67,7 @@ export function ResidencyFAQ() {
                     className={`text-lg md:text-xl font-medium tracking-tight transition-colors duration-300 ${
                       openIndex === idx
                         ? 'text-neutral-900'
-                        : 'text-neutral-700 group-hover:text-neutral-900'
+                        : 'text-neutral-600 group-hover:text-neutral-900'
                     }`}
                   >
                     {faq.q}
