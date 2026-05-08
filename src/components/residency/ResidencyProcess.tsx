@@ -43,7 +43,7 @@ export function ResidencyProcess() {
             {/* Scope Header */}
             <div className="max-w-xl">
               <div className="text-xs font-mono uppercase tracking-[0.3em] text-[#ffb012] mb-6 font-bold">
-                Apply for the Residency
+                Our Process
               </div>
               <p className="text-base md:text-lg text-neutral-600 leading-relaxed">
                 Residency surfaces gaps in engineering, supply chain, and time-to-market before they

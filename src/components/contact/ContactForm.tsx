@@ -30,7 +30,7 @@ export function ContactForm() {
   }
 
   return (
-    <div className="bg-neutral-50/50 backdrop-blur-sm border border-neutral-200/50 rounded-[2rem] p-8 md:p-10 shadow-sm relative overflow-hidden group">
+    <div className="bg-[#fcfbf9] rounded-4xl p-8 relative overflow-hidden group">
       {/* Subtle Grid Background */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
@@ -41,18 +41,6 @@ export function ContactForm() {
       />
 
       <div className="relative z-10 flex flex-col gap-10">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-[#ffb012] shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
-            <span className="font-mono text-xs uppercase tracking-[0.4em] text-neutral-600 font-bold">
-              Inquiry Terminal
-            </span>
-          </div>
-          <div className="font-mono text-xs text-neutral-400 font-bold uppercase tracking-widest">
-            Ref: DV-TX-01
-          </div>
-        </div>
-
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="space-y-4">
             <input
@@ -115,9 +103,9 @@ export function ContactForm() {
               <div className="absolute inset-0 bg-linear-to-r from-[#ffb012]/10 via-transparent to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
 
               {status === 'sending' ? (
-                <span className="animate-pulse">Transmitting...</span>
+                <span className="animate-pulse">Sending Message...</span>
               ) : status === 'success' ? (
-                <span className="text-[#ffb012]">Transmission Complete ✓</span>
+                <span className="text-[#ffb012]">Message Sent ✓</span>
               ) : (
                 <span className="flex items-center justify-center gap-3">
                   Send Message

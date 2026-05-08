@@ -165,9 +165,9 @@ export function ResidencyCaseStudies() {
               Case Studies
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-semibold text-neutral-900 leading-[1.1] tracking-tight">
+            {/* <h2 className="text-4xl md:text-5xl font-semibold text-neutral-900 leading-[1.1] tracking-tight">
               What <span className="italic   text-[#ffb012]">Residency</span> actually does
-            </h2>
+            </h2> */}
           </div>
           {/* <p className="max-w-xs text-base md:text-lg  text-neutral-800 leading-relaxed font-light italic border-l-2 border-[#ffb012]/20 pl-6">
             Three companies. <br />
@@ -220,7 +220,7 @@ export function ResidencyCaseStudies() {
                 <MutedTag>Business Launch</MutedTag>
               </>
             }
-            overview="The world's first self-sanitizing baby changing table — patented UV-C light technology that kills 99.9% of germs."
+            overview="The world's first self-sanitizing baby changing table, patented UV-C light technology that kills 99.9% of germs."
             solution="Phase 1: engineering reviews (mechanical + electrical), BOM, and business audit. Phase 2: first 100 production units, cleansing time reduced from 10 minutes to 1 minute, and end-to-end supply chain management."
             link={
               <GoldLink href="https://hellopluie.com/" icon={<Globe size={14} />}>

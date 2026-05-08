@@ -30,7 +30,7 @@ export function MediaVideos({ initialVideos }: { initialVideos?: any[] }) {
         : videos
 
   const featuredVideo = displayVideos[0]
-  const otherVideos = displayVideos.slice(1, 4) // Show up to 3 archive videos
+  const otherVideos = displayVideos.slice(1, 3) // Show up to 3 archive videos
 
   return (
     <section
@@ -39,12 +39,6 @@ export function MediaVideos({ initialVideos }: { initialVideos?: any[] }) {
     >
       <div className="container mx-auto px-4">
         {/* Section Identity */}
-        <div className="flex items-center gap-3 mb-8">
-          <div className="w-1.5 h-1.5 rounded-full bg-[#ffb012] shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
-          <div className=" text-xs font-mono uppercase tracking-[0.3em] text-neutral-600 font-bold">
-            Archive.01 · Visual Intelligence
-          </div>
-        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Main Cinema Artifact */}
@@ -82,7 +76,7 @@ export function MediaVideos({ initialVideos }: { initialVideos?: any[] }) {
                     onClick={() => setIsExpanded(!isExpanded)}
                     className="mt-4 font-mono  text-xs uppercase tracking-[0.2em] text-[#ffb012] hover:text-[#ffb012] transition-colors font-bold flex items-center gap-2 group/btn"
                   >
-                    <span>{isExpanded ? '[ Collapse_Dossier ]' : '[ Read_More ]'}</span>
+                    <span>{isExpanded ? '[ Read_Less ]' : '[ Read_More ]'}</span>
                     <span className="group-hover/btn:translate-x-1 transition-transform">
                       {isExpanded ? '↑' : '→'}
                     </span>
@@ -96,7 +90,7 @@ export function MediaVideos({ initialVideos }: { initialVideos?: any[] }) {
           <div className="lg:col-span-4 flex flex-col">
             <div className="flex items-center justify-between mb-4 pb-4 border-b border-neutral-100">
               <span className="font-mono  text-xs uppercase tracking-[0.2em] text-neutral-600 font-bold">
-                Transmission History
+                Old Stories
               </span>
               <a
                 href={socialLinks.youtube}
@@ -104,11 +98,11 @@ export function MediaVideos({ initialVideos }: { initialVideos?: any[] }) {
                 rel="noreferrer"
                 className="text-[#ffb012] hover:text-amber-600 transition-colors font-mono  text-xs uppercase tracking-[0.2em] font-bold"
               >
-                Full Archive →
+                Full Playlist →
               </a>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-8 ">
               {otherVideos.map((v) => (
                 <article key={v.id} className="group cursor-pointer">
                   <div className="relative aspect-video rounded-2xl overflow-hidden border border-neutral-100 bg-neutral-50 mb-4 group-hover:shadow-xl group-hover:shadow-neutral-900/5 transition-all duration-500">
@@ -123,9 +117,6 @@ export function MediaVideos({ initialVideos }: { initialVideos?: any[] }) {
                   <h4 className="text-lg font-semibold text-neutral-900 leading-tight tracking-tight group-hover:text-[#ffb012] transition-colors">
                     {v.title}
                   </h4>
-                  <div className="mt-2 font-mono  text-xs uppercase tracking-[0.2em] text-neutral-600 font-bold">
-                    Transmission_V.0{v.id.slice(0, 1)}
-                  </div>
                 </article>
               ))}
             </div>

@@ -14,7 +14,7 @@ export function ResidencyMethodology() {
           </div>
 
           <h2 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.05] tracking-tighter">
-            Going deep -<span className="italic text-[#ffb012]"> not just an analysis</span>
+            Under the hood, the <span className="italic text-[#ffb012]">details</span> matter
           </h2>
         </div>
 

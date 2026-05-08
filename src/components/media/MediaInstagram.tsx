@@ -36,23 +36,15 @@ export function MediaInstagram({ initialPosts }: { initialPosts?: InstagramPost[
 
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-8">
-          <div className="max-w-2xl">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#ffb012] shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
-              <div className=" text-xs font-mono uppercase tracking-[0.3em] text-neutral-600 font-bold">
-                Archive.02 · Visual Field Notes
-              </div>
-            </div>
+          <div className="max-w-4xl">
             <h2 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-tight tracking-tight">
-              Reports from <br />
-              the <span className="italic text-[#ffb012] ">field.</span>
+              In the <span className="italic text-[#ffb012] ">field</span>
             </h2>
           </div>
 
-          <div className="max-w-xs">
+          <div className="max-w-lg">
             <p className="text-base md:text-lg text-neutral-800 leading-relaxed font-light italic border-l-2 border-[#ffb012]/10 pl-6 mb-2">
-              A chronological archive of physical prototypes, site visits, and operator insights
-              from the Dipalo network.
+              The Dipalo network, documented in real time.
             </p>
           </div>
         </div>
@@ -115,19 +107,6 @@ export function MediaInstagram({ initialPosts }: { initialPosts?: InstagramPost[
                   </div>
                 </div>
               ))}
-        </div>
-
-        <div className="mt-16 flex justify-center">
-          <a
-            href={socialLinks.instagram}
-            target="_blank"
-            rel="noreferrer"
-            className="group inline-flex items-center gap-4 px-8 py-4 bg-white border border-neutral-100 rounded-full font-mono  text-xs uppercase tracking-[0.3em] text-[#ffb012] hover:text-[#ffb012] shadow-sm hover:shadow-xl hover:shadow-neutral-900/5 transition-all duration-500 font-bold"
-          >
-            <span>Follow @dipaloventures</span>
-            <span className="w-8 h-px bg-[#ffb012]/20 group-hover:w-12 transition-all duration-500" />
-            <span>↗</span>
-          </a>
         </div>
       </div>
     </section>

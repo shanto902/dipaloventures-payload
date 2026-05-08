@@ -27,22 +27,14 @@ export function MediaBlog({ initialPosts }: { initialPosts?: MediumPost[] }) {
         {/* Section Identity */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-8 border-b border-neutral-100 pb-8">
           <div className="max-w-2xl">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#ffb012] shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
-              <div className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-600 font-bold">
-                Archive.03 · Thought Leadership
-              </div>
-            </div>
             <h2 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.2] tracking-tight">
-              Honest takes on <br />
-              the <span className="italic text-[#ffb012]  ">hard stuff.</span>
+              Dispatches
             </h2>
           </div>
 
-          <div className="max-w-xs">
+          <div className="max-w-lg">
             <p className="text-base md:text-lg text-neutral-800 leading-relaxed font-light italic border-l-2 border-[#ffb012]/10 pl-6">
-              Long-form essays on manufacturing, physical AI, and the engineering challenges of
-              scaling hard tech.
+              Essays, updates, and news from the firm.
             </p>
           </div>
         </div>
@@ -57,30 +49,26 @@ export function MediaBlog({ initialPosts }: { initialPosts?: MediumPost[] }) {
               rel="noreferrer"
               className="group flex flex-col h-full bg-white border border-neutral-100 rounded-3xl p-8 hover:border-[#ffb012] hover:shadow-2xl hover:shadow-neutral-900/5 transition-all duration-700"
             >
-              <div className="flex items-center justify-between mb-6">
-                <div className="font-mono  text-xs uppercase tracking-[0.2em] text-[#ffb012] font-bold">
-                  Manuscript.0{i + 1}
-                </div>
-                <div className="font-mono  text-xs uppercase tracking-[0.15em] text-neutral-600 font-bold">
-                  {p.date}
-                </div>
-              </div>
-
               <h3 className="text-xl md:text-2xl font-semibold text-neutral-900 leading-tight tracking-tight mb-4 group-hover:text-[#ffb012] transition-colors duration-500 line-clamp-3">
                 {p.title}
               </h3>
 
-              <p className="text-base md:text-lg  text-neutral-600 leading-relaxed font-light line-clamp-3 mb-8">
+              <p className="text-base md:text-lg  text-neutral-600 leading-relaxed font-light line-clamp-3 ">
                 {p.body}
               </p>
 
               <div className="mt-auto pt-6 border-t border-neutral-50 flex items-center justify-between">
-                <span className="font-mono  text-xs uppercase tracking-[0.2em] text-neutral-600 font-bold group-hover:text-[#ffb012] transition-colors">
-                  Read Full Take
-                </span>
-                <span className="text-neutral-600 group-hover:text-[#ffb012] group-hover:translate-x-1 transition-all duration-500">
-                  →
-                </span>
+                <div className="font-mono  text-xs uppercase tracking-[0.15em] text-neutral-600 font-bold">
+                  {p.date}
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="font-mono  text-xs uppercase tracking-[0.2em] text-neutral-600 font-bold group-hover:text-[#ffb012] transition-colors">
+                    Read Full Take
+                  </span>
+                  <span className="text-neutral-600 group-hover:text-[#ffb012] group-hover:translate-x-1 transition-all duration-500">
+                    →
+                  </span>
+                </div>
               </div>
             </a>
           ))}

@@ -1,6 +1,9 @@
-import React from 'react'
+'use client'
+
+import React, { useState } from 'react'
 import { socialLinks } from '@/lib/demo'
 import { NewsletterForm } from '@/components/NewsletterForm'
+import { Mail, ArrowRight } from 'lucide-react'
 
 const LinkedInLogo = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="#0A66C2" xmlns="http://www.w3.org/2000/svg">
@@ -48,64 +51,87 @@ const socialCards = [
 ]
 
 export function MediaSocialConnect() {
+  const [isSubscribing, setIsSubscribing] = useState(false)
+
   return (
-    <section className="relative py-12 md:py-16 bg-[#fcfbf9] border-b border-neutral-100 px-5 md:px-12">
+    <section
+      id="social"
+      className="relative py-8 bg-[#fcfbf9] border-b border-neutral-100 px-5 md:px-12"
+    >
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-          {/* Module 01: Transmission Network */}
-          <div className="space-y-8">
-            <div className="flex items-center gap-3">
-              <div className="w-1.5 h-1.5 rounded-full bg-[#ffb012] shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
-              <div className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-600 font-bold">
-                Connect · Archive
-              </div>
+        <div>
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 border-b border-neutral-200 pb-4 mb-8">
+            <div className="max-w-4xl">
+              <h1 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.05] tracking-tight">
+                Elsewhere
+              </h1>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              {socialCards.map((s) => (
-                <a
-                  key={s.name}
-                  href={s.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group flex items-center gap-4 bg-white border border-neutral-100 rounded-2xl p-4 hover:border-[#ffb012] hover:shadow-xl hover:shadow-neutral-900/5 transition-all duration-500"
-                >
-                  <div className="w-10 h-10 bg-neutral-50 rounded-lg flex items-center justify-center shrink-0 border border-neutral-50 group-hover:border-[#ffb012]/20 group-hover:bg-[#ffb012]/5 transition-all duration-500">
-                    <s.Icon />
-                  </div>
-                  <div className="font-mono  text-xs uppercase tracking-[0.2em] text-neutral-900 font-bold">
-                    {s.name}
-                  </div>
-                </a>
-              ))}
+            <div className="max-w-xl">
+              <p className="text-base md:text-lg text-neutral-800 leading-relaxed font-light italic border-l-2 border-[#ffb012]/10 pl-6 mb-2">
+                Follow the work across every platform.
+              </p>
             </div>
           </div>
 
-          {/* Module 02: Editorial Terminal */}
-          <div className="relative p-8 md:p-10 bg-white border border-neutral-100 rounded-[2rem] overflow-hidden shadow-sm">
-            {/* Blueprint Overlay */}
-            <div
-              className="absolute inset-0 opacity-[0.03] pointer-events-none"
-              style={{
-                backgroundImage: `radial-gradient(circle at 1px 1px, #000 1px, transparent 0)`,
-                backgroundSize: '24px 24px',
-              }}
-            />
+          <div className="flex flex-wrap lg:flex-nowrap gap-4">
+            {socialCards.map((s) => (
+              <a
+                key={s.name}
+                href={s.href}
+                target="_blank"
+                rel="noreferrer"
+                className="flex-1 min-w-[140px] group flex items-center gap-4 bg-white border border-neutral-100 rounded-2xl p-4 hover:border-[#ffb012] hover:shadow-xl hover:shadow-neutral-900/5 transition-all duration-500 h-20"
+              >
+                <div className="w-10 h-10 bg-neutral-50 rounded-lg flex items-center justify-center shrink-0 border border-neutral-50 group-hover:border-[#ffb012]/20 group-hover:bg-[#ffb012]/5 transition-all duration-500">
+                  <s.Icon />
+                </div>
+                <div className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-900 font-bold truncate">
+                  {s.name}
+                </div>
+              </a>
+            ))}
 
-            <div className="relative space-y-6 text-center lg:text-left">
-              <div className="font-mono uppercase  text-xs tracking-[0.3em] text-[#ffb012] font-bold">
-                Letters from the Hard Side
-              </div>
-              <h2 className="text-2xl md:text-3xl font-semibold text-neutral-900 leading-tight tracking-tight">
-                Quarterly notes on <span className="italic text-[#ffb012]  ">deep tech.</span>
-              </h2>
-              <p className="text-sm text-neutral-600 leading-relaxed font-light italic">
-                Our honest takes on manufacturing and physical AI. Direct from Substack to your
-                inbox.
-              </p>
-              <div className="max-w-md mx-auto lg:mx-0">
-                <NewsletterForm />
-              </div>
+            {/* Expanding Subscribe Card */}
+            <div
+              className={`group flex flex-col justify-center bg-white border border-neutral-100 rounded-2xl transition-all duration-500 overflow-hidden min-w-[200px] h-20 ${
+                isSubscribing
+                  ? 'flex-[2] p-4 shadow-xl border-[#ffb012]/30'
+                  : 'flex-1 p-4 hover:border-[#ffb012] hover:shadow-xl hover:shadow-neutral-900/5 cursor-pointer'
+              }`}
+              onClick={() => !isSubscribing && setIsSubscribing(true)}
+            >
+              {!isSubscribing ? (
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 bg-[#ffb012]/10 rounded-lg flex items-center justify-center shrink-0 border border-[#ffb012]/10 group-hover:bg-[#ffb012] transition-all duration-500">
+                    <Mail size={18} className="text-[#ffb012] group-hover:text-white" />
+                  </div>
+                  <div className="flex-1 flex items-center justify-between min-w-0">
+                    <div className="font-mono text-xs uppercase tracking-[0.2em] text-neutral-900 font-bold truncate">
+                      Subscribe
+                    </div>
+                    <ArrowRight
+                      size={14}
+                      className="text-neutral-400 group-hover:text-[#ffb012] transition-colors shrink-0"
+                    />
+                  </div>
+                </div>
+              ) : (
+                <div className="flex items-center gap-3 animate-in fade-in slide-in-from-right-2 duration-500 w-full">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setIsSubscribing(false)
+                    }}
+                    className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center bg-neutral-50 text-neutral-400 hover:text-neutral-900 transition-colors"
+                  >
+                    ←
+                  </button>
+                  <div className="flex-1 min-w-0">
+                    <NewsletterForm />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

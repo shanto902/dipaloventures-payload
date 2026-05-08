@@ -1,5 +1,5 @@
 import React from 'react'
-import { SiteLayout } from '@/components/SiteLayout'
+import { ContactMapClient } from '@/components/contact/ContactMapClient'
 import { ContactForm } from '@/components/contact/ContactForm'
 import { ContactLeftColumn } from '@/components/contact/ContactLeftColumn'
 
@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="relative px-5 md:px-12 pt-12 md:pt-8 overflow-hidden bg-[#fcfbf9]">
+    <div className="relative px-5 md:px-12 pt-12 md:pt-8 bg-[#fcfbf9]">
       {/* Architectural Studio Tint */}
       <div className="absolute inset-0 bg-[#f7f0e6]/20 -z-10" />
 
@@ -24,7 +24,7 @@ export default function ContactPage() {
       />
 
       <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-8">
           {/* Inquiry Brief */}
           <div className="lg:col-span-6">
             <ContactLeftColumn />
@@ -32,7 +32,7 @@ export default function ContactPage() {
 
           {/* Inquiry Terminal */}
           <div className="lg:col-span-6 flex justify-end">
-            <div className="w-full max-w-xl">
+            <div className="w-full max-w-2xl">
               <ContactForm />
             </div>
           </div>
@@ -42,30 +42,23 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12">
             {/* Technical Map Interface */}
             <div className="lg:col-span-8 relative h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden">
-              <div className="absolute inset-0 bg-neutral-900/5 z-10 pointer-events-none grayscale mix-blend-multiply opacity-20" />
-              <iframe
-                title="Dipalo Ventures — Chicago studio"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=-87.6726%2C41.8847%2C-87.6626%2C41.8887&layer=mapnik&marker=41.8867%2C-87.6676"
-                loading="lazy"
-                className="w-full h-full border-none  contrast-125 opacity-80 group-hover:opacity-100 transition-all duration-1000"
-              />
+              <div className="absolute inset-0 bg-neutral-900/5 z-10 pointer-events-none opacity-10" />
+              <ContactMapClient />
             </div>
 
             {/* Location Metadata */}
             <div className="lg:col-span-4 p-8 lg:p-12 flex flex-col justify-center border-t lg:border-t-0 lg:border-l border-neutral-100 bg-[#fcfbf9]/50 backdrop-blur-md">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#ffb012] shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
-                <div className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-600 font-bold">
-                  HQ · Chicago Node
+              <div className="flex items-center gap-3 mb-6">
+                <div className="text-xs font-mono uppercase tracking-[0.3em] text-[#ffb012] font-bold">
+                  Chicago
                 </div>
               </div>
 
               <h3 className="text-2xl md:text-3xl font-semibold text-neutral-900 tracking-tight mb-6">
-                mHUB Chicago <br />
-                Technical Studio
+                mHUB Chicago
               </h3>
 
-              <p className="text-sm text-neutral-600 leading-relaxed font-light italic mb-10 border-l-2 border-[#ffb012]/10 pl-6">
+              <p className="text-base md:text-lg text-neutral-800 leading-relaxed font-light italic mb-8">
                 Our headquarters is located within the mHUB ecosystem, North America's leading
                 innovation center for physical product development and manufacturing.
               </p>

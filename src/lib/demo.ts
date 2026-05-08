@@ -172,7 +172,7 @@ export const scopeCards = [
   {
     n: '01',
     t: 'Engineering Audits',
-    d: 'Architecture, design, and IP reviews — pre- and post-investment.',
+    d: 'Architecture, design, and IP reviews pre and post-investment.',
   },
   {
     n: '02',
@@ -187,7 +187,7 @@ export const scopeCards = [
   {
     n: '04',
     t: 'Gap Identification',
-    d: "What you don't know you don't know — surfaced early.",
+    d: "What you don't know, you don't know surfaced early.",
   },
 ]
 
@@ -426,8 +426,7 @@ export const emailCards = [
     eyebrow: 'Founders',
     title: 'Submit a pitch',
     subtitle: 'Submit via application portal',
-    email: 'deals@dipaloventures.com',
-    href: '/pitch',
+    email: 'founders@dipaloventures.com',
   },
   {
     eyebrow: 'Investors',
