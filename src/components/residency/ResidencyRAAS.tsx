@@ -12,7 +12,7 @@ export function ResidencyRAAS() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-8">
           <div className="max-w-3xl">
             <div className="text-xs font-mono uppercase tracking-[0.3em] text-[#ffb012] mb-6 font-bold">
-              New Offering · Residency as a Service
+              Even if we don't invest, we can help you
             </div>
 
             <h2 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.2] tracking-tight italic">

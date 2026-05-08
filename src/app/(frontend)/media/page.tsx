@@ -18,7 +18,7 @@ import { getMediumPosts } from '@/lib/medium'
 
 export default async function MediaPage() {
   const latestVideos = await getLatestVideos(3)
-  const instagramPosts = await getInstagramPosts(8)
+  const instagramPosts = await getInstagramPosts(8, false)
   const mediumPosts = await getMediumPosts(3)
 
   return (

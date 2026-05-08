@@ -4,9 +4,33 @@ import { videos, socialLinks } from '@/lib/demo'
 
 export function MediaVideos({ initialVideos }: { initialVideos?: any[] }) {
   const [isExpanded, setIsExpanded] = useState(false)
-  const displayVideos = initialVideos && initialVideos.length > 0 ? initialVideos : videos
+  const [liveVideos, setLiveVideos] = useState<any[]>([])
+
+  React.useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const res = await fetch('/api/youtube')
+        if (!res.ok) return
+        const data = await res.json()
+        if (data && data.length > 0) {
+          setLiveVideos(data)
+        }
+      } catch (err) {
+        console.error('Error fetching live videos:', err)
+      }
+    }
+    fetchVideos()
+  }, [])
+
+  const displayVideos =
+    liveVideos.length > 0
+      ? liveVideos
+      : initialVideos && initialVideos.length > 0
+        ? initialVideos
+        : videos
+
   const featuredVideo = displayVideos[0]
-  const otherVideos = displayVideos.slice(1, 3) // Only show latest 3 total (1 featured + 2 archive)
+  const otherVideos = displayVideos.slice(1, 4) // Show up to 3 archive videos
 
   return (
     <section

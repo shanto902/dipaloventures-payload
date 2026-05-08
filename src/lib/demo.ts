@@ -68,7 +68,7 @@ export const team: TeamMember[] = [
 
 export const heroStats = [
   { n: '70+', l: 'Years Operator Experience' },
-  { n: '400+', l: 'U.S. Patents' },
+  { n: '12', l: 'U.S. Patents' },
   { n: '$1B+', l: 'Product Revenue Shipped' },
   { n: '100+', l: 'Companies Backed' },
 ]

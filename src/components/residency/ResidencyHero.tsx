@@ -75,14 +75,14 @@ export function ResidencyHero() {
       <div className="container px-4 mx-auto">
         <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-24 items-center">
           {/* Left Column: Content Stack */}
-          <div className="max-w-2xl">
+          <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-semibold text-neutral-900 leading-[1.2] tracking-tight mb-8">
-              De-risk and <span className="italic text-[#ffb012]">deliver</span>
+              Unfair Advantage: <br /> <span className="italic text-[#ffb012]">The Residency</span>
             </h1>
 
             <p className="text-base md:text-lg text-neutral-600 leading-relaxed max-w-lg mb-8 md:mb-16">
-              Engineering audits, supply chain mapping, and manufacturing support applied before we
-              invest and continued long after.
+              Our technical diligence program identifies product design and engineering gaps before
+              we invest.
             </p>
           </div>
 

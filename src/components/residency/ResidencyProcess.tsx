@@ -43,13 +43,12 @@ export function ResidencyProcess() {
             {/* Scope Header */}
             <div className="max-w-xl">
               <div className="text-xs font-mono uppercase tracking-[0.3em] text-[#ffb012] mb-6 font-bold">
-                Scope
+                Apply for the Residency
               </div>
               <p className="text-base md:text-lg text-neutral-600 leading-relaxed">
                 Residency surfaces gaps in engineering, supply chain, and time-to-market before they
-                become existential threats, enabling founders to address them while there&apos;s
-                still runway. Our operators are embedded with your team from early design reviews
-                through first production runs.
+                become existential threats, enabling founders to address them while there's still
+                runway. Startups in TRL 4-6 are ideally suited for the Residency.
               </p>
             </div>
 

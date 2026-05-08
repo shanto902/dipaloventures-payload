@@ -10,7 +10,7 @@ export interface InstagramPost {
   timestamp: string
 }
 
-export async function getInstagramPosts(limit = 8): Promise<InstagramPost[]> {
+export async function getInstagramPosts(limit = 24, filterPosters = true): Promise<InstagramPost[]> {
   if (!INSTAGRAM_TOKEN) {
     console.warn('INSTAGRAM_TOKEN is missing. Falling back to empty state.')
     return []
@@ -19,7 +19,7 @@ export async function getInstagramPosts(limit = 8): Promise<InstagramPost[]> {
   try {
     const res = await fetch(
       `https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,permalink,thumbnail_url,timestamp&access_token=${INSTAGRAM_TOKEN}&limit=${limit}`,
-      { next: { revalidate: 3600 } } // Cache for 1 hour
+      { next: { revalidate: 900 } } // Cache for 15 minutes
     )
 
     if (!res.ok) {
@@ -33,7 +33,52 @@ export async function getInstagramPosts(limit = 8): Promise<InstagramPost[]> {
     }
 
     const data = await res.json()
-    return data.data || []
+    const posts: InstagramPost[] = data.data || []
+
+    if (!filterPosters) return posts
+
+    // Expanded "Free AI" Filter: Aggressively target corporate graphics/posters
+    const POSTER_KEYWORDS = [
+      'register',
+      'link in bio',
+      'join us',
+      'webinar',
+      'event',
+      'hiring',
+      'apply now',
+      'tickets',
+      'workshop',
+      'conference',
+      'save the date',
+      'funding',
+      'series a',
+      'series b',
+      'seed round',
+      'investment',
+      'portfolio company',
+      'congratulations',
+      'congrats',
+      'proud to support',
+      'announcing',
+      'excited to share',
+      'big news',
+      'official',
+      'summit',
+      'forum',
+    ]
+
+    return posts.filter((post) => {
+      const caption = (post.caption || '').toLowerCase()
+      // Filter by keywords
+      const isPoster = POSTER_KEYWORDS.some((word) => caption.includes(word))
+      if (isPoster) return false
+
+      // Filter by hashtag density (Posters often have 10+ hashtags)
+      const hashtagCount = (post.caption || '').split('#').length - 1
+      if (hashtagCount > 6) return false
+
+      return true
+    })
   } catch (error) {
     console.error('Instagram Fetch Exception:', error)
     return []

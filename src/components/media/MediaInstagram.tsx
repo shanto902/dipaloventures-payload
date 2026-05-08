@@ -1,10 +1,29 @@
+'use client'
 import React from 'react'
 import { socialLinks } from '@/lib/demo'
 import type { InstagramPost } from '@/lib/instagram'
 
 export function MediaInstagram({ initialPosts }: { initialPosts?: InstagramPost[] }) {
-  // If no posts are provided, we show a clean placeholder state
-  const posts = initialPosts || []
+  const [livePosts, setLivePosts] = React.useState<InstagramPost[]>([])
+
+  React.useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const res = await fetch('/api/instagram?filter=false')
+        if (!res.ok) return
+        const data = await res.json()
+        if (data && data.length > 0) {
+          setLivePosts(data)
+        }
+      } catch (err) {
+        console.error('Error fetching instagram posts:', err)
+      }
+    }
+    fetchPosts()
+  }, [])
+
+  // Priority: Live fetch > initial server posts > empty
+  const posts = livePosts.length > 0 ? livePosts : initialPosts || []
   const displayCount = 8 // 2 rows of 4 on desktop
 
   return (

@@ -1,6 +1,5 @@
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY
-const CHANNEL_ID = 'UCG-t5hkFi9g6IjRzA3PUSfw' // User will need to provide their Channel ID
-const PLAYLIST_ID = 'UU' + CHANNEL_ID.slice(2) // "Uploads" playlist
+const PLAYLIST_ID = 'PLLXglev6mg7N3u08iwdTS_B9zD7yRkqYB'
 
 export interface YouTubeVideo {
   id: string

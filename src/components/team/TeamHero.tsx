@@ -19,12 +19,12 @@ export function TeamHero({ galleryImages }: { galleryImages: string[] }) {
 
           <div className="space-y-8 ">
             <div className="space-y-6">
-              <p className="text-base md:text-lg text-neutral-800 leading-relaxed font-light italic">
+              <p className="text-base md:text-lg text-neutral-800 leading-relaxed font-light ">
                 A level of product development and manufacturing experience generally not found in
                 venture capital. From Motorola to med-tech, we&apos;ve built physical products at
                 scale.
-              </p>
-              <p className="text-base md:text-lg text-neutral-800 font-light leading-relaxed">
+                <br />
+                <br />
                 Our GPs come from the design and engineering teams at Motorola and Google — but they
                 met later at Chicago startup Jiobit. Rafiq was one of the first investors; Mitul
                 designed the PCB electronics. Both saw founders burning through investor cash

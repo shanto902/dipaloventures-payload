@@ -1,8 +1,10 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import { team, orgs, type TeamMember, type OrgLink } from '@/lib/demo'
 import { InitialsAvatar, focalFor, PHOTO_FILTER } from './TeamHelpers'
 
 function GPCard({ m }: { m: TeamMember & { orgLinks?: OrgLink[] } }) {
+  const [isExpanded, setIsExpanded] = useState(false)
   const links = m.orgLinks || orgs[m.name] || []
   const allLinks: OrgLink[] = [{ label: 'LinkedIn', href: m.linkedin }, ...links]
 
@@ -28,23 +30,28 @@ function GPCard({ m }: { m: TeamMember & { orgLinks?: OrgLink[] } }) {
 
       {/* Profile Intelligence */}
       <div className="flex-1 flex flex-col min-w-0">
-        <div className="flex items-center gap-2 mb-2">
-          <div className="w-1 h-1 rounded-full bg-[#ffb012] shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
-          <div className="font-mono uppercase  text-xs tracking-[0.3em] text-[#ffb012] font-bold">
-            General Partner
-          </div>
-        </div>
-
-        <h3 className="text-xl font-semibold text-neutral-900 tracking-tight leading-tight mb-1 group-hover:text-[#ffb012] transition-colors">
+        <h3 className="text-xl font-semibold text-neutral-900 tracking-tight leading-tight mb-1 ">
           {m.name}
         </h3>
         <div className="font-mono uppercase  text-xs tracking-[0.2em] text-neutral-600 font-bold">
           {m.role} · {m.location}
         </div>
 
-        <p className="mt-3 text-sm text-neutral-600 leading-relaxed font-light line-clamp-3">
-          {m.bio}
-        </p>
+        <div className="mt-3 relative">
+          <p
+            className={`text-sm text-neutral-600 leading-relaxed font-light ${!isExpanded ? 'line-clamp-3' : ''}`}
+          >
+            {m.bio}
+          </p>
+          {m.bio && m.bio.length > 150 && (
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="mt-1 font-mono text-[10px] uppercase tracking-widest font-bold text-[#ffb012] hover:text-neutral-900 transition-colors"
+            >
+              {isExpanded ? 'Read less' : 'Read more'}
+            </button>
+          )}
+        </div>
 
         <div className="mt-auto pt-4 flex gap-4 font-mono  text-xs uppercase tracking-[0.2em] font-bold">
           {allLinks.slice(0, 2).map((l) => (
@@ -71,9 +78,8 @@ export function TeamGPs({ members }: { members?: TeamMember[] }) {
   return (
     <section className="relative px-5 md:px-12 pb-8 overflow-hidden bg-[#fcfbf9]">
       <div className="container mx-auto px-4">
-        <div className="flex items-center gap-3 mb-8">
-          <div className="w-1.5 h-1.5 rounded-full bg-[#ffb012] shadow-[0_0_8px_rgba(251,191,36,0.5)]" />
-          <div className=" text-base font-mono uppercase tracking-[0.3em] text-neutral-600 font-bold">
+        <div className="flex items-center gap-3 mb-6">
+          <div className=" text-xs font-mono uppercase tracking-[0.3em] text-[#ffb012] font-bold">
             Partnership Board
           </div>
         </div>

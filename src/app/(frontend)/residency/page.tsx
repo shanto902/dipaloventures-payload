@@ -16,7 +16,7 @@ import { ResidencyExecution } from '@/components/residency/ResidencyExecution'
 export const metadata = {
   title: 'The Residency — Dipalo Ventures',
   description:
-    'Engineering audits, supply chain mapping, and manufacturing support — applied before we invest and continued long after.',
+    'Our technical diligence program identifies product design and engineering gaps before we invest.',
 }
 
 export default function ResidencyPage() {
