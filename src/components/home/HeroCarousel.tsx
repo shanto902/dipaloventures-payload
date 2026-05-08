@@ -13,6 +13,11 @@ interface HeroCarouselProps {
 
 export function HeroCarousel({ items }: HeroCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [loadedImages, setLoadedImages] = useState<Record<number, boolean>>({})
+
+  const handleImageLoad = (index: number) => {
+    setLoadedImages((prev) => ({ ...prev, [index]: true }))
+  }
 
   // Filter items that have a product image
   let products = items.filter((item) => item.productImage)
@@ -57,13 +62,24 @@ export function HeroCarousel({ items }: HeroCarouselProps) {
             }`}
           >
             {/* The Image */}
-            <div className="relative w-full h-full overflow-hidden">
+            <div className="relative w-full h-full overflow-hidden bg-white ">
+              {/* Image Loading Placeholder */}
+              {!loadedImages[index] && (
+                <div className="absolute inset-0 flex items-center justify-center bg-white z-20">
+                  <div className="w-6 h-6 border-2 border-[#ffb012]/20 border-t-[#ffb012] rounded-full animate-spin" />
+                </div>
+              )}
               <Image
                 src={item.productImage}
                 alt={item.name}
                 fill
                 priority={index === 0}
-                className="object-contain rounded-3xl transition-transform duration-[10000ms] ease-linear scale-100 group-hover:scale-110"
+                loading={index === 0 ? undefined : 'lazy'}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                onLoad={() => handleImageLoad(index)}
+                className={`object-contain rounded-3xl transition-opacity duration-700 ease-in-out ${
+                  loadedImages[index] ? 'opacity-100' : 'opacity-0'
+                }`}
               />
             </div>
 

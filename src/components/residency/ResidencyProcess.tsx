@@ -50,6 +50,9 @@ export function ResidencyProcess() {
                 become existential threats, enabling founders to address them while there's still
                 runway. Startups in TRL 4-6 are ideally suited for the Residency.
               </p>
+              <div className="mt-12 lg:hidden">
+                <TRLDiagram />
+              </div>
             </div>
 
             {/* Vertical Timeline Accordion */}
@@ -140,7 +143,7 @@ export function ResidencyProcess() {
           </div>
 
           {/* Right Column: TRL Diagram (Sticky) */}
-          <div className="lg:sticky lg:top-32 self-start">
+          <div className="hidden lg:block lg:sticky lg:top-32 self-start">
             <TRLDiagram />
           </div>
         </div>

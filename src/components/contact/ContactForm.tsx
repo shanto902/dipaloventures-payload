@@ -30,7 +30,7 @@ export function ContactForm() {
   }
 
   return (
-    <div className="bg-[#fcfbf9] rounded-4xl p-8 relative overflow-hidden group">
+    <div className="bg-[#fcfbf9] rounded-4xl md:p-8 relative overflow-hidden group">
       {/* Subtle Grid Background */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"

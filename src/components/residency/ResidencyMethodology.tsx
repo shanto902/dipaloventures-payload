@@ -20,7 +20,7 @@ export function ResidencyMethodology() {
 
         {/* Methodology Pillars */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 ">
-          <div className="group flex flex-col pt-8 border-t-2 border-neutral-100 hover:border-[#ffb012] transition-all duration-500">
+          <div className="group flex flex-col  md:pt-8 md:border-t-2 border-neutral-100 hover:border-[#ffb012] transition-all duration-500">
             <p className="text-neutral-800 leading-relaxed font-light">
               Technical diligence, to us, means real engagement. We'll ask for your designs,
               schematics, IP filings, and data room access, and engage you with thoughtful,
@@ -28,7 +28,7 @@ export function ResidencyMethodology() {
             </p>
           </div>
 
-          <div className="group flex flex-col pt-8 border-t-2 border-neutral-100 hover:border-[#ffb012] transition-all duration-500">
+          <div className="group flex flex-col md:pt-8 md:border-t-2 border-neutral-100 hover:border-[#ffb012] transition-all duration-500">
             <p className="text-neutral-800 leading-relaxed font-light">
               The Residency combines this upfront diligence with ongoing, hands-on support
               post-investment. We evaluate product requirements, system design, and engineering
@@ -36,7 +36,7 @@ export function ResidencyMethodology() {
             </p>
           </div>
 
-          <div className="group flex flex-col pt-8 border-t-2 border-neutral-100 hover:border-[#ffb012] transition-all duration-500">
+          <div className="group flex flex-col md:pt-8 md:border-t-2 border-neutral-100 hover:border-[#ffb012] transition-all duration-500">
             <p className="text-neutral-800 leading-relaxed font-light">
               A portion of our investment in a Residency startup can be used to address gaps
               identified in our audit. In partnership with MPC/AMC, founders gain access to contract

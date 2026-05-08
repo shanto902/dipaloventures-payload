@@ -32,12 +32,12 @@ const phases = [
 
 export function TRLDiagram() {
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-8 md:gap-10">
       {phases.map((phase) => (
-        <div key={phase.name} className="flex items-center gap-6 group">
+        <div key={phase.name} className="flex items-center gap-3 md:gap-6 group">
           {/* Left: Category Label */}
           <div
-            className="w-24 md:w-32 font-mono text-xs md:text-xs font-bold tracking-[0.2em] text-right shrink-0"
+            className="w-20 md:w-32 font-mono text-[10px] md:text-xs font-bold tracking-[0.2em] text-right shrink-0"
             style={{ color: phase.color }}
           >
             {phase.name}
@@ -54,7 +54,7 @@ export function TRLDiagram() {
           {/* Right: Levels Stack */}
           <div className="flex-1 flex flex-col gap-2.5">
             {phase.levels.map((level) => (
-              <div key={level.id} className="flex items-center gap-3">
+              <div key={level.id} className="flex items-center gap-2 md:gap-3">
                 {/* Connection Dot */}
                 <div className="w-1.5 h-1.5 rounded-full bg-neutral-200 group-hover:bg-neutral-900 transition-colors shrink-0" />
 
@@ -66,7 +66,7 @@ export function TRLDiagram() {
                   >
                     {level.id}
                   </div>
-                  <div className="px-4 py-2 text-xs md:text-xs font-bold font-mono tracking-wider text-neutral-800 leading-none truncate">
+                  <div className="px-3 md:px-4 py-2 text-[10px] md:text-xs font-bold font-mono tracking-wider text-neutral-800 leading-tight">
                     {level.label}
                   </div>
                 </div>
