@@ -54,10 +54,7 @@ export function MediaSocialConnect() {
   const [isSubscribing, setIsSubscribing] = useState(false)
 
   return (
-    <section
-      id="social"
-      className="relative py-8 bg-[#fcfbf9] border-b border-neutral-100 px-5 md:px-12"
-    >
+    <section id="social" className="relative py-8  border-b border-neutral-100 px-5 md:px-12">
       <div className="container mx-auto">
         <div>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 border-b border-neutral-200 pb-4 mb-8">
@@ -65,12 +62,6 @@ export function MediaSocialConnect() {
               <h1 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.05] tracking-tight">
                 Elsewhere
               </h1>
-            </div>
-
-            <div className="max-w-xl">
-              <p className="text-base md:text-lg text-neutral-800 leading-relaxed font-light italic border-l-2 border-[#ffb012]/10 pl-6 mb-2">
-                Follow the work across every platform.
-              </p>
             </div>
           </div>
 

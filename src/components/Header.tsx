@@ -26,13 +26,13 @@ export function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
-      
+
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setIsVisible(false)
       } else {
         setIsVisible(true)
       }
-      
+
       setScrolled(currentScrollY > 20)
       setLastScrollY(currentScrollY)
     }
@@ -56,14 +56,16 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-[50] transition-all px-6 md:px-12 duration-500 transform ${
-          isVisible ? 'translate-y-0' : '-translate-y-full shadow-none'
-        } ${scrolled ? 'bg-white/90 backdrop-blur-md py-3 shadow-sm' : 'bg-transparent py-5'}`}
+        className={`fixed inset-x-0 top-0 z-[100] transition-all px-6 md:px-12 duration-500 transform ${
+          isVisible || open ? 'translate-y-0' : '-translate-y-full shadow-none'
+        } ${open ? 'bg-transparent shadow-none py-5' : scrolled ? 'bg-white/90 backdrop-blur-md py-3 shadow-sm' : 'bg-transparent py-5'}`}
       >
         <div className="container mx-auto px-4 flex items-center justify-between">
           <Link
             href="/"
-            className="flex items-center gap-2 group relative z-[60]"
+            className={`flex items-center gap-2 group relative z-[60] transition-opacity duration-300 ${
+              open ? 'opacity-0 pointer-events-none' : 'opacity-100'
+            }`}
             onClick={() => setOpen(false)}
           >
             <Image
@@ -76,7 +78,7 @@ export function Header() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-2">
+          <nav className="hidden md:flex items-center gap-2 pointer-events-none md:pointer-events-auto">
             {links.map((l) => {
               const isActive = pathname === l.href
               return (
@@ -117,11 +119,13 @@ export function Header() {
 
       {/* Full-screen Mobile Menu */}
       <div
-        className={`fixed inset-0 z-[55] bg-white transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] md:hidden ${
-          open ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
+        className={`fixed inset-0 z-[90] bg-white transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] md:hidden ${
+          open
+            ? 'translate-y-0 opacity-100 pointer-events-auto visible'
+            : '-translate-y-full opacity-0 pointer-events-none invisible'
         }`}
       >
-        <div className="flex flex-col h-full pt-32 pb-12 px-6 container mx-auto">
+        <div className="flex flex-col h-full pt-10 pb-12 px-6 container mx-auto">
           <div className="text-xs font-mono uppercase tracking-[0.3em] text-[#ffb012] mb-12 font-bold">
             Navigation
           </div>
@@ -145,7 +149,7 @@ export function Header() {
                     {l.label}
                   </span>
                   <ArrowRight
-                    className={`text-[#ffb012] transition-transform duration-300 ${isActive ? 'translate-x-0' : '-translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100'}`}
+                    className={`text-[#ffb012] transition-transform duration-300 mr-4 ${isActive ? 'translate-x-0' : '-translate-x-8 opacity-0 group-hover:translate-x-0 group-hover:opacity-100'}`}
                   />
                 </Link>
               )

@@ -80,7 +80,7 @@ export function PortfolioSidebar({
           ))}
         </FilterGroup>
 
-        <FilterGroup label="Stages" last>
+        <FilterGroup label="Initial Stages" last>
           {(Object.keys(stageMeta) as Stage[]).map((s) => (
             <FilterCheckbox
               key={s}

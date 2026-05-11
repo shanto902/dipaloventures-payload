@@ -29,23 +29,16 @@ export function MediaInstagram({ initialPosts }: { initialPosts?: InstagramPost[
   return (
     <section
       id="instagram"
-      className="relative py-8 px-5 md:px-12  overflow-hidden bg-[#fcfbf9] border-b border-neutral-100"
+      className="relative py-8 px-5 md:px-12  overflow-hidden  border-b border-neutral-100"
     >
       {/* Background Studio Tint */}
-      <div className="absolute inset-0 bg-[#f7f0e6]/30 -z-10" />
 
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-8">
           <div className="max-w-4xl">
             <h2 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-tight tracking-tight">
-              In the <span className="italic text-[#ffb012] ">field</span>
+              Out and <span className="italic text-[#ffb012] ">About</span>
             </h2>
-          </div>
-
-          <div className="max-w-lg">
-            <p className="text-base md:text-lg text-neutral-800 leading-relaxed font-light italic border-l-2 border-[#ffb012]/10 pl-6 mb-2">
-              The Dipalo network, documented in real time.
-            </p>
           </div>
         </div>
 

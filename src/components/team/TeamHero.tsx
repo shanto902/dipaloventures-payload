@@ -25,7 +25,7 @@ export function TeamHero({ galleryImages }: { galleryImages: string[] }) {
                 scale.
                 <br />
                 <br />
-                Our GPs come from the design and engineering teams at Motorola and Google — but they
+                Our GPs come from the design and engineering teams at Motorola and Google but they
                 met later at Chicago startup Jiobit. Rafiq was one of the first investors; Mitul
                 designed the PCB electronics. Both saw founders burning through investor cash
                 without sufficient mentorship.

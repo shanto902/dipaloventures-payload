@@ -306,6 +306,15 @@ export const testimonialCards = [
     role: 'CEO & Founder, Vumo',
     photo: undefined,
   },
+  {
+    kind: 'Founder' as const,
+    quote:
+      'Dipalo Ventures brings deep technical expertise that is hard to find in the venture world. They truly understand the challenges of building hardware.',
+    initials: 'NC',
+    name: 'NuCurrent Team',
+    role: 'Wireless Power Tech',
+    photo: undefined,
+  },
 ]
 
 export const tabContent = {

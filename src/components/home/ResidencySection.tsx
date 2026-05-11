@@ -1,20 +1,14 @@
 import { residencyTags } from '@/lib/demo'
 import { AnimatedLink } from '@/components/ui/AnimatedLink'
+import { ResidencyCarousel } from './ResidencyCarousel'
 
-export function ResidencySection() {
+export function ResidencySection({ images }: { images?: { url: string; alt?: string }[] }) {
   return (
     <section className="bg-[#fcfbf9] px-5 md:px-12 py-8 border-y border-neutral-100">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-[5fr_7fr] gap-12 lg:gap-20 items-center">
           <div className="relative aspect-4/3 rounded-3xl overflow-hidden bg-neutral-100 border border-neutral-200 shadow-sm group">
-            {/* Architectural Placeholder Visual */}
-            <div className="absolute inset-0 bg-linear-to-br from-neutral-100 to-white flex flex-col items-center justify-center p-12 text-center">
-              <div className="w-16 h-16 rounded-full border border-[#ffb012]/20 flex items-center justify-center mb-6 relative">
-                <div className="w-2 h-2 bg-[#ffb012] rounded-full animate-pulse" />
-                <div className="absolute inset-0 rounded-full border border-[#ffb012]/10 scale-150 animate-ping" />
-              </div>
-              <div className="  italic text-2xl text-neutral-600">Technical Residency</div>
-            </div>
+            <ResidencyCarousel images={images || []} />
           </div>
 
           <div>

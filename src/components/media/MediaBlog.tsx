@@ -21,21 +21,15 @@ export function MediaBlog({ initialPosts }: { initialPosts?: MediumPost[] }) {
   return (
     <section
       id="blog"
-      className="relative py-8 overflow-hidden bg-white border-b border-neutral-100 px-5 md:px-12"
+      className="relative py-8 overflow-hidden bg-[#fcfbf9] border-b border-neutral-100 px-5 md:px-12"
     >
       <div className="container mx-auto">
         {/* Section Identity */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-8 border-b border-neutral-100 pb-8">
           <div className="max-w-2xl">
             <h2 className="text-3xl md:text-5xl font-semibold text-neutral-900 leading-[1.2] tracking-tight">
-              Dispatches
+              Blogs
             </h2>
-          </div>
-
-          <div className="max-w-lg">
-            <p className="text-base md:text-lg text-neutral-800 leading-relaxed font-light italic border-l-2 border-[#ffb012]/10 pl-6">
-              Essays, updates, and news from the firm.
-            </p>
           </div>
         </div>
 

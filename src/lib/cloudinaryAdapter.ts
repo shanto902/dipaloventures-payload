@@ -2,8 +2,6 @@ import { v2 as cloudinary } from 'cloudinary'
 import type { Adapter } from '@payloadcms/plugin-cloud-storage/types'
 
 export const cloudinaryAdapter = (): Adapter => {
-  console.log('Initializing Cloudinary Adapter with Cloud Name:', process.env.CLOUDINARY_NAME)
-  
   cloudinary.config({
     cloud_name: process.env.CLOUDINARY_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
@@ -14,7 +12,7 @@ export const cloudinaryAdapter = (): Adapter => {
     name: 'cloudinary',
     async handleUpload({ file, data }) {
       console.log('Uploading to Cloudinary:', file.filename)
-      
+
       const uploadResult: any = await new Promise((resolve, reject) => {
         const uploadStream = cloudinary.uploader.upload_stream(
           {

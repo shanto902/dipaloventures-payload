@@ -1,9 +1,8 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import { testimonialCards } from '@/lib/demo'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 type Testimonial = {
   name: string
@@ -16,38 +15,11 @@ type Testimonial = {
 
 export function TestimonialsCarousel({ testimonials }: { testimonials?: Testimonial[] }) {
   const displayCards = testimonials || testimonialCards
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [itemsPerView, setItemsPerView] = useState(2)
-
-  useEffect(() => {
-    const updateItems = () => {
-      if (window.innerWidth < 768) {
-        setItemsPerView(1)
-      } else if (window.innerWidth < 1024) {
-        setItemsPerView(2)
-      } else {
-        setItemsPerView(3)
-      }
-    }
-    updateItems()
-    window.addEventListener('resize', updateItems)
-    return () => window.removeEventListener('resize', updateItems)
-  }, [])
-
-  const maxIndex = Math.max(0, displayCards.length - itemsPerView)
-
-  const next = () => {
-    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1))
-  }
-
-  const prev = () => {
-    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1))
-  }
 
   return (
     <section className="bg-white px-6 md:px-12 pt-8 pb-16 border-y border-neutral-100 overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
           <div className="max-w-2xl">
             <div className="text-sm font-mono uppercase tracking-[0.2em] text-[#ffb012] mb-6 font-bold">
               Testimonials
@@ -56,51 +28,14 @@ export function TestimonialsCarousel({ testimonials }: { testimonials?: Testimon
               Voices from Our Network
             </h2>
           </div>
-
-          {/* Navigation Controls */}
-          <div className="flex items-center justify-between md:justify-start gap-6">
-            <div className="font-mono text-xs md:text-xs tracking-widest text-neutral-600 font-bold">
-              {String(currentIndex + 1).padStart(2, '0')} /{' '}
-              {String(displayCards.length).padStart(2, '0')}
-            </div>
-            <div className="flex gap-2">
-              <button
-                onClick={prev}
-                className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-600 hover:border-[#ffb012] hover:text-[#ffb012] transition-all active:scale-95"
-                aria-label="Previous testimonial"
-              >
-                <ChevronLeft size={18} />
-              </button>
-              <button
-                onClick={next}
-                className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-neutral-200 flex items-center justify-center text-neutral-600 hover:border-[#ffb012] hover:text-[#ffb012] transition-all active:scale-95"
-                aria-label="Next testimonial"
-              >
-                <ChevronRight size={18} />
-              </button>
-            </div>
-          </div>
         </div>
 
-        <div className="relative">
-          <div
-            className="flex transition-transform duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] gap-6"
-            style={{
-              transform: `translateX(calc(-${currentIndex * (100 / itemsPerView)}% - ${currentIndex * (24 / itemsPerView)}px))`,
-            }}
-          >
-            {displayCards.map((c, i) => (
-              <div
-                key={`${c.name}-${i}`}
-                className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] shrink-0 transition-opacity duration-500"
-                style={{
-                  opacity: i >= currentIndex && i < currentIndex + itemsPerView ? 1 : 0.4,
-                }}
-              >
-                <TestimonialCard card={c} />
-              </div>
-            ))}
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {displayCards.map((c, i) => (
+            <div key={`${c.name}-${i}`} className="h-full">
+              <TestimonialCard card={c} />
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -99,12 +99,6 @@ export function TeamAdvisors({ advisors: liveAdvisors }: { advisors?: Advisor[] 
             ))}
           </Marquee>
         </div>
-
-        <div className="mt-16 flex flex-col items-center">
-          <p className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-400 font-bold">
-            + 10 more advisors across energy, manufacturing, and life sciences.
-          </p>
-        </div>
       </main>
     </section>
   )

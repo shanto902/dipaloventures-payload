@@ -114,12 +114,30 @@ export default async function HomePage() {
     }
   })
 
+  const homeGlobal = await payload.findGlobal({
+    slug: 'home',
+    depth: 1,
+  })
+
+  const residencyImages =
+    homeGlobal.residencySection?.carouselImages?.map((item: any) => {
+      let imageUrl = item.image?.url || ''
+      if (imageUrl.includes('/api/media/file/')) {
+        const filename = imageUrl.split('/').pop()
+        imageUrl = `https://res.cloudinary.com/${process.env.CLOUDINARY_NAME}/image/upload/f_auto,q_auto/dipalo-ventures/${filename}`
+      }
+      return {
+        url: imageUrl,
+        alt: item.image?.alt || '',
+      }
+    }) || []
+
   return (
     <>
       <HomeHero portfolio={portfolioItems} />
       <FocusAreasSection />
       <FounderInvestorToggle />
-      <ResidencySection />
+      <ResidencySection images={residencyImages} />
       <TeamSection members={teamMembers.length > 0 ? teamMembers : undefined} />
       <PortfolioMarquee items={portfolioItems.length > 0 ? portfolioItems : undefined} />
       <TestimonialsCarousel testimonials={testimonials.length > 0 ? testimonials : undefined} />

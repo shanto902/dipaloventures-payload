@@ -1,6 +1,6 @@
 import React from 'react'
 import { SiteLayout } from '@/components/SiteLayout'
-import { MediaHero } from '@/components/media/MediaHero'
+
 import { MediaVideos } from '@/components/media/MediaVideos'
 import { MediaInstagram } from '@/components/media/MediaInstagram'
 import { MediaBlog } from '@/components/media/MediaBlog'
@@ -23,10 +23,7 @@ export default async function MediaPage() {
 
   return (
     <>
-      <MediaHero />
-      <SiteLayout>
-        <MediaVideos initialVideos={latestVideos} />
-      </SiteLayout>
+      <MediaVideos initialVideos={latestVideos} />
       <MediaInstagram initialPosts={instagramPosts} />
       <MediaBlog initialPosts={mediumPosts} />
       <MediaSocialConnect />

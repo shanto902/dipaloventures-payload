@@ -13,6 +13,7 @@ import { Team } from './collections/Team'
 import { Portfolio } from './collections/Portfolio'
 import { Testimonials } from './collections/Testimonials'
 import { Gallery } from './collections/Gallery'
+import { Home } from './globals/Home'
 import { cloudStoragePlugin } from '@payloadcms/plugin-cloud-storage'
 import { cloudinaryAdapter } from './lib/cloudinaryAdapter'
 
@@ -30,6 +31,7 @@ export default buildConfig({
   cors: [process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'].filter(Boolean),
   csrf: [process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'].filter(Boolean),
   collections: [Users, Media, Team, Portfolio, Testimonials, Gallery],
+  globals: [Home],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
