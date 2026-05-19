@@ -3,6 +3,7 @@ import './styles.css'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { Toaster } from 'sonner'
+import { GoogleAnalytics } from '@/components/GoogleAnalytics'
 
 export const metadata = {
   description:
@@ -15,6 +16,9 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
   return (
     <html lang="en">
+      <head>
+        <GoogleAnalytics />
+      </head>
       <body>
         <Header />
         <main>{children}</main>

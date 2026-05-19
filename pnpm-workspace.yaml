@@ -1,0 +1,9 @@
+allowBuilds:
+  sharp: true
+  esbuild: true
+  unrs-resolver: true
+
+overrides:
+  mongoose: "^8.22.1"
+  uuid: "^11.1.1"
+  postcss: "^8.5.13"
