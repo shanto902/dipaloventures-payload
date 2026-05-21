@@ -1,13 +1,35 @@
 import { revalidatePath } from 'next/cache'
 import type { CollectionConfig } from 'payload'
 
+const slugify = (val: string): string => {
+  return val
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9 -]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+}
+
 export const Team: CollectionConfig = {
   slug: 'team',
   hooks: {
+    beforeChange: [
+      async ({ data }) => {
+        if (data.name && !data.slug) {
+          data.slug = slugify(data.name)
+        }
+        return data
+      },
+    ],
     afterChange: [
-      () => {
+      ({ doc }) => {
         revalidatePath('/')
         revalidatePath('/team')
+        if (doc?.slug) {
+          revalidatePath(`/team/${doc.slug}`)
+        }
       },
     ],
   },
@@ -23,6 +45,22 @@ export const Team: CollectionConfig = {
       name: 'name',
       type: 'text',
       required: true,
+    },
+    {
+      name: 'slug',
+      type: 'text',
+      unique: true,
+      admin: {
+        position: 'sidebar',
+        description: 'Auto-generated from name if left blank',
+      },
+    },
+    {
+      name: 'priorInvestments',
+      type: 'relationship',
+      relationTo: 'companies',
+      hasMany: true,
+      label: 'Prior Investments',
     },
     {
       name: 'order',

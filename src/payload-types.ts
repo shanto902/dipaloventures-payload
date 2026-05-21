@@ -73,6 +73,7 @@ export interface Config {
     portfolio: Portfolio;
     testimonials: Testimonial;
     gallery: Gallery;
+    companies: Company;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -86,6 +87,7 @@ export interface Config {
     portfolio: PortfolioSelect<false> | PortfolioSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     gallery: GallerySelect<false> | GallerySelect<true>;
+    companies: CompaniesSelect<false> | CompaniesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -190,6 +192,11 @@ export interface Team {
   id: string;
   name: string;
   /**
+   * Auto-generated from name if left blank
+   */
+  slug?: string | null;
+  priorInvestments?: (string | Company)[] | null;
+  /**
    * Lower numbers appear first
    */
   order?: number | null;
@@ -210,6 +217,20 @@ export interface Team {
         id?: string | null;
       }[]
     | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "companies".
+ */
+export interface Company {
+  id: string;
+  name: string;
+  logo?: (string | null) | Media;
+  link?: string | null;
+  exit?: boolean | null;
+  isInactive?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -324,6 +345,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'gallery';
         value: string | Gallery;
+      } | null)
+    | ({
+        relationTo: 'companies';
+        value: string | Company;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -414,6 +439,8 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface TeamSelect<T extends boolean = true> {
   name?: T;
+  slug?: T;
+  priorInvestments?: T;
   order?: T;
   category?: T;
   role?: T;
@@ -483,6 +510,19 @@ export interface GallerySelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "companies_select".
+ */
+export interface CompaniesSelect<T extends boolean = true> {
+  name?: T;
+  logo?: T;
+  link?: T;
+  exit?: T;
+  isInactive?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

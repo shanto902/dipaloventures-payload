@@ -29,7 +29,13 @@ function SupportingCard({ m }: { m: TeamMember & { orgLinks?: OrgLink[] } }) {
         </div>
         <div className="min-w-0">
           <h4 className="text-lg font-semibold text-neutral-900 tracking-tight leading-tight transition-colors">
-            {m.name}
+            {m.slug ? (
+              <a href={`/team/${m.slug}`} className="hover:text-[#ffb012] transition-colors duration-300">
+                {m.name}
+              </a>
+            ) : (
+              m.name
+            )}
           </h4>
           <div className="mt-1 font-mono uppercase text-xs tracking-[0.2em] text-[#ffb012] font-bold">
             {m.role}
@@ -55,18 +61,28 @@ function SupportingCard({ m }: { m: TeamMember & { orgLinks?: OrgLink[] } }) {
         )}
       </div>
 
-      <div className="mt-auto  border-t border-neutral-50 flex gap-4 font-mono text-xs uppercase tracking-[0.2em] font-bold">
+      <div className="mt-auto border-t border-neutral-50 pt-4 flex flex-wrap gap-4 font-mono text-xs uppercase tracking-[0.2em] font-bold">
         {allLinks.slice(0, 2).map((l) => (
           <a
             key={l.label}
             href={l.href}
             target="_blank"
             rel="noreferrer"
-            className="text-neutral-400 hover:text-[#ffb012] transition-colors"
+            className="text-neutral-400 hover:text-[#ffb012] transition-colors flex items-center gap-1 group/link"
           >
-            {l.label}
+            <span>{l.label}</span>
+            <span className="opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
           </a>
         ))}
+        {m.priorInvestments && m.priorInvestments.length > 0 && m.slug && (
+          <a
+            href={`/team/${m.slug}`}
+            className="text-neutral-400 hover:text-[#ffb012] transition-colors flex items-center gap-1 group/link"
+          >
+            <span>Prior Investment</span>
+            <span className="opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
+          </a>
+        )}
       </div>
     </article>
   )

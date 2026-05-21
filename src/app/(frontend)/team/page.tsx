@@ -43,6 +43,7 @@ export default async function TeamPage() {
 
     return {
       name: doc.name,
+      slug: doc.slug,
       role: doc.role,
       location: doc.location,
       organization: doc.organization || '',
@@ -51,6 +52,7 @@ export default async function TeamPage() {
       linkedin: doc.linkedin || '',
       orgLinks: doc.orgLinks || [],
       category: doc.category,
+      priorInvestments: doc.priorInvestments || [],
     }
   })
 

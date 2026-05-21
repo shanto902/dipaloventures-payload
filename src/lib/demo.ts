@@ -10,12 +10,14 @@ export const residencyTags = [
 
 export type TeamMember = {
   name: string
+  slug?: string
   role: string
   location: string
   bio: string
   photo?: string
   linkedin: string
   category?: 'gp' | 'vp' | 'advisor'
+  priorInvestments?: any[]
 }
 
 export const team: TeamMember[] = [

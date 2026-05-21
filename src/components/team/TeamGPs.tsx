@@ -31,7 +31,16 @@ function GPCard({ m }: { m: TeamMember & { orgLinks?: OrgLink[] } }) {
       {/* Profile Intelligence */}
       <div className="flex-1 flex flex-col min-w-0">
         <h3 className="text-xl font-semibold text-neutral-900 tracking-tight leading-tight mb-1 ">
-          {m.name}
+          {m.slug ? (
+            <a
+              href={`/team/${m.slug}`}
+              className="hover:text-[#ffb012] transition-colors duration-300"
+            >
+              {m.name}
+            </a>
+          ) : (
+            m.name
+          )}
         </h3>
         <div className="font-mono uppercase  text-xs tracking-[0.2em] text-neutral-600 font-bold">
           {m.role} · {m.location}
@@ -53,7 +62,7 @@ function GPCard({ m }: { m: TeamMember & { orgLinks?: OrgLink[] } }) {
           )}
         </div>
 
-        <div className="mt-auto pt-4 flex gap-4 font-mono  text-xs uppercase tracking-[0.2em] font-bold">
+        <div className="mt-auto pt-4 flex flex-wrap gap-4 font-mono text-xs uppercase tracking-[0.2em] font-bold">
           {allLinks.slice(0, 2).map((l) => (
             <a
               key={l.label}
@@ -66,6 +75,15 @@ function GPCard({ m }: { m: TeamMember & { orgLinks?: OrgLink[] } }) {
               <span className="opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
             </a>
           ))}
+          {m.priorInvestments && m.priorInvestments.length > 0 && m.slug && (
+            <a
+              href={`/team/${m.slug}`}
+              className="text-neutral-600 hover:text-[#ffb012] transition-colors flex items-center gap-1 group/link"
+            >
+              <span>Prior Investments</span>
+              <span className="opacity-0 group-hover/link:opacity-100 transition-opacity">→</span>
+            </a>
+          )}
         </div>
       </div>
     </article>
