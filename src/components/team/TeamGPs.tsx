@@ -43,7 +43,7 @@ function GPCard({ m }: { m: TeamMember & { orgLinks?: OrgLink[] } }) {
           )}
         </h3>
         <div className="font-mono uppercase  text-xs tracking-[0.2em] text-neutral-600 font-bold">
-          {m.role} · {m.location}
+          {m.role}
         </div>
 
         <div className="mt-3 relative">

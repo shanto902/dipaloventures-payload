@@ -30,7 +30,10 @@ function SupportingCard({ m }: { m: TeamMember & { orgLinks?: OrgLink[] } }) {
         <div className="min-w-0">
           <h4 className="text-lg font-semibold text-neutral-900 tracking-tight leading-tight transition-colors">
             {m.slug ? (
-              <a href={`/team/${m.slug}`} className="hover:text-[#ffb012] transition-colors duration-300">
+              <a
+                href={`/team/${m.slug}`}
+                className="hover:text-[#ffb012] transition-colors duration-300"
+              >
                 {m.name}
               </a>
             ) : (
@@ -101,7 +104,7 @@ export function TeamVPs({ members }: { members?: TeamMember[] }) {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6 items-stretch">
             {displayTeam.map((m) => (
               <SupportingCard key={m.name} m={m} />
             ))}

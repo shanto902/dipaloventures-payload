@@ -39,7 +39,7 @@ export function TeamMemberSidebar({
           <img
             src={photoUrl}
             alt={name}
-            className="absolute inset-0 h-full w-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
+            className="absolute inset-0 h-full w-full object-cover transition-all duration-1000"
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-neutral-50 to-neutral-100 text-3xl font-bold text-[#ffb012] uppercase font-mono">
