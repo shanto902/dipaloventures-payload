@@ -6,10 +6,10 @@ import { testimonialCards } from '@/lib/demo'
 
 type Testimonial = {
   name: string
-  role: string
+  role?: string | null
   quote: string
-  kind: string
-  photo?: string
+  kind?: string | null
+  photo?: string | null
   initials?: string
 }
 
@@ -74,15 +74,23 @@ function TestimonialCard({ card }: { card: Testimonial }) {
 
         <div>
           <div className="text-xl   font-medium text-neutral-900 tracking-tight">{card.name}</div>
-          <div className="mt-1.5 flex items-center gap-3 flex-wrap">
-            <span className="text-xs font-mono uppercase tracking-[0.2em] text-neutral-600 font-bold whitespace-nowrap">
-              {card.role}
-            </span>
-            <span className="h-px w-6 bg-neutral-200 hidden sm:block" />
-            <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#ffb012] font-bold whitespace-nowrap">
-              {card.kind}
-            </span>
-          </div>
+          {(card.role || card.kind) && (
+            <div className="mt-1.5 flex items-center gap-3 flex-wrap">
+              {card.role && (
+                <span className="text-xs font-mono uppercase tracking-[0.2em] text-neutral-600 font-bold whitespace-nowrap">
+                  {card.role}
+                </span>
+              )}
+              {card.role && card.kind && (
+                <span className="h-px w-6 bg-neutral-200 hidden sm:block" />
+              )}
+              {card.kind && (
+                <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#ffb012] font-bold whitespace-nowrap">
+                  {card.kind}
+                </span>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </article>

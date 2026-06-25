@@ -264,8 +264,8 @@ export interface Testimonial {
   /**
    * e.g. CEO, Pluie
    */
-  role: string;
-  kind: 'Founder' | 'Investor' | 'Partner';
+  role?: string | null;
+  kind?: ('Founder' | 'Investor' | 'Partner' | 'Intern') | null;
   quote: string;
   photo?: (string | null) | Media;
   /**

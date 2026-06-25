@@ -168,13 +168,22 @@ export function Header() {
             </a>
 
             <div className="mt-10 flex justify-between items-center text-xs font-mono uppercase tracking-widest text-neutral-600 font-bold">
-              <span>© 2024 Dipalo Ventures</span>
+              <span>© {new Date().getFullYear()} Dipalo Ventures</span>
               <div className="flex gap-4">
-                <a href="#" className="hover:text-[#ffb012] transition-colors">
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.linkedin.com/company/dipaloventures/"
+                  className="hover:text-[#ffb012] transition-colors"
+                >
                   LinkedIn
                 </a>
-                <a href="#" className="hover:text-[#ffb012] transition-colors">
-                  Twitter
+                <a
+                  href="https://www.youtube.com/@dipaloventures"
+                  target="_blank"
+                  className="hover:text-[#ffb012] transition-colors"
+                >
+                  Youtube
                 </a>
               </div>
             </div>

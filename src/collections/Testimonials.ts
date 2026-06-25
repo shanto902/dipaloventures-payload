@@ -26,7 +26,7 @@ export const Testimonials: CollectionConfig = {
     {
       name: 'role',
       type: 'text',
-      required: true,
+      required: false,
       admin: {
         description: 'e.g. CEO, Pluie',
       },
@@ -34,13 +34,13 @@ export const Testimonials: CollectionConfig = {
     {
       name: 'kind',
       type: 'select',
-      required: true,
+      required: false,
       options: [
         { label: 'Founder', value: 'Founder' },
         { label: 'Investor', value: 'Investor' },
         { label: 'Partner', value: 'Partner' },
+        { label: 'Intern', value: 'Intern' },
       ],
-      defaultValue: 'Founder',
     },
     {
       name: 'quote',
