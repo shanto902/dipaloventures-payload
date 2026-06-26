@@ -31,9 +31,10 @@ export function PitchForm() {
       const raw = localStorage.getItem(PITCH_DRAFT_KEY)
       if (raw) {
         const d = JSON.parse(raw)
+        // Restore saved answers, but always open on step 1 — opening the form
+        // should start at the beginning, never resume mid-wizard.
         if (d.values) setValues(d.values)
         if (d.checks) setChecks(d.checks)
-        if (typeof d.step === 'number') setStep(Math.min(Math.max(d.step, 0), total - 1))
       }
     } catch {
       // ignore malformed drafts
