@@ -35,13 +35,10 @@ const nextConfig: NextConfig = {
     root: path.resolve(dirname),
   },
   async redirects() {
-    return [
-      {
-        source: '/pitch',
-        destination: 'https://forms.gle/S3ojwHDpchecWFzY6',
-        permanent: false,
-      },
-    ]
+    // The /pitch → Google Form redirect was removed so the native /pitch page
+    // (src/app/(frontend)/pitch) handles submissions. Restore an entry here to
+    // re-point /pitch elsewhere if needed.
+    return []
   },
 }
 
