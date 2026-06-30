@@ -49,52 +49,46 @@ const MONDAY_GROUP_ID = process.env.MONDAY_GROUP_ID ?? ''
  * src/components/pitch/pitchSchema.ts — keep them in sync.
  */
 export const PITCH_COLUMN_MAP: Record<string, string> = {
-  // Contact
-  email: '', // monday Email column
-  applied: '', // Status / Dropdown
-  heard: '', // Status / Dropdown
-  heardDetail: '', // Text
-  // Company
-  company: '', // Text
-  website: '', // Link / Text
-  linkedin: '', // Link / Text
-  oneliner: '', // Long Text
-  identity: '', // Dropdown (multi-label)
-  street: '', // Text
-  city: '', // Text
-  state: '', // Text
-  country: '', // Status / Dropdown
-  industry: '', // Status / Dropdown
-  sector: '', // Status / Dropdown
-  share: '', // Status
-  // Business
-  problem: '', // Long Text
-  solution: '', // Long Text
-  diff: '', // Long Text
-  revenue: '', // Text (or Number — see toColumnValue note)
-  tam: '', // Text (or Number)
-  model: '', // Long Text
-  // Product
-  validation: '', // Long Text
-  trl: '', // Status / Dropdown
-  products: '', // Long Text
-  ip: '', // Long Text
-  // Sustainability
-  climate: '', // Long Text
-  designSus: '', // Long Text
-  mfgSus: '', // Long Text
-  // Raise
-  stage: '', // Text
-  roundSize: '', // Text (or Number)
-  valuation: '', // Text (or Number)
-  priorVC: '', // Long Text
-  instrument: '', // Status / Dropdown
+  name: 'text_mm4t224r',
+  email: 'email_mm4tk9fr',
+  applied: 'color_mm4te4t7',
+  heard: 'color_mm4tk6sx',
+  heardDetail: 'text_mm4tdf7q',
+  website: 'text_mm4tcx6a',
+  linkedin: 'text_mm4t9ntv',
+  oneliner: 'long_text_mm4t67xa',
+  identity: 'dropdown_mm4t8ey4',
+  street: 'text_mm4t50kh',
+  city: 'text_mm4tfs7w',
+  state: 'text_mm4t87zv',
+  country: 'color_mm4t228v',
+  industry: 'color_mm4t2sp',
+  sector: 'color_mm4t5stk',
+  share: 'color_mm4tz94y',
+  problem: 'long_text_mm4ttd87',
+  solution: 'long_text_mm4tdrkm',
+  diff: 'long_text_mm4tsbej',
+  revenue: 'text_mm4tb0sc',
+  tam: 'text_mm4t29vx',
+  model: 'long_text_mm4t6x7p',
+  validation: 'long_text_mm4tmt9r',
+  trl: 'color_mm4tx3rd',
+  products: 'long_text_mm4tyk9g',
+  ip: 'long_text_mm4t8f4d',
+  climate: 'long_text_mm4tzwb0',
+  designSus: 'long_text_mm4txn9c',
+  mfgSus: 'long_text_mm4tzggy',
+  stage: 'text_mm4t2jg4',
+  roundSize: 'text_mm4thmxy',
+  valuation: 'text_mm4t1n5x',
+  priorVC: 'long_text_mm4tqw7h',
+  instrument: 'color_mm4tpent',
 }
 
 // The form field id whose value is the pitch deck PDF, and the monday File
 // column it uploads to. ░░ BLANK ░░ — set the File column id to enable upload.
 export const PITCH_FILE_FIELD = 'deck'
-export const PITCH_FILE_COLUMN_ID = '' // monday File column id
+export const PITCH_FILE_COLUMN_ID = 'file_mm4twjnk' // monday File column id
 
 // The form field used as the monday item title (the item "name").
 export const PITCH_ITEM_NAME_FIELD = 'company'
@@ -178,7 +172,8 @@ export async function createPitchItem(
         board_id: $boardId,
         group_id: $groupId,
         item_name: $itemName,
-        column_values: $columnValues
+        column_values: $columnValues,
+        create_labels_if_missing: true
       ) { id }
     }
   `
