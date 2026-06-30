@@ -22,14 +22,12 @@ export function HomeHero({ portfolio = [] }: HomeHeroProps) {
             help you go from prototype to production.
           </div>
           <div className="mt-8 md:mt-10 flex flex-wrap gap-4">
-            <a
+            <Link
               href="/pitch"
-              target="_blank"
-              rel="noopener noreferrer"
               className="px-8 py-4 bg-[#ffb012] hover:text-white text-black font-mono text-xs uppercase tracking-widest font-bold rounded-full hover:bg-neutral-900 transition-all duration-300 shadow-lg shadow-[#ffb012]/10 w-full sm:w-auto text-center"
             >
               Submit Pitch <span aria-hidden>→</span>
-            </a>
+            </Link>
           </div>
         </div>
 

@@ -95,15 +95,13 @@ export function Header() {
                 </Link>
               )
             })}
-            <a
+            <Link
               href="/pitch"
-              target="_blank"
-              rel="noopener noreferrer"
               className="ml-4 inline-flex items-center gap-2 px-6 py-2.5 bg-[#ffb012] hover:text-white text-black font-mono text-xs uppercase tracking-[0.2em] font-bold rounded-full hover:bg-neutral-900 transition-all duration-500 shadow-lg shadow-[#ffb012]/20"
             >
               Submit pitch
               <ArrowRight size={14} />
-            </a>
+            </Link>
           </nav>
 
           {/* Mobile Toggle */}
@@ -157,15 +155,13 @@ export function Header() {
           </nav>
 
           <div className="mt-auto pt-12">
-            <a
+            <Link
               href="/pitch"
-              target="_blank"
-              rel="noopener noreferrer"
               onClick={() => setOpen(false)}
               className="flex items-center justify-center gap-3 w-full py-5 bg-neutral-900 text-white rounded-2xl font-mono text-xs uppercase tracking-[0.2em] font-bold hover:bg-[#ffb012] transition-all duration-500 shadow-xl"
             >
               Submit Pitch <ArrowRight size={16} />
-            </a>
+            </Link>
 
             <div className="mt-10 flex justify-between items-center text-xs font-mono uppercase tracking-widest text-neutral-600 font-bold">
               <span>© {new Date().getFullYear()} Dipalo Ventures</span>

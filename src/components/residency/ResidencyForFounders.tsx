@@ -62,14 +62,12 @@ export function ResidencyForFounders() {
             </p> */}
           </div>
 
-          <a
+          <Link
             href="/pitch"
-            target="_blank"
-            rel="noopener noreferrer"
             className="px-8 py-4 bg-[#ffb012] text-black font-mono text-xs uppercase tracking-widest font-bold rounded-full hover:bg-neutral-900 hover:text-white transition-all duration-300 shadow-lg shadow-[#ffb012]/10 w-full md:w-auto text-center"
           >
             Submit your pitch <span aria-hidden>→</span>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

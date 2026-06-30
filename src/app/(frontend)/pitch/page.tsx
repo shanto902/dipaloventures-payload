@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function PitchPage() {
   return (
-    <div className="relative px-5 md:px-12 pt-8 pb-20 bg-[#fcfbf9]">
+    <div className="relative px-5 md:px-12 pt-28 md:pt-32 pb-20 bg-[#fcfbf9]">
       {/* Architectural studio tint */}
       <div className="absolute inset-0 bg-[#f7f0e6]/20 -z-10" />
 
