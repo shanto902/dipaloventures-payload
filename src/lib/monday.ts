@@ -49,46 +49,92 @@ const MONDAY_GROUP_ID = process.env.MONDAY_GROUP_ID ?? ''
  * src/components/pitch/pitchSchema.ts — keep them in sync.
  */
 export const PITCH_COLUMN_MAP: Record<string, string> = {
-  name: 'text_mm4t224r',
-  email: 'email_mm4tk9fr',
-  applied: 'color_mm4te4t7',
-  heard: 'color_mm4tk6sx',
-  heardDetail: 'text_mm4tdf7q',
-  website: 'text_mm4tcx6a',
-  linkedin: 'text_mm4t9ntv',
-  oneliner: 'long_text_mm4t67xa',
-  identity: 'dropdown_mm4t8ey4',
-  street: 'text_mm4t50kh',
-  city: 'text_mm4tfs7w',
-  state: 'text_mm4t87zv',
-  country: 'color_mm4t228v',
-  industry: 'color_mm4t2sp',
-  sector: 'color_mm4t5stk',
-  share: 'color_mm4tz94y',
-  problem: 'long_text_mm4ttd87',
-  solution: 'long_text_mm4tdrkm',
-  diff: 'long_text_mm4tsbej',
-  revenue: 'text_mm4tb0sc',
-  tam: 'text_mm4t29vx',
-  model: 'long_text_mm4t6x7p',
-  validation: 'long_text_mm4tmt9r',
-  trl: 'color_mm4tx3rd',
-  products: 'long_text_mm4tyk9g',
-  ip: 'long_text_mm4t8f4d',
-  climate: 'long_text_mm4tzwb0',
-  designSus: 'long_text_mm4txn9c',
-  mfgSus: 'long_text_mm4tzggy',
-  stage: 'text_mm4t2jg4',
-  roundSize: 'text_mm4thmxy',
-  valuation: 'text_mm4t1n5x',
-  priorVC: 'long_text_mm4tqw7h',
-  instrument: 'color_mm4tpent',
+  sector: 'dropdown_mm4t7bp0',
+  state: 'text_mm4tc4vc',
+  country: 'text_mm4ts91m',
+  heard: 'dropdown_mm4txb13',
+  stage: 'dropdown_mm4tjvgr',
+  roundSize: 'numeric_mm4t863p',
+  valuation: 'numeric_mm4txt2m',
+  revenue: 'text_mm4tjega',
+  name: 'text_mm4t90pf',
+  email: 'email_mm4tpym1',
+  identity: 'dropdown_mm4tmzg1',
+  website: 'link_mm4trzrf',
+  priorVC: 'text_mm4t78f1',
+  applied: 'color_mm4tkzjn',
+  heardDetail: 'text_mm4tnr13',
+  linkedin: 'link_mm4t2b50',
+  oneliner: 'long_text_mm4thftj',
+  industry: 'dropdown_mm4tvtht',
+  share: 'color_mm4trfyy',
+  street: 'text_mm4twtpz',
+  city: 'text_mm4tgeq8',
+  problem: 'long_text_mm4tnwcc',
+  solution: 'long_text_mm4tne61',
+  diff: 'long_text_mm4t3235',
+  tam: 'text_mm4t6man',
+  model: 'long_text_mm4t3x6k',
+  validation: 'long_text_mm4t8w47',
+  trl: 'dropdown_mm4tbbtc',
+  products: 'long_text_mm4txy0w',
+  ip: 'long_text_mm4t5a09',
+  climate: 'long_text_mm4tc944',
+  designSus: 'long_text_mm4txa0e',
+  mfgSus: 'long_text_mm4tjqp2',
+  instrument: 'dropdown_mm4ta59c',
+}
+
+/**
+ * monday column "kind" per field — drives the JSON value shape sent to the API.
+ * Mirrors the column types created on the board (Deal Flow-style layout).
+ */
+export const PITCH_FIELD_KIND: Record<
+  string,
+  'text' | 'long' | 'email' | 'link' | 'numbers' | 'dropdown' | 'status'
+> = {
+  // Deal Flow-aligned columns
+  sector: 'dropdown',
+  state: 'text',
+  country: 'text',
+  heard: 'dropdown',
+  stage: 'dropdown',
+  roundSize: 'numbers',
+  valuation: 'numbers',
+  revenue: 'text',
+  name: 'text',
+  email: 'email',
+  identity: 'dropdown',
+  website: 'link',
+  priorVC: 'text',
+  // Extra application fields
+  applied: 'status',
+  heardDetail: 'text',
+  linkedin: 'link',
+  oneliner: 'long',
+  industry: 'dropdown',
+  share: 'status',
+  street: 'text',
+  city: 'text',
+  problem: 'long',
+  solution: 'long',
+  diff: 'long',
+  model: 'long',
+  validation: 'long',
+  tam: 'text',
+  trl: 'dropdown',
+  products: 'long',
+  ip: 'long',
+  climate: 'long',
+  designSus: 'long',
+  mfgSus: 'long',
+  instrument: 'dropdown',
 }
 
 // The form field id whose value is the pitch deck PDF, and the monday File
 // column it uploads to. ░░ BLANK ░░ — set the File column id to enable upload.
 export const PITCH_FILE_FIELD = 'deck'
-export const PITCH_FILE_COLUMN_ID = 'file_mm4twjnk' // monday File column id
+export const PITCH_FILE_COLUMN_ID = 'file_mm4tg0zv' // monday File column id
 
 // The form field used as the monday item title (the item "name").
 export const PITCH_ITEM_NAME_FIELD = 'company'
@@ -121,21 +167,23 @@ function buildColumnValues(values: Record<string, unknown>): Record<string, unkn
     const raw = values[fieldId]
     if (raw === undefined || raw === null || raw === '') continue
 
-    if (fieldId === 'email') {
+    const kind = PITCH_FIELD_KIND[fieldId] ?? 'text'
+    if (kind === 'email') {
       const email = String(raw)
-      out[columnId] = { email, text: email } // Email column
-    } else if (Array.isArray(raw)) {
-      out[columnId] = { labels: raw.map(String) } // Dropdown (multi) column
-    } else if (
-      ['applied', 'heard', 'country', 'industry', 'sector', 'share', 'trl', 'instrument'].includes(
-        fieldId,
-      )
-    ) {
-      out[columnId] = { label: String(raw) } // Status column — label must exist on the board
+      out[columnId] = { email, text: email }
+    } else if (kind === 'link') {
+      const url = String(raw)
+      out[columnId] = { url, text: url }
+    } else if (kind === 'numbers') {
+      const n = String(raw).replace(/[^0-9.]/g, '') // monday Numbers wants a bare number (strip $ and commas)
+      if (n) out[columnId] = n
+    } else if (kind === 'dropdown') {
+      const labels = Array.isArray(raw) ? raw.map(String) : [String(raw)]
+      out[columnId] = { labels }
+    } else if (kind === 'status') {
+      out[columnId] = { label: String(raw) }
     } else {
-      // Plain Text / Long Text / Link → a string is accepted by all of them.
-      // For a Number column instead, strip formatting: String(raw).replace(/[^0-9.]/g, '')
-      out[columnId] = String(raw)
+      out[columnId] = String(raw) // text / long_text
     }
   }
 
