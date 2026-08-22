@@ -1,10 +1,32 @@
 import React from 'react'
+import type { Metadata } from 'next'
+import { getPayload } from 'payload'
+import config from '@/payload.config'
 import { ContactForm } from '@/components/contact/ContactForm'
 import { ContactLeftColumn } from '@/components/contact/ContactLeftColumn'
 
-export const metadata = {
-  title: 'Contact | Dipalo Ventures',
-  description: 'Connect with the firm. Submit technical inquiries and join the operator network.',
+export async function generateMetadata(): Promise<Metadata> {
+  const defaultTitle = 'Contact | Dipalo Ventures'
+  const defaultDescription =
+    'Connect with the firm. Submit technical inquiries and join the operator network.'
+
+  try {
+    const payloadConfig = await config
+    const payload = await getPayload({ config: payloadConfig })
+    const siteSettings = await payload.findGlobal({
+      slug: 'site-settings',
+    })
+
+    return {
+      title: siteSettings?.pageMetadata?.contact?.title || defaultTitle,
+      description: siteSettings?.pageMetadata?.contact?.description || defaultDescription,
+    }
+  } catch (error) {
+    return {
+      title: defaultTitle,
+      description: defaultDescription,
+    }
+  }
 }
 
 export default function ContactPage() {

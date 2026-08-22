@@ -1,4 +1,5 @@
 import React from 'react'
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getPayload } from 'payload'
 import config from '@/payload.config'
@@ -12,6 +13,32 @@ interface PageProps {
   params: Promise<{
     slug: string
   }>
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params
+  try {
+    const payloadConfig = await config
+    const payload = await getPayload({ config: payloadConfig })
+    const { docs } = await payload.find({
+      collection: 'team',
+      where: {
+        slug: { equals: slug },
+      },
+      depth: 1,
+      limit: 1,
+    })
+
+    if (!docs.length) return {}
+
+    const member = docs[0]
+    return {
+      title: `${member.name} — ${member.role} | Dipalo Ventures`,
+      description: member.bio ? member.bio.slice(0, 160) : undefined,
+    }
+  } catch (error) {
+    return {}
+  }
 }
 
 export default async function TeamMemberPage({ params }: PageProps) {

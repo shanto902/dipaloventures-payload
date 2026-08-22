@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { SiteLayout } from '@/components/SiteLayout'
@@ -8,10 +9,28 @@ import { TeamVPs } from '@/components/team/TeamVPs'
 import { TeamAdvisors } from '@/components/team/TeamAdvisors'
 import React from 'react'
 
-export const metadata = {
-  title: 'Team — Dipalo Ventures',
-  description:
-    "Operators who invest. Engineers, product builders, and manufacturers who've shipped real things at real scale.",
+export async function generateMetadata(): Promise<Metadata> {
+  const defaultTitle = 'Team — Dipalo Ventures'
+  const defaultDescription =
+    "Operators who invest. Engineers, product builders, and manufacturers who've shipped real things at real scale."
+
+  try {
+    const payloadConfig = await config
+    const payload = await getPayload({ config: payloadConfig })
+    const siteSettings = await payload.findGlobal({
+      slug: 'site-settings',
+    })
+
+    return {
+      title: siteSettings?.pageMetadata?.team?.title || defaultTitle,
+      description: siteSettings?.pageMetadata?.team?.description || defaultDescription,
+    }
+  } catch (error) {
+    return {
+      title: defaultTitle,
+      description: defaultDescription,
+    }
+  }
 }
 
 export default async function TeamPage() {

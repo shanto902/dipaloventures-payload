@@ -1,12 +1,31 @@
+import type { Metadata } from 'next'
 import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { SiteLayout } from '@/components/SiteLayout'
 import { PortfolioPageClient } from '@/components/portfolio/PortfolioPageClient'
 
-export const metadata = {
-  title: 'Portfolio — Dipalo Ventures',
-  description:
-    '16 hard tech companies backed across Fund I, Fund II, and SPVs — built by operators, supported by operators.',
+export async function generateMetadata(): Promise<Metadata> {
+  const defaultTitle = 'Portfolio — Dipalo Ventures'
+  const defaultDescription =
+    '16 hard tech companies backed across Fund I, Fund II, and SPVs — built by operators, supported by operators.'
+
+  try {
+    const payloadConfig = await config
+    const payload = await getPayload({ config: payloadConfig })
+    const siteSettings = await payload.findGlobal({
+      slug: 'site-settings',
+    })
+
+    return {
+      title: siteSettings?.pageMetadata?.portfolio?.title || defaultTitle,
+      description: siteSettings?.pageMetadata?.portfolio?.description || defaultDescription,
+    }
+  } catch (error) {
+    return {
+      title: defaultTitle,
+      description: defaultDescription,
+    }
+  }
 }
 
 export default async function PortfolioPage() {

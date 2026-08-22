@@ -99,9 +99,11 @@ export interface Config {
   fallbackLocale: null;
   globals: {
     home: Home;
+    'site-settings': SiteSetting;
   };
   globalsSelect: {
     home: HomeSelect<false> | HomeSelect<true>;
+    'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
   };
   locale: null;
   widgets: {
@@ -583,6 +585,39 @@ export interface Home {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings".
+ */
+export interface SiteSetting {
+  id: string;
+  title: string;
+  description: string;
+  pageMetadata?: {
+    contact?: {
+      title?: string | null;
+      description?: string | null;
+    };
+    media?: {
+      title?: string | null;
+      description?: string | null;
+    };
+    portfolio?: {
+      title?: string | null;
+      description?: string | null;
+    };
+    residency?: {
+      title?: string | null;
+      description?: string | null;
+    };
+    team?: {
+      title?: string | null;
+      description?: string | null;
+    };
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "home_select".
  */
 export interface HomeSelect<T extends boolean = true> {
@@ -594,6 +629,51 @@ export interface HomeSelect<T extends boolean = true> {
           | {
               image?: T;
               id?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings_select".
+ */
+export interface SiteSettingsSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  pageMetadata?:
+    | T
+    | {
+        contact?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+            };
+        media?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+            };
+        portfolio?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+            };
+        residency?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+            };
+        team?:
+          | T
+          | {
+              title?: T;
+              description?: T;
             };
       };
   updatedAt?: T;

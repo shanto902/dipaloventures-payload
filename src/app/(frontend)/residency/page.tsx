@@ -1,4 +1,7 @@
 import React from 'react'
+import type { Metadata } from 'next'
+import { getPayload } from 'payload'
+import config from '@/payload.config'
 import { SiteLayout } from '@/components/SiteLayout'
 
 import { ResidencyHero } from '@/components/residency/ResidencyHero'
@@ -13,10 +16,28 @@ import ResidencyCapabilities from '@/components/residency/ResidencyCapabilities'
 import { ResidencyProcess } from '@/components/residency/ResidencyProcess'
 import { ResidencyExecution } from '@/components/residency/ResidencyExecution'
 
-export const metadata = {
-  title: 'The Residency — Dipalo Ventures',
-  description:
-    'Our technical diligence program identifies product design and engineering gaps before we invest.',
+export async function generateMetadata(): Promise<Metadata> {
+  const defaultTitle = 'The Residency — Dipalo Ventures'
+  const defaultDescription =
+    'Our technical diligence program identifies product design and engineering gaps before we invest.'
+
+  try {
+    const payloadConfig = await config
+    const payload = await getPayload({ config: payloadConfig })
+    const siteSettings = await payload.findGlobal({
+      slug: 'site-settings',
+    })
+
+    return {
+      title: siteSettings?.pageMetadata?.residency?.title || defaultTitle,
+      description: siteSettings?.pageMetadata?.residency?.description || defaultDescription,
+    }
+  } catch (error) {
+    return {
+      title: defaultTitle,
+      description: defaultDescription,
+    }
+  }
 }
 
 export default function ResidencyPage() {
