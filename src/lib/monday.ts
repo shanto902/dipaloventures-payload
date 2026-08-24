@@ -29,15 +29,17 @@
 
 const MONDAY_API_URL = 'https://api.monday.com/v2'
 const MONDAY_FILE_URL = 'https://api.monday.com/v2/file'
+const MONDAY_REQUEST_TIMEOUT_MS = 30_000
 
-// Pin an API version so monday can't shift the schema under us.
-// TODO: confirm this is a version monday currently accepts (see the changelog
-// at developer.monday.com). Bump it deliberately, never leave it floating.
-const MONDAY_API_VERSION = '2026-01'
+// Pin the current stable API version verified against monday's versioning page
+// on 2026-07-10. Bump it deliberately after testing; never leave it floating.
+const MONDAY_API_VERSION = '2026-04'
 
 const MONDAY_API_TOKEN = process.env.MONDAY_API_TOKEN ?? ''
 const MONDAY_BOARD_ID = process.env.MONDAY_BOARD_ID ?? ''
 const MONDAY_GROUP_ID = process.env.MONDAY_GROUP_ID ?? ''
+const MONDAY_SCORE_COLUMN_ID = process.env.MONDAY_SCORE_COLUMN_ID ?? ''
+const MONDAY_FIT_COLUMN_ID = process.env.MONDAY_FIT_COLUMN_ID ?? ''
 
 /**
  * Maps pitch-form field ids → monday column ids.
@@ -82,6 +84,15 @@ export const PITCH_COLUMN_MAP: Record<string, string> = {
   climate: 'long_text_mm4tc944',
   designSus: 'long_text_mm4txa0e',
   mfgSus: 'long_text_mm4tjqp2',
+  // New Business Sustainability & AI fields. Leave blank until the matching
+  // monday columns are created and verified on the board.
+  businessSustainability: '',
+  sustainabilityRisks: '',
+  sustainabilityMilestones: '',
+  aiUse: '',
+  aiValue: '',
+  aiAdvantage: '',
+  aiSafety: '',
   instrument: 'dropdown_mm4ta59c',
 }
 
@@ -128,6 +139,13 @@ export const PITCH_FIELD_KIND: Record<
   climate: 'long',
   designSus: 'long',
   mfgSus: 'long',
+  businessSustainability: 'long',
+  sustainabilityRisks: 'long',
+  sustainabilityMilestones: 'long',
+  aiUse: 'text',
+  aiValue: 'long',
+  aiAdvantage: 'long',
+  aiSafety: 'long',
   instrument: 'dropdown',
 }
 
@@ -146,6 +164,10 @@ export function isMondayConfigured(): boolean {
 
 export function isMondayFileUploadConfigured(): boolean {
   return Boolean(PITCH_FILE_COLUMN_ID)
+}
+
+export function isMondayPitchScreenConfigured(): boolean {
+  return isMondayConfigured() && Boolean(MONDAY_SCORE_COLUMN_ID) && Boolean(MONDAY_FIT_COLUMN_ID)
 }
 
 type MondayResult<T> = { ok: true; data: T } | { ok: false; error: string }
@@ -198,6 +220,17 @@ function authHeaders(extra: Record<string, string> = {}): Record<string, string>
   }
 }
 
+async function fetchMonday(url: string, init: RequestInit): Promise<Response> {
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), MONDAY_REQUEST_TIMEOUT_MS)
+
+  try {
+    return await fetch(url, { ...init, signal: controller.signal })
+  } finally {
+    clearTimeout(timeout)
+  }
+}
+
 /**
  * Creates an item on the board from the pitch form values.
  * Returns the new item id on success.
@@ -221,7 +254,7 @@ export async function createPitchItem(
         group_id: $groupId,
         item_name: $itemName,
         column_values: $columnValues,
-        create_labels_if_missing: true
+        create_labels_if_missing: false
       ) { id }
     }
   `
@@ -234,7 +267,7 @@ export async function createPitchItem(
   }
 
   try {
-    const res = await fetch(MONDAY_API_URL, {
+    const res = await fetchMonday(MONDAY_API_URL, {
       method: 'POST',
       headers: authHeaders({ 'Content-Type': 'application/json' }),
       body: JSON.stringify({ query, variables }),
@@ -285,7 +318,7 @@ export async function addFileToMondayColumn(
   form.append('file', new Blob([file.buffer], { type: file.mimeType }), file.filename)
 
   try {
-    const res = await fetch(MONDAY_FILE_URL, {
+    const res = await fetchMonday(MONDAY_FILE_URL, {
       method: 'POST',
       headers: authHeaders(), // no Content-Type — fetch sets the multipart boundary
       body: form,
@@ -302,5 +335,105 @@ export async function addFileToMondayColumn(
   } catch (err) {
     console.error('monday addFile exception:', err)
     return { ok: false, error: 'Item created, but the deck upload could not be sent.' }
+  }
+}
+
+/**
+ * Writes the trusted, server-generated qualitative fit and legacy numeric
+ * index together. Both column ids are required, and the code never submits a
+ * score independently of the non-threshold fit label that gives it meaning.
+ * These system columns stay separate from PITCH_COLUMN_MAP so a browser payload
+ * can never supply either value.
+ */
+export async function setMondayPitchScreen(
+  itemId: string,
+  score: number,
+  fit: 'HIGH' | 'MEDIUM' | 'LOW' | 'REJECT',
+): Promise<MondayResult<{ itemId: string }>> {
+  if (!isMondayPitchScreenConfigured()) {
+    return { ok: false, error: 'The monday score and AI Fit columns are not configured.' }
+  }
+  if (!Number.isInteger(score) || score < 0 || score > 99) {
+    return { ok: false, error: 'The generated pitch score is invalid.' }
+  }
+  if (!['HIGH', 'MEDIUM', 'LOW', 'REJECT'].includes(fit)) {
+    return { ok: false, error: 'The generated pitch fit is invalid.' }
+  }
+
+  const query = `
+    mutation SetPitchScreen($boardId: ID!, $itemId: ID!, $columnValues: JSON!) {
+      change_multiple_column_values(
+        board_id: $boardId,
+        item_id: $itemId,
+        column_values: $columnValues
+      ) { id }
+    }
+  `
+
+  try {
+    const res = await fetchMonday(MONDAY_API_URL, {
+      method: 'POST',
+      headers: authHeaders({ 'Content-Type': 'application/json' }),
+      body: JSON.stringify({
+        query,
+        variables: {
+          boardId: MONDAY_BOARD_ID,
+          itemId,
+          columnValues: JSON.stringify({
+            [MONDAY_FIT_COLUMN_ID]: fit,
+            [MONDAY_SCORE_COLUMN_ID]: String(score),
+          }),
+        },
+      }),
+    })
+
+    const data = await res.json()
+    if (data.errors || data.error_message || !data.data?.change_multiple_column_values?.id) {
+      console.error('monday setPitchScreen error:', JSON.stringify(data))
+      return { ok: false, error: 'The item was created, but its AI screen could not be saved.' }
+    }
+
+    return { ok: true, data: { itemId: String(data.data.change_multiple_column_values.id) } }
+  } catch (err) {
+    console.error('monday setPitchScreen exception:', err)
+    return { ok: false, error: 'The item was created, but its AI screen could not be sent.' }
+  }
+}
+
+/** Adds the explainable score breakdown to the monday item activity feed. */
+export async function addMondayPitchUpdate(
+  itemId: string,
+  body: string,
+): Promise<MondayResult<{ updateId: string }>> {
+  if (!isMondayConfigured()) {
+    return { ok: false, error: 'monday.com is not configured.' }
+  }
+  if (!body.trim()) {
+    return { ok: false, error: 'The pitch update is empty.' }
+  }
+
+  const query = `
+    mutation AddPitchUpdate($itemId: ID!, $body: String!) {
+      create_update(item_id: $itemId, body: $body) { id }
+    }
+  `
+
+  try {
+    const res = await fetchMonday(MONDAY_API_URL, {
+      method: 'POST',
+      headers: authHeaders({ 'Content-Type': 'application/json' }),
+      body: JSON.stringify({ query, variables: { itemId, body } }),
+    })
+
+    const data = await res.json()
+    if (data.errors || data.error_message || !data.data?.create_update?.id) {
+      console.error('monday addPitchUpdate error:', JSON.stringify(data))
+      return { ok: false, error: 'The item was scored, but its explanation could not be saved.' }
+    }
+
+    return { ok: true, data: { updateId: String(data.data.create_update.id) } }
+  } catch (err) {
+    console.error('monday addPitchUpdate exception:', err)
+    return { ok: false, error: 'The item was scored, but its explanation could not be sent.' }
   }
 }

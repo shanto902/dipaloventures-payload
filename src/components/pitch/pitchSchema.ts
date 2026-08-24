@@ -1,6 +1,12 @@
 // Pitch form schema — the single source of truth for sections and fields.
 // Field ids here must stay in sync with PITCH_COLUMN_MAP in src/lib/monday.ts.
 
+export const PITCH_SHORT_TEXT_MAX = 500
+export const PITCH_LONG_TEXT_MAX = 4_000
+export const PITCH_EMAIL_MAX = 255
+export const PITCH_URL_MAX = 2_048
+export const PITCH_DECK_MAX_BYTES = 10 * 1024 * 1024
+
 export type PitchFieldType =
   | 'text'
   | 'email'
@@ -343,19 +349,78 @@ export const PITCH_SCHEMA: PitchSection[] = [
     ],
   },
   {
+    id: 'sustainabilityAi',
+    kicker: '06 / Business Sustainability & AI',
+    short: 'Business Sustainability & AI',
+    title: 'Business Sustainability & AI',
+    blurb:
+      'Help us understand how the company can remain durable over time and how artificial intelligence fits into the product or operations.',
+    fields: [
+      {
+        id: 'businessSustainability',
+        label: 'What makes your business economically sustainable over time?',
+        type: 'long',
+        required: true,
+        help: 'Describe pricing, recurring or repeat revenue, gross margins, and your path to profitability.',
+      },
+      {
+        id: 'sustainabilityRisks',
+        label: 'What are the biggest risks to the company’s long-term sustainability?',
+        type: 'long',
+        required: true,
+        help: 'Consider customer concentration, supply chain, manufacturing, regulation, capital, or other dependencies.',
+      },
+      {
+        id: 'sustainabilityMilestones',
+        label:
+          'What milestones must you reach over the next 12–24 months to become a durable business?',
+        type: 'long',
+        required: true,
+      },
+      {
+        id: 'aiUse',
+        label: 'Does your company use AI or machine learning in its product or operations?',
+        type: 'radio',
+        required: true,
+        options: ['No', 'Exploring', 'Core product', 'Internal operations'],
+      },
+      {
+        id: 'aiValue',
+        label: 'If applicable, how is AI used and what measurable value does it create?',
+        type: 'long',
+        required: false,
+        help: 'For example: improved performance, automation, cost reduction, prediction, personalization, or scientific discovery.',
+      },
+      {
+        id: 'aiAdvantage',
+        label:
+          'What proprietary data, models, feedback loops, or technical advantages support your AI strategy?',
+        type: 'long',
+        required: false,
+      },
+      {
+        id: 'aiSafety',
+        label: 'How do you evaluate AI reliability, safety, security, and human oversight?',
+        type: 'long',
+        required: false,
+        help: 'If AI is not currently used, explain whether you expect that to change.',
+      },
+    ],
+  },
+  {
     id: 'raise',
-    kicker: '06 / Raise',
+    kicker: '07 / Raise',
     short: 'Fundraising',
     title: 'Your Fundraising Round',
     fields: [
       {
         id: 'stage',
         label: 'What fundraising stage is your company at?',
-        type: 'text',
+        type: 'select',
         required: true,
-        placeholder: 'Seed',
-        help: 'We are raising a ____ round.',
+        help: 'Choose the closest current stage.',
         half: true,
+        options: ['Pre-seed', 'Seed', 'Series A', 'Not Raising Right Now', 'Post Series A'],
       },
       {
         id: 'roundSize',
@@ -393,4 +458,6 @@ export const PITCH_SCHEMA: PitchSection[] = [
   },
 ]
 
-export const PITCH_DRAFT_KEY = 'dipalo_pitch_draft_v2'
+// Bump when field types/options change so stale browser drafts cannot bypass
+// the current client controls and then fail only at server validation.
+export const PITCH_DRAFT_KEY = 'dipalo_pitch_draft_v4'

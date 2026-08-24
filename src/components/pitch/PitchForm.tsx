@@ -3,11 +3,14 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Check } from 'lucide-react'
 import { toast } from 'sonner'
-import { PITCH_DRAFT_KEY, PITCH_SCHEMA, type PitchField as PitchFieldDef } from './pitchSchema'
+import {
+  PITCH_DECK_MAX_BYTES,
+  PITCH_DRAFT_KEY,
+  PITCH_SCHEMA,
+  type PitchField as PitchFieldDef,
+} from './pitchSchema'
 import { PitchField, type FieldViewModel } from './PitchField'
 import { submitPitch } from '@/app/(frontend)/pitch/actions'
-
-const MAX_DECK_BYTES = 10 * 1024 * 1024
 
 type Values = Record<string, string>
 type Checks = Record<string, string[]>
@@ -97,13 +100,15 @@ export function PitchForm() {
       })
       return
     }
-    const isPdf = file.type === 'application/pdf' || /\.pdf$/i.test(file.name)
+    const isPdf =
+      /\.pdf$/i.test(file.name) &&
+      (!file.type || file.type === 'application/pdf' || file.type === 'application/octet-stream')
     if (!isPdf) {
       toast.error('The pitch deck must be a PDF.')
       return
     }
-    if (file.size > MAX_DECK_BYTES) {
-      toast.error('The pitch deck must be under 10 MB.')
+    if (file.size > PITCH_DECK_MAX_BYTES) {
+      toast.error('The pitch deck must be 10 MB or smaller.')
       return
     }
     setFiles((prev) => ({ ...prev, [f.id]: file }))

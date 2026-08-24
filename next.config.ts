@@ -7,6 +7,15 @@ const __filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(__filename)
 
 const nextConfig: NextConfig = {
+  experimental: {
+    // The form accepts a 10 MB PDF plus multipart overhead. This fixes the
+    // framework's 1 MB Server Action default for local testing. Before any
+    // Vercel deployment, replace the upload path with direct object storage;
+    // Vercel Functions still cap request bodies below the advertised limit.
+    serverActions: {
+      bodySizeLimit: '11mb',
+    },
+  },
   images: {
     remotePatterns: [
       {

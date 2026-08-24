@@ -2,7 +2,13 @@
 
 import React from 'react'
 import { Upload } from 'lucide-react'
-import type { PitchField as PitchFieldDef } from './pitchSchema'
+import {
+  PITCH_EMAIL_MAX,
+  PITCH_LONG_TEXT_MAX,
+  PITCH_SHORT_TEXT_MAX,
+  PITCH_URL_MAX,
+  type PitchField as PitchFieldDef,
+} from './pitchSchema'
 
 export interface FileMeta {
   name: string
@@ -34,6 +40,14 @@ export function PitchField({ vm }: { vm: FieldViewModel }) {
   const isInput = field.type === 'text' || field.type === 'email' || field.type === 'url'
   const inputType = field.type === 'email' ? 'email' : field.type === 'url' ? 'url' : 'text'
   const isChoice = field.type === 'radio' || field.type === 'check'
+  const maxLength =
+    field.type === 'email'
+      ? PITCH_EMAIL_MAX
+      : field.type === 'url'
+        ? PITCH_URL_MAX
+        : field.type === 'long'
+          ? PITCH_LONG_TEXT_MAX
+          : PITCH_SHORT_TEXT_MAX
 
   return (
     <div className="flex flex-col gap-2">
@@ -48,6 +62,7 @@ export function PitchField({ vm }: { vm: FieldViewModel }) {
           type={inputType}
           placeholder={field.placeholder}
           value={vm.value}
+          maxLength={maxLength}
           onChange={(e) => vm.onText(e.target.value)}
           className={CONTROL}
         />
@@ -58,6 +73,7 @@ export function PitchField({ vm }: { vm: FieldViewModel }) {
           rows={4}
           placeholder={field.placeholder}
           value={vm.value}
+          maxLength={maxLength}
           onChange={(e) => vm.onText(e.target.value)}
           className={`${CONTROL} resize-y min-h-[104px] leading-relaxed`}
         />

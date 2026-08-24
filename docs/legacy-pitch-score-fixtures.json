@@ -1,0 +1,495 @@
+{
+  "artifactVersion": 1,
+  "privacy": "Aggregate score tuples only; contains no founder or application text and no row identifiers.",
+  "source": {
+    "workbook": "Dipalo Ventures Startup Application (Responses).xlsx",
+    "worksheet": "Form Responses 1",
+    "sha256": "6642cc8d69241e0b01f95e8814ed7ebd9de477296c867ea270669cf5d3dc35ec",
+    "completeScoredRows": 168,
+    "distinctObservedRatingTuples": 47
+  },
+  "formula": {
+    "ratingValues": [0, 1, 3, 9],
+    "weights": {
+      "investmentFit": 35,
+      "investmentPotential": 40,
+      "credibility": 15,
+      "sustainability": 10
+    },
+    "expression": "min(99, round((35 * investmentFit + 40 * investmentPotential + 15 * credibility + 10 * sustainability) / 9))",
+    "rounding": "nearest integer for nonnegative inputs",
+    "maximum": 99
+  },
+  "fixtures": [
+    {
+      "ratings": {
+        "investmentFit": 0,
+        "investmentPotential": 0,
+        "credibility": 1,
+        "sustainability": 0
+      },
+      "expectedTotal": 2,
+      "count": 2
+    },
+    {
+      "ratings": {
+        "investmentFit": 0,
+        "investmentPotential": 1,
+        "credibility": 1,
+        "sustainability": 3
+      },
+      "expectedTotal": 9,
+      "count": 1
+    },
+    {
+      "ratings": {
+        "investmentFit": 0,
+        "investmentPotential": 1,
+        "credibility": 1,
+        "sustainability": 9
+      },
+      "expectedTotal": 16,
+      "count": 1
+    },
+    {
+      "ratings": {
+        "investmentFit": 0,
+        "investmentPotential": 1,
+        "credibility": 3,
+        "sustainability": 0
+      },
+      "expectedTotal": 9,
+      "count": 2
+    },
+    {
+      "ratings": {
+        "investmentFit": 0,
+        "investmentPotential": 1,
+        "credibility": 3,
+        "sustainability": 1
+      },
+      "expectedTotal": 11,
+      "count": 1
+    },
+    {
+      "ratings": {
+        "investmentFit": 0,
+        "investmentPotential": 1,
+        "credibility": 3,
+        "sustainability": 3
+      },
+      "expectedTotal": 13,
+      "count": 1
+    },
+    {
+      "ratings": {
+        "investmentFit": 0,
+        "investmentPotential": 1,
+        "credibility": 3,
+        "sustainability": 9
+      },
+      "expectedTotal": 19,
+      "count": 1
+    },
+    {
+      "ratings": {
+        "investmentFit": 0,
+        "investmentPotential": 3,
+        "credibility": 3,
+        "sustainability": 0
+      },
+      "expectedTotal": 18,
+      "count": 3
+    },
+    {
+      "ratings": {
+        "investmentFit": 0,
+        "investmentPotential": 3,
+        "credibility": 3,
+        "sustainability": 3
+      },
+      "expectedTotal": 22,
+      "count": 7
+    },
+    {
+      "ratings": {
+        "investmentFit": 0,
+        "investmentPotential": 3,
+        "credibility": 3,
+        "sustainability": 9
+      },
+      "expectedTotal": 28,
+      "count": 2
+    },
+    {
+      "ratings": {
+        "investmentFit": 0,
+        "investmentPotential": 3,
+        "credibility": 9,
+        "sustainability": 1
+      },
+      "expectedTotal": 29,
+      "count": 1
+    },
+    {
+      "ratings": {
+        "investmentFit": 0,
+        "investmentPotential": 3,
+        "credibility": 9,
+        "sustainability": 3
+      },
+      "expectedTotal": 32,
+      "count": 2
+    },
+    {
+      "ratings": {
+        "investmentFit": 0,
+        "investmentPotential": 3,
+        "credibility": 9,
+        "sustainability": 9
+      },
+      "expectedTotal": 38,
+      "count": 2
+    },
+    {
+      "ratings": {
+        "investmentFit": 0,
+        "investmentPotential": 9,
+        "credibility": 9,
+        "sustainability": 3
+      },
+      "expectedTotal": 58,
+      "count": 1
+    },
+    {
+      "ratings": {
+        "investmentFit": 0,
+        "investmentPotential": 9,
+        "credibility": 9,
+        "sustainability": 9
+      },
+      "expectedTotal": 65,
+      "count": 1
+    },
+    {
+      "ratings": {
+        "investmentFit": 1,
+        "investmentPotential": 0,
+        "credibility": 0,
+        "sustainability": 0
+      },
+      "expectedTotal": 4,
+      "count": 1
+    },
+    {
+      "ratings": {
+        "investmentFit": 1,
+        "investmentPotential": 1,
+        "credibility": 1,
+        "sustainability": 0
+      },
+      "expectedTotal": 10,
+      "count": 1
+    },
+    {
+      "ratings": {
+        "investmentFit": 1,
+        "investmentPotential": 1,
+        "credibility": 1,
+        "sustainability": 1
+      },
+      "expectedTotal": 11,
+      "count": 1
+    },
+    {
+      "ratings": {
+        "investmentFit": 1,
+        "investmentPotential": 1,
+        "credibility": 1,
+        "sustainability": 3
+      },
+      "expectedTotal": 13,
+      "count": 2
+    },
+    {
+      "ratings": {
+        "investmentFit": 1,
+        "investmentPotential": 1,
+        "credibility": 3,
+        "sustainability": 3
+      },
+      "expectedTotal": 17,
+      "count": 1
+    },
+    {
+      "ratings": {
+        "investmentFit": 1,
+        "investmentPotential": 3,
+        "credibility": 3,
+        "sustainability": 1
+      },
+      "expectedTotal": 23,
+      "count": 1
+    },
+    {
+      "ratings": {
+        "investmentFit": 1,
+        "investmentPotential": 3,
+        "credibility": 3,
+        "sustainability": 3
+      },
+      "expectedTotal": 26,
+      "count": 2
+    },
+    {
+      "ratings": {
+        "investmentFit": 1,
+        "investmentPotential": 3,
+        "credibility": 3,
+        "sustainability": 9
+      },
+      "expectedTotal": 32,
+      "count": 1
+    },
+    {
+      "ratings": {
+        "investmentFit": 3,
+        "investmentPotential": 1,
+        "credibility": 3,
+        "sustainability": 3
+      },
+      "expectedTotal": 24,
+      "count": 3
+    },
+    {
+      "ratings": {
+        "investmentFit": 3,
+        "investmentPotential": 1,
+        "credibility": 3,
+        "sustainability": 9
+      },
+      "expectedTotal": 31,
+      "count": 2
+    },
+    {
+      "ratings": {
+        "investmentFit": 3,
+        "investmentPotential": 3,
+        "credibility": 1,
+        "sustainability": 0
+      },
+      "expectedTotal": 27,
+      "count": 1
+    },
+    {
+      "ratings": {
+        "investmentFit": 3,
+        "investmentPotential": 3,
+        "credibility": 3,
+        "sustainability": 3
+      },
+      "expectedTotal": 33,
+      "count": 9
+    },
+    {
+      "ratings": {
+        "investmentFit": 3,
+        "investmentPotential": 3,
+        "credibility": 3,
+        "sustainability": 9
+      },
+      "expectedTotal": 40,
+      "count": 20
+    },
+    {
+      "ratings": {
+        "investmentFit": 3,
+        "investmentPotential": 3,
+        "credibility": 9,
+        "sustainability": 0
+      },
+      "expectedTotal": 40,
+      "count": 1
+    },
+    {
+      "ratings": {
+        "investmentFit": 3,
+        "investmentPotential": 3,
+        "credibility": 9,
+        "sustainability": 3
+      },
+      "expectedTotal": 43,
+      "count": 4
+    },
+    {
+      "ratings": {
+        "investmentFit": 3,
+        "investmentPotential": 3,
+        "credibility": 9,
+        "sustainability": 9
+      },
+      "expectedTotal": 50,
+      "count": 6
+    },
+    {
+      "ratings": {
+        "investmentFit": 3,
+        "investmentPotential": 9,
+        "credibility": 3,
+        "sustainability": 3
+      },
+      "expectedTotal": 60,
+      "count": 3
+    },
+    {
+      "ratings": {
+        "investmentFit": 3,
+        "investmentPotential": 9,
+        "credibility": 9,
+        "sustainability": 0
+      },
+      "expectedTotal": 67,
+      "count": 1
+    },
+    {
+      "ratings": {
+        "investmentFit": 3,
+        "investmentPotential": 9,
+        "credibility": 9,
+        "sustainability": 1
+      },
+      "expectedTotal": 68,
+      "count": 2
+    },
+    {
+      "ratings": {
+        "investmentFit": 3,
+        "investmentPotential": 9,
+        "credibility": 9,
+        "sustainability": 3
+      },
+      "expectedTotal": 70,
+      "count": 6
+    },
+    {
+      "ratings": {
+        "investmentFit": 3,
+        "investmentPotential": 9,
+        "credibility": 9,
+        "sustainability": 9
+      },
+      "expectedTotal": 77,
+      "count": 10
+    },
+    {
+      "ratings": {
+        "investmentFit": 9,
+        "investmentPotential": 3,
+        "credibility": 1,
+        "sustainability": 0
+      },
+      "expectedTotal": 50,
+      "count": 1
+    },
+    {
+      "ratings": {
+        "investmentFit": 9,
+        "investmentPotential": 3,
+        "credibility": 1,
+        "sustainability": 1
+      },
+      "expectedTotal": 51,
+      "count": 1
+    },
+    {
+      "ratings": {
+        "investmentFit": 9,
+        "investmentPotential": 3,
+        "credibility": 1,
+        "sustainability": 3
+      },
+      "expectedTotal": 53,
+      "count": 1
+    },
+    {
+      "ratings": {
+        "investmentFit": 9,
+        "investmentPotential": 3,
+        "credibility": 3,
+        "sustainability": 3
+      },
+      "expectedTotal": 57,
+      "count": 4
+    },
+    {
+      "ratings": {
+        "investmentFit": 9,
+        "investmentPotential": 3,
+        "credibility": 3,
+        "sustainability": 9
+      },
+      "expectedTotal": 63,
+      "count": 10
+    },
+    {
+      "ratings": {
+        "investmentFit": 9,
+        "investmentPotential": 3,
+        "credibility": 9,
+        "sustainability": 9
+      },
+      "expectedTotal": 73,
+      "count": 3
+    },
+    {
+      "ratings": {
+        "investmentFit": 9,
+        "investmentPotential": 9,
+        "credibility": 3,
+        "sustainability": 1
+      },
+      "expectedTotal": 81,
+      "count": 2
+    },
+    {
+      "ratings": {
+        "investmentFit": 9,
+        "investmentPotential": 9,
+        "credibility": 3,
+        "sustainability": 9
+      },
+      "expectedTotal": 90,
+      "count": 3
+    },
+    {
+      "ratings": {
+        "investmentFit": 9,
+        "investmentPotential": 9,
+        "credibility": 9,
+        "sustainability": 1
+      },
+      "expectedTotal": 91,
+      "count": 1
+    },
+    {
+      "ratings": {
+        "investmentFit": 9,
+        "investmentPotential": 9,
+        "credibility": 9,
+        "sustainability": 3
+      },
+      "expectedTotal": 93,
+      "count": 7
+    },
+    {
+      "ratings": {
+        "investmentFit": 9,
+        "investmentPotential": 9,
+        "credibility": 9,
+        "sustainability": 9
+      },
+      "expectedTotal": 99,
+      "count": 29
+    }
+  ]
+}

@@ -1,27 +1,48 @@
 'use server'
 
-import { z } from 'zod'
 import {
+  addMondayPitchUpdate,
   addFileToMondayColumn,
   createPitchItem,
   isMondayConfigured,
   isMondayFileUploadConfigured,
   PITCH_FILE_COLUMN_ID,
+  setMondayPitchScreen,
 } from '@/lib/monday'
-
-const MAX_DECK_BYTES = 10 * 1024 * 1024
-
-// We only hard-validate the essentials server-side; the client enforces the
-// full required set. This keeps the server tolerant while still rejecting junk.
-const contactSchema = z.object({
-  name: z.string().trim().min(1, 'Name is required').max(200),
-  email: z.string().trim().email('A valid email is required').max(255),
-})
+import { formatPitchScoreUpdate, scorePitch } from '@/lib/pitchScoring'
+import {
+  parsePitchPayload,
+  validatePitchDeck,
+  type ValidatedPitchValues,
+} from '@/components/pitch/pitchValidation'
 
 export type PitchSubmitResult = {
   success: boolean
   error?: string
   itemId?: string
+}
+
+async function scoreCreatedPitch(itemId: string, values: ValidatedPitchValues): Promise<void> {
+  const scored = await scorePitch(values)
+  if (!scored.ok) {
+    if (scored.error !== 'not_configured') {
+      // Never log the application or model response; the item id is enough to retry manually.
+      console.error(`[pitch-scoring] Could not score monday item ${itemId}: ${scored.error}`)
+    }
+    return
+  }
+
+  const scoreResult = await setMondayPitchScreen(itemId, scored.data.total, scored.data.fit)
+  if (!scoreResult.ok) {
+    console.error(`[pitch-scoring] Could not save structured screen for monday item ${itemId}.`)
+  }
+
+  // Keep the full result visible even when the optional structured score/fit
+  // columns have not been created yet.
+  const updateResult = await addMondayPitchUpdate(itemId, formatPitchScoreUpdate(scored.data))
+  if (!updateResult.ok) {
+    console.error(`[pitch-scoring] Could not save score explanation for monday item ${itemId}.`)
+  }
 }
 
 export async function submitPitch(formData: FormData): Promise<PitchSubmitResult> {
@@ -30,26 +51,23 @@ export async function submitPitch(formData: FormData): Promise<PitchSubmitResult
     return { success: false, error: 'Malformed submission.' }
   }
 
-  let values: Record<string, unknown>
+  let rawValues: unknown
   try {
-    values = JSON.parse(rawPayload)
+    rawValues = JSON.parse(rawPayload)
   } catch {
     return { success: false, error: 'Malformed submission.' }
   }
 
-  const parsed = contactSchema.safeParse({ name: values.name, email: values.email })
-  if (!parsed.success) {
-    return { success: false, error: parsed.error.issues[0]?.message ?? 'Invalid form data.' }
-  }
+  const parsed = parsePitchPayload(rawValues)
+  if (!parsed.success) return { success: false, error: parsed.error }
+  const values = parsed.data
 
-  // Validate the deck file if one was attached.
+  // The deck is required and travels separately from the strict JSON payload.
   const deck = formData.get('deck')
-  if (deck instanceof File && deck.size > 0) {
-    const isPdf = deck.type === 'application/pdf' || /\.pdf$/i.test(deck.name)
-    if (!isPdf) return { success: false, error: 'The pitch deck must be a PDF.' }
-    if (deck.size > MAX_DECK_BYTES)
-      return { success: false, error: 'The pitch deck must be under 10 MB.' }
-  }
+  const deckError = await validatePitchDeck(deck)
+  if (deckError) return { success: false, error: deckError }
+  // validatePitchDeck establishes this runtime type.
+  const validatedDeck = deck as File
 
   // If the integration isn't wired up yet, fail gracefully — never throw, so the
   // page and the rest of the site keep working. Fill in the env + column map in
@@ -67,19 +85,26 @@ export async function submitPitch(formData: FormData): Promise<PitchSubmitResult
     return { success: false, error: created.error }
   }
 
-  // Upload the deck to its File column, if both the file and the column are set.
-  if (deck instanceof File && deck.size > 0 && isMondayFileUploadConfigured()) {
-    const buffer = await deck.arrayBuffer()
+  // Score only after the canonical item exists. Scoring is enrichment: a model
+  // outage must never lose or reject an otherwise valid pitch.
+  const scoringPromise = scoreCreatedPitch(created.data.itemId, values)
+
+  // Upload the deck independently so a file error cannot erase the application
+  // or its automatic score.
+  let deckWarning: string | undefined
+  if (isMondayFileUploadConfigured()) {
+    const buffer = await validatedDeck.arrayBuffer()
     const uploaded = await addFileToMondayColumn(created.data.itemId, PITCH_FILE_COLUMN_ID, {
       buffer,
-      filename: deck.name,
-      mimeType: deck.type || 'application/pdf',
+      filename: validatedDeck.name,
+      mimeType: validatedDeck.type || 'application/pdf',
     })
     if (!uploaded.ok) {
-      // The item was created; treat a failed deck upload as a soft warning.
-      return { success: true, itemId: created.data.itemId, error: uploaded.error }
+      deckWarning = uploaded.error
     }
   }
 
-  return { success: true, itemId: created.data.itemId }
+  await scoringPromise
+
+  return { success: true, itemId: created.data.itemId, error: deckWarning }
 }
